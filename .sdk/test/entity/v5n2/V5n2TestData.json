@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "v5n2": {
+      "V5N200": {
+        "count": "s28",
+        "max_per_call": "s29",
+        "uuid": [],
+        "version": "s2b",
+        "id": "V5N200"
+      },
+      "V5N201": {
+        "count": "s50",
+        "max_per_call": "s51",
+        "uuid": [],
+        "version": "s53",
+        "id": "V5N201"
+      },
+      "V5N202": {
+        "count": "s78",
+        "max_per_call": "s79",
+        "uuid": [],
+        "version": "s7b",
+        "id": "V5N202"
+      }
+    }
+  },
+  "new": {
+    "v5n2": {
+      "v5n2_ref01": {
+        "count": "sa0",
+        "max_per_call": "sa1",
+        "uuid": [],
+        "version": "sa3"
+      }
+    }
+  }
+}

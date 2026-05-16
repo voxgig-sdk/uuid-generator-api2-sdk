@@ -1,0 +1,80 @@
+# Entity: v1n
+
+main: kit: entity: v1n: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "count"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "max_per_call"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "uuid"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "version"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "v1n"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "count"
+                orig: "count"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "default"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/uuid-generator/v1"
+          parts: [
+            "api"
+            "uuid-generator"
+            "v1"
+          ]
+          select: {
+            exist: [
+              "count"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

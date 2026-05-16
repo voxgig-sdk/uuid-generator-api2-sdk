@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "guid": {
+      "GUID00": {
+        "count": "s28",
+        "max_per_call": "s29",
+        "uuid": [],
+        "version": "s2b",
+        "id": "GUID00"
+      },
+      "GUID01": {
+        "count": "s50",
+        "max_per_call": "s51",
+        "uuid": [],
+        "version": "s53",
+        "id": "GUID01"
+      },
+      "GUID02": {
+        "count": "s78",
+        "max_per_call": "s79",
+        "uuid": [],
+        "version": "s7b",
+        "id": "GUID02"
+      }
+    }
+  },
+  "new": {
+    "guid": {
+      "guid_ref01": {
+        "count": "sa0",
+        "max_per_call": "sa1",
+        "uuid": [],
+        "version": "sa3"
+      }
+    }
+  }
+}

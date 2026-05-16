@@ -1,0 +1,97 @@
+# Entity: v3n
+
+main: kit: entity: v3n: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "count"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "max_per_call"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "uuid"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "version"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "v3n"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "count"
+                orig: "count"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "default"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "name"
+                orig: "name"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "dns"
+                kind: "query"
+                name: "namespace"
+                orig: "namespace"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/uuid-generator/v3"
+          parts: [
+            "api"
+            "uuid-generator"
+            "v3"
+          ]
+          select: {
+            exist: [
+              "count"
+              "format"
+              "name"
+              "namespace"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

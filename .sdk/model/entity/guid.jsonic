@@ -1,0 +1,131 @@
+# Entity: guid
+
+main: kit: entity: guid: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "count"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "max_per_call"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "uuid"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "version"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "guid"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "count"
+                orig: "count"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "default"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/uuid-generator/guid"
+          parts: [
+            "api"
+            "uuid-generator"
+            "guid"
+          ]
+          select: {
+            exist: [
+              "count"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "count"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                example: "default"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/uuid-generator/guid/{count}"
+          parts: [
+            "api"
+            "uuid-generator"
+            "guid"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              count: "id"
+            }
+          }
+          select: {
+            exist: [
+              "format"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

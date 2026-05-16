@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "v3n": {
+      "V3N00": {
+        "count": "s28",
+        "max_per_call": "s29",
+        "uuid": [],
+        "version": "s2b"
+      },
+      "V3N01": {
+        "count": "s50",
+        "max_per_call": "s51",
+        "uuid": [],
+        "version": "s53"
+      },
+      "V3N02": {
+        "count": "s78",
+        "max_per_call": "s79",
+        "uuid": [],
+        "version": "s7b"
+      }
+    }
+  },
+  "new": {
+    "v3n": {
+      "v3n_ref01": {
+        "count": "sa0",
+        "max_per_call": "sa1",
+        "uuid": [],
+        "version": "sa3"
+      }
+    }
+  }
+}

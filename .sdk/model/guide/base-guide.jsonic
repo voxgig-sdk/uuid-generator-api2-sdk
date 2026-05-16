@@ -1,0 +1,90 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 13
+  metrics: count: path: 14
+  metrics: count: method: 14
+
+  entity: guid: {
+    path: "/api/uuid-generator/guid": {
+      op: list: method: *GET
+    }
+    path: "/api/uuid-generator/guid/{count}": {
+      rename: param: "count": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: v1n: {
+    path: "/api/uuid-generator/v1": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: v1n2: {
+    path: "/api/uuid-generator/v1/{count}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: v3n: {
+    path: "/api/uuid-generator/v3": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: v3n2: {
+    path: "/api/uuid-generator/v3/{count}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: v4n: {
+    path: "/api/uuid-generator/v4": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: v4n2: {
+    path: "/api/uuid-generator/v4/{count}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: v5n: {
+    path: "/api/uuid-generator/v5": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: v5n2: {
+    path: "/api/uuid-generator/v5/{count}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: v6n: {
+    path: "/api/uuid-generator/v6": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: v6n2: {
+    path: "/api/uuid-generator/v6/{count}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: v7n: {
+    path: "/api/uuid-generator/v7": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: v7n2: {
+    path: "/api/uuid-generator/v7/{count}": {
+      op: load: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,32 @@
+# BasicV6n2Flow
+
+main: kit: flow: BasicV6n2Flow:
+{
+  entity: "v6n2",
+  kind: "basic",
+  name: "BasicV6n2Flow",
+  step: [
+    {
+      input: {
+        ref: "v6n2_ref01",
+        srcdatavar: "v6n2_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "v6n201"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-v6n2_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicV6n2Flow"
+}

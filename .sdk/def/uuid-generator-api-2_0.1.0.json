@@ -1,0 +1,703 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "UUID Generator API",
+    "description": "This API provides a fast and free method for generating UUIDs, supporting various versions including v1, v3, v4, v5, v6, and time-ordered v7. It allows bulk UUID generation with options for namespace and formatting, ideal for developers and websites. No authentication required, rate-limited for fair use.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "ToolkitVault",
+      "url": "https://toolkitvault.com"
+    },
+    "license": {
+      "name": "Public API",
+      "url": "https://toolkitvault.com/uuid-generator/uuid-api-docs"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://toolkitvault.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/uuid-generator/v1": {
+      "get": {
+        "summary": "Generate UUID v1 (time-based)",
+        "description": "Generate one or more UUID version 1 (time-based) identifiers",
+        "operationId": "generateV1UuidQuery",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v1/{count}": {
+      "get": {
+        "summary": "Generate UUID v1 with count in path",
+        "description": "Generate multiple UUID version 1 identifiers with count specified in path",
+        "operationId": "generateV1UuidPath",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountPath"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v3": {
+      "get": {
+        "summary": "Generate UUID v3 (MD5 hash based)",
+        "description": "Generate one or more UUID version 3 (MD5 hash) identifiers using namespace and name",
+        "operationId": "generateV3UuidQuery",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountQuery"
+          },
+          {
+            "$ref": "#/components/parameters/NamespaceQuery"
+          },
+          {
+            "$ref": "#/components/parameters/NameQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v3/{count}": {
+      "get": {
+        "summary": "Generate UUID v3 with count in path",
+        "description": "Generate multiple UUID version 3 identifiers with count specified in path",
+        "operationId": "generateV3UuidPath",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountPath"
+          },
+          {
+            "$ref": "#/components/parameters/NamespaceQuery"
+          },
+          {
+            "$ref": "#/components/parameters/NameQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v4": {
+      "get": {
+        "summary": "Generate UUID v4 (random)",
+        "description": "Generate one or more UUID version 4 (random) identifiers",
+        "operationId": "generateV4UuidQuery",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v4/{count}": {
+      "get": {
+        "summary": "Generate UUID v4 with count in path",
+        "description": "Generate multiple UUID version 4 identifiers with count specified in path",
+        "operationId": "generateV4UuidPath",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountPath"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v5": {
+      "get": {
+        "summary": "Generate UUID v5 (SHA-1 hash based)",
+        "description": "Generate one or more UUID version 5 (SHA-1 hash) identifiers using namespace and name",
+        "operationId": "generateV5UuidQuery",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountQuery"
+          },
+          {
+            "$ref": "#/components/parameters/NamespaceQuery"
+          },
+          {
+            "$ref": "#/components/parameters/NameQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v5/{count}": {
+      "get": {
+        "summary": "Generate UUID v5 with count in path",
+        "description": "Generate multiple UUID version 5 identifiers with count specified in path",
+        "operationId": "generateV5UuidPath",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountPath"
+          },
+          {
+            "$ref": "#/components/parameters/NamespaceQuery"
+          },
+          {
+            "$ref": "#/components/parameters/NameQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v6": {
+      "get": {
+        "summary": "Generate UUID v6 (reordered time-based)",
+        "description": "Generate one or more UUID version 6 (reordered time-based) identifiers",
+        "operationId": "generateV6UuidQuery",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v6/{count}": {
+      "get": {
+        "summary": "Generate UUID v6 with count in path",
+        "description": "Generate multiple UUID version 6 identifiers with count specified in path",
+        "operationId": "generateV6UuidPath",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountPath"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v7": {
+      "get": {
+        "summary": "Generate UUID v7 (time-ordered)",
+        "description": "Generate one or more UUID version 7 (time-ordered) identifiers. Recommended for general use.",
+        "operationId": "generateV7UuidQuery",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/v7/{count}": {
+      "get": {
+        "summary": "Generate UUID v7 with count in path",
+        "description": "Generate multiple UUID version 7 identifiers with count specified in path",
+        "operationId": "generateV7UuidPath",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountPath"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/guid": {
+      "get": {
+        "summary": "Generate GUID (alias for UUID v4)",
+        "description": "Generate one or more GUIDs (alias for UUID version 4)",
+        "operationId": "generateGuidQuery",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountQuery"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/api/uuid-generator/guid/{count}": {
+      "get": {
+        "summary": "Generate GUID with count in path",
+        "description": "Generate multiple GUIDs with count specified in path",
+        "operationId": "generateGuidPath",
+        "tags": [
+          "UUID Generation"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CountPath"
+          },
+          {
+            "$ref": "#/components/parameters/FormatQuery"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/UuidSuccess"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "CountQuery": {
+        "name": "count",
+        "in": "query",
+        "description": "Number of UUIDs to generate (alternative query parameter: 'n')",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200,
+          "default": 1
+        }
+      },
+      "CountPath": {
+        "name": "count",
+        "in": "path",
+        "description": "Number of UUIDs to generate",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        }
+      },
+      "NamespaceQuery": {
+        "name": "namespace",
+        "in": "query",
+        "description": "Namespace for UUID v3/v5 generation",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "dns",
+            "url"
+          ],
+          "default": "dns"
+        }
+      },
+      "NameQuery": {
+        "name": "name",
+        "in": "query",
+        "description": "Name input for UUID v3/v5 generation",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "FormatQuery": {
+        "name": "format",
+        "in": "query",
+        "description": "Output format for UUIDs",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "default",
+            "uppercase",
+            "braced",
+            "braced-uppercase"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    "responses": {
+      "UuidSuccess": {
+        "description": "Successful UUID generation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UuidResponse"
+            },
+            "examples": {
+              "singleUuid": {
+                "summary": "Single UUID v7",
+                "value": {
+                  "version": "v7",
+                  "count": 1,
+                  "maxPerCall": 200,
+                  "uuids": [
+                    "018d5e8a-7b9c-7890-abcd-ef1234567890"
+                  ]
+                }
+              },
+              "multipleUuids": {
+                "summary": "Multiple UUID v4",
+                "value": {
+                  "version": "v4",
+                  "count": 10,
+                  "maxPerCall": 200,
+                  "uuids": [
+                    "6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01",
+                    "7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12",
+                    "8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23",
+                    "9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34",
+                    "0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45",
+                    "1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56",
+                    "2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67",
+                    "3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78",
+                    "4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89",
+                    "5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Bad request - invalid parameters",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "invalidVersion": {
+                "summary": "Invalid version",
+                "value": {
+                  "error": true,
+                  "url": "https://toolkitvault.com/api/uuid-generator/v0",
+                  "statusCode": 400,
+                  "statusMessage": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                  "message": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid"
+                }
+              }
+            }
+          }
+        }
+      },
+      "TooManyRequests": {
+        "description": "Rate limit exceeded",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": true,
+              "url": "https://toolkitvault.com/api/uuid-generator/v4",
+              "statusCode": 429,
+              "statusMessage": "Too Many Requests",
+              "message": "Too Many Requests"
+            }
+          }
+        }
+      },
+      "NotImplemented": {
+        "description": "Feature not implemented (UUID v2)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": true,
+              "url": "https://toolkitvault.com/api/uuid-generator/v2",
+              "statusCode": 501,
+              "statusMessage": "UUID v2 (DCE Security) not supported. Use v1/v6 or v4/v7.",
+              "message": "UUID v2 (DCE Security) not supported. Use v1/v6 or v4/v7."
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "UuidResponse": {
+        "type": "object",
+        "required": [
+          "version",
+          "count",
+          "maxPerCall",
+          "uuids"
+        ],
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "UUID version used for generation",
+            "example": "v4"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of UUIDs generated",
+            "example": 10
+          },
+          "maxPerCall": {
+            "type": "integer",
+            "description": "Maximum number of UUIDs allowed per API call",
+            "example": 200
+          },
+          "uuids": {
+            "type": "array",
+            "description": "Array of generated UUIDs",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "example": [
+              "6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01"
+            ]
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error",
+          "url",
+          "statusCode",
+          "statusMessage",
+          "message"
+        ],
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "description": "Indicates an error occurred",
+            "example": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The requested URL that caused the error",
+            "example": "https://toolkitvault.com/api/uuid-generator/v0"
+          },
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP status code",
+            "example": 400
+          },
+          "statusMessage": {
+            "type": "string",
+            "description": "HTTP status message",
+            "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error message",
+            "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "UUID Generation",
+      "description": "Endpoints for generating UUIDs of various versions"
+    }
+  ]
+}

@@ -1,0 +1,1942 @@
+{
+  "name": "uuid-generator-api2",
+  "origin": "voxgig-sdk",
+  "def": "uuid-generator-api-2_0.1.0.json",
+  "main": {
+    "kit": {
+      "info": {
+        "contact": {
+          "name": "ToolkitVault",
+          "url": "https://toolkitvault.com"
+        },
+        "description": "This API provides a fast and free method for generating UUIDs, supporting various versions including v1, v3, v4, v5, v6, and time-ordered v7. It allows bulk UUID generation with options for namespace and formatting, ideal for developers and websites. No authentication required, rate-limited for fair use.",
+        "license": {
+          "name": "Public API",
+          "url": "https://toolkitvault.com/uuid-generator/uuid-api-docs"
+        },
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://toolkitvault.com"
+          }
+        ],
+        "title": "UUID Generator API",
+        "version": "1.0.0"
+      },
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "guid": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "guid",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": 1,
+                        "kind": "query",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/guid",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "guid"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            },
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "id",
+                        "orig": "count",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ],
+                    "query": [
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/guid/{count}",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "guid",
+                    "{id}"
+                  ],
+                  "rename": {
+                    "param": {
+                      "count": "id"
+                    }
+                  },
+                  "select": {
+                    "exist": [
+                      "format",
+                      "id"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "v1n": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v1n",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": 1,
+                        "kind": "query",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v1",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v1"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "v1n2": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v1n2",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ],
+                    "query": [
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v1/{count}",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v1",
+                    "{count}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "v1"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "v3n": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v3n",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": 1,
+                        "kind": "query",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "name",
+                        "orig": "name",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": "dns",
+                        "kind": "query",
+                        "name": "namespace",
+                        "orig": "namespace",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v3",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v3"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format",
+                      "name",
+                      "namespace"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "v3n2": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v3n2",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ],
+                    "query": [
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "name",
+                        "orig": "name",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": "dns",
+                        "kind": "query",
+                        "name": "namespace",
+                        "orig": "namespace",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v3/{count}",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v3",
+                    "{count}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format",
+                      "name",
+                      "namespace"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "v3"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "v4n": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v4n",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": 1,
+                        "kind": "query",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v4",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v4"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "v4n2": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v4n2",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ],
+                    "query": [
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v4/{count}",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v4",
+                    "{count}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "v4"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "v5n": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v5n",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": 1,
+                        "kind": "query",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "name",
+                        "orig": "name",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": "dns",
+                        "kind": "query",
+                        "name": "namespace",
+                        "orig": "namespace",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v5",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v5"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format",
+                      "name",
+                      "namespace"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "v5n2": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v5n2",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ],
+                    "query": [
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "kind": "query",
+                        "name": "name",
+                        "orig": "name",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      },
+                      {
+                        "example": "dns",
+                        "kind": "query",
+                        "name": "namespace",
+                        "orig": "namespace",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v5/{count}",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v5",
+                    "{count}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format",
+                      "name",
+                      "namespace"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "v5"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "v6n": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v6n",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": 1,
+                        "kind": "query",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v6",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v6"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "v6n2": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v6n2",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ],
+                    "query": [
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v6/{count}",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v6",
+                    "{count}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "v6"
+              ]
+            ]
+          },
+          "active": true
+        },
+        "v7n": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v7n",
+          "op": {
+            "list": {
+              "name": "list",
+              "points": [
+                {
+                  "args": {
+                    "query": [
+                      {
+                        "example": 1,
+                        "kind": "query",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": false,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      },
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v7",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v7"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "active": true,
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "v7n2": {
+          "alias": {
+            "field": {}
+          },
+          "fields": [
+            {
+              "name": "count",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "max_per_call",
+              "req": true,
+              "type": "`$INTEGER`",
+              "active": true
+            },
+            {
+              "name": "uuid",
+              "req": true,
+              "type": "`$ARRAY`",
+              "active": true
+            },
+            {
+              "name": "version",
+              "req": true,
+              "type": "`$STRING`",
+              "active": true
+            }
+          ],
+          "name": "v7n2",
+          "op": {
+            "load": {
+              "name": "load",
+              "points": [
+                {
+                  "args": {
+                    "params": [
+                      {
+                        "kind": "param",
+                        "name": "count",
+                        "orig": "count",
+                        "reqd": true,
+                        "type": "`$INTEGER`",
+                        "active": true
+                      }
+                    ],
+                    "query": [
+                      {
+                        "example": "default",
+                        "kind": "query",
+                        "name": "format",
+                        "orig": "format",
+                        "reqd": false,
+                        "type": "`$STRING`",
+                        "active": true
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/api/uuid-generator/v7/{count}",
+                  "parts": [
+                    "api",
+                    "uuid-generator",
+                    "v7",
+                    "{count}"
+                  ],
+                  "select": {
+                    "exist": [
+                      "count",
+                      "format"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  },
+                  "active": true
+                }
+              ],
+              "input": "data"
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "v7"
+              ]
+            ]
+          },
+          "active": true
+        }
+      },
+      "feature": {
+        "test": {
+          "name": "test",
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1",
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            }
+          },
+          "target": {
+            "ts": {
+              "deps": {}
+            },
+            "go": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            }
+          }
+        }
+      },
+      "flow": {
+        "BasicGuidFlow": {
+          "entity": "guid",
+          "kind": "basic",
+          "name": "BasicGuidFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "guid_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            },
+            {
+              "input": {
+                "ref": "guid_ref01",
+                "srcdatavar": "guid_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "guid01"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-guid_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicGuidFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV1n2Flow": {
+          "entity": "v1n2",
+          "kind": "basic",
+          "name": "BasicV1n2Flow",
+          "step": [
+            {
+              "input": {
+                "ref": "v1n2_ref01",
+                "srcdatavar": "v1n2_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "v1n201"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-v1n2_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV1n2Flow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV1nFlow": {
+          "entity": "v1n",
+          "kind": "basic",
+          "name": "BasicV1nFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "v1n_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV1nFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV3n2Flow": {
+          "entity": "v3n2",
+          "kind": "basic",
+          "name": "BasicV3n2Flow",
+          "step": [
+            {
+              "input": {
+                "ref": "v3n2_ref01",
+                "srcdatavar": "v3n2_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "v3n201"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-v3n2_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV3n2Flow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV3nFlow": {
+          "entity": "v3n",
+          "kind": "basic",
+          "name": "BasicV3nFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "v3n_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV3nFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV4n2Flow": {
+          "entity": "v4n2",
+          "kind": "basic",
+          "name": "BasicV4n2Flow",
+          "step": [
+            {
+              "input": {
+                "ref": "v4n2_ref01",
+                "srcdatavar": "v4n2_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "v4n201"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-v4n2_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV4n2Flow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV4nFlow": {
+          "entity": "v4n",
+          "kind": "basic",
+          "name": "BasicV4nFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "v4n_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV4nFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV5n2Flow": {
+          "entity": "v5n2",
+          "kind": "basic",
+          "name": "BasicV5n2Flow",
+          "step": [
+            {
+              "input": {
+                "ref": "v5n2_ref01",
+                "srcdatavar": "v5n2_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "v5n201"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-v5n2_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV5n2Flow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV5nFlow": {
+          "entity": "v5n",
+          "kind": "basic",
+          "name": "BasicV5nFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "v5n_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV5nFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV6n2Flow": {
+          "entity": "v6n2",
+          "kind": "basic",
+          "name": "BasicV6n2Flow",
+          "step": [
+            {
+              "input": {
+                "ref": "v6n2_ref01",
+                "srcdatavar": "v6n2_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "v6n201"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-v6n2_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV6n2Flow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV6nFlow": {
+          "entity": "v6n",
+          "kind": "basic",
+          "name": "BasicV6nFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "v6n_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV6nFlow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV7n2Flow": {
+          "entity": "v7n2",
+          "kind": "basic",
+          "name": "BasicV7n2Flow",
+          "step": [
+            {
+              "input": {
+                "ref": "v7n2_ref01",
+                "srcdatavar": "v7n2_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "v7n201"
+              },
+              "op": "load",
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-v7n2_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "data": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV7n2Flow",
+          "active": true,
+          "param": {}
+        },
+        "BasicV7nFlow": {
+          "entity": "v7n",
+          "kind": "basic",
+          "name": "BasicV7nFlow",
+          "step": [
+            {
+              "op": "list",
+              "valid": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "v7n_ref01"
+                  }
+                }
+              ],
+              "active": true,
+              "match": {},
+              "data": {},
+              "input": {},
+              "spec": []
+            }
+          ],
+          "key$": "BasicV7nFlow",
+          "active": true,
+          "param": {}
+        }
+      },
+      "target": {
+        "ts": {
+          "title": "TypeScript",
+          "ext": "ts",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "uuid-generator-api2"
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "deps": {
+            "dotenv": {
+              "active": true,
+              "version": "^17.4.2",
+              "kind": "dev"
+            },
+            "typescript": {
+              "active": true,
+              "version": "^5.9.3",
+              "kind": "dev"
+            },
+            "@types/node": {
+              "active": true,
+              "version": "^25.6.0",
+              "kind": "dev"
+            }
+          },
+          "name": "ts",
+          "active": true
+        },
+        "go": {
+          "title": "Golang",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "uuid-generator-api2"
+          },
+          "srcfeature": false,
+          "deps": {
+            "github.com/voxgig/struct": {
+              "active": true,
+              "version": "v0.0.0",
+              "replace": "./utility/struct",
+              "kind": "prod"
+            }
+          },
+          "name": "go",
+          "active": true
+        },
+        "lua": {
+          "title": "Lua",
+          "ext": "lua",
+          "comment": {
+            "line": "--"
+          },
+          "module": {
+            "name": "uuid-generator-api2"
+          },
+          "srcfeature": false,
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "version": "2.5",
+              "kind": "prod"
+            }
+          },
+          "name": "lua",
+          "active": true
+        },
+        "php": {
+          "title": "PHP",
+          "ext": "php",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "uuid-generator-api2"
+          },
+          "srcfeature": false,
+          "deps": {},
+          "name": "php",
+          "active": true
+        },
+        "py": {
+          "title": "Python",
+          "ext": "py",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "uuid-generator-api2"
+          },
+          "srcfeature": false,
+          "deps": {
+            "requests": {
+              "active": true,
+              "version": "2.33",
+              "kind": "prod"
+            }
+          },
+          "name": "py",
+          "active": true
+        },
+        "rb": {
+          "title": "Ruby",
+          "ext": "rb",
+          "comment": {
+            "line": "#"
+          },
+          "module": {
+            "name": "uuid-generator-api2"
+          },
+          "srcfeature": false,
+          "deps": {
+            "voxgig-struct": {
+              "active": true,
+              "version": "0.0.10",
+              "kind": "prod"
+            },
+            "json": {
+              "active": true,
+              "version": "0",
+              "kind": "prod"
+            }
+          },
+          "name": "rb",
+          "active": true
+        }
+      },
+      "option": {}
+    },
+    "def": {
+      "desc": ""
+    }
+  }
+}

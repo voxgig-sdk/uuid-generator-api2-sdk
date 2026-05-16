@@ -1,0 +1,22 @@
+# BasicV5nFlow
+
+main: kit: flow: BasicV5nFlow:
+{
+  entity: "v5n",
+  kind: "basic",
+  name: "BasicV5nFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "v5n_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicV5nFlow"
+}

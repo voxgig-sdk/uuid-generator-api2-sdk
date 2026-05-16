@@ -1,0 +1,22 @@
+# BasicV3nFlow
+
+main: kit: flow: BasicV3nFlow:
+{
+  entity: "v3n",
+  kind: "basic",
+  name: "BasicV3nFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "v3n_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicV3nFlow"
+}

@@ -1,0 +1,22 @@
+# BasicV6nFlow
+
+main: kit: flow: BasicV6nFlow:
+{
+  entity: "v6n",
+  kind: "basic",
+  name: "BasicV6nFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "v6n_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicV6nFlow"
+}

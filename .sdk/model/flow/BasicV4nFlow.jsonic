@@ -1,0 +1,22 @@
+# BasicV4nFlow
+
+main: kit: flow: BasicV4nFlow:
+{
+  entity: "v4n",
+  kind: "basic",
+  name: "BasicV4nFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "v4n_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicV4nFlow"
+}

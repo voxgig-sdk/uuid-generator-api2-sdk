@@ -1,0 +1,28 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "ToolkitVault"
+        url: "https://toolkitvault.com"
+      }
+      description: "This API provides a fast and free method for generating UUIDs, supporting various versions including v1, v3, v4, v5, v6, and time-ordered v7. It allows bulk UUID generation with options for namespace and formatting, ideal for developers and websites. No authentication required, rate-limited for fair use."
+      license: {
+        name: "Public API"
+        url: "https://toolkitvault.com/uuid-generator/uuid-api-docs"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://toolkitvault.com"
+        }
+      ]
+      title: "UUID Generator API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
