@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/uuid-generator-api2-sdk/go/utility/struct"
 )
 
 type UuidGeneratorApi2SDK struct {
