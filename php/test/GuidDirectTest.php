@@ -123,14 +123,12 @@ function guid_direct_setup($mockres)
     $env = Runner::env_override([
         "UUIDGENERATORAPI__TEST_GUID_ENTID" => [],
         "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
-        "UUIDGENERATORAPI__APIKEY" => "NONE",
     ]);
 
     $live = $env["UUIDGENERATORAPI__TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["UUIDGENERATORAPI__APIKEY"],
         ];
         $client = new UuidGeneratorApi2SDK($merged_opts);
         return [

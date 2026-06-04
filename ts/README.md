@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { UuidGeneratorApi2SDK } from 'uuid-generator-api2'
 
-const client = new UuidGeneratorApi2SDK({
-  apikey: process.env.UUID-GENERATOR-API2_APIKEY,
-})
+const client = new UuidGeneratorApi2SDK({})
 ```
 
 ### 2. List guids
@@ -94,7 +92,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new UuidGeneratorApi2SDK({ apikey: '...' })
+const client = new UuidGeneratorApi2SDK()
 const testClient = client.tester()
 ```
 
@@ -130,7 +128,6 @@ const logger = {
 }
 
 const client = new UuidGeneratorApi2SDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -141,7 +138,6 @@ Create a `.env.local` file at the project root:
 
 ```
 UUID-GENERATOR-API2_TEST_LIVE=TRUE
-UUID-GENERATOR-API2_APIKEY=<your-key>
 ```
 
 Then run:
@@ -159,7 +155,6 @@ cd ts && npm test
 
 ```ts
 new UuidGeneratorApi2SDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -170,7 +165,6 @@ new UuidGeneratorApi2SDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

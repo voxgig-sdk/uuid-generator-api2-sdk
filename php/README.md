@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'uuidgeneratorapi2_sdk.php';
 
-$client = new UuidGeneratorApi2SDK([
-    "apikey" => getenv("UUID-GENERATOR-API2_APIKEY"),
-]);
+$client = new UuidGeneratorApi2SDK([]);
 ```
 
 ### 2. List guids
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 UUID-GENERATOR-API2_TEST_LIVE=TRUE
-UUID-GENERATOR-API2_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
