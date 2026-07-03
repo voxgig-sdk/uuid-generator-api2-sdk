@@ -1,6 +1,11 @@
 # UuidGeneratorApi2 Python SDK
 
-The Python SDK for the UuidGeneratorApi2 API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the UuidGeneratorApi2 API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from uuidgeneratorapi2_sdk import UuidGeneratorApi2SDK
 
-client = UuidGeneratorApi2SDK({})
+client = UuidGeneratorApi2SDK({
+    "apikey": os.environ.get("UUID-GENERATOR-API2_APIKEY"),
+})
 ```
 
 ### 2. List guids
 
 ```python
-result, err = client.Guid(None).list(None, None)
+result, err = client.Guid().list()
 if err:
     raise Exception(err)
 
@@ -44,7 +52,7 @@ if isinstance(result, list):
 ### 3. Load a guid
 
 ```python
-result, err = client.Guid(None).load({"id": "example_id"}, None)
+result, err = client.Guid().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -92,11 +100,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = UuidGeneratorApi2SDK.test(None, None)
+client = UuidGeneratorApi2SDK.test()
 
-result, err = client.UuidGeneratorApi2(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.UuidGeneratorApi2().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -127,6 +133,7 @@ Create a `.env.local` file at the project root:
 
 ```
 UUID-GENERATOR-API2_TEST_LIVE=TRUE
+UUID-GENERATOR-API2_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,6 +157,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

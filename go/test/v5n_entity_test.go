@@ -119,6 +119,7 @@ func v5nBasicSetup(extra map[string]any) *entityTestSetup {
 		"UUIDGENERATORAPI__TEST_V_N_ENTID": idmap,
 		"UUIDGENERATORAPI__TEST_LIVE":      "FALSE",
 		"UUIDGENERATORAPI__TEST_EXPLAIN":   "FALSE",
+		"UUIDGENERATORAPI__APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["UUIDGENERATORAPI__TEST_V_N_ENTID"])
@@ -129,6 +130,7 @@ func v5nBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["UUIDGENERATORAPI__APIKEY"],
 			},
 			extra,
 		})

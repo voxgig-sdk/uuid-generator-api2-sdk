@@ -21,42 +21,7 @@ main: {
       ]
       title: "UUID Generator API"
       version: "1.0.0"
-      tagline: "Generate RFC 4122 / RFC 9562 UUIDs in versions 1, 3, 4, 5, 6, and 7 over a free public HTTPS API"
-      homepage: "https://toolkitvault.com/uuid-generator"
-      docs_url: "https://toolkitvault.com/uuid-generator/uuid-api-docs"
-      license_short: "Free public API, rate-limited, no registration required"
-      license_md: `- Free, public, rate-limited API — no API key or registration required
-- Follows RFC 4122 and RFC 9562 for UUID generation
-- The provider notes UUIDs from this service are not cryptographically secure and uniqueness is not guaranteed
-- Use at your own risk for non-critical identifier needs`
-      about_md: `The UUID Generator API is a free utility from [ToolkitVault](https://toolkitvault.com), a collection of web-based developer tools described by its authors as a "Web Swiss Army Knife" of secure, fast, and useful utilities. The UUID endpoint produces identifiers conforming to RFC 4122 and RFC 9562 across every commonly used UUID version.
-
-What you get from the API:
-
-- UUID versions **v1** (time + node), **v3** (MD5 name-based), **v4** (random), **v5** (SHA-1 name-based), **v6** (re-ordered time), and **v7** (time-ordered, 2025-default)
-- A \`guid\` alias that maps to v4
-- Batch generation up to **200 UUIDs per call** via \`count\` (or \`n\`) query parameter
-- Formatting options: \`default\`, \`uppercase\`, \`braced\`, and \`braced-uppercase\`
-- Namespace + name inputs (\`namespace=dns|url\`, \`name=<string>\`) for v3 and v5
-- JSON response of shape \`{ "version", "count", "maxPerCall", "uuids": [...] }\`
-
-Operational notes: requests are served over HTTPS at \`https://toolkitvault.com/api/uuid-generator\`. Access is public but rate-limited (HTTP 429 on excess). Requesting v2 returns HTTP 501, as DCE Security UUIDs are not implemented. Invalid versions return HTTP 400.`
-      entity_desc: {
-        guid: "Generic UUID generation grouping; the `guid` keyword is documented as an alias for v4 at `/api/uuid-generator/guid`."
-        v1n: "Time-and-node based UUID v1 generation via `GET /api/uuid-generator/v1` with an optional `count` (or `n`) query parameter."
-        v1n2: "Path-style v1 batch endpoint at `GET /api/uuid-generator/v1/{count}` for requesting multiple v1 UUIDs in one call (max 200)."
-        v3n: "Name-based UUID v3 (MD5) generation at `GET /api/uuid-generator/v3`, taking `namespace=dns|url` and `name` query parameters."
-        v3n2: "Path-style v3 batch endpoint at `GET /api/uuid-generator/v3/{count}` for generating multiple v3 UUIDs from the supplied namespace/name."
-        v4n: "Random UUID v4 generation at `GET /api/uuid-generator/v4`, with optional `count`/`n` and `format` query parameters."
-        v4n2: "Path-style v4 batch endpoint at `GET /api/uuid-generator/v4/{count}` for requesting up to 200 random v4 UUIDs per call."
-        v5n: "Name-based UUID v5 (SHA-1) generation at `GET /api/uuid-generator/v5`, taking `namespace=dns|url` and `name`."
-        v5n2: "Path-style v5 batch endpoint at `GET /api/uuid-generator/v5/{count}` for generating multiple v5 UUIDs from the supplied namespace/name."
-        v6n: "Re-ordered time-based UUID v6 generation at `GET /api/uuid-generator/v6`, with optional `count`/`n` and `format`."
-        v6n2: "Path-style v6 batch endpoint at `GET /api/uuid-generator/v6/{count}` for bulk v6 generation."
-        v7n: "Time-ordered UUID v7 generation at `GET /api/uuid-generator/v7` — recommended by the provider as the 2025 default for modern apps needing time ordering."
-        v7n2: "Path-style v7 batch endpoint at `GET /api/uuid-generator/v7/{count}` for requesting multiple time-ordered v7 UUIDs per call."
-      }
-      auth: false
     }
   }
 }
+

@@ -72,12 +72,14 @@ function v7n2_direct_setup(mockres)
   local env = runner.env_override({
     ["UUIDGENERATORAPI__TEST_V_N__ENTID"] = {},
     ["UUIDGENERATORAPI__TEST_LIVE"] = "FALSE",
+    ["UUIDGENERATORAPI__APIKEY"] = "NONE",
   })
 
   local live = env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["UUIDGENERATORAPI__APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

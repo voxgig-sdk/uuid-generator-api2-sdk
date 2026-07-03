@@ -20,6 +20,9 @@ class UuidGeneratorApi2Config
             ],
             "options" => [
                 "base" => "https://toolkitvault.com",
+                "auth" => [
+                    "prefix" => "Bearer",
+                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -43,59 +46,61 @@ class UuidGeneratorApi2Config
         'guid' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'guid',
           'op' => [
             'list' => [
+              'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -116,37 +121,37 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'list',
             ],
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'kind' => 'param',
                         'name' => 'id',
                         'orig' => 'count',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -173,11 +178,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -188,59 +191,61 @@ class UuidGeneratorApi2Config
         'v1n' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v1n',
           'op' => [
             'list' => [
+              'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -261,11 +266,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'list',
             ],
           ],
@@ -276,60 +279,62 @@ class UuidGeneratorApi2Config
         'v1n2' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v1n2',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'kind' => 'param',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -351,11 +356,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -370,76 +373,78 @@ class UuidGeneratorApi2Config
         'v3n' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v3n',
           'op' => [
             'list' => [
+              'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'kind' => 'query',
                         'name' => 'name',
                         'orig' => 'name',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'dns',
                         'kind' => 'query',
                         'name' => 'namespace',
                         'orig' => 'namespace',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -462,11 +467,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'list',
             ],
           ],
@@ -477,77 +480,79 @@ class UuidGeneratorApi2Config
         'v3n2' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v3n2',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'kind' => 'param',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'kind' => 'query',
                         'name' => 'name',
                         'orig' => 'name',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'dns',
                         'kind' => 'query',
                         'name' => 'namespace',
                         'orig' => 'namespace',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -571,11 +576,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -590,59 +593,61 @@ class UuidGeneratorApi2Config
         'v4n' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v4n',
           'op' => [
             'list' => [
+              'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -663,11 +668,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'list',
             ],
           ],
@@ -678,60 +681,62 @@ class UuidGeneratorApi2Config
         'v4n2' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v4n2',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'kind' => 'param',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -753,11 +758,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -772,76 +775,78 @@ class UuidGeneratorApi2Config
         'v5n' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v5n',
           'op' => [
             'list' => [
+              'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'kind' => 'query',
                         'name' => 'name',
                         'orig' => 'name',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'dns',
                         'kind' => 'query',
                         'name' => 'namespace',
                         'orig' => 'namespace',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -864,11 +869,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'list',
             ],
           ],
@@ -879,77 +882,79 @@ class UuidGeneratorApi2Config
         'v5n2' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v5n2',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'kind' => 'param',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'kind' => 'query',
                         'name' => 'name',
                         'orig' => 'name',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'dns',
                         'kind' => 'query',
                         'name' => 'namespace',
                         'orig' => 'namespace',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -973,11 +978,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -992,59 +995,61 @@ class UuidGeneratorApi2Config
         'v6n' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v6n',
           'op' => [
             'list' => [
+              'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -1065,11 +1070,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'list',
             ],
           ],
@@ -1080,60 +1083,62 @@ class UuidGeneratorApi2Config
         'v6n2' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v6n2',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'kind' => 'param',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -1155,11 +1160,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -1174,59 +1177,61 @@ class UuidGeneratorApi2Config
         'v7n' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v7n',
           'op' => [
             'list' => [
+              'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -1247,11 +1252,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'list',
             ],
           ],
@@ -1262,60 +1265,62 @@ class UuidGeneratorApi2Config
         'v7n2' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'max_per_call',
               'req' => true,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'uuid',
               'req' => true,
               'type' => '`$ARRAY`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'version',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'v7n2',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'kind' => 'param',
                         'name' => 'count',
                         'orig' => 'count',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 'default',
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
                         'reqd' => false,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -1337,11 +1342,9 @@ class UuidGeneratorApi2Config
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],

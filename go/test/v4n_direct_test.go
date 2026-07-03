@@ -93,12 +93,14 @@ func v4nDirectSetup(mockres any) *v4nDirectSetupResult {
 	env := envOverride(map[string]any{
 		"UUIDGENERATORAPI__TEST_V_N_ENTID": map[string]any{},
 		"UUIDGENERATORAPI__TEST_LIVE":    "FALSE",
+		"UUIDGENERATORAPI__APIKEY":       "NONE",
 	})
 
 	live := env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["UUIDGENERATORAPI__APIKEY"],
 		}
 		client := sdk.NewUuidGeneratorApi2SDK(mergedOpts)
 

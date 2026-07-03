@@ -1,23 +1,8 @@
 # UuidGeneratorApi2 SDK
 
-Generate RFC 4122 / RFC 9562 UUIDs in versions 1, 3, 4, 5, 6, and 7 over a free public HTTPS API
+UUID Generator API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About UUID Generator API
-
-The UUID Generator API is a free utility from [ToolkitVault](https://toolkitvault.com), a collection of web-based developer tools described by its authors as a "Web Swiss Army Knife" of secure, fast, and useful utilities. The UUID endpoint produces identifiers conforming to RFC 4122 and RFC 9562 across every commonly used UUID version.
-
-What you get from the API:
-
-- UUID versions **v1** (time + node), **v3** (MD5 name-based), **v4** (random), **v5** (SHA-1 name-based), **v6** (re-ordered time), and **v7** (time-ordered, 2025-default)
-- A `guid` alias that maps to v4
-- Batch generation up to **200 UUIDs per call** via `count` (or `n`) query parameter
-- Formatting options: `default`, `uppercase`, `braced`, and `braced-uppercase`
-- Namespace + name inputs (`namespace=dns|url`, `name=<string>`) for v3 and v5
-- JSON response of shape `{ "version", "count", "maxPerCall", "uuids": [...] }`
-
-Operational notes: requests are served over HTTPS at `https://toolkitvault.com/api/uuid-generator`. Access is public but rate-limited (HTTP 429 on excess). Requesting v2 returns HTTP 501, as DCE Security UUIDs are not implemented. Invalid versions return HTTP 400.
 
 ## Try it
 
@@ -51,29 +36,31 @@ gem install uuid-generator-api2-sdk
 luarocks install uuid-generator-api2-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { UuidGeneratorApi2SDK } from 'uuid-generator-api2'
 
-const client = new UuidGeneratorApi2SDK({})
+const client = new UuidGeneratorApi2SDK({
+  apikey: process.env.UUID-GENERATOR-API2_APIKEY,
+})
 
 // List all guids
 const guids = await client.Guid().list()
+console.log(guids.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -103,19 +90,19 @@ The API exposes 13 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Guid** | Generic UUID generation grouping; the `guid` keyword is documented as an alias for v4 at `/api/uuid-generator/guid`. | `/api/uuid-generator/guid` |
-| **V1n** | Time-and-node based UUID v1 generation via `GET /api/uuid-generator/v1` with an optional `count` (or `n`) query parameter. | `/api/uuid-generator/v1` |
-| **V1n2** | Path-style v1 batch endpoint at `GET /api/uuid-generator/v1/{count}` for requesting multiple v1 UUIDs in one call (max 200). | `/api/uuid-generator/v1/{count}` |
-| **V3n** | Name-based UUID v3 (MD5) generation at `GET /api/uuid-generator/v3`, taking `namespace=dns|url` and `name` query parameters. | `/api/uuid-generator/v3` |
-| **V3n2** | Path-style v3 batch endpoint at `GET /api/uuid-generator/v3/{count}` for generating multiple v3 UUIDs from the supplied namespace/name. | `/api/uuid-generator/v3/{count}` |
-| **V4n** | Random UUID v4 generation at `GET /api/uuid-generator/v4`, with optional `count`/`n` and `format` query parameters. | `/api/uuid-generator/v4` |
-| **V4n2** | Path-style v4 batch endpoint at `GET /api/uuid-generator/v4/{count}` for requesting up to 200 random v4 UUIDs per call. | `/api/uuid-generator/v4/{count}` |
-| **V5n** | Name-based UUID v5 (SHA-1) generation at `GET /api/uuid-generator/v5`, taking `namespace=dns|url` and `name`. | `/api/uuid-generator/v5` |
-| **V5n2** | Path-style v5 batch endpoint at `GET /api/uuid-generator/v5/{count}` for generating multiple v5 UUIDs from the supplied namespace/name. | `/api/uuid-generator/v5/{count}` |
-| **V6n** | Re-ordered time-based UUID v6 generation at `GET /api/uuid-generator/v6`, with optional `count`/`n` and `format`. | `/api/uuid-generator/v6` |
-| **V6n2** | Path-style v6 batch endpoint at `GET /api/uuid-generator/v6/{count}` for bulk v6 generation. | `/api/uuid-generator/v6/{count}` |
-| **V7n** | Time-ordered UUID v7 generation at `GET /api/uuid-generator/v7` — recommended by the provider as the 2025 default for modern apps needing time ordering. | `/api/uuid-generator/v7` |
-| **V7n2** | Path-style v7 batch endpoint at `GET /api/uuid-generator/v7/{count}` for requesting multiple time-ordered v7 UUIDs per call. | `/api/uuid-generator/v7/{count}` |
+| **Guid** |  | `/api/uuid-generator/guid` |
+| **V1n** |  | `/api/uuid-generator/v1` |
+| **V1n2** |  | `/api/uuid-generator/v1/{count}` |
+| **V3n** |  | `/api/uuid-generator/v3` |
+| **V3n2** |  | `/api/uuid-generator/v3/{count}` |
+| **V4n** |  | `/api/uuid-generator/v4` |
+| **V4n2** |  | `/api/uuid-generator/v4/{count}` |
+| **V5n** |  | `/api/uuid-generator/v5` |
+| **V5n2** |  | `/api/uuid-generator/v5/{count}` |
+| **V6n** |  | `/api/uuid-generator/v6` |
+| **V6n2** |  | `/api/uuid-generator/v6/{count}` |
+| **V7n** |  | `/api/uuid-generator/v7` |
+| **V7n2** |  | `/api/uuid-generator/v7/{count}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -125,17 +112,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from uuidgeneratorapi2_sdk import UuidGeneratorApi2SDK
 
-client = UuidGeneratorApi2SDK({})
+client = UuidGeneratorApi2SDK({
+    "apikey": os.environ.get("UUID-GENERATOR-API2_APIKEY"),
+})
 
 # List all guids
-guids, err = client.Guid(None).list(None, None)
+guids, err = client.Guid().list()
+print(guids)
 
 # Load a specific guid
-guid, err = client.Guid(None).load(
-    {"id": "example_id"}, None
-)
+guid, err = client.Guid().load({"id": "example_id"})
+print(guid)
 ```
 
 ### PHP
@@ -144,15 +134,17 @@ guid, err = client.Guid(None).load(
 <?php
 require_once 'uuidgeneratorapi2_sdk.php';
 
-$client = new UuidGeneratorApi2SDK([]);
+$client = new UuidGeneratorApi2SDK([
+    "apikey" => getenv("UUID-GENERATOR-API2_APIKEY"),
+]);
 
 // List all guids
-[$guids, $err] = $client->Guid(null)->list(null, null);
+[$guids, $err] = $client->Guid()->list();
+print_r($guids);
 
 // Load a specific guid
-[$guid, $err] = $client->Guid(null)->load(
-    ["id" => "example_id"], null
-);
+[$guid, $err] = $client->Guid()->load(["id" => "example_id"]);
+print_r($guid);
 ```
 
 ### Golang
@@ -160,10 +152,13 @@ $client = new UuidGeneratorApi2SDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/uuid-generator-api2-sdk/go"
 
-client := sdk.NewUuidGeneratorApi2SDK(map[string]any{})
+client := sdk.NewUuidGeneratorApi2SDK(map[string]any{
+    "apikey": os.Getenv("UUID-GENERATOR-API2_APIKEY"),
+})
 
 // List all guids
 guids, err := client.Guid(nil).List(nil, nil)
+fmt.Println(guids)
 ```
 
 ### Ruby
@@ -171,15 +166,17 @@ guids, err := client.Guid(nil).List(nil, nil)
 ```ruby
 require_relative "UuidGeneratorApi2_sdk"
 
-client = UuidGeneratorApi2SDK.new({})
+client = UuidGeneratorApi2SDK.new({
+  "apikey" => ENV["UUID-GENERATOR-API2_APIKEY"],
+})
 
 # List all guids
-guids, err = client.Guid(nil).list(nil, nil)
+guids, err = client.Guid().list
+puts guids
 
 # Load a specific guid
-guid, err = client.Guid(nil).load(
-  { "id" => "example_id" }, nil
-)
+guid, err = client.Guid().load({ "id" => "example_id" })
+puts guid
 ```
 
 ### Lua
@@ -187,15 +184,17 @@ guid, err = client.Guid(nil).load(
 ```lua
 local sdk = require("uuid-generator-api2_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("UUID-GENERATOR-API2_APIKEY"),
+})
 
 -- List all guids
-local guids, err = client:Guid(nil):list(nil, nil)
+local guids, err = client:Guid():list()
+print(guids)
 
 -- Load a specific guid
-local guid, err = client:Guid(nil):load(
-  { id = "example_id" }, nil
-)
+local guid, err = client:Guid():load({ id = "example_id" })
+print(guid)
 ```
 
 ## Unit testing in offline mode
@@ -214,25 +213,21 @@ const result = await client.Guid().load({ id: 'test01' })
 ### Python
 
 ```python
-client = UuidGeneratorApi2SDK.test(None, None)
-result, err = client.Guid(None).load(
-    {"id": "test01"}, None
-)
+client = UuidGeneratorApi2SDK.test()
+result, err = client.Guid().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = UuidGeneratorApi2SDK::test(null, null);
-[$result, $err] = $client->Guid(null)->load(
-    ["id" => "test01"], null
-);
+$client = UuidGeneratorApi2SDK::test();
+[$result, $err] = $client->Guid()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Guid(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -241,19 +236,15 @@ result, err := client.Guid(nil).Load(
 ### Ruby
 
 ```ruby
-client = UuidGeneratorApi2SDK.test(nil, nil)
-result, err = client.Guid(nil).load(
-  { "id" => "test01" }, nil
-)
+client = UuidGeneratorApi2SDK.test
+result, err = client.Guid().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Guid(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Guid():load({ id = "test01" })
 ```
 
 ## How it works
@@ -357,16 +348,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the UUID Generator API
-
-- Upstream: [https://toolkitvault.com/uuid-generator](https://toolkitvault.com/uuid-generator)
-- API docs: [https://toolkitvault.com/uuid-generator/uuid-api-docs](https://toolkitvault.com/uuid-generator/uuid-api-docs)
-
-- Free, public, rate-limited API — no API key or registration required
-- Follows RFC 4122 and RFC 9562 for UUID generation
-- The provider notes UUIDs from this service are not cryptographically secure and uniqueness is not guaranteed
-- Use at your own risk for non-critical identifier needs
 
 ---
 

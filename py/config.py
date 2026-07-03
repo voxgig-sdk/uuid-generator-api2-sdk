@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://toolkitvault.com",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -38,59 +41,61 @@ def make_config():
       "guid": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "guid",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "count",
                       "orig": "count",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -111,37 +116,37 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "id",
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -168,11 +173,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -183,59 +186,61 @@ def make_config():
       "v1n": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v1n",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "count",
                       "orig": "count",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -256,11 +261,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -271,60 +274,62 @@ def make_config():
       "v1n2": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v1n2",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "count",
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -346,11 +351,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -365,76 +368,78 @@ def make_config():
       "v3n": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v3n",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "count",
                       "orig": "count",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "name",
                       "orig": "name",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "dns",
                       "kind": "query",
                       "name": "namespace",
                       "orig": "namespace",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -457,11 +462,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -472,77 +475,79 @@ def make_config():
       "v3n2": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v3n2",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "count",
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "name",
                       "orig": "name",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "dns",
                       "kind": "query",
                       "name": "namespace",
                       "orig": "namespace",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -566,11 +571,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -585,59 +588,61 @@ def make_config():
       "v4n": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v4n",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "count",
                       "orig": "count",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -658,11 +663,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -673,60 +676,62 @@ def make_config():
       "v4n2": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v4n2",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "count",
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -748,11 +753,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -767,76 +770,78 @@ def make_config():
       "v5n": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v5n",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "count",
                       "orig": "count",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "name",
                       "orig": "name",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "dns",
                       "kind": "query",
                       "name": "namespace",
                       "orig": "namespace",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -859,11 +864,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -874,77 +877,79 @@ def make_config():
       "v5n2": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v5n2",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "count",
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "name",
                       "orig": "name",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "dns",
                       "kind": "query",
                       "name": "namespace",
                       "orig": "namespace",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -968,11 +973,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -987,59 +990,61 @@ def make_config():
       "v6n": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v6n",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "count",
                       "orig": "count",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -1060,11 +1065,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -1075,60 +1078,62 @@ def make_config():
       "v6n2": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v6n2",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "count",
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -1150,11 +1155,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -1169,59 +1172,61 @@ def make_config():
       "v7n": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v7n",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "count",
                       "orig": "count",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -1242,11 +1247,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -1257,60 +1260,62 @@ def make_config():
       "v7n2": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "max_per_call",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "uuid",
             "req": True,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "version",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "v7n2",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "count",
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": "default",
                       "kind": "query",
                       "name": "format",
                       "orig": "format",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -1332,11 +1337,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

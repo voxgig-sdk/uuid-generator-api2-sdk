@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -151,7 +151,7 @@ local guid = client:Guid(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Guid(nil):list(nil, nil)
+local results, err = client:Guid():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -159,7 +159,7 @@ local results, err = client:Guid(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Guid(nil):load({ id = "guid_id" }, nil)
+local result, err = client:Guid():load({ id = "guid_id" })
 ```
 
 ### Common Methods
@@ -214,7 +214,7 @@ local v1n = client:V1n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:V1n(nil):list(nil, nil)
+local results, err = client:V1n():list()
 ```
 
 ### Common Methods
@@ -269,7 +269,7 @@ local v1n2 = client:V1n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V1n2(nil):load({ id = "v1n2_id" }, nil)
+local result, err = client:V1n2():load({ id = "v1n2_id" })
 ```
 
 ### Common Methods
@@ -324,7 +324,7 @@ local v3n = client:V3n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:V3n(nil):list(nil, nil)
+local results, err = client:V3n():list()
 ```
 
 ### Common Methods
@@ -379,7 +379,7 @@ local v3n2 = client:V3n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V3n2(nil):load({ id = "v3n2_id" }, nil)
+local result, err = client:V3n2():load({ id = "v3n2_id" })
 ```
 
 ### Common Methods
@@ -434,7 +434,7 @@ local v4n = client:V4n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:V4n(nil):list(nil, nil)
+local results, err = client:V4n():list()
 ```
 
 ### Common Methods
@@ -489,7 +489,7 @@ local v4n2 = client:V4n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V4n2(nil):load({ id = "v4n2_id" }, nil)
+local result, err = client:V4n2():load({ id = "v4n2_id" })
 ```
 
 ### Common Methods
@@ -544,7 +544,7 @@ local v5n = client:V5n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:V5n(nil):list(nil, nil)
+local results, err = client:V5n():list()
 ```
 
 ### Common Methods
@@ -599,7 +599,7 @@ local v5n2 = client:V5n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V5n2(nil):load({ id = "v5n2_id" }, nil)
+local result, err = client:V5n2():load({ id = "v5n2_id" })
 ```
 
 ### Common Methods
@@ -654,7 +654,7 @@ local v6n = client:V6n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:V6n(nil):list(nil, nil)
+local results, err = client:V6n():list()
 ```
 
 ### Common Methods
@@ -709,7 +709,7 @@ local v6n2 = client:V6n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V6n2(nil):load({ id = "v6n2_id" }, nil)
+local result, err = client:V6n2():load({ id = "v6n2_id" })
 ```
 
 ### Common Methods
@@ -764,7 +764,7 @@ local v7n = client:V7n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:V7n(nil):list(nil, nil)
+local results, err = client:V7n():list()
 ```
 
 ### Common Methods
@@ -819,7 +819,7 @@ local v7n2 = client:V7n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V7n2(nil):load({ id = "v7n2_id" }, nil)
+local result, err = client:V7n2():load({ id = "v7n2_id" })
 ```
 
 ### Common Methods
