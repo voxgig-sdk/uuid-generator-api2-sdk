@@ -10,7 +10,7 @@ The PHP SDK for the UuidGeneratorApi2 API — an entity-oriented client using PH
 
 ## Install
 ```bash
-composer require voxgig/uuid-generator-api2-sdk
+composer require voxgig-sdk/uuid-generator-api2
 ```
 
 

@@ -10,7 +10,7 @@ The Lua SDK for the UuidGeneratorApi2 API — an entity-oriented client using Lu
 
 ## Install
 ```bash
-luarocks install uuid-generator-api2-sdk
+luarocks install voxgig-sdk-uuid-generator-api2
 ```
 
 If the module is not yet published, add the source directory to

@@ -10,7 +10,7 @@ The Python SDK for the UuidGeneratorApi2 API — an entity-oriented client follo
 
 ## Install
 ```bash
-pip install uuid-generator-api2-sdk
+pip install voxgig-sdk-uuid-generator-api2
 ```
 
 Or install from source:

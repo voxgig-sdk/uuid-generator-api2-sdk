@@ -10,7 +10,7 @@ The TypeScript SDK for the UuidGeneratorApi2 API — a type-safe, entity-oriente
 
 ## Install
 ```bash
-npm install uuid-generator-api2
+npm install @voxgig-sdk/uuid-generator-api2
 ```
 ## Tutorial: your first API call
 
