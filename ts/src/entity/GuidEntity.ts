@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Guid,
+  GuidLoadMatch,
+  GuidListMatch,
+} from '../UuidGeneratorApi2Types'
 
 // TODO: needs Entity superclass
-class GuidEntity extends UuidGeneratorApi2EntityBase {
+class GuidEntity extends UuidGeneratorApi2EntityBase<Guid> {
 
   constructor(client: UuidGeneratorApi2SDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class GuidEntity extends UuidGeneratorApi2EntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GuidLoadMatch, ctrl?: Control): Promise<Guid> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class GuidEntity extends UuidGeneratorApi2EntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Guid> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: GuidListMatch, ctrl?: Control): Promise<Guid[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class GuidEntity extends UuidGeneratorApi2EntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Guid[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

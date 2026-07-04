@@ -49,8 +49,7 @@ class V5n2EntityTest extends TestCase
         // LOAD
         $v5n2_ref01_ent = $client->V5n2(null);
         $v5n2_ref01_match_dt0 = [];
-        [$v5n2_ref01_data_dt0_loaded, $err] = $v5n2_ref01_ent->load($v5n2_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $v5n2_ref01_data_dt0_loaded = $v5n2_ref01_ent->load($v5n2_ref01_match_dt0, null);
         $this->assertNotNull($v5n2_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function v5n2_basic_setup($extra)
         "UUIDGENERATORAPI__TEST_V_N__ENTID" => $idmap,
         "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
         "UUIDGENERATORAPI__TEST_EXPLAIN" => "FALSE",
-        "UUIDGENERATORAPI__APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function v5n2_basic_setup($extra)
     if ($env["UUIDGENERATORAPI__TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["UUIDGENERATORAPI__APIKEY"],
             ],
             $extra ?? [],
         ]);

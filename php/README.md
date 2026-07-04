@@ -9,9 +9,10 @@ The PHP SDK for the UuidGeneratorApi2 API — an entity-oriented client using PH
 
 
 ## Install
-```bash
-composer require voxgig-sdk/uuid-generator-api2
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/uuid-generator-api2-sdk/releases](https://github.com/voxgig-sdk/uuid-generator-api2-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'uuidgeneratorapi2_sdk.php';
 
-$client = new UuidGeneratorApi2SDK([
-    "apikey" => getenv("UUID-GENERATOR-API2_APIKEY"),
-]);
+$client = new UuidGeneratorApi2SDK();
 ```
 
 ### 2. List guids
 
 ```php
-[$result, $err] = $client->Guid()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->guid()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a guid
 
 ```php
-[$result, $err] = $client->Guid()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->guid()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = UuidGeneratorApi2SDK::test();
 
-[$result, $err] = $client->UuidGeneratorApi2()->load(["id" => "test01"]);
+$result = $client->guid()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new UuidGeneratorApi2SDK([
 Create a `.env.local` file at the project root:
 
 ```
-UUID-GENERATOR-API2_TEST_LIVE=TRUE
-UUID-GENERATOR-API2_APIKEY=<your-key>
+UUID_GENERATOR_API2_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -211,8 +216,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -401,7 +410,7 @@ API path: `/api/uuid-generator/v7/{count}`
 
 ### Guid
 
-Create an instance: `const guid = client.Guid()`
+Create an instance: `const guid = client.guid`
 
 #### Operations
 
@@ -422,19 +431,19 @@ Create an instance: `const guid = client.Guid()`
 #### Example: Load
 
 ```ts
-const guid = await client.Guid().load({ id: 'guid_id' })
+const guid = await client.guid.load({ id: 'guid_id' })
 ```
 
 #### Example: List
 
 ```ts
-const guids = await client.Guid().list()
+const guids = await client.guid.list()
 ```
 
 
 ### V1n
 
-Create an instance: `const v1n = client.V1n()`
+Create an instance: `const v1n = client.v1n`
 
 #### Operations
 
@@ -454,13 +463,13 @@ Create an instance: `const v1n = client.V1n()`
 #### Example: List
 
 ```ts
-const v1ns = await client.V1n().list()
+const v1ns = await client.v1n.list()
 ```
 
 
 ### V1n2
 
-Create an instance: `const v1n2 = client.V1n2()`
+Create an instance: `const v1n2 = client.v1n2`
 
 #### Operations
 
@@ -480,13 +489,13 @@ Create an instance: `const v1n2 = client.V1n2()`
 #### Example: Load
 
 ```ts
-const v1n2 = await client.V1n2().load({ id: 'v1n2_id' })
+const v1n2 = await client.v1n2.load({ id: 'v1n2_id' })
 ```
 
 
 ### V3n
 
-Create an instance: `const v3n = client.V3n()`
+Create an instance: `const v3n = client.v3n`
 
 #### Operations
 
@@ -506,13 +515,13 @@ Create an instance: `const v3n = client.V3n()`
 #### Example: List
 
 ```ts
-const v3ns = await client.V3n().list()
+const v3ns = await client.v3n.list()
 ```
 
 
 ### V3n2
 
-Create an instance: `const v3n2 = client.V3n2()`
+Create an instance: `const v3n2 = client.v3n2`
 
 #### Operations
 
@@ -532,13 +541,13 @@ Create an instance: `const v3n2 = client.V3n2()`
 #### Example: Load
 
 ```ts
-const v3n2 = await client.V3n2().load({ id: 'v3n2_id' })
+const v3n2 = await client.v3n2.load({ id: 'v3n2_id' })
 ```
 
 
 ### V4n
 
-Create an instance: `const v4n = client.V4n()`
+Create an instance: `const v4n = client.v4n`
 
 #### Operations
 
@@ -558,13 +567,13 @@ Create an instance: `const v4n = client.V4n()`
 #### Example: List
 
 ```ts
-const v4ns = await client.V4n().list()
+const v4ns = await client.v4n.list()
 ```
 
 
 ### V4n2
 
-Create an instance: `const v4n2 = client.V4n2()`
+Create an instance: `const v4n2 = client.v4n2`
 
 #### Operations
 
@@ -584,13 +593,13 @@ Create an instance: `const v4n2 = client.V4n2()`
 #### Example: Load
 
 ```ts
-const v4n2 = await client.V4n2().load({ id: 'v4n2_id' })
+const v4n2 = await client.v4n2.load({ id: 'v4n2_id' })
 ```
 
 
 ### V5n
 
-Create an instance: `const v5n = client.V5n()`
+Create an instance: `const v5n = client.v5n`
 
 #### Operations
 
@@ -610,13 +619,13 @@ Create an instance: `const v5n = client.V5n()`
 #### Example: List
 
 ```ts
-const v5ns = await client.V5n().list()
+const v5ns = await client.v5n.list()
 ```
 
 
 ### V5n2
 
-Create an instance: `const v5n2 = client.V5n2()`
+Create an instance: `const v5n2 = client.v5n2`
 
 #### Operations
 
@@ -636,13 +645,13 @@ Create an instance: `const v5n2 = client.V5n2()`
 #### Example: Load
 
 ```ts
-const v5n2 = await client.V5n2().load({ id: 'v5n2_id' })
+const v5n2 = await client.v5n2.load({ id: 'v5n2_id' })
 ```
 
 
 ### V6n
 
-Create an instance: `const v6n = client.V6n()`
+Create an instance: `const v6n = client.v6n`
 
 #### Operations
 
@@ -662,13 +671,13 @@ Create an instance: `const v6n = client.V6n()`
 #### Example: List
 
 ```ts
-const v6ns = await client.V6n().list()
+const v6ns = await client.v6n.list()
 ```
 
 
 ### V6n2
 
-Create an instance: `const v6n2 = client.V6n2()`
+Create an instance: `const v6n2 = client.v6n2`
 
 #### Operations
 
@@ -688,13 +697,13 @@ Create an instance: `const v6n2 = client.V6n2()`
 #### Example: Load
 
 ```ts
-const v6n2 = await client.V6n2().load({ id: 'v6n2_id' })
+const v6n2 = await client.v6n2.load({ id: 'v6n2_id' })
 ```
 
 
 ### V7n
 
-Create an instance: `const v7n = client.V7n()`
+Create an instance: `const v7n = client.v7n`
 
 #### Operations
 
@@ -714,13 +723,13 @@ Create an instance: `const v7n = client.V7n()`
 #### Example: List
 
 ```ts
-const v7ns = await client.V7n().list()
+const v7ns = await client.v7n.list()
 ```
 
 
 ### V7n2
 
-Create an instance: `const v7n2 = client.V7n2()`
+Create an instance: `const v7n2 = client.v7n2`
 
 #### Operations
 
@@ -740,7 +749,7 @@ Create an instance: `const v7n2 = client.V7n2()`
 #### Example: Load
 
 ```ts
-const v7n2 = await client.V7n2().load({ id: 'v7n2_id' })
+const v7n2 = await client.v7n2.load({ id: 'v7n2_id' })
 ```
 
 
@@ -815,11 +824,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$guid = $client->guid();
+$guid->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $guid->dataGet() now returns the loaded guid data
+// $guid->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -43,14 +43,12 @@ class GuidEntityTest < Minitest::Test
     guid_ref01_ent = client.Guid(nil)
     guid_ref01_match = {}
 
-    guid_ref01_list_result, err = guid_ref01_ent.list(guid_ref01_match, nil)
-    assert_nil err
+    guid_ref01_list_result = guid_ref01_ent.list(guid_ref01_match, nil)
     assert guid_ref01_list_result.is_a?(Array)
 
     # LOAD
     guid_ref01_match_dt0 = {}
-    guid_ref01_data_dt0_loaded, err = guid_ref01_ent.load(guid_ref01_match_dt0, nil)
-    assert_nil err
+    guid_ref01_data_dt0_loaded = guid_ref01_ent.load(guid_ref01_match_dt0, nil)
     assert !guid_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def guid_basic_setup(extra)
     "UUIDGENERATORAPI__TEST_GUID_ENTID" => idmap,
     "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
     "UUIDGENERATORAPI__TEST_EXPLAIN" => "FALSE",
-    "UUIDGENERATORAPI__APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def guid_basic_setup(extra)
   if env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["UUIDGENERATORAPI__APIKEY"],
       },
       extra || {},
     ])

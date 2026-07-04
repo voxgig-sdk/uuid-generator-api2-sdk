@@ -50,8 +50,7 @@ class TestV3nEntity:
         v3n_ref01_ent = client.V3n(None)
         v3n_ref01_match = {}
 
-        v3n_ref01_list_result, err = v3n_ref01_ent.list(v3n_ref01_match, None)
-        assert err is None
+        v3n_ref01_list_result = v3n_ref01_ent.list(v3n_ref01_match, None)
         assert isinstance(v3n_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _v3n_basic_setup(extra):
         "UUIDGENERATORAPI__TEST_V_N_ENTID": idmap,
         "UUIDGENERATORAPI__TEST_LIVE": "FALSE",
         "UUIDGENERATORAPI__TEST_EXPLAIN": "FALSE",
-        "UUIDGENERATORAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _v3n_basic_setup(extra):
     if env.get("UUIDGENERATORAPI__TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UUIDGENERATORAPI__APIKEY"),
             },
             extra or {},
         ])

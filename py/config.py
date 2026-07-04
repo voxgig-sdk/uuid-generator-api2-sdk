@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://toolkitvault.com",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -136,6 +133,7 @@ def make_config():
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -319,6 +317,7 @@ def make_config():
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -520,6 +519,7 @@ def make_config():
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -721,6 +721,7 @@ def make_config():
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -922,6 +923,7 @@ def make_config():
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -1123,6 +1125,7 @@ def make_config():
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -1305,6 +1308,7 @@ def make_config():
                       "orig": "count",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

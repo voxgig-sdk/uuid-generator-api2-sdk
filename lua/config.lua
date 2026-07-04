@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://toolkitvault.com",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -135,6 +132,7 @@ local function make_config()
                       ["orig"] = "count",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -318,6 +316,7 @@ local function make_config()
                       ["orig"] = "count",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -519,6 +518,7 @@ local function make_config()
                       ["orig"] = "count",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -720,6 +720,7 @@ local function make_config()
                       ["orig"] = "count",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -921,6 +922,7 @@ local function make_config()
                       ["orig"] = "count",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -1122,6 +1124,7 @@ local function make_config()
                       ["orig"] = "count",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -1304,6 +1307,7 @@ local function make_config()
                       ["orig"] = "count",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {

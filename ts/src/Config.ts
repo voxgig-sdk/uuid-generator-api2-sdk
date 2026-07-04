@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://toolkitvault.com',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -189,7 +185,8 @@ class Config {
                     "name": "id",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -372,7 +369,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -573,7 +571,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -774,7 +773,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -975,7 +975,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -1176,7 +1177,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -1358,7 +1360,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [

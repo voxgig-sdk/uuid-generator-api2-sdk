@@ -50,14 +50,12 @@ class TestGuidEntity:
         guid_ref01_ent = client.Guid(None)
         guid_ref01_match = {}
 
-        guid_ref01_list_result, err = guid_ref01_ent.list(guid_ref01_match, None)
-        assert err is None
+        guid_ref01_list_result = guid_ref01_ent.list(guid_ref01_match, None)
         assert isinstance(guid_ref01_list_result, list)
 
         # LOAD
         guid_ref01_match_dt0 = {}
-        guid_ref01_data_dt0_loaded, err = guid_ref01_ent.load(guid_ref01_match_dt0, None)
-        assert err is None
+        guid_ref01_data_dt0_loaded = guid_ref01_ent.load(guid_ref01_match_dt0, None)
         assert guid_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _guid_basic_setup(extra):
         "UUIDGENERATORAPI__TEST_GUID_ENTID": idmap,
         "UUIDGENERATORAPI__TEST_LIVE": "FALSE",
         "UUIDGENERATORAPI__TEST_EXPLAIN": "FALSE",
-        "UUIDGENERATORAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _guid_basic_setup(extra):
     if env.get("UUIDGENERATORAPI__TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UUIDGENERATORAPI__APIKEY"),
             },
             extra or {},
         ])

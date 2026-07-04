@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch V4nListMatch
+---@param ctrl? table
+---@return V4n[]
+---@return string? err
 function V4nEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

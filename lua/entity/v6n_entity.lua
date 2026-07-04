@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch V6nListMatch
+---@param ctrl? table
+---@return V6n[]
+---@return string? err
 function V6nEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

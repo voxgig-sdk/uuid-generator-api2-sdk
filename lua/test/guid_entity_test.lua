@@ -98,7 +98,6 @@ function guid_basic_setup(extra)
     ["UUIDGENERATORAPI__TEST_GUID_ENTID"] = idmap,
     ["UUIDGENERATORAPI__TEST_LIVE"] = "FALSE",
     ["UUIDGENERATORAPI__TEST_EXPLAIN"] = "FALSE",
-    ["UUIDGENERATORAPI__APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -110,7 +109,6 @@ function guid_basic_setup(extra)
   if env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["UUIDGENERATORAPI__APIKEY"],
       },
       extra or {},
     })

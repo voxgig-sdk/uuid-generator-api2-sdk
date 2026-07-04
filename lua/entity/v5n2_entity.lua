@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch V5n2LoadMatch
+---@param ctrl? table
+---@return V5n2
+---@return string? err
 function V5n2Entity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -55,6 +55,9 @@ class V4n2Entity
         return new V4n2Entity($this->_client, $opts);
     }
 
+    /**
+     * @param V4n2|array $args V4n2 data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class V4n2Entity
         }
     }
 
+    /**
+     * @return V4n2|array The current V4n2 data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of V4n2 fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class V4n2Entity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of V4n2 fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class V4n2Entity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single V4n2.
+     *
+     * @param V4n2LoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed V4n2LoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return V4n2|array The loaded V4n2 as an assoc-array at the
+     *   SDK boundary; throws UuidGeneratorApi2Error on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -117,7 +138,7 @@ class V4n2Entity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

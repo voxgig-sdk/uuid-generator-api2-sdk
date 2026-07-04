@@ -103,7 +103,7 @@ class UuidGeneratorApi2SDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class UuidGeneratorApi2SDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class UuidGeneratorApi2SDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,108 +216,251 @@ class UuidGeneratorApi2SDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Guid($data = null)
+    private $_guid = null;
+
+    // Idiomatic facade: $client->guid()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Guid() (PHP method
+    // names are case-insensitive).
+    public function guid($data = null)
     {
         require_once __DIR__ . '/entity/guid_entity.php';
+        if ($data === null) {
+            if ($this->_guid === null) {
+                $this->_guid = new GuidEntity($this, null);
+            }
+            return $this->_guid;
+        }
         return new GuidEntity($this, $data);
     }
 
 
-    public function V1n($data = null)
+    private $_v1n = null;
+
+    // Idiomatic facade: $client->v1n()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V1n() (PHP method
+    // names are case-insensitive).
+    public function v1n($data = null)
     {
         require_once __DIR__ . '/entity/v1n_entity.php';
+        if ($data === null) {
+            if ($this->_v1n === null) {
+                $this->_v1n = new V1nEntity($this, null);
+            }
+            return $this->_v1n;
+        }
         return new V1nEntity($this, $data);
     }
 
 
-    public function V1n2($data = null)
+    private $_v1n2 = null;
+
+    // Idiomatic facade: $client->v1n2()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V1n2() (PHP method
+    // names are case-insensitive).
+    public function v1n2($data = null)
     {
         require_once __DIR__ . '/entity/v1n2_entity.php';
+        if ($data === null) {
+            if ($this->_v1n2 === null) {
+                $this->_v1n2 = new V1n2Entity($this, null);
+            }
+            return $this->_v1n2;
+        }
         return new V1n2Entity($this, $data);
     }
 
 
-    public function V3n($data = null)
+    private $_v3n = null;
+
+    // Idiomatic facade: $client->v3n()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V3n() (PHP method
+    // names are case-insensitive).
+    public function v3n($data = null)
     {
         require_once __DIR__ . '/entity/v3n_entity.php';
+        if ($data === null) {
+            if ($this->_v3n === null) {
+                $this->_v3n = new V3nEntity($this, null);
+            }
+            return $this->_v3n;
+        }
         return new V3nEntity($this, $data);
     }
 
 
-    public function V3n2($data = null)
+    private $_v3n2 = null;
+
+    // Idiomatic facade: $client->v3n2()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V3n2() (PHP method
+    // names are case-insensitive).
+    public function v3n2($data = null)
     {
         require_once __DIR__ . '/entity/v3n2_entity.php';
+        if ($data === null) {
+            if ($this->_v3n2 === null) {
+                $this->_v3n2 = new V3n2Entity($this, null);
+            }
+            return $this->_v3n2;
+        }
         return new V3n2Entity($this, $data);
     }
 
 
-    public function V4n($data = null)
+    private $_v4n = null;
+
+    // Idiomatic facade: $client->v4n()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V4n() (PHP method
+    // names are case-insensitive).
+    public function v4n($data = null)
     {
         require_once __DIR__ . '/entity/v4n_entity.php';
+        if ($data === null) {
+            if ($this->_v4n === null) {
+                $this->_v4n = new V4nEntity($this, null);
+            }
+            return $this->_v4n;
+        }
         return new V4nEntity($this, $data);
     }
 
 
-    public function V4n2($data = null)
+    private $_v4n2 = null;
+
+    // Idiomatic facade: $client->v4n2()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V4n2() (PHP method
+    // names are case-insensitive).
+    public function v4n2($data = null)
     {
         require_once __DIR__ . '/entity/v4n2_entity.php';
+        if ($data === null) {
+            if ($this->_v4n2 === null) {
+                $this->_v4n2 = new V4n2Entity($this, null);
+            }
+            return $this->_v4n2;
+        }
         return new V4n2Entity($this, $data);
     }
 
 
-    public function V5n($data = null)
+    private $_v5n = null;
+
+    // Idiomatic facade: $client->v5n()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V5n() (PHP method
+    // names are case-insensitive).
+    public function v5n($data = null)
     {
         require_once __DIR__ . '/entity/v5n_entity.php';
+        if ($data === null) {
+            if ($this->_v5n === null) {
+                $this->_v5n = new V5nEntity($this, null);
+            }
+            return $this->_v5n;
+        }
         return new V5nEntity($this, $data);
     }
 
 
-    public function V5n2($data = null)
+    private $_v5n2 = null;
+
+    // Idiomatic facade: $client->v5n2()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V5n2() (PHP method
+    // names are case-insensitive).
+    public function v5n2($data = null)
     {
         require_once __DIR__ . '/entity/v5n2_entity.php';
+        if ($data === null) {
+            if ($this->_v5n2 === null) {
+                $this->_v5n2 = new V5n2Entity($this, null);
+            }
+            return $this->_v5n2;
+        }
         return new V5n2Entity($this, $data);
     }
 
 
-    public function V6n($data = null)
+    private $_v6n = null;
+
+    // Idiomatic facade: $client->v6n()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V6n() (PHP method
+    // names are case-insensitive).
+    public function v6n($data = null)
     {
         require_once __DIR__ . '/entity/v6n_entity.php';
+        if ($data === null) {
+            if ($this->_v6n === null) {
+                $this->_v6n = new V6nEntity($this, null);
+            }
+            return $this->_v6n;
+        }
         return new V6nEntity($this, $data);
     }
 
 
-    public function V6n2($data = null)
+    private $_v6n2 = null;
+
+    // Idiomatic facade: $client->v6n2()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V6n2() (PHP method
+    // names are case-insensitive).
+    public function v6n2($data = null)
     {
         require_once __DIR__ . '/entity/v6n2_entity.php';
+        if ($data === null) {
+            if ($this->_v6n2 === null) {
+                $this->_v6n2 = new V6n2Entity($this, null);
+            }
+            return $this->_v6n2;
+        }
         return new V6n2Entity($this, $data);
     }
 
 
-    public function V7n($data = null)
+    private $_v7n = null;
+
+    // Idiomatic facade: $client->v7n()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V7n() (PHP method
+    // names are case-insensitive).
+    public function v7n($data = null)
     {
         require_once __DIR__ . '/entity/v7n_entity.php';
+        if ($data === null) {
+            if ($this->_v7n === null) {
+                $this->_v7n = new V7nEntity($this, null);
+            }
+            return $this->_v7n;
+        }
         return new V7nEntity($this, $data);
     }
 
 
-    public function V7n2($data = null)
+    private $_v7n2 = null;
+
+    // Idiomatic facade: $client->v7n2()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias V7n2() (PHP method
+    // names are case-insensitive).
+    public function v7n2($data = null)
     {
         require_once __DIR__ . '/entity/v7n2_entity.php';
+        if ($data === null) {
+            if ($this->_v7n2 === null) {
+                $this->_v7n2 = new V7n2Entity($this, null);
+            }
+            return $this->_v7n2;
+        }
         return new V7n2Entity($this, $data);
     }
 

@@ -45,6 +45,7 @@ class GuidEntity
     end
   end
 
+  # @return [Guid, Hash] the current Guid data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class GuidEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Guid fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Guid.
+  #
+  # @param reqmatch [GuidLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Guid, Hash] the loaded Guid; raises UuidGeneratorApi2Error on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class GuidEntity
 
 
   
+  # List Guid items matching the given filter.
+  #
+  # @param reqmatch [GuidListMatch, Hash, nil] match filter (any subset of Guid fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Guid>, Array] the matching Guid items; raises UuidGeneratorApi2Error on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

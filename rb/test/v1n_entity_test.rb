@@ -43,8 +43,7 @@ class V1nEntityTest < Minitest::Test
     v1n_ref01_ent = client.V1n(nil)
     v1n_ref01_match = {}
 
-    v1n_ref01_list_result, err = v1n_ref01_ent.list(v1n_ref01_match, nil)
-    assert_nil err
+    v1n_ref01_list_result = v1n_ref01_ent.list(v1n_ref01_match, nil)
     assert v1n_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def v1n_basic_setup(extra)
     "UUIDGENERATORAPI__TEST_V_N_ENTID" => idmap,
     "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
     "UUIDGENERATORAPI__TEST_EXPLAIN" => "FALSE",
-    "UUIDGENERATORAPI__APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def v1n_basic_setup(extra)
   if env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["UUIDGENERATORAPI__APIKEY"],
       },
       extra || {},
     ])

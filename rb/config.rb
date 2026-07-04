@@ -15,9 +15,6 @@ module UuidGeneratorApi2Config
       },
       "options" => {
         "base" => "https://toolkitvault.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -136,6 +133,7 @@ module UuidGeneratorApi2Config
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -319,6 +317,7 @@ module UuidGeneratorApi2Config
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -520,6 +519,7 @@ module UuidGeneratorApi2Config
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -721,6 +721,7 @@ module UuidGeneratorApi2Config
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -922,6 +923,7 @@ module UuidGeneratorApi2Config
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -1123,6 +1125,7 @@ module UuidGeneratorApi2Config
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -1305,6 +1308,7 @@ module UuidGeneratorApi2Config
                         "orig" => "count",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

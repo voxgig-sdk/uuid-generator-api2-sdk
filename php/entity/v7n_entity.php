@@ -55,6 +55,9 @@ class V7nEntity
         return new V7nEntity($this->_client, $opts);
     }
 
+    /**
+     * @param V7n|array $args V7n data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class V7nEntity
         }
     }
 
+    /**
+     * @return V7n|array The current V7n data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of V7n fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class V7nEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of V7n fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -86,7 +98,16 @@ class V7nEntity
     
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List V7n items matching the given filter.
+     *
+     * @param V7nListMatch|array|null $reqmatch Match filter (any subset
+     *   of V7n fields) as an assoc-array; V7nListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return V7n[]|array A list of V7n items as assoc-arrays at
+     *   the SDK boundary; throws UuidGeneratorApi2Error on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -114,7 +135,7 @@ class V7nEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

@@ -45,6 +45,7 @@ class V6n2Entity
     end
   end
 
+  # @return [V6n2, Hash] the current V6n2 data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class V6n2Entity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of V6n2 fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single V6n2.
+  #
+  # @param reqmatch [V6n2LoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [V6n2, Hash] the loaded V6n2; raises UuidGeneratorApi2Error on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

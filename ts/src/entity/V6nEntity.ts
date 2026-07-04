@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  V6n,
+  V6nListMatch,
+} from '../UuidGeneratorApi2Types'
 
 // TODO: needs Entity superclass
-class V6nEntity extends UuidGeneratorApi2EntityBase {
+class V6nEntity extends UuidGeneratorApi2EntityBase<V6n> {
 
   constructor(client: UuidGeneratorApi2SDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class V6nEntity extends UuidGeneratorApi2EntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: V6nListMatch, ctrl?: Control): Promise<V6n[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class V6nEntity extends UuidGeneratorApi2EntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<V6n[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

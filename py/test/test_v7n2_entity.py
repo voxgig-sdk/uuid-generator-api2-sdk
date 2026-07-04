@@ -49,8 +49,7 @@ class TestV7n2Entity:
         # LOAD
         v7n2_ref01_ent = client.V7n2(None)
         v7n2_ref01_match_dt0 = {}
-        v7n2_ref01_data_dt0_loaded, err = v7n2_ref01_ent.load(v7n2_ref01_match_dt0, None)
-        assert err is None
+        v7n2_ref01_data_dt0_loaded = v7n2_ref01_ent.load(v7n2_ref01_match_dt0, None)
         assert v7n2_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _v7n2_basic_setup(extra):
         "UUIDGENERATORAPI__TEST_V_N__ENTID": idmap,
         "UUIDGENERATORAPI__TEST_LIVE": "FALSE",
         "UUIDGENERATORAPI__TEST_EXPLAIN": "FALSE",
-        "UUIDGENERATORAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _v7n2_basic_setup(extra):
     if env.get("UUIDGENERATORAPI__TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UUIDGENERATORAPI__APIKEY"),
             },
             extra or {},
         ])

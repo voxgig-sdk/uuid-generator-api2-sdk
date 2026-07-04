@@ -45,6 +45,7 @@ class V5nEntity
     end
   end
 
+  # @return [V5n, Hash] the current V5n data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class V5nEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of V5n fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class V5nEntity
   
 
   
+  # List V5n items matching the given filter.
+  #
+  # @param reqmatch [V5nListMatch, Hash, nil] match filter (any subset of V5n fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<V5n>, Array] the matching V5n items; raises UuidGeneratorApi2Error on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

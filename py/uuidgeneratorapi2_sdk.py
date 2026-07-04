@@ -144,16 +144,23 @@ class UuidGeneratorApi2SDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class UuidGeneratorApi2SDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,75 +212,218 @@ class UuidGeneratorApi2SDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def guid(self):
+        """Idiomatic facade: client.guid.list() / client.guid.load({"id": ...})."""
+        from entity.guid_entity import GuidEntity
+        cached = getattr(self, "_guid", None)
+        if cached is None:
+            cached = GuidEntity(self, None)
+            self._guid = cached
+        return cached
 
     def Guid(self, data=None):
+        # Deprecated: use client.guid instead.
         from entity.guid_entity import GuidEntity
         return GuidEntity(self, data)
 
 
+    @property
+    def v1n(self):
+        """Idiomatic facade: client.v1n.list() / client.v1n.load({"id": ...})."""
+        from entity.v1n_entity import V1nEntity
+        cached = getattr(self, "_v1n", None)
+        if cached is None:
+            cached = V1nEntity(self, None)
+            self._v1n = cached
+        return cached
+
     def V1n(self, data=None):
+        # Deprecated: use client.v1n instead.
         from entity.v1n_entity import V1nEntity
         return V1nEntity(self, data)
 
 
+    @property
+    def v1n2(self):
+        """Idiomatic facade: client.v1n2.list() / client.v1n2.load({"id": ...})."""
+        from entity.v1n2_entity import V1n2Entity
+        cached = getattr(self, "_v1n2", None)
+        if cached is None:
+            cached = V1n2Entity(self, None)
+            self._v1n2 = cached
+        return cached
+
     def V1n2(self, data=None):
+        # Deprecated: use client.v1n2 instead.
         from entity.v1n2_entity import V1n2Entity
         return V1n2Entity(self, data)
 
 
+    @property
+    def v3n(self):
+        """Idiomatic facade: client.v3n.list() / client.v3n.load({"id": ...})."""
+        from entity.v3n_entity import V3nEntity
+        cached = getattr(self, "_v3n", None)
+        if cached is None:
+            cached = V3nEntity(self, None)
+            self._v3n = cached
+        return cached
+
     def V3n(self, data=None):
+        # Deprecated: use client.v3n instead.
         from entity.v3n_entity import V3nEntity
         return V3nEntity(self, data)
 
 
+    @property
+    def v3n2(self):
+        """Idiomatic facade: client.v3n2.list() / client.v3n2.load({"id": ...})."""
+        from entity.v3n2_entity import V3n2Entity
+        cached = getattr(self, "_v3n2", None)
+        if cached is None:
+            cached = V3n2Entity(self, None)
+            self._v3n2 = cached
+        return cached
+
     def V3n2(self, data=None):
+        # Deprecated: use client.v3n2 instead.
         from entity.v3n2_entity import V3n2Entity
         return V3n2Entity(self, data)
 
 
+    @property
+    def v4n(self):
+        """Idiomatic facade: client.v4n.list() / client.v4n.load({"id": ...})."""
+        from entity.v4n_entity import V4nEntity
+        cached = getattr(self, "_v4n", None)
+        if cached is None:
+            cached = V4nEntity(self, None)
+            self._v4n = cached
+        return cached
+
     def V4n(self, data=None):
+        # Deprecated: use client.v4n instead.
         from entity.v4n_entity import V4nEntity
         return V4nEntity(self, data)
 
 
+    @property
+    def v4n2(self):
+        """Idiomatic facade: client.v4n2.list() / client.v4n2.load({"id": ...})."""
+        from entity.v4n2_entity import V4n2Entity
+        cached = getattr(self, "_v4n2", None)
+        if cached is None:
+            cached = V4n2Entity(self, None)
+            self._v4n2 = cached
+        return cached
+
     def V4n2(self, data=None):
+        # Deprecated: use client.v4n2 instead.
         from entity.v4n2_entity import V4n2Entity
         return V4n2Entity(self, data)
 
 
+    @property
+    def v5n(self):
+        """Idiomatic facade: client.v5n.list() / client.v5n.load({"id": ...})."""
+        from entity.v5n_entity import V5nEntity
+        cached = getattr(self, "_v5n", None)
+        if cached is None:
+            cached = V5nEntity(self, None)
+            self._v5n = cached
+        return cached
+
     def V5n(self, data=None):
+        # Deprecated: use client.v5n instead.
         from entity.v5n_entity import V5nEntity
         return V5nEntity(self, data)
 
 
+    @property
+    def v5n2(self):
+        """Idiomatic facade: client.v5n2.list() / client.v5n2.load({"id": ...})."""
+        from entity.v5n2_entity import V5n2Entity
+        cached = getattr(self, "_v5n2", None)
+        if cached is None:
+            cached = V5n2Entity(self, None)
+            self._v5n2 = cached
+        return cached
+
     def V5n2(self, data=None):
+        # Deprecated: use client.v5n2 instead.
         from entity.v5n2_entity import V5n2Entity
         return V5n2Entity(self, data)
 
 
+    @property
+    def v6n(self):
+        """Idiomatic facade: client.v6n.list() / client.v6n.load({"id": ...})."""
+        from entity.v6n_entity import V6nEntity
+        cached = getattr(self, "_v6n", None)
+        if cached is None:
+            cached = V6nEntity(self, None)
+            self._v6n = cached
+        return cached
+
     def V6n(self, data=None):
+        # Deprecated: use client.v6n instead.
         from entity.v6n_entity import V6nEntity
         return V6nEntity(self, data)
 
 
+    @property
+    def v6n2(self):
+        """Idiomatic facade: client.v6n2.list() / client.v6n2.load({"id": ...})."""
+        from entity.v6n2_entity import V6n2Entity
+        cached = getattr(self, "_v6n2", None)
+        if cached is None:
+            cached = V6n2Entity(self, None)
+            self._v6n2 = cached
+        return cached
+
     def V6n2(self, data=None):
+        # Deprecated: use client.v6n2 instead.
         from entity.v6n2_entity import V6n2Entity
         return V6n2Entity(self, data)
 
 
+    @property
+    def v7n(self):
+        """Idiomatic facade: client.v7n.list() / client.v7n.load({"id": ...})."""
+        from entity.v7n_entity import V7nEntity
+        cached = getattr(self, "_v7n", None)
+        if cached is None:
+            cached = V7nEntity(self, None)
+            self._v7n = cached
+        return cached
+
     def V7n(self, data=None):
+        # Deprecated: use client.v7n instead.
         from entity.v7n_entity import V7nEntity
         return V7nEntity(self, data)
 
 
+    @property
+    def v7n2(self):
+        """Idiomatic facade: client.v7n2.list() / client.v7n2.load({"id": ...})."""
+        from entity.v7n2_entity import V7n2Entity
+        cached = getattr(self, "_v7n2", None)
+        if cached is None:
+            cached = V7n2Entity(self, None)
+            self._v7n2 = cached
+        return cached
+
     def V7n2(self, data=None):
+        # Deprecated: use client.v7n2 instead.
         from entity.v7n2_entity import V7n2Entity
         return V7n2Entity(self, data)
 

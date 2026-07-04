@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://toolkitvault.com",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -135,6 +132,7 @@ func MakeConfig() map[string]any {
 											"orig": "count",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -318,6 +316,7 @@ func MakeConfig() map[string]any {
 											"orig": "count",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -519,6 +518,7 @@ func MakeConfig() map[string]any {
 											"orig": "count",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -720,6 +720,7 @@ func MakeConfig() map[string]any {
 											"orig": "count",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -921,6 +922,7 @@ func MakeConfig() map[string]any {
 											"orig": "count",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -1122,6 +1124,7 @@ func MakeConfig() map[string]any {
 											"orig": "count",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -1304,6 +1307,7 @@ func MakeConfig() map[string]any {
 											"orig": "count",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 									"query": []any{

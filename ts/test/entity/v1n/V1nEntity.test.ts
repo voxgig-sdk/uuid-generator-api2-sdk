@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'UUID_GENERATOR_API__TEST_V_N_ENTID': idmap,
     'UUID_GENERATOR_API__TEST_LIVE': 'FALSE',
     'UUID_GENERATOR_API__TEST_EXPLAIN': 'FALSE',
-    'UUID_GENERATOR_API__APIKEY': 'NONE',
   })
 
   idmap = env['UUID_GENERATOR_API__TEST_V_N_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new UuidGeneratorApi2SDK(merge([
       {
-        apikey: env.UUID_GENERATOR_API__APIKEY,
       },
       extra
     ]))

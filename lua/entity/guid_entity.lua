@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GuidLoadMatch
+---@param ctrl? table
+---@return Guid
+---@return string? err
 function GuidEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch GuidListMatch
+---@param ctrl? table
+---@return Guid[]
+---@return string? err
 function GuidEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

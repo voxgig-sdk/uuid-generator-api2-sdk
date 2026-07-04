@@ -244,78 +244,247 @@ end
 
 
 
+-- Idiomatic facade: client:guid():list() / client:guid():load({ id = ... })
+function UuidGeneratorApi2SDK:guid(data)
+  local EntityMod = require("entity.guid_entity")
+  if data == nil then
+    if self._guid == nil then
+      self._guid = EntityMod.new(self, nil)
+    end
+    return self._guid
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:guid() instead.
 function UuidGeneratorApi2SDK:Guid(data)
   local EntityMod = require("entity.guid_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v1n():list() / client:v1n():load({ id = ... })
+function UuidGeneratorApi2SDK:v1n(data)
+  local EntityMod = require("entity.v1n_entity")
+  if data == nil then
+    if self._v1n == nil then
+      self._v1n = EntityMod.new(self, nil)
+    end
+    return self._v1n
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v1n() instead.
 function UuidGeneratorApi2SDK:V1n(data)
   local EntityMod = require("entity.v1n_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v1n2():list() / client:v1n2():load({ id = ... })
+function UuidGeneratorApi2SDK:v1n2(data)
+  local EntityMod = require("entity.v1n2_entity")
+  if data == nil then
+    if self._v1n2 == nil then
+      self._v1n2 = EntityMod.new(self, nil)
+    end
+    return self._v1n2
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v1n2() instead.
 function UuidGeneratorApi2SDK:V1n2(data)
   local EntityMod = require("entity.v1n2_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v3n():list() / client:v3n():load({ id = ... })
+function UuidGeneratorApi2SDK:v3n(data)
+  local EntityMod = require("entity.v3n_entity")
+  if data == nil then
+    if self._v3n == nil then
+      self._v3n = EntityMod.new(self, nil)
+    end
+    return self._v3n
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v3n() instead.
 function UuidGeneratorApi2SDK:V3n(data)
   local EntityMod = require("entity.v3n_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v3n2():list() / client:v3n2():load({ id = ... })
+function UuidGeneratorApi2SDK:v3n2(data)
+  local EntityMod = require("entity.v3n2_entity")
+  if data == nil then
+    if self._v3n2 == nil then
+      self._v3n2 = EntityMod.new(self, nil)
+    end
+    return self._v3n2
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v3n2() instead.
 function UuidGeneratorApi2SDK:V3n2(data)
   local EntityMod = require("entity.v3n2_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v4n():list() / client:v4n():load({ id = ... })
+function UuidGeneratorApi2SDK:v4n(data)
+  local EntityMod = require("entity.v4n_entity")
+  if data == nil then
+    if self._v4n == nil then
+      self._v4n = EntityMod.new(self, nil)
+    end
+    return self._v4n
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v4n() instead.
 function UuidGeneratorApi2SDK:V4n(data)
   local EntityMod = require("entity.v4n_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v4n2():list() / client:v4n2():load({ id = ... })
+function UuidGeneratorApi2SDK:v4n2(data)
+  local EntityMod = require("entity.v4n2_entity")
+  if data == nil then
+    if self._v4n2 == nil then
+      self._v4n2 = EntityMod.new(self, nil)
+    end
+    return self._v4n2
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v4n2() instead.
 function UuidGeneratorApi2SDK:V4n2(data)
   local EntityMod = require("entity.v4n2_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v5n():list() / client:v5n():load({ id = ... })
+function UuidGeneratorApi2SDK:v5n(data)
+  local EntityMod = require("entity.v5n_entity")
+  if data == nil then
+    if self._v5n == nil then
+      self._v5n = EntityMod.new(self, nil)
+    end
+    return self._v5n
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v5n() instead.
 function UuidGeneratorApi2SDK:V5n(data)
   local EntityMod = require("entity.v5n_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v5n2():list() / client:v5n2():load({ id = ... })
+function UuidGeneratorApi2SDK:v5n2(data)
+  local EntityMod = require("entity.v5n2_entity")
+  if data == nil then
+    if self._v5n2 == nil then
+      self._v5n2 = EntityMod.new(self, nil)
+    end
+    return self._v5n2
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v5n2() instead.
 function UuidGeneratorApi2SDK:V5n2(data)
   local EntityMod = require("entity.v5n2_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v6n():list() / client:v6n():load({ id = ... })
+function UuidGeneratorApi2SDK:v6n(data)
+  local EntityMod = require("entity.v6n_entity")
+  if data == nil then
+    if self._v6n == nil then
+      self._v6n = EntityMod.new(self, nil)
+    end
+    return self._v6n
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v6n() instead.
 function UuidGeneratorApi2SDK:V6n(data)
   local EntityMod = require("entity.v6n_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v6n2():list() / client:v6n2():load({ id = ... })
+function UuidGeneratorApi2SDK:v6n2(data)
+  local EntityMod = require("entity.v6n2_entity")
+  if data == nil then
+    if self._v6n2 == nil then
+      self._v6n2 = EntityMod.new(self, nil)
+    end
+    return self._v6n2
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v6n2() instead.
 function UuidGeneratorApi2SDK:V6n2(data)
   local EntityMod = require("entity.v6n2_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v7n():list() / client:v7n():load({ id = ... })
+function UuidGeneratorApi2SDK:v7n(data)
+  local EntityMod = require("entity.v7n_entity")
+  if data == nil then
+    if self._v7n == nil then
+      self._v7n = EntityMod.new(self, nil)
+    end
+    return self._v7n
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v7n() instead.
 function UuidGeneratorApi2SDK:V7n(data)
   local EntityMod = require("entity.v7n_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:v7n2():list() / client:v7n2():load({ id = ... })
+function UuidGeneratorApi2SDK:v7n2(data)
+  local EntityMod = require("entity.v7n2_entity")
+  if data == nil then
+    if self._v7n2 == nil then
+      self._v7n2 = EntityMod.new(self, nil)
+    end
+    return self._v7n2
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:v7n2() instead.
 function UuidGeneratorApi2SDK:V7n2(data)
   local EntityMod = require("entity.v7n2_entity")
   return EntityMod.new(self, data)

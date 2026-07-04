@@ -80,14 +80,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'UUIDGENERATORAPI__TEST_V_N__ENTID': {},
     'UUIDGENERATORAPI__TEST_LIVE': 'FALSE',
-    'UUIDGENERATORAPI__APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.UUIDGENERATORAPI__TEST_LIVE
 
   if (live) {
     const client = new UuidGeneratorApi2SDK({
-      apikey: env.UUIDGENERATORAPI__APIKEY,
     })
 
     let idmap: any = env['UUIDGENERATORAPI__TEST_V_N__ENTID']

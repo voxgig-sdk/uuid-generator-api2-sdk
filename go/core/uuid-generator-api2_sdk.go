@@ -245,66 +245,105 @@ func (sdk *UuidGeneratorApi2SDK) Direct(fetchargs map[string]any) (map[string]an
 }
 
 
+// Guid returns a Guid entity bound to this client.
+// Idiomatic usage: client.Guid(nil).List(nil, nil) or
+// client.Guid(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) Guid(data map[string]any) UuidGeneratorApi2Entity {
 	return NewGuidEntityFunc(sdk, data)
 }
 
 
+// V1n returns a V1n entity bound to this client.
+// Idiomatic usage: client.V1n(nil).List(nil, nil) or
+// client.V1n(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V1n(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV1nEntityFunc(sdk, data)
 }
 
 
+// V1n2 returns a V1n2 entity bound to this client.
+// Idiomatic usage: client.V1n2(nil).List(nil, nil) or
+// client.V1n2(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V1n2(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV1n2EntityFunc(sdk, data)
 }
 
 
+// V3n returns a V3n entity bound to this client.
+// Idiomatic usage: client.V3n(nil).List(nil, nil) or
+// client.V3n(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V3n(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV3nEntityFunc(sdk, data)
 }
 
 
+// V3n2 returns a V3n2 entity bound to this client.
+// Idiomatic usage: client.V3n2(nil).List(nil, nil) or
+// client.V3n2(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V3n2(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV3n2EntityFunc(sdk, data)
 }
 
 
+// V4n returns a V4n entity bound to this client.
+// Idiomatic usage: client.V4n(nil).List(nil, nil) or
+// client.V4n(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V4n(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV4nEntityFunc(sdk, data)
 }
 
 
+// V4n2 returns a V4n2 entity bound to this client.
+// Idiomatic usage: client.V4n2(nil).List(nil, nil) or
+// client.V4n2(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V4n2(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV4n2EntityFunc(sdk, data)
 }
 
 
+// V5n returns a V5n entity bound to this client.
+// Idiomatic usage: client.V5n(nil).List(nil, nil) or
+// client.V5n(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V5n(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV5nEntityFunc(sdk, data)
 }
 
 
+// V5n2 returns a V5n2 entity bound to this client.
+// Idiomatic usage: client.V5n2(nil).List(nil, nil) or
+// client.V5n2(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V5n2(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV5n2EntityFunc(sdk, data)
 }
 
 
+// V6n returns a V6n entity bound to this client.
+// Idiomatic usage: client.V6n(nil).List(nil, nil) or
+// client.V6n(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V6n(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV6nEntityFunc(sdk, data)
 }
 
 
+// V6n2 returns a V6n2 entity bound to this client.
+// Idiomatic usage: client.V6n2(nil).List(nil, nil) or
+// client.V6n2(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V6n2(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV6n2EntityFunc(sdk, data)
 }
 
 
+// V7n returns a V7n entity bound to this client.
+// Idiomatic usage: client.V7n(nil).List(nil, nil) or
+// client.V7n(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V7n(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV7nEntityFunc(sdk, data)
 }
 
 
+// V7n2 returns a V7n2 entity bound to this client.
+// Idiomatic usage: client.V7n2(nil).List(nil, nil) or
+// client.V7n2(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UuidGeneratorApi2SDK) V7n2(data map[string]any) UuidGeneratorApi2Entity {
 	return NewV7n2EntityFunc(sdk, data)
 }

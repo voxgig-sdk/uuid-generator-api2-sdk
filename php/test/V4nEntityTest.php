@@ -50,8 +50,7 @@ class V4nEntityTest extends TestCase
         $v4n_ref01_ent = $client->V4n(null);
         $v4n_ref01_match = [];
 
-        [$v4n_ref01_list_result, $err] = $v4n_ref01_ent->list($v4n_ref01_match, null);
-        $this->assertNull($err);
+        $v4n_ref01_list_result = $v4n_ref01_ent->list($v4n_ref01_match, null);
         $this->assertIsArray($v4n_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function v4n_basic_setup($extra)
         "UUIDGENERATORAPI__TEST_V_N_ENTID" => $idmap,
         "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
         "UUIDGENERATORAPI__TEST_EXPLAIN" => "FALSE",
-        "UUIDGENERATORAPI__APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function v4n_basic_setup($extra)
     if ($env["UUIDGENERATORAPI__TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["UUIDGENERATORAPI__APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -50,14 +50,12 @@ class GuidEntityTest extends TestCase
         $guid_ref01_ent = $client->Guid(null);
         $guid_ref01_match = [];
 
-        [$guid_ref01_list_result, $err] = $guid_ref01_ent->list($guid_ref01_match, null);
-        $this->assertNull($err);
+        $guid_ref01_list_result = $guid_ref01_ent->list($guid_ref01_match, null);
         $this->assertIsArray($guid_ref01_list_result);
 
         // LOAD
         $guid_ref01_match_dt0 = [];
-        [$guid_ref01_data_dt0_loaded, $err] = $guid_ref01_ent->load($guid_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $guid_ref01_data_dt0_loaded = $guid_ref01_ent->load($guid_ref01_match_dt0, null);
         $this->assertNotNull($guid_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function guid_basic_setup($extra)
         "UUIDGENERATORAPI__TEST_GUID_ENTID" => $idmap,
         "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
         "UUIDGENERATORAPI__TEST_EXPLAIN" => "FALSE",
-        "UUIDGENERATORAPI__APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function guid_basic_setup($extra)
     if ($env["UUIDGENERATORAPI__TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["UUIDGENERATORAPI__APIKEY"],
             ],
             $extra ?? [],
         ]);
