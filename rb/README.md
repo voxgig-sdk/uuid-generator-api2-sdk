@@ -28,16 +28,14 @@ require_relative "UuidGeneratorApi2_sdk"
 client = UuidGeneratorApi2SDK.new
 ```
 
-### 2. List guids
+### 2. List guid records
 
 ```ruby
 begin
-  result = client.guid.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Guid records — iterate directly.
+  guids = client.Guid.list
+  guids.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.guid.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Guid record (raises on error).
+  guid = client.Guid.load({ "id" => "example_id" })
+  puts guid
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = UuidGeneratorApi2SDK.test
+client = UuidGeneratorApi2SDK.test({
+  "entity" => { "guid" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.guid.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+guid = client.Guid.load({ "id" => "test01" })
+puts guid
 ```
 
 ### Use a custom fetch function
@@ -405,7 +408,7 @@ API path: `/api/uuid-generator/v7/{count}`
 
 ### Guid
 
-Create an instance: `const guid = client.guid`
+Create an instance: `guid = client.Guid`
 
 #### Operations
 
@@ -425,20 +428,22 @@ Create an instance: `const guid = client.guid`
 
 #### Example: Load
 
-```ts
-const guid = await client.guid.load({ id: 'guid_id' })
+```ruby
+# load returns the bare Guid record (raises on error).
+guid = client.Guid.load({ "id" => "guid_id" })
 ```
 
 #### Example: List
 
-```ts
-const guids = await client.guid.list()
+```ruby
+# list returns an Array of Guid records (raises on error).
+guids = client.Guid.list
 ```
 
 
 ### V1n
 
-Create an instance: `const v1n = client.v1n`
+Create an instance: `v1n = client.V1n`
 
 #### Operations
 
@@ -457,14 +462,15 @@ Create an instance: `const v1n = client.v1n`
 
 #### Example: List
 
-```ts
-const v1ns = await client.v1n.list()
+```ruby
+# list returns an Array of V1n records (raises on error).
+v1ns = client.V1n.list
 ```
 
 
 ### V1n2
 
-Create an instance: `const v1n2 = client.v1n2`
+Create an instance: `v1n2 = client.V1n2`
 
 #### Operations
 
@@ -483,14 +489,15 @@ Create an instance: `const v1n2 = client.v1n2`
 
 #### Example: Load
 
-```ts
-const v1n2 = await client.v1n2.load({ id: 'v1n2_id' })
+```ruby
+# load returns the bare V1n2 record (raises on error).
+v1n2 = client.V1n2.load({ "id" => "v1n2_id" })
 ```
 
 
 ### V3n
 
-Create an instance: `const v3n = client.v3n`
+Create an instance: `v3n = client.V3n`
 
 #### Operations
 
@@ -509,14 +516,15 @@ Create an instance: `const v3n = client.v3n`
 
 #### Example: List
 
-```ts
-const v3ns = await client.v3n.list()
+```ruby
+# list returns an Array of V3n records (raises on error).
+v3ns = client.V3n.list
 ```
 
 
 ### V3n2
 
-Create an instance: `const v3n2 = client.v3n2`
+Create an instance: `v3n2 = client.V3n2`
 
 #### Operations
 
@@ -535,14 +543,15 @@ Create an instance: `const v3n2 = client.v3n2`
 
 #### Example: Load
 
-```ts
-const v3n2 = await client.v3n2.load({ id: 'v3n2_id' })
+```ruby
+# load returns the bare V3n2 record (raises on error).
+v3n2 = client.V3n2.load({ "id" => "v3n2_id" })
 ```
 
 
 ### V4n
 
-Create an instance: `const v4n = client.v4n`
+Create an instance: `v4n = client.V4n`
 
 #### Operations
 
@@ -561,14 +570,15 @@ Create an instance: `const v4n = client.v4n`
 
 #### Example: List
 
-```ts
-const v4ns = await client.v4n.list()
+```ruby
+# list returns an Array of V4n records (raises on error).
+v4ns = client.V4n.list
 ```
 
 
 ### V4n2
 
-Create an instance: `const v4n2 = client.v4n2`
+Create an instance: `v4n2 = client.V4n2`
 
 #### Operations
 
@@ -587,14 +597,15 @@ Create an instance: `const v4n2 = client.v4n2`
 
 #### Example: Load
 
-```ts
-const v4n2 = await client.v4n2.load({ id: 'v4n2_id' })
+```ruby
+# load returns the bare V4n2 record (raises on error).
+v4n2 = client.V4n2.load({ "id" => "v4n2_id" })
 ```
 
 
 ### V5n
 
-Create an instance: `const v5n = client.v5n`
+Create an instance: `v5n = client.V5n`
 
 #### Operations
 
@@ -613,14 +624,15 @@ Create an instance: `const v5n = client.v5n`
 
 #### Example: List
 
-```ts
-const v5ns = await client.v5n.list()
+```ruby
+# list returns an Array of V5n records (raises on error).
+v5ns = client.V5n.list
 ```
 
 
 ### V5n2
 
-Create an instance: `const v5n2 = client.v5n2`
+Create an instance: `v5n2 = client.V5n2`
 
 #### Operations
 
@@ -639,14 +651,15 @@ Create an instance: `const v5n2 = client.v5n2`
 
 #### Example: Load
 
-```ts
-const v5n2 = await client.v5n2.load({ id: 'v5n2_id' })
+```ruby
+# load returns the bare V5n2 record (raises on error).
+v5n2 = client.V5n2.load({ "id" => "v5n2_id" })
 ```
 
 
 ### V6n
 
-Create an instance: `const v6n = client.v6n`
+Create an instance: `v6n = client.V6n`
 
 #### Operations
 
@@ -665,14 +678,15 @@ Create an instance: `const v6n = client.v6n`
 
 #### Example: List
 
-```ts
-const v6ns = await client.v6n.list()
+```ruby
+# list returns an Array of V6n records (raises on error).
+v6ns = client.V6n.list
 ```
 
 
 ### V6n2
 
-Create an instance: `const v6n2 = client.v6n2`
+Create an instance: `v6n2 = client.V6n2`
 
 #### Operations
 
@@ -691,14 +705,15 @@ Create an instance: `const v6n2 = client.v6n2`
 
 #### Example: Load
 
-```ts
-const v6n2 = await client.v6n2.load({ id: 'v6n2_id' })
+```ruby
+# load returns the bare V6n2 record (raises on error).
+v6n2 = client.V6n2.load({ "id" => "v6n2_id" })
 ```
 
 
 ### V7n
 
-Create an instance: `const v7n = client.v7n`
+Create an instance: `v7n = client.V7n`
 
 #### Operations
 
@@ -717,14 +732,15 @@ Create an instance: `const v7n = client.v7n`
 
 #### Example: List
 
-```ts
-const v7ns = await client.v7n.list()
+```ruby
+# list returns an Array of V7n records (raises on error).
+v7ns = client.V7n.list
 ```
 
 
 ### V7n2
 
-Create an instance: `const v7n2 = client.v7n2`
+Create an instance: `v7n2 = client.V7n2`
 
 #### Operations
 
@@ -743,8 +759,9 @@ Create an instance: `const v7n2 = client.v7n2`
 
 #### Example: Load
 
-```ts
-const v7n2 = await client.v7n2.load({ id: 'v7n2_id' })
+```ruby
+# load returns the bare V7n2 record (raises on error).
+v7n2 = client.V7n2.load({ "id" => "v7n2_id" })
 ```
 
 
@@ -819,7 +836,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-guid = client.guid
+guid = client.Guid
 guid.load({ "id" => "example_id" })
 
 # guid.data_get now returns the loaded guid data

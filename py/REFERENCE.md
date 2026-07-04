@@ -128,7 +128,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GuidEntity
 
 ```python
-guid = client.guid
+guid = client.Guid()
 ```
 
 ### Fields
@@ -147,7 +147,9 @@ guid = client.guid
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.guid.list({})
+results = client.Guid().list({})
+for guid in results:
+    print(guid)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -155,7 +157,7 @@ results = client.guid.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.guid.load({"id": "guid_id"})
+result = client.Guid().load({"id": "guid_id"})
 ```
 
 ### Common Methods
@@ -190,7 +192,7 @@ Return the entity name.
 ## V1nEntity
 
 ```python
-v1n = client.v1n
+v1n = client.V1n()
 ```
 
 ### Fields
@@ -209,7 +211,9 @@ v1n = client.v1n
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.v1n.list({})
+results = client.V1n().list({})
+for v1n in results:
+    print(v1n)
 ```
 
 ### Common Methods
@@ -244,7 +248,7 @@ Return the entity name.
 ## V1n2Entity
 
 ```python
-v1n2 = client.v1n2
+v1n2 = client.V1n2()
 ```
 
 ### Fields
@@ -263,7 +267,7 @@ v1n2 = client.v1n2
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.v1n2.load({"id": "v1n2_id"})
+result = client.V1n2().load({"id": "v1n2_id"})
 ```
 
 ### Common Methods
@@ -298,7 +302,7 @@ Return the entity name.
 ## V3nEntity
 
 ```python
-v3n = client.v3n
+v3n = client.V3n()
 ```
 
 ### Fields
@@ -317,7 +321,9 @@ v3n = client.v3n
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.v3n.list({})
+results = client.V3n().list({})
+for v3n in results:
+    print(v3n)
 ```
 
 ### Common Methods
@@ -352,7 +358,7 @@ Return the entity name.
 ## V3n2Entity
 
 ```python
-v3n2 = client.v3n2
+v3n2 = client.V3n2()
 ```
 
 ### Fields
@@ -371,7 +377,7 @@ v3n2 = client.v3n2
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.v3n2.load({"id": "v3n2_id"})
+result = client.V3n2().load({"id": "v3n2_id"})
 ```
 
 ### Common Methods
@@ -406,7 +412,7 @@ Return the entity name.
 ## V4nEntity
 
 ```python
-v4n = client.v4n
+v4n = client.V4n()
 ```
 
 ### Fields
@@ -425,7 +431,9 @@ v4n = client.v4n
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.v4n.list({})
+results = client.V4n().list({})
+for v4n in results:
+    print(v4n)
 ```
 
 ### Common Methods
@@ -460,7 +468,7 @@ Return the entity name.
 ## V4n2Entity
 
 ```python
-v4n2 = client.v4n2
+v4n2 = client.V4n2()
 ```
 
 ### Fields
@@ -479,7 +487,7 @@ v4n2 = client.v4n2
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.v4n2.load({"id": "v4n2_id"})
+result = client.V4n2().load({"id": "v4n2_id"})
 ```
 
 ### Common Methods
@@ -514,7 +522,7 @@ Return the entity name.
 ## V5nEntity
 
 ```python
-v5n = client.v5n
+v5n = client.V5n()
 ```
 
 ### Fields
@@ -533,7 +541,9 @@ v5n = client.v5n
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.v5n.list({})
+results = client.V5n().list({})
+for v5n in results:
+    print(v5n)
 ```
 
 ### Common Methods
@@ -568,7 +578,7 @@ Return the entity name.
 ## V5n2Entity
 
 ```python
-v5n2 = client.v5n2
+v5n2 = client.V5n2()
 ```
 
 ### Fields
@@ -587,7 +597,7 @@ v5n2 = client.v5n2
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.v5n2.load({"id": "v5n2_id"})
+result = client.V5n2().load({"id": "v5n2_id"})
 ```
 
 ### Common Methods
@@ -622,7 +632,7 @@ Return the entity name.
 ## V6nEntity
 
 ```python
-v6n = client.v6n
+v6n = client.V6n()
 ```
 
 ### Fields
@@ -641,7 +651,9 @@ v6n = client.v6n
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.v6n.list({})
+results = client.V6n().list({})
+for v6n in results:
+    print(v6n)
 ```
 
 ### Common Methods
@@ -676,7 +688,7 @@ Return the entity name.
 ## V6n2Entity
 
 ```python
-v6n2 = client.v6n2
+v6n2 = client.V6n2()
 ```
 
 ### Fields
@@ -695,7 +707,7 @@ v6n2 = client.v6n2
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.v6n2.load({"id": "v6n2_id"})
+result = client.V6n2().load({"id": "v6n2_id"})
 ```
 
 ### Common Methods
@@ -730,7 +742,7 @@ Return the entity name.
 ## V7nEntity
 
 ```python
-v7n = client.v7n
+v7n = client.V7n()
 ```
 
 ### Fields
@@ -749,7 +761,9 @@ v7n = client.v7n
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.v7n.list({})
+results = client.V7n().list({})
+for v7n in results:
+    print(v7n)
 ```
 
 ### Common Methods
@@ -784,7 +798,7 @@ Return the entity name.
 ## V7n2Entity
 
 ```python
-v7n2 = client.v7n2
+v7n2 = client.V7n2()
 ```
 
 ### Fields
@@ -803,7 +817,7 @@ v7n2 = client.v7n2
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.v7n2.load({"id": "v7n2_id"})
+result = client.V7n2().load({"id": "v7n2_id"})
 ```
 
 ### Common Methods

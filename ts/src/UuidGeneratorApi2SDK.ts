@@ -216,182 +216,91 @@ class UuidGeneratorApi2SDK {
 
 
 
-  _guid?: GuidEntity
-
-  // Idiomatic facade: `client.guid.list()` / `client.guid.load({ id })`.
-  get guid(): GuidEntity {
-    return (this._guid ??= new GuidEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.guid` instead. */
+  // Entity access: `client.Guid().list()` / `client.Guid().load({ id })`.
   Guid(data?: any) {
     const self = this
     return new GuidEntity(self,data)
   }
 
 
-  _v1n?: V1nEntity
-
-  // Idiomatic facade: `client.v1n.list()` / `client.v1n.load({ id })`.
-  get v1n(): V1nEntity {
-    return (this._v1n ??= new V1nEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v1n` instead. */
+  // Entity access: `client.V1n().list()` / `client.V1n().load({ id })`.
   V1n(data?: any) {
     const self = this
     return new V1nEntity(self,data)
   }
 
 
-  _v1n2?: V1n2Entity
-
-  // Idiomatic facade: `client.v1n2.list()` / `client.v1n2.load({ id })`.
-  get v1n2(): V1n2Entity {
-    return (this._v1n2 ??= new V1n2Entity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v1n2` instead. */
+  // Entity access: `client.V1n2().list()` / `client.V1n2().load({ id })`.
   V1n2(data?: any) {
     const self = this
     return new V1n2Entity(self,data)
   }
 
 
-  _v3n?: V3nEntity
-
-  // Idiomatic facade: `client.v3n.list()` / `client.v3n.load({ id })`.
-  get v3n(): V3nEntity {
-    return (this._v3n ??= new V3nEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v3n` instead. */
+  // Entity access: `client.V3n().list()` / `client.V3n().load({ id })`.
   V3n(data?: any) {
     const self = this
     return new V3nEntity(self,data)
   }
 
 
-  _v3n2?: V3n2Entity
-
-  // Idiomatic facade: `client.v3n2.list()` / `client.v3n2.load({ id })`.
-  get v3n2(): V3n2Entity {
-    return (this._v3n2 ??= new V3n2Entity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v3n2` instead. */
+  // Entity access: `client.V3n2().list()` / `client.V3n2().load({ id })`.
   V3n2(data?: any) {
     const self = this
     return new V3n2Entity(self,data)
   }
 
 
-  _v4n?: V4nEntity
-
-  // Idiomatic facade: `client.v4n.list()` / `client.v4n.load({ id })`.
-  get v4n(): V4nEntity {
-    return (this._v4n ??= new V4nEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v4n` instead. */
+  // Entity access: `client.V4n().list()` / `client.V4n().load({ id })`.
   V4n(data?: any) {
     const self = this
     return new V4nEntity(self,data)
   }
 
 
-  _v4n2?: V4n2Entity
-
-  // Idiomatic facade: `client.v4n2.list()` / `client.v4n2.load({ id })`.
-  get v4n2(): V4n2Entity {
-    return (this._v4n2 ??= new V4n2Entity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v4n2` instead. */
+  // Entity access: `client.V4n2().list()` / `client.V4n2().load({ id })`.
   V4n2(data?: any) {
     const self = this
     return new V4n2Entity(self,data)
   }
 
 
-  _v5n?: V5nEntity
-
-  // Idiomatic facade: `client.v5n.list()` / `client.v5n.load({ id })`.
-  get v5n(): V5nEntity {
-    return (this._v5n ??= new V5nEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v5n` instead. */
+  // Entity access: `client.V5n().list()` / `client.V5n().load({ id })`.
   V5n(data?: any) {
     const self = this
     return new V5nEntity(self,data)
   }
 
 
-  _v5n2?: V5n2Entity
-
-  // Idiomatic facade: `client.v5n2.list()` / `client.v5n2.load({ id })`.
-  get v5n2(): V5n2Entity {
-    return (this._v5n2 ??= new V5n2Entity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v5n2` instead. */
+  // Entity access: `client.V5n2().list()` / `client.V5n2().load({ id })`.
   V5n2(data?: any) {
     const self = this
     return new V5n2Entity(self,data)
   }
 
 
-  _v6n?: V6nEntity
-
-  // Idiomatic facade: `client.v6n.list()` / `client.v6n.load({ id })`.
-  get v6n(): V6nEntity {
-    return (this._v6n ??= new V6nEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v6n` instead. */
+  // Entity access: `client.V6n().list()` / `client.V6n().load({ id })`.
   V6n(data?: any) {
     const self = this
     return new V6nEntity(self,data)
   }
 
 
-  _v6n2?: V6n2Entity
-
-  // Idiomatic facade: `client.v6n2.list()` / `client.v6n2.load({ id })`.
-  get v6n2(): V6n2Entity {
-    return (this._v6n2 ??= new V6n2Entity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v6n2` instead. */
+  // Entity access: `client.V6n2().list()` / `client.V6n2().load({ id })`.
   V6n2(data?: any) {
     const self = this
     return new V6n2Entity(self,data)
   }
 
 
-  _v7n?: V7nEntity
-
-  // Idiomatic facade: `client.v7n.list()` / `client.v7n.load({ id })`.
-  get v7n(): V7nEntity {
-    return (this._v7n ??= new V7nEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v7n` instead. */
+  // Entity access: `client.V7n().list()` / `client.V7n().load({ id })`.
   V7n(data?: any) {
     const self = this
     return new V7nEntity(self,data)
   }
 
 
-  _v7n2?: V7n2Entity
-
-  // Idiomatic facade: `client.v7n2.list()` / `client.v7n2.load({ id })`.
-  get v7n2(): V7n2Entity {
-    return (this._v7n2 ??= new V7n2Entity(this, undefined))
-  }
-
-  /** @deprecated Use `client.v7n2` instead. */
+  // Entity access: `client.V7n2().list()` / `client.V7n2().load({ id })`.
   V7n2(data?: any) {
     const self = this
     return new V7n2Entity(self,data)

@@ -29,18 +29,16 @@ require_once 'uuidgeneratorapi2_sdk.php';
 $client = new UuidGeneratorApi2SDK();
 ```
 
-### 2. List guids
+### 2. List guid records
 
 ```php
 try {
-    $result = $client->guid()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Guid records — iterate directly.
+    $guids = $client->Guid()->list();
+    foreach ($guids as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->guid()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Guid record (throws on error).
+    $guid = $client->Guid()->load(["id" => "example_id"]);
+    print_r($guid);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = UuidGeneratorApi2SDK::test();
+$client = UuidGeneratorApi2SDK::test([
+    "entity" => ["guid" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->guid()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$guid = $client->Guid()->load(["id" => "test01"]);
+print_r($guid);
 ```
 
 ### Use a custom fetch function
@@ -410,7 +413,7 @@ API path: `/api/uuid-generator/v7/{count}`
 
 ### Guid
 
-Create an instance: `const guid = client.guid`
+Create an instance: `$guid = $client->Guid();`
 
 #### Operations
 
@@ -430,20 +433,22 @@ Create an instance: `const guid = client.guid`
 
 #### Example: Load
 
-```ts
-const guid = await client.guid.load({ id: 'guid_id' })
+```php
+// load() returns the bare Guid record (throws on error).
+$guid = $client->Guid()->load(["id" => "guid_id"]);
 ```
 
 #### Example: List
 
-```ts
-const guids = await client.guid.list()
+```php
+// list() returns an array of Guid records (throws on error).
+$guids = $client->Guid()->list();
 ```
 
 
 ### V1n
 
-Create an instance: `const v1n = client.v1n`
+Create an instance: `$v1n = $client->V1n();`
 
 #### Operations
 
@@ -462,14 +467,15 @@ Create an instance: `const v1n = client.v1n`
 
 #### Example: List
 
-```ts
-const v1ns = await client.v1n.list()
+```php
+// list() returns an array of V1n records (throws on error).
+$v1ns = $client->V1n()->list();
 ```
 
 
 ### V1n2
 
-Create an instance: `const v1n2 = client.v1n2`
+Create an instance: `$v1n2 = $client->V1n2();`
 
 #### Operations
 
@@ -488,14 +494,15 @@ Create an instance: `const v1n2 = client.v1n2`
 
 #### Example: Load
 
-```ts
-const v1n2 = await client.v1n2.load({ id: 'v1n2_id' })
+```php
+// load() returns the bare V1n2 record (throws on error).
+$v1n2 = $client->V1n2()->load(["id" => "v1n2_id"]);
 ```
 
 
 ### V3n
 
-Create an instance: `const v3n = client.v3n`
+Create an instance: `$v3n = $client->V3n();`
 
 #### Operations
 
@@ -514,14 +521,15 @@ Create an instance: `const v3n = client.v3n`
 
 #### Example: List
 
-```ts
-const v3ns = await client.v3n.list()
+```php
+// list() returns an array of V3n records (throws on error).
+$v3ns = $client->V3n()->list();
 ```
 
 
 ### V3n2
 
-Create an instance: `const v3n2 = client.v3n2`
+Create an instance: `$v3n2 = $client->V3n2();`
 
 #### Operations
 
@@ -540,14 +548,15 @@ Create an instance: `const v3n2 = client.v3n2`
 
 #### Example: Load
 
-```ts
-const v3n2 = await client.v3n2.load({ id: 'v3n2_id' })
+```php
+// load() returns the bare V3n2 record (throws on error).
+$v3n2 = $client->V3n2()->load(["id" => "v3n2_id"]);
 ```
 
 
 ### V4n
 
-Create an instance: `const v4n = client.v4n`
+Create an instance: `$v4n = $client->V4n();`
 
 #### Operations
 
@@ -566,14 +575,15 @@ Create an instance: `const v4n = client.v4n`
 
 #### Example: List
 
-```ts
-const v4ns = await client.v4n.list()
+```php
+// list() returns an array of V4n records (throws on error).
+$v4ns = $client->V4n()->list();
 ```
 
 
 ### V4n2
 
-Create an instance: `const v4n2 = client.v4n2`
+Create an instance: `$v4n2 = $client->V4n2();`
 
 #### Operations
 
@@ -592,14 +602,15 @@ Create an instance: `const v4n2 = client.v4n2`
 
 #### Example: Load
 
-```ts
-const v4n2 = await client.v4n2.load({ id: 'v4n2_id' })
+```php
+// load() returns the bare V4n2 record (throws on error).
+$v4n2 = $client->V4n2()->load(["id" => "v4n2_id"]);
 ```
 
 
 ### V5n
 
-Create an instance: `const v5n = client.v5n`
+Create an instance: `$v5n = $client->V5n();`
 
 #### Operations
 
@@ -618,14 +629,15 @@ Create an instance: `const v5n = client.v5n`
 
 #### Example: List
 
-```ts
-const v5ns = await client.v5n.list()
+```php
+// list() returns an array of V5n records (throws on error).
+$v5ns = $client->V5n()->list();
 ```
 
 
 ### V5n2
 
-Create an instance: `const v5n2 = client.v5n2`
+Create an instance: `$v5n2 = $client->V5n2();`
 
 #### Operations
 
@@ -644,14 +656,15 @@ Create an instance: `const v5n2 = client.v5n2`
 
 #### Example: Load
 
-```ts
-const v5n2 = await client.v5n2.load({ id: 'v5n2_id' })
+```php
+// load() returns the bare V5n2 record (throws on error).
+$v5n2 = $client->V5n2()->load(["id" => "v5n2_id"]);
 ```
 
 
 ### V6n
 
-Create an instance: `const v6n = client.v6n`
+Create an instance: `$v6n = $client->V6n();`
 
 #### Operations
 
@@ -670,14 +683,15 @@ Create an instance: `const v6n = client.v6n`
 
 #### Example: List
 
-```ts
-const v6ns = await client.v6n.list()
+```php
+// list() returns an array of V6n records (throws on error).
+$v6ns = $client->V6n()->list();
 ```
 
 
 ### V6n2
 
-Create an instance: `const v6n2 = client.v6n2`
+Create an instance: `$v6n2 = $client->V6n2();`
 
 #### Operations
 
@@ -696,14 +710,15 @@ Create an instance: `const v6n2 = client.v6n2`
 
 #### Example: Load
 
-```ts
-const v6n2 = await client.v6n2.load({ id: 'v6n2_id' })
+```php
+// load() returns the bare V6n2 record (throws on error).
+$v6n2 = $client->V6n2()->load(["id" => "v6n2_id"]);
 ```
 
 
 ### V7n
 
-Create an instance: `const v7n = client.v7n`
+Create an instance: `$v7n = $client->V7n();`
 
 #### Operations
 
@@ -722,14 +737,15 @@ Create an instance: `const v7n = client.v7n`
 
 #### Example: List
 
-```ts
-const v7ns = await client.v7n.list()
+```php
+// list() returns an array of V7n records (throws on error).
+$v7ns = $client->V7n()->list();
 ```
 
 
 ### V7n2
 
-Create an instance: `const v7n2 = client.v7n2`
+Create an instance: `$v7n2 = $client->V7n2();`
 
 #### Operations
 
@@ -748,8 +764,9 @@ Create an instance: `const v7n2 = client.v7n2`
 
 #### Example: Load
 
-```ts
-const v7n2 = await client.v7n2.load({ id: 'v7n2_id' })
+```php
+// load() returns the bare V7n2 record (throws on error).
+$v7n2 = $client->V7n2()->load(["id" => "v7n2_id"]);
 ```
 
 
@@ -824,7 +841,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$guid = $client->guid();
+$guid = $client->Guid();
 $guid->load(["id" => "example_id"]);
 
 // $guid->dataGet() now returns the loaded guid data

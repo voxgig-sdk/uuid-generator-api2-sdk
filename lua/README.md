@@ -31,26 +31,26 @@ local sdk = require("uuid-generator-api2_sdk")
 local client = sdk.new()
 ```
 
-### 2. List guids
+### 2. List guid records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:guid():list()
+local guids, err = client:Guid():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(guids) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a guid
 
 ```lua
-local result, err = client:guid():load({ id = "example_id" })
+local guid, err = client:Guid():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(guid)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:guid():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Guid():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -209,17 +209,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local guid, err = client:Guid():load({ id = "example_id" })
+    if err then error(err) end
+    -- guid is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -399,7 +404,7 @@ API path: `/api/uuid-generator/v7/{count}`
 
 ### Guid
 
-Create an instance: `const guid = client.guid`
+Create an instance: `local guid = client:Guid(nil)`
 
 #### Operations
 
@@ -419,20 +424,20 @@ Create an instance: `const guid = client.guid`
 
 #### Example: Load
 
-```ts
-const guid = await client.guid.load({ id: 'guid_id' })
+```lua
+local guid, err = client:Guid():load({ id = "guid_id" })
 ```
 
 #### Example: List
 
-```ts
-const guids = await client.guid.list()
+```lua
+local guids, err = client:Guid():list()
 ```
 
 
 ### V1n
 
-Create an instance: `const v1n = client.v1n`
+Create an instance: `local v1n = client:V1n(nil)`
 
 #### Operations
 
@@ -451,14 +456,14 @@ Create an instance: `const v1n = client.v1n`
 
 #### Example: List
 
-```ts
-const v1ns = await client.v1n.list()
+```lua
+local v1ns, err = client:V1n():list()
 ```
 
 
 ### V1n2
 
-Create an instance: `const v1n2 = client.v1n2`
+Create an instance: `local v1n2 = client:V1n2(nil)`
 
 #### Operations
 
@@ -477,14 +482,14 @@ Create an instance: `const v1n2 = client.v1n2`
 
 #### Example: Load
 
-```ts
-const v1n2 = await client.v1n2.load({ id: 'v1n2_id' })
+```lua
+local v1n2, err = client:V1n2():load({ id = "v1n2_id" })
 ```
 
 
 ### V3n
 
-Create an instance: `const v3n = client.v3n`
+Create an instance: `local v3n = client:V3n(nil)`
 
 #### Operations
 
@@ -503,14 +508,14 @@ Create an instance: `const v3n = client.v3n`
 
 #### Example: List
 
-```ts
-const v3ns = await client.v3n.list()
+```lua
+local v3ns, err = client:V3n():list()
 ```
 
 
 ### V3n2
 
-Create an instance: `const v3n2 = client.v3n2`
+Create an instance: `local v3n2 = client:V3n2(nil)`
 
 #### Operations
 
@@ -529,14 +534,14 @@ Create an instance: `const v3n2 = client.v3n2`
 
 #### Example: Load
 
-```ts
-const v3n2 = await client.v3n2.load({ id: 'v3n2_id' })
+```lua
+local v3n2, err = client:V3n2():load({ id = "v3n2_id" })
 ```
 
 
 ### V4n
 
-Create an instance: `const v4n = client.v4n`
+Create an instance: `local v4n = client:V4n(nil)`
 
 #### Operations
 
@@ -555,14 +560,14 @@ Create an instance: `const v4n = client.v4n`
 
 #### Example: List
 
-```ts
-const v4ns = await client.v4n.list()
+```lua
+local v4ns, err = client:V4n():list()
 ```
 
 
 ### V4n2
 
-Create an instance: `const v4n2 = client.v4n2`
+Create an instance: `local v4n2 = client:V4n2(nil)`
 
 #### Operations
 
@@ -581,14 +586,14 @@ Create an instance: `const v4n2 = client.v4n2`
 
 #### Example: Load
 
-```ts
-const v4n2 = await client.v4n2.load({ id: 'v4n2_id' })
+```lua
+local v4n2, err = client:V4n2():load({ id = "v4n2_id" })
 ```
 
 
 ### V5n
 
-Create an instance: `const v5n = client.v5n`
+Create an instance: `local v5n = client:V5n(nil)`
 
 #### Operations
 
@@ -607,14 +612,14 @@ Create an instance: `const v5n = client.v5n`
 
 #### Example: List
 
-```ts
-const v5ns = await client.v5n.list()
+```lua
+local v5ns, err = client:V5n():list()
 ```
 
 
 ### V5n2
 
-Create an instance: `const v5n2 = client.v5n2`
+Create an instance: `local v5n2 = client:V5n2(nil)`
 
 #### Operations
 
@@ -633,14 +638,14 @@ Create an instance: `const v5n2 = client.v5n2`
 
 #### Example: Load
 
-```ts
-const v5n2 = await client.v5n2.load({ id: 'v5n2_id' })
+```lua
+local v5n2, err = client:V5n2():load({ id = "v5n2_id" })
 ```
 
 
 ### V6n
 
-Create an instance: `const v6n = client.v6n`
+Create an instance: `local v6n = client:V6n(nil)`
 
 #### Operations
 
@@ -659,14 +664,14 @@ Create an instance: `const v6n = client.v6n`
 
 #### Example: List
 
-```ts
-const v6ns = await client.v6n.list()
+```lua
+local v6ns, err = client:V6n():list()
 ```
 
 
 ### V6n2
 
-Create an instance: `const v6n2 = client.v6n2`
+Create an instance: `local v6n2 = client:V6n2(nil)`
 
 #### Operations
 
@@ -685,14 +690,14 @@ Create an instance: `const v6n2 = client.v6n2`
 
 #### Example: Load
 
-```ts
-const v6n2 = await client.v6n2.load({ id: 'v6n2_id' })
+```lua
+local v6n2, err = client:V6n2():load({ id = "v6n2_id" })
 ```
 
 
 ### V7n
 
-Create an instance: `const v7n = client.v7n`
+Create an instance: `local v7n = client:V7n(nil)`
 
 #### Operations
 
@@ -711,14 +716,14 @@ Create an instance: `const v7n = client.v7n`
 
 #### Example: List
 
-```ts
-const v7ns = await client.v7n.list()
+```lua
+local v7ns, err = client:V7n():list()
 ```
 
 
 ### V7n2
 
-Create an instance: `const v7n2 = client.v7n2`
+Create an instance: `local v7n2 = client:V7n2(nil)`
 
 #### Operations
 
@@ -737,8 +742,8 @@ Create an instance: `const v7n2 = client.v7n2`
 
 #### Example: Load
 
-```ts
-const v7n2 = await client.v7n2.load({ id: 'v7n2_id' })
+```lua
+local v7n2, err = client:V7n2():load({ id = "v7n2_id" })
 ```
 
 
@@ -813,7 +818,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local guid = client:guid()
+local guid = client:Guid()
 guid:load({ id = "example_id" })
 
 -- guid:data_get() now returns the loaded guid data

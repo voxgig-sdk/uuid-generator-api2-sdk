@@ -133,7 +133,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GuidEntity
 
 ```php
-$guid = $client->guid();
+$guid = $client->Guid();
 ```
 
 ### Fields
@@ -152,7 +152,7 @@ $guid = $client->guid();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->guid()->list([]);
+$results = $client->Guid()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -160,7 +160,7 @@ $results = $client->guid()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->guid()->load(["id" => "guid_id"]);
+$result = $client->Guid()->load(["id" => "guid_id"]);
 ```
 
 ### Common Methods
@@ -196,7 +196,7 @@ Return the entity name.
 ## V1nEntity
 
 ```php
-$v1n = $client->v1n();
+$v1n = $client->V1n();
 ```
 
 ### Fields
@@ -215,7 +215,7 @@ $v1n = $client->v1n();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->v1n()->list([]);
+$results = $client->V1n()->list([]);
 ```
 
 ### Common Methods
@@ -251,7 +251,7 @@ Return the entity name.
 ## V1n2Entity
 
 ```php
-$v1n2 = $client->v1n2();
+$v1n2 = $client->V1n2();
 ```
 
 ### Fields
@@ -270,7 +270,7 @@ $v1n2 = $client->v1n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->v1n2()->load(["id" => "v1n2_id"]);
+$result = $client->V1n2()->load(["id" => "v1n2_id"]);
 ```
 
 ### Common Methods
@@ -306,7 +306,7 @@ Return the entity name.
 ## V3nEntity
 
 ```php
-$v3n = $client->v3n();
+$v3n = $client->V3n();
 ```
 
 ### Fields
@@ -325,7 +325,7 @@ $v3n = $client->v3n();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->v3n()->list([]);
+$results = $client->V3n()->list([]);
 ```
 
 ### Common Methods
@@ -361,7 +361,7 @@ Return the entity name.
 ## V3n2Entity
 
 ```php
-$v3n2 = $client->v3n2();
+$v3n2 = $client->V3n2();
 ```
 
 ### Fields
@@ -380,7 +380,7 @@ $v3n2 = $client->v3n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->v3n2()->load(["id" => "v3n2_id"]);
+$result = $client->V3n2()->load(["id" => "v3n2_id"]);
 ```
 
 ### Common Methods
@@ -416,7 +416,7 @@ Return the entity name.
 ## V4nEntity
 
 ```php
-$v4n = $client->v4n();
+$v4n = $client->V4n();
 ```
 
 ### Fields
@@ -435,7 +435,7 @@ $v4n = $client->v4n();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->v4n()->list([]);
+$results = $client->V4n()->list([]);
 ```
 
 ### Common Methods
@@ -471,7 +471,7 @@ Return the entity name.
 ## V4n2Entity
 
 ```php
-$v4n2 = $client->v4n2();
+$v4n2 = $client->V4n2();
 ```
 
 ### Fields
@@ -490,7 +490,7 @@ $v4n2 = $client->v4n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->v4n2()->load(["id" => "v4n2_id"]);
+$result = $client->V4n2()->load(["id" => "v4n2_id"]);
 ```
 
 ### Common Methods
@@ -526,7 +526,7 @@ Return the entity name.
 ## V5nEntity
 
 ```php
-$v5n = $client->v5n();
+$v5n = $client->V5n();
 ```
 
 ### Fields
@@ -545,7 +545,7 @@ $v5n = $client->v5n();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->v5n()->list([]);
+$results = $client->V5n()->list([]);
 ```
 
 ### Common Methods
@@ -581,7 +581,7 @@ Return the entity name.
 ## V5n2Entity
 
 ```php
-$v5n2 = $client->v5n2();
+$v5n2 = $client->V5n2();
 ```
 
 ### Fields
@@ -600,7 +600,7 @@ $v5n2 = $client->v5n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->v5n2()->load(["id" => "v5n2_id"]);
+$result = $client->V5n2()->load(["id" => "v5n2_id"]);
 ```
 
 ### Common Methods
@@ -636,7 +636,7 @@ Return the entity name.
 ## V6nEntity
 
 ```php
-$v6n = $client->v6n();
+$v6n = $client->V6n();
 ```
 
 ### Fields
@@ -655,7 +655,7 @@ $v6n = $client->v6n();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->v6n()->list([]);
+$results = $client->V6n()->list([]);
 ```
 
 ### Common Methods
@@ -691,7 +691,7 @@ Return the entity name.
 ## V6n2Entity
 
 ```php
-$v6n2 = $client->v6n2();
+$v6n2 = $client->V6n2();
 ```
 
 ### Fields
@@ -710,7 +710,7 @@ $v6n2 = $client->v6n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->v6n2()->load(["id" => "v6n2_id"]);
+$result = $client->V6n2()->load(["id" => "v6n2_id"]);
 ```
 
 ### Common Methods
@@ -746,7 +746,7 @@ Return the entity name.
 ## V7nEntity
 
 ```php
-$v7n = $client->v7n();
+$v7n = $client->V7n();
 ```
 
 ### Fields
@@ -765,7 +765,7 @@ $v7n = $client->v7n();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->v7n()->list([]);
+$results = $client->V7n()->list([]);
 ```
 
 ### Common Methods
@@ -801,7 +801,7 @@ Return the entity name.
 ## V7n2Entity
 
 ```php
-$v7n2 = $client->v7n2();
+$v7n2 = $client->V7n2();
 ```
 
 ### Fields
@@ -820,7 +820,7 @@ $v7n2 = $client->v7n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->v7n2()->load(["id" => "v7n2_id"]);
+$result = $client->V7n2()->load(["id" => "v7n2_id"]);
 ```
 
 ### Common Methods

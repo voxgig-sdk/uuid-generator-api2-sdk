@@ -253,7 +253,7 @@ Alias for `UuidGeneratorApi2SDK.test()`.
 ## GuidEntity
 
 ```ts
-const guid = client.guid
+const guid = client.Guid()
 ```
 
 ### Fields
@@ -272,7 +272,7 @@ const guid = client.guid
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.guid.list()
+const results = await client.Guid().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -280,7 +280,7 @@ const results = await client.guid.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.guid.load({ id: 'guid_id' })
+const result = await client.Guid().load({ id: 'guid_id' })
 ```
 
 ### Common Methods
@@ -314,7 +314,7 @@ Return a copy of the entity options.
 ## V1nEntity
 
 ```ts
-const v1n = client.v1n
+const v1n = client.V1n()
 ```
 
 ### Fields
@@ -333,7 +333,7 @@ const v1n = client.v1n
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.v1n.list()
+const results = await client.V1n().list()
 ```
 
 ### Common Methods
@@ -367,7 +367,7 @@ Return a copy of the entity options.
 ## V1n2Entity
 
 ```ts
-const v1n2 = client.v1n2
+const v1n2 = client.V1n2()
 ```
 
 ### Fields
@@ -386,7 +386,7 @@ const v1n2 = client.v1n2
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.v1n2.load({ id: 'v1n2_id' })
+const result = await client.V1n2().load({ id: 'v1n2_id' })
 ```
 
 ### Common Methods
@@ -420,7 +420,7 @@ Return a copy of the entity options.
 ## V3nEntity
 
 ```ts
-const v3n = client.v3n
+const v3n = client.V3n()
 ```
 
 ### Fields
@@ -439,7 +439,7 @@ const v3n = client.v3n
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.v3n.list()
+const results = await client.V3n().list()
 ```
 
 ### Common Methods
@@ -473,7 +473,7 @@ Return a copy of the entity options.
 ## V3n2Entity
 
 ```ts
-const v3n2 = client.v3n2
+const v3n2 = client.V3n2()
 ```
 
 ### Fields
@@ -492,7 +492,7 @@ const v3n2 = client.v3n2
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.v3n2.load({ id: 'v3n2_id' })
+const result = await client.V3n2().load({ id: 'v3n2_id' })
 ```
 
 ### Common Methods
@@ -526,7 +526,7 @@ Return a copy of the entity options.
 ## V4nEntity
 
 ```ts
-const v4n = client.v4n
+const v4n = client.V4n()
 ```
 
 ### Fields
@@ -545,7 +545,7 @@ const v4n = client.v4n
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.v4n.list()
+const results = await client.V4n().list()
 ```
 
 ### Common Methods
@@ -579,7 +579,7 @@ Return a copy of the entity options.
 ## V4n2Entity
 
 ```ts
-const v4n2 = client.v4n2
+const v4n2 = client.V4n2()
 ```
 
 ### Fields
@@ -598,7 +598,7 @@ const v4n2 = client.v4n2
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.v4n2.load({ id: 'v4n2_id' })
+const result = await client.V4n2().load({ id: 'v4n2_id' })
 ```
 
 ### Common Methods
@@ -632,7 +632,7 @@ Return a copy of the entity options.
 ## V5nEntity
 
 ```ts
-const v5n = client.v5n
+const v5n = client.V5n()
 ```
 
 ### Fields
@@ -651,7 +651,7 @@ const v5n = client.v5n
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.v5n.list()
+const results = await client.V5n().list()
 ```
 
 ### Common Methods
@@ -685,7 +685,7 @@ Return a copy of the entity options.
 ## V5n2Entity
 
 ```ts
-const v5n2 = client.v5n2
+const v5n2 = client.V5n2()
 ```
 
 ### Fields
@@ -704,7 +704,7 @@ const v5n2 = client.v5n2
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.v5n2.load({ id: 'v5n2_id' })
+const result = await client.V5n2().load({ id: 'v5n2_id' })
 ```
 
 ### Common Methods
@@ -738,7 +738,7 @@ Return a copy of the entity options.
 ## V6nEntity
 
 ```ts
-const v6n = client.v6n
+const v6n = client.V6n()
 ```
 
 ### Fields
@@ -757,7 +757,7 @@ const v6n = client.v6n
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.v6n.list()
+const results = await client.V6n().list()
 ```
 
 ### Common Methods
@@ -791,7 +791,7 @@ Return a copy of the entity options.
 ## V6n2Entity
 
 ```ts
-const v6n2 = client.v6n2
+const v6n2 = client.V6n2()
 ```
 
 ### Fields
@@ -810,7 +810,7 @@ const v6n2 = client.v6n2
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.v6n2.load({ id: 'v6n2_id' })
+const result = await client.V6n2().load({ id: 'v6n2_id' })
 ```
 
 ### Common Methods
@@ -844,7 +844,7 @@ Return a copy of the entity options.
 ## V7nEntity
 
 ```ts
-const v7n = client.v7n
+const v7n = client.V7n()
 ```
 
 ### Fields
@@ -863,7 +863,7 @@ const v7n = client.v7n
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.v7n.list()
+const results = await client.V7n().list()
 ```
 
 ### Common Methods
@@ -897,7 +897,7 @@ Return a copy of the entity options.
 ## V7n2Entity
 
 ```ts
-const v7n2 = client.v7n2
+const v7n2 = client.V7n2()
 ```
 
 ### Fields
@@ -916,7 +916,7 @@ const v7n2 = client.v7n2
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.v7n2.load({ id: 'v7n2_id' })
+const result = await client.V7n2().load({ id: 'v7n2_id' })
 ```
 
 ### Common Methods

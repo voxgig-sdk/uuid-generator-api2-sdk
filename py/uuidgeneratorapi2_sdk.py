@@ -220,217 +220,87 @@ class UuidGeneratorApi2SDK:
         }
 
 
-    @property
-    def guid(self):
-        """Idiomatic facade: client.guid.list() / client.guid.load({"id": ...})."""
-        from entity.guid_entity import GuidEntity
-        cached = getattr(self, "_guid", None)
-        if cached is None:
-            cached = GuidEntity(self, None)
-            self._guid = cached
-        return cached
-
-    def Guid(self, data=None):
-        # Deprecated: use client.guid instead.
+    def Guid(self, data=None) -> "GuidEntity":
+        """Entity factory: client.Guid().list({}) / client.Guid().load({"id": ...})."""
         from entity.guid_entity import GuidEntity
         return GuidEntity(self, data)
 
 
-    @property
-    def v1n(self):
-        """Idiomatic facade: client.v1n.list() / client.v1n.load({"id": ...})."""
-        from entity.v1n_entity import V1nEntity
-        cached = getattr(self, "_v1n", None)
-        if cached is None:
-            cached = V1nEntity(self, None)
-            self._v1n = cached
-        return cached
-
-    def V1n(self, data=None):
-        # Deprecated: use client.v1n instead.
+    def V1n(self, data=None) -> "V1nEntity":
+        """Entity factory: client.V1n().list({}) / client.V1n().load({"id": ...})."""
         from entity.v1n_entity import V1nEntity
         return V1nEntity(self, data)
 
 
-    @property
-    def v1n2(self):
-        """Idiomatic facade: client.v1n2.list() / client.v1n2.load({"id": ...})."""
-        from entity.v1n2_entity import V1n2Entity
-        cached = getattr(self, "_v1n2", None)
-        if cached is None:
-            cached = V1n2Entity(self, None)
-            self._v1n2 = cached
-        return cached
-
-    def V1n2(self, data=None):
-        # Deprecated: use client.v1n2 instead.
+    def V1n2(self, data=None) -> "V1n2Entity":
+        """Entity factory: client.V1n2().list({}) / client.V1n2().load({"id": ...})."""
         from entity.v1n2_entity import V1n2Entity
         return V1n2Entity(self, data)
 
 
-    @property
-    def v3n(self):
-        """Idiomatic facade: client.v3n.list() / client.v3n.load({"id": ...})."""
-        from entity.v3n_entity import V3nEntity
-        cached = getattr(self, "_v3n", None)
-        if cached is None:
-            cached = V3nEntity(self, None)
-            self._v3n = cached
-        return cached
-
-    def V3n(self, data=None):
-        # Deprecated: use client.v3n instead.
+    def V3n(self, data=None) -> "V3nEntity":
+        """Entity factory: client.V3n().list({}) / client.V3n().load({"id": ...})."""
         from entity.v3n_entity import V3nEntity
         return V3nEntity(self, data)
 
 
-    @property
-    def v3n2(self):
-        """Idiomatic facade: client.v3n2.list() / client.v3n2.load({"id": ...})."""
-        from entity.v3n2_entity import V3n2Entity
-        cached = getattr(self, "_v3n2", None)
-        if cached is None:
-            cached = V3n2Entity(self, None)
-            self._v3n2 = cached
-        return cached
-
-    def V3n2(self, data=None):
-        # Deprecated: use client.v3n2 instead.
+    def V3n2(self, data=None) -> "V3n2Entity":
+        """Entity factory: client.V3n2().list({}) / client.V3n2().load({"id": ...})."""
         from entity.v3n2_entity import V3n2Entity
         return V3n2Entity(self, data)
 
 
-    @property
-    def v4n(self):
-        """Idiomatic facade: client.v4n.list() / client.v4n.load({"id": ...})."""
-        from entity.v4n_entity import V4nEntity
-        cached = getattr(self, "_v4n", None)
-        if cached is None:
-            cached = V4nEntity(self, None)
-            self._v4n = cached
-        return cached
-
-    def V4n(self, data=None):
-        # Deprecated: use client.v4n instead.
+    def V4n(self, data=None) -> "V4nEntity":
+        """Entity factory: client.V4n().list({}) / client.V4n().load({"id": ...})."""
         from entity.v4n_entity import V4nEntity
         return V4nEntity(self, data)
 
 
-    @property
-    def v4n2(self):
-        """Idiomatic facade: client.v4n2.list() / client.v4n2.load({"id": ...})."""
-        from entity.v4n2_entity import V4n2Entity
-        cached = getattr(self, "_v4n2", None)
-        if cached is None:
-            cached = V4n2Entity(self, None)
-            self._v4n2 = cached
-        return cached
-
-    def V4n2(self, data=None):
-        # Deprecated: use client.v4n2 instead.
+    def V4n2(self, data=None) -> "V4n2Entity":
+        """Entity factory: client.V4n2().list({}) / client.V4n2().load({"id": ...})."""
         from entity.v4n2_entity import V4n2Entity
         return V4n2Entity(self, data)
 
 
-    @property
-    def v5n(self):
-        """Idiomatic facade: client.v5n.list() / client.v5n.load({"id": ...})."""
-        from entity.v5n_entity import V5nEntity
-        cached = getattr(self, "_v5n", None)
-        if cached is None:
-            cached = V5nEntity(self, None)
-            self._v5n = cached
-        return cached
-
-    def V5n(self, data=None):
-        # Deprecated: use client.v5n instead.
+    def V5n(self, data=None) -> "V5nEntity":
+        """Entity factory: client.V5n().list({}) / client.V5n().load({"id": ...})."""
         from entity.v5n_entity import V5nEntity
         return V5nEntity(self, data)
 
 
-    @property
-    def v5n2(self):
-        """Idiomatic facade: client.v5n2.list() / client.v5n2.load({"id": ...})."""
-        from entity.v5n2_entity import V5n2Entity
-        cached = getattr(self, "_v5n2", None)
-        if cached is None:
-            cached = V5n2Entity(self, None)
-            self._v5n2 = cached
-        return cached
-
-    def V5n2(self, data=None):
-        # Deprecated: use client.v5n2 instead.
+    def V5n2(self, data=None) -> "V5n2Entity":
+        """Entity factory: client.V5n2().list({}) / client.V5n2().load({"id": ...})."""
         from entity.v5n2_entity import V5n2Entity
         return V5n2Entity(self, data)
 
 
-    @property
-    def v6n(self):
-        """Idiomatic facade: client.v6n.list() / client.v6n.load({"id": ...})."""
-        from entity.v6n_entity import V6nEntity
-        cached = getattr(self, "_v6n", None)
-        if cached is None:
-            cached = V6nEntity(self, None)
-            self._v6n = cached
-        return cached
-
-    def V6n(self, data=None):
-        # Deprecated: use client.v6n instead.
+    def V6n(self, data=None) -> "V6nEntity":
+        """Entity factory: client.V6n().list({}) / client.V6n().load({"id": ...})."""
         from entity.v6n_entity import V6nEntity
         return V6nEntity(self, data)
 
 
-    @property
-    def v6n2(self):
-        """Idiomatic facade: client.v6n2.list() / client.v6n2.load({"id": ...})."""
-        from entity.v6n2_entity import V6n2Entity
-        cached = getattr(self, "_v6n2", None)
-        if cached is None:
-            cached = V6n2Entity(self, None)
-            self._v6n2 = cached
-        return cached
-
-    def V6n2(self, data=None):
-        # Deprecated: use client.v6n2 instead.
+    def V6n2(self, data=None) -> "V6n2Entity":
+        """Entity factory: client.V6n2().list({}) / client.V6n2().load({"id": ...})."""
         from entity.v6n2_entity import V6n2Entity
         return V6n2Entity(self, data)
 
 
-    @property
-    def v7n(self):
-        """Idiomatic facade: client.v7n.list() / client.v7n.load({"id": ...})."""
-        from entity.v7n_entity import V7nEntity
-        cached = getattr(self, "_v7n", None)
-        if cached is None:
-            cached = V7nEntity(self, None)
-            self._v7n = cached
-        return cached
-
-    def V7n(self, data=None):
-        # Deprecated: use client.v7n instead.
+    def V7n(self, data=None) -> "V7nEntity":
+        """Entity factory: client.V7n().list({}) / client.V7n().load({"id": ...})."""
         from entity.v7n_entity import V7nEntity
         return V7nEntity(self, data)
 
 
-    @property
-    def v7n2(self):
-        """Idiomatic facade: client.v7n2.list() / client.v7n2.load({"id": ...})."""
-        from entity.v7n2_entity import V7n2Entity
-        cached = getattr(self, "_v7n2", None)
-        if cached is None:
-            cached = V7n2Entity(self, None)
-            self._v7n2 = cached
-        return cached
-
-    def V7n2(self, data=None):
-        # Deprecated: use client.v7n2 instead.
+    def V7n2(self, data=None) -> "V7n2Entity":
+        """Entity factory: client.V7n2().list({}) / client.V7n2().load({"id": ...})."""
         from entity.v7n2_entity import V7n2Entity
         return V7n2Entity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "UuidGeneratorApi2SDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -450,3 +320,21 @@ class UuidGeneratorApi2SDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.guid_entity import GuidEntity
+    from entity.v1n_entity import V1nEntity
+    from entity.v1n2_entity import V1n2Entity
+    from entity.v3n_entity import V3nEntity
+    from entity.v3n2_entity import V3n2Entity
+    from entity.v4n_entity import V4nEntity
+    from entity.v4n2_entity import V4n2Entity
+    from entity.v5n_entity import V5nEntity
+    from entity.v5n2_entity import V5n2Entity
+    from entity.v6n_entity import V6nEntity
+    from entity.v6n2_entity import V6n2Entity
+    from entity.v7n_entity import V7nEntity
+    from entity.v7n2_entity import V7n2Entity

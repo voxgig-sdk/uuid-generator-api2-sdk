@@ -208,169 +208,91 @@ class UuidGeneratorApi2SDK
   end
 
 
-  # Idiomatic facade: client.guid.list / client.guid.load({ "id" => ... })
-  def guid
-    require_relative 'entity/guid_entity'
-    @guid ||= GuidEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.guid instead.
+  # Canonical facade: client.Guid.list / client.Guid.load({ "id" => ... })
   def Guid(data = nil)
     require_relative 'entity/guid_entity'
     GuidEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v1n.list / client.v1n.load({ "id" => ... })
-  def v1n
-    require_relative 'entity/v1n_entity'
-    @v1n ||= V1nEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.v1n instead.
+  # Canonical facade: client.V1n.list / client.V1n.load({ "id" => ... })
   def V1n(data = nil)
     require_relative 'entity/v1n_entity'
     V1nEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v1n2.list / client.v1n2.load({ "id" => ... })
-  def v1n2
-    require_relative 'entity/v1n2_entity'
-    @v1n2 ||= V1n2Entity.new(self, nil)
-  end
-
-  # Deprecated: use client.v1n2 instead.
+  # Canonical facade: client.V1n2.list / client.V1n2.load({ "id" => ... })
   def V1n2(data = nil)
     require_relative 'entity/v1n2_entity'
     V1n2Entity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v3n.list / client.v3n.load({ "id" => ... })
-  def v3n
-    require_relative 'entity/v3n_entity'
-    @v3n ||= V3nEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.v3n instead.
+  # Canonical facade: client.V3n.list / client.V3n.load({ "id" => ... })
   def V3n(data = nil)
     require_relative 'entity/v3n_entity'
     V3nEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v3n2.list / client.v3n2.load({ "id" => ... })
-  def v3n2
-    require_relative 'entity/v3n2_entity'
-    @v3n2 ||= V3n2Entity.new(self, nil)
-  end
-
-  # Deprecated: use client.v3n2 instead.
+  # Canonical facade: client.V3n2.list / client.V3n2.load({ "id" => ... })
   def V3n2(data = nil)
     require_relative 'entity/v3n2_entity'
     V3n2Entity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v4n.list / client.v4n.load({ "id" => ... })
-  def v4n
-    require_relative 'entity/v4n_entity'
-    @v4n ||= V4nEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.v4n instead.
+  # Canonical facade: client.V4n.list / client.V4n.load({ "id" => ... })
   def V4n(data = nil)
     require_relative 'entity/v4n_entity'
     V4nEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v4n2.list / client.v4n2.load({ "id" => ... })
-  def v4n2
-    require_relative 'entity/v4n2_entity'
-    @v4n2 ||= V4n2Entity.new(self, nil)
-  end
-
-  # Deprecated: use client.v4n2 instead.
+  # Canonical facade: client.V4n2.list / client.V4n2.load({ "id" => ... })
   def V4n2(data = nil)
     require_relative 'entity/v4n2_entity'
     V4n2Entity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v5n.list / client.v5n.load({ "id" => ... })
-  def v5n
-    require_relative 'entity/v5n_entity'
-    @v5n ||= V5nEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.v5n instead.
+  # Canonical facade: client.V5n.list / client.V5n.load({ "id" => ... })
   def V5n(data = nil)
     require_relative 'entity/v5n_entity'
     V5nEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v5n2.list / client.v5n2.load({ "id" => ... })
-  def v5n2
-    require_relative 'entity/v5n2_entity'
-    @v5n2 ||= V5n2Entity.new(self, nil)
-  end
-
-  # Deprecated: use client.v5n2 instead.
+  # Canonical facade: client.V5n2.list / client.V5n2.load({ "id" => ... })
   def V5n2(data = nil)
     require_relative 'entity/v5n2_entity'
     V5n2Entity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v6n.list / client.v6n.load({ "id" => ... })
-  def v6n
-    require_relative 'entity/v6n_entity'
-    @v6n ||= V6nEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.v6n instead.
+  # Canonical facade: client.V6n.list / client.V6n.load({ "id" => ... })
   def V6n(data = nil)
     require_relative 'entity/v6n_entity'
     V6nEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v6n2.list / client.v6n2.load({ "id" => ... })
-  def v6n2
-    require_relative 'entity/v6n2_entity'
-    @v6n2 ||= V6n2Entity.new(self, nil)
-  end
-
-  # Deprecated: use client.v6n2 instead.
+  # Canonical facade: client.V6n2.list / client.V6n2.load({ "id" => ... })
   def V6n2(data = nil)
     require_relative 'entity/v6n2_entity'
     V6n2Entity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v7n.list / client.v7n.load({ "id" => ... })
-  def v7n
-    require_relative 'entity/v7n_entity'
-    @v7n ||= V7nEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.v7n instead.
+  # Canonical facade: client.V7n.list / client.V7n.load({ "id" => ... })
   def V7n(data = nil)
     require_relative 'entity/v7n_entity'
     V7nEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.v7n2.list / client.v7n2.load({ "id" => ... })
-  def v7n2
-    require_relative 'entity/v7n2_entity'
-    @v7n2 ||= V7n2Entity.new(self, nil)
-  end
-
-  # Deprecated: use client.v7n2 instead.
+  # Canonical facade: client.V7n2.list / client.V7n2.load({ "id" => ... })
   def V7n2(data = nil)
     require_relative 'entity/v7n2_entity'
     V7n2Entity.new(self, data)

@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/uuid-generator-api2-sdk/go=../uuid-ge
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/uuid-generator-api2-sdk/go"
-    "github.com/voxgig-sdk/uuid-generator-api2-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List guids
-
-```go
-    result, err := client.Guid(nil).List(nil, nil)
+    // List guid records — the value is the array of records itself.
+    guids, err := client.Guid(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range guids.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load a guid
-
-```go
-    result, err = client.Guid(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single guid — the value is the loaded record.
+    guid, err := client.Guid(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(guid)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Guid(nil).Load(
+guid, err := client.Guid(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(guid) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -239,17 +228,24 @@ All entities implement the `UuidGeneratorApi2Entity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    guid, err := client.Guid(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // guid is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -450,13 +446,21 @@ Create an instance: `guid := client.Guid(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Guid(nil).Load(map[string]any{"id": "guid_id"}, nil)
+guid, err := client.Guid(nil).Load(map[string]any{"id": "guid_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(guid) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Guid(nil).List(nil, nil)
+guids, err := client.Guid(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(guids) // the array of records
 ```
 
 
@@ -482,7 +486,11 @@ Create an instance: `v1n := client.V1n(nil)`
 #### Example: List
 
 ```go
-results, err := client.V1n(nil).List(nil, nil)
+v1ns, err := client.V1n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v1ns) // the array of records
 ```
 
 
@@ -508,7 +516,11 @@ Create an instance: `v1n2 := client.V1n2(nil)`
 #### Example: Load
 
 ```go
-result, err := client.V1n2(nil).Load(map[string]any{"id": "v1n2_id"}, nil)
+v1n2, err := client.V1n2(nil).Load(map[string]any{"id": "v1n2_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v1n2) // the loaded record
 ```
 
 
@@ -534,7 +546,11 @@ Create an instance: `v3n := client.V3n(nil)`
 #### Example: List
 
 ```go
-results, err := client.V3n(nil).List(nil, nil)
+v3ns, err := client.V3n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v3ns) // the array of records
 ```
 
 
@@ -560,7 +576,11 @@ Create an instance: `v3n2 := client.V3n2(nil)`
 #### Example: Load
 
 ```go
-result, err := client.V3n2(nil).Load(map[string]any{"id": "v3n2_id"}, nil)
+v3n2, err := client.V3n2(nil).Load(map[string]any{"id": "v3n2_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v3n2) // the loaded record
 ```
 
 
@@ -586,7 +606,11 @@ Create an instance: `v4n := client.V4n(nil)`
 #### Example: List
 
 ```go
-results, err := client.V4n(nil).List(nil, nil)
+v4ns, err := client.V4n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v4ns) // the array of records
 ```
 
 
@@ -612,7 +636,11 @@ Create an instance: `v4n2 := client.V4n2(nil)`
 #### Example: Load
 
 ```go
-result, err := client.V4n2(nil).Load(map[string]any{"id": "v4n2_id"}, nil)
+v4n2, err := client.V4n2(nil).Load(map[string]any{"id": "v4n2_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v4n2) // the loaded record
 ```
 
 
@@ -638,7 +666,11 @@ Create an instance: `v5n := client.V5n(nil)`
 #### Example: List
 
 ```go
-results, err := client.V5n(nil).List(nil, nil)
+v5ns, err := client.V5n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v5ns) // the array of records
 ```
 
 
@@ -664,7 +696,11 @@ Create an instance: `v5n2 := client.V5n2(nil)`
 #### Example: Load
 
 ```go
-result, err := client.V5n2(nil).Load(map[string]any{"id": "v5n2_id"}, nil)
+v5n2, err := client.V5n2(nil).Load(map[string]any{"id": "v5n2_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v5n2) // the loaded record
 ```
 
 
@@ -690,7 +726,11 @@ Create an instance: `v6n := client.V6n(nil)`
 #### Example: List
 
 ```go
-results, err := client.V6n(nil).List(nil, nil)
+v6ns, err := client.V6n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v6ns) // the array of records
 ```
 
 
@@ -716,7 +756,11 @@ Create an instance: `v6n2 := client.V6n2(nil)`
 #### Example: Load
 
 ```go
-result, err := client.V6n2(nil).Load(map[string]any{"id": "v6n2_id"}, nil)
+v6n2, err := client.V6n2(nil).Load(map[string]any{"id": "v6n2_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v6n2) // the loaded record
 ```
 
 
@@ -742,7 +786,11 @@ Create an instance: `v7n := client.V7n(nil)`
 #### Example: List
 
 ```go
-results, err := client.V7n(nil).List(nil, nil)
+v7ns, err := client.V7n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v7ns) // the array of records
 ```
 
 
@@ -768,7 +816,11 @@ Create an instance: `v7n2 := client.V7n2(nil)`
 #### Example: Load
 
 ```go
-result, err := client.V7n2(nil).Load(map[string]any{"id": "v7n2_id"}, nil)
+v7n2, err := client.V7n2(nil).Load(map[string]any{"id": "v7n2_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v7n2) // the loaded record
 ```
 
 

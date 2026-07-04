@@ -131,7 +131,7 @@ same parameters as `direct()`.
 ## GuidEntity
 
 ```lua
-local guid = client:guid(nil)
+local guid = client:Guid(nil)
 ```
 
 ### Fields
@@ -150,7 +150,7 @@ local guid = client:guid(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:guid():list()
+local results, err = client:Guid():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -158,7 +158,7 @@ local results, err = client:guid():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:guid():load({ id = "guid_id" })
+local result, err = client:Guid():load({ id = "guid_id" })
 ```
 
 ### Common Methods
@@ -194,7 +194,7 @@ Return the entity name.
 ## V1nEntity
 
 ```lua
-local v1n = client:v1n(nil)
+local v1n = client:V1n(nil)
 ```
 
 ### Fields
@@ -213,7 +213,7 @@ local v1n = client:v1n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:v1n():list()
+local results, err = client:V1n():list()
 ```
 
 ### Common Methods
@@ -249,7 +249,7 @@ Return the entity name.
 ## V1n2Entity
 
 ```lua
-local v1n2 = client:v1n2(nil)
+local v1n2 = client:V1n2(nil)
 ```
 
 ### Fields
@@ -268,7 +268,7 @@ local v1n2 = client:v1n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:v1n2():load({ id = "v1n2_id" })
+local result, err = client:V1n2():load({ id = "v1n2_id" })
 ```
 
 ### Common Methods
@@ -304,7 +304,7 @@ Return the entity name.
 ## V3nEntity
 
 ```lua
-local v3n = client:v3n(nil)
+local v3n = client:V3n(nil)
 ```
 
 ### Fields
@@ -323,7 +323,7 @@ local v3n = client:v3n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:v3n():list()
+local results, err = client:V3n():list()
 ```
 
 ### Common Methods
@@ -359,7 +359,7 @@ Return the entity name.
 ## V3n2Entity
 
 ```lua
-local v3n2 = client:v3n2(nil)
+local v3n2 = client:V3n2(nil)
 ```
 
 ### Fields
@@ -378,7 +378,7 @@ local v3n2 = client:v3n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:v3n2():load({ id = "v3n2_id" })
+local result, err = client:V3n2():load({ id = "v3n2_id" })
 ```
 
 ### Common Methods
@@ -414,7 +414,7 @@ Return the entity name.
 ## V4nEntity
 
 ```lua
-local v4n = client:v4n(nil)
+local v4n = client:V4n(nil)
 ```
 
 ### Fields
@@ -433,7 +433,7 @@ local v4n = client:v4n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:v4n():list()
+local results, err = client:V4n():list()
 ```
 
 ### Common Methods
@@ -469,7 +469,7 @@ Return the entity name.
 ## V4n2Entity
 
 ```lua
-local v4n2 = client:v4n2(nil)
+local v4n2 = client:V4n2(nil)
 ```
 
 ### Fields
@@ -488,7 +488,7 @@ local v4n2 = client:v4n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:v4n2():load({ id = "v4n2_id" })
+local result, err = client:V4n2():load({ id = "v4n2_id" })
 ```
 
 ### Common Methods
@@ -524,7 +524,7 @@ Return the entity name.
 ## V5nEntity
 
 ```lua
-local v5n = client:v5n(nil)
+local v5n = client:V5n(nil)
 ```
 
 ### Fields
@@ -543,7 +543,7 @@ local v5n = client:v5n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:v5n():list()
+local results, err = client:V5n():list()
 ```
 
 ### Common Methods
@@ -579,7 +579,7 @@ Return the entity name.
 ## V5n2Entity
 
 ```lua
-local v5n2 = client:v5n2(nil)
+local v5n2 = client:V5n2(nil)
 ```
 
 ### Fields
@@ -598,7 +598,7 @@ local v5n2 = client:v5n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:v5n2():load({ id = "v5n2_id" })
+local result, err = client:V5n2():load({ id = "v5n2_id" })
 ```
 
 ### Common Methods
@@ -634,7 +634,7 @@ Return the entity name.
 ## V6nEntity
 
 ```lua
-local v6n = client:v6n(nil)
+local v6n = client:V6n(nil)
 ```
 
 ### Fields
@@ -653,7 +653,7 @@ local v6n = client:v6n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:v6n():list()
+local results, err = client:V6n():list()
 ```
 
 ### Common Methods
@@ -689,7 +689,7 @@ Return the entity name.
 ## V6n2Entity
 
 ```lua
-local v6n2 = client:v6n2(nil)
+local v6n2 = client:V6n2(nil)
 ```
 
 ### Fields
@@ -708,7 +708,7 @@ local v6n2 = client:v6n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:v6n2():load({ id = "v6n2_id" })
+local result, err = client:V6n2():load({ id = "v6n2_id" })
 ```
 
 ### Common Methods
@@ -744,7 +744,7 @@ Return the entity name.
 ## V7nEntity
 
 ```lua
-local v7n = client:v7n(nil)
+local v7n = client:V7n(nil)
 ```
 
 ### Fields
@@ -763,7 +763,7 @@ local v7n = client:v7n(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:v7n():list()
+local results, err = client:V7n():list()
 ```
 
 ### Common Methods
@@ -799,7 +799,7 @@ Return the entity name.
 ## V7n2Entity
 
 ```lua
-local v7n2 = client:v7n2(nil)
+local v7n2 = client:V7n2(nil)
 ```
 
 ### Fields
@@ -818,7 +818,7 @@ local v7n2 = client:v7n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:v7n2():load({ id = "v7n2_id" })
+local result, err = client:V7n2():load({ id = "v7n2_id" })
 ```
 
 ### Common Methods

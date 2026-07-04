@@ -26,9 +26,11 @@ import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2'
 
 const client = new UuidGeneratorApi2SDK()
 
-// List all guids
-const guids = await client.guid.list()
-console.log(guids.data)
+// List all guids (returns Guid[])
+const guids = await client.Guid().list()
+for (const guid of guids) {
+  console.log(guid)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -95,12 +97,13 @@ from uuidgeneratorapi2_sdk import UuidGeneratorApi2SDK
 
 client = UuidGeneratorApi2SDK()
 
-# List all guids
-guids = client.guid.list()
-print(guids)
+# List all guids (returns a list, raises on error)
+guids = client.Guid().list({})
+for guid in guids:
+    print(guid)
 
-# Load a specific guid
-guid = client.guid.load({"id": "example_id"})
+# Load a specific guid (returns the record, raises on error)
+guid = client.Guid().load({"id": "example_id"})
 print(guid)
 ```
 
@@ -112,12 +115,12 @@ require_once 'uuidgeneratorapi2_sdk.php';
 
 $client = new UuidGeneratorApi2SDK();
 
-// List all guids (throws on error)
-$guids = $client->guid()->list();
+// List all guids (returns an array; throws on error)
+$guids = $client->Guid()->list();
 print_r($guids);
 
-// Load a specific guid
-$guid = $client->guid()->load(["id" => "example_id"]);
+// Load a specific guid (returns the bare record; throws on error)
+$guid = $client->Guid()->load(["id" => "example_id"]);
 print_r($guid);
 ```
 
@@ -140,12 +143,12 @@ require_relative "UuidGeneratorApi2_sdk"
 
 client = UuidGeneratorApi2SDK.new
 
-# List all guids
-guids = client.guid.list
+# List all guids (returns an Array; raises on error)
+guids = client.Guid.list
 puts guids
 
-# Load a specific guid
-guid = client.guid.load({ "id" => "example_id" })
+# Load a specific guid (returns the bare record; raises on error)
+guid = client.Guid.load({ "id" => "example_id" })
 puts guid
 ```
 
@@ -157,11 +160,11 @@ local sdk = require("uuid-generator-api2_sdk")
 local client = sdk.new()
 
 -- List all guids
-local guids, err = client:guid():list()
+local guids, err = client:Guid():list()
 print(guids)
 
 -- Load a specific guid
-local guid, err = client:guid():load({ id = "example_id" })
+local guid, err = client:Guid():load({ id = "example_id" })
 print(guid)
 ```
 
@@ -174,22 +177,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = UuidGeneratorApi2SDK.test()
-const result = await client.guid.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const guid = await client.Guid().load({ id: 'test01' })
+// guid is a bare Guid populated with mock data
+console.log(guid)
 ```
 
 ### Python
 
 ```python
 client = UuidGeneratorApi2SDK.test()
-result = client.guid.load({"id": "test01"})
+guid = client.Guid().load({"id": "test01"})
+print(guid)
 ```
 
 ### PHP
 
 ```php
-$client = UuidGeneratorApi2SDK::test();
-$result = $client->guid()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = UuidGeneratorApi2SDK::test([
+    "entity" => ["guid" => ["test01" => ["id" => "test01"]]],
+]);
+$guid = $client->Guid()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -204,15 +212,18 @@ result, err := client.Guid(nil).Load(
 ### Ruby
 
 ```ruby
-client = UuidGeneratorApi2SDK.test
-result = client.guid.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = UuidGeneratorApi2SDK.test({
+  "entity" => { "guid" => { "test01" => { "id" => "test01" } } },
+})
+guid = client.Guid.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:guid():load({ id = "test01" })
+local result, err = client:Guid():load({ id = "test01" })
 ```
 
 ## How it works
@@ -260,6 +271,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

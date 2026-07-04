@@ -28,25 +28,28 @@ import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2'
 const client = new UuidGeneratorApi2SDK()
 ```
 
-### 2. List guids
+### 2. List guid records
+
+`list()` resolves to an array of Guid objects — iterate it directly:
 
 ```ts
-const result = await client.guid.list()
+const guids = await client.Guid().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const guid of guids) {
+  console.log(guid)
 }
 ```
 
 ### 3. Load a guid
 
-```ts
-const result = await client.guid.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const guid = await client.Guid().load({ id: 'example_id' })
+  console.log(guid)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = UuidGeneratorApi2SDK.test()
 
-const result = await client.guid.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const guid = await client.Guid().load({ id: 'test01' })
+// guid is a bare entity populated with mock response data
+console.log(guid)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.guid
+const entity = client.Guid()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -216,29 +222,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): UuidGeneratorApi2SDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -446,7 +453,7 @@ API path: `/api/uuid-generator/v7/{count}`
 
 ### Guid
 
-Create an instance: `const guid = client.guid`
+Create an instance: `const guid = client.Guid()`
 
 #### Operations
 
@@ -467,19 +474,19 @@ Create an instance: `const guid = client.guid`
 #### Example: Load
 
 ```ts
-const guid = await client.guid.load({ id: 'guid_id' })
+const guid = await client.Guid().load({ id: 'guid_id' })
 ```
 
 #### Example: List
 
 ```ts
-const guids = await client.guid.list()
+const guids = await client.Guid().list()
 ```
 
 
 ### V1n
 
-Create an instance: `const v1n = client.v1n`
+Create an instance: `const v1n = client.V1n()`
 
 #### Operations
 
@@ -499,13 +506,13 @@ Create an instance: `const v1n = client.v1n`
 #### Example: List
 
 ```ts
-const v1ns = await client.v1n.list()
+const v1ns = await client.V1n().list()
 ```
 
 
 ### V1n2
 
-Create an instance: `const v1n2 = client.v1n2`
+Create an instance: `const v1n2 = client.V1n2()`
 
 #### Operations
 
@@ -525,13 +532,13 @@ Create an instance: `const v1n2 = client.v1n2`
 #### Example: Load
 
 ```ts
-const v1n2 = await client.v1n2.load({ id: 'v1n2_id' })
+const v1n2 = await client.V1n2().load({ id: 'v1n2_id' })
 ```
 
 
 ### V3n
 
-Create an instance: `const v3n = client.v3n`
+Create an instance: `const v3n = client.V3n()`
 
 #### Operations
 
@@ -551,13 +558,13 @@ Create an instance: `const v3n = client.v3n`
 #### Example: List
 
 ```ts
-const v3ns = await client.v3n.list()
+const v3ns = await client.V3n().list()
 ```
 
 
 ### V3n2
 
-Create an instance: `const v3n2 = client.v3n2`
+Create an instance: `const v3n2 = client.V3n2()`
 
 #### Operations
 
@@ -577,13 +584,13 @@ Create an instance: `const v3n2 = client.v3n2`
 #### Example: Load
 
 ```ts
-const v3n2 = await client.v3n2.load({ id: 'v3n2_id' })
+const v3n2 = await client.V3n2().load({ id: 'v3n2_id' })
 ```
 
 
 ### V4n
 
-Create an instance: `const v4n = client.v4n`
+Create an instance: `const v4n = client.V4n()`
 
 #### Operations
 
@@ -603,13 +610,13 @@ Create an instance: `const v4n = client.v4n`
 #### Example: List
 
 ```ts
-const v4ns = await client.v4n.list()
+const v4ns = await client.V4n().list()
 ```
 
 
 ### V4n2
 
-Create an instance: `const v4n2 = client.v4n2`
+Create an instance: `const v4n2 = client.V4n2()`
 
 #### Operations
 
@@ -629,13 +636,13 @@ Create an instance: `const v4n2 = client.v4n2`
 #### Example: Load
 
 ```ts
-const v4n2 = await client.v4n2.load({ id: 'v4n2_id' })
+const v4n2 = await client.V4n2().load({ id: 'v4n2_id' })
 ```
 
 
 ### V5n
 
-Create an instance: `const v5n = client.v5n`
+Create an instance: `const v5n = client.V5n()`
 
 #### Operations
 
@@ -655,13 +662,13 @@ Create an instance: `const v5n = client.v5n`
 #### Example: List
 
 ```ts
-const v5ns = await client.v5n.list()
+const v5ns = await client.V5n().list()
 ```
 
 
 ### V5n2
 
-Create an instance: `const v5n2 = client.v5n2`
+Create an instance: `const v5n2 = client.V5n2()`
 
 #### Operations
 
@@ -681,13 +688,13 @@ Create an instance: `const v5n2 = client.v5n2`
 #### Example: Load
 
 ```ts
-const v5n2 = await client.v5n2.load({ id: 'v5n2_id' })
+const v5n2 = await client.V5n2().load({ id: 'v5n2_id' })
 ```
 
 
 ### V6n
 
-Create an instance: `const v6n = client.v6n`
+Create an instance: `const v6n = client.V6n()`
 
 #### Operations
 
@@ -707,13 +714,13 @@ Create an instance: `const v6n = client.v6n`
 #### Example: List
 
 ```ts
-const v6ns = await client.v6n.list()
+const v6ns = await client.V6n().list()
 ```
 
 
 ### V6n2
 
-Create an instance: `const v6n2 = client.v6n2`
+Create an instance: `const v6n2 = client.V6n2()`
 
 #### Operations
 
@@ -733,13 +740,13 @@ Create an instance: `const v6n2 = client.v6n2`
 #### Example: Load
 
 ```ts
-const v6n2 = await client.v6n2.load({ id: 'v6n2_id' })
+const v6n2 = await client.V6n2().load({ id: 'v6n2_id' })
 ```
 
 
 ### V7n
 
-Create an instance: `const v7n = client.v7n`
+Create an instance: `const v7n = client.V7n()`
 
 #### Operations
 
@@ -759,13 +766,13 @@ Create an instance: `const v7n = client.v7n`
 #### Example: List
 
 ```ts
-const v7ns = await client.v7n.list()
+const v7ns = await client.V7n().list()
 ```
 
 
 ### V7n2
 
-Create an instance: `const v7n2 = client.v7n2`
+Create an instance: `const v7n2 = client.V7n2()`
 
 #### Operations
 
@@ -785,7 +792,7 @@ Create an instance: `const v7n2 = client.v7n2`
 #### Example: Load
 
 ```ts
-const v7n2 = await client.v7n2.load({ id: 'v7n2_id' })
+const v7n2 = await client.V7n2().load({ id: 'v7n2_id' })
 ```
 
 
@@ -856,7 +863,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const guid = client.guid
+const guid = client.Guid()
 await guid.load({ id: "example_id" })
 
 // guid.data() now returns the loaded guid data

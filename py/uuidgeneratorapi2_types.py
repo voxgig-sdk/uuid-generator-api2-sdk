@@ -4,204 +4,181 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Guid:
+class Guid(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class GuidLoadMatch:
+class GuidLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class GuidListMatch:
-    count: Optional[int] = None
-    max_per_call: Optional[int] = None
-    uuid: Optional[list] = None
-    version: Optional[str] = None
-
-
-@dataclass
-class V1n:
+class GuidListMatch(TypedDict, total=False):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V1nListMatch:
-    count: Optional[int] = None
-    max_per_call: Optional[int] = None
-    uuid: Optional[list] = None
-    version: Optional[str] = None
-
-
-@dataclass
-class V1n2:
+class V1n(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V1n2LoadMatch:
-    count: int
-
-
-@dataclass
-class V3n:
+class V1nListMatch(TypedDict, total=False):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V3nListMatch:
-    count: Optional[int] = None
-    max_per_call: Optional[int] = None
-    uuid: Optional[list] = None
-    version: Optional[str] = None
-
-
-@dataclass
-class V3n2:
+class V1n2(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V3n2LoadMatch:
+class V1n2LoadMatch(TypedDict):
     count: int
 
 
-@dataclass
-class V4n:
+class V3n(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V4nListMatch:
-    count: Optional[int] = None
-    max_per_call: Optional[int] = None
-    uuid: Optional[list] = None
-    version: Optional[str] = None
-
-
-@dataclass
-class V4n2:
+class V3nListMatch(TypedDict, total=False):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V4n2LoadMatch:
-    count: int
-
-
-@dataclass
-class V5n:
+class V3n2(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V5nListMatch:
-    count: Optional[int] = None
-    max_per_call: Optional[int] = None
-    uuid: Optional[list] = None
-    version: Optional[str] = None
+class V3n2LoadMatch(TypedDict):
+    count: int
 
 
-@dataclass
-class V5n2:
+class V4n(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V5n2LoadMatch:
-    count: int
-
-
-@dataclass
-class V6n:
+class V4nListMatch(TypedDict, total=False):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V6nListMatch:
-    count: Optional[int] = None
-    max_per_call: Optional[int] = None
-    uuid: Optional[list] = None
-    version: Optional[str] = None
-
-
-@dataclass
-class V6n2:
+class V4n2(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V6n2LoadMatch:
+class V4n2LoadMatch(TypedDict):
     count: int
 
 
-@dataclass
-class V7n:
+class V5n(TypedDict):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V7nListMatch:
-    count: Optional[int] = None
-    max_per_call: Optional[int] = None
-    uuid: Optional[list] = None
-    version: Optional[str] = None
-
-
-@dataclass
-class V7n2:
+class V5nListMatch(TypedDict, total=False):
     count: int
     max_per_call: int
     uuid: list
     version: str
 
 
-@dataclass
-class V7n2LoadMatch:
+class V5n2(TypedDict):
+    count: int
+    max_per_call: int
+    uuid: list
+    version: str
+
+
+class V5n2LoadMatch(TypedDict):
     count: int
 
+
+class V6n(TypedDict):
+    count: int
+    max_per_call: int
+    uuid: list
+    version: str
+
+
+class V6nListMatch(TypedDict, total=False):
+    count: int
+    max_per_call: int
+    uuid: list
+    version: str
+
+
+class V6n2(TypedDict):
+    count: int
+    max_per_call: int
+    uuid: list
+    version: str
+
+
+class V6n2LoadMatch(TypedDict):
+    count: int
+
+
+class V7n(TypedDict):
+    count: int
+    max_per_call: int
+    uuid: list
+    version: str
+
+
+class V7nListMatch(TypedDict, total=False):
+    count: int
+    max_per_call: int
+    uuid: list
+    version: str
+
+
+class V7n2(TypedDict):
+    count: int
+    max_per_call: int
+    uuid: list
+    version: str
+
+
+class V7n2LoadMatch(TypedDict):
+    count: int
