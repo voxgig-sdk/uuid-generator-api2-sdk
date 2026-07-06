@@ -38,7 +38,7 @@ GuidLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Guid#list (any subset of Guid fields).
+# Request payload for Guid#list.
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]
@@ -80,7 +80,7 @@ V1n = Struct.new(
   keyword_init: true
 )
 
-# Match filter for V1n#list (any subset of V1n fields).
+# Request payload for V1n#list.
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]
@@ -152,7 +152,7 @@ V3n = Struct.new(
   keyword_init: true
 )
 
-# Match filter for V3n#list (any subset of V3n fields).
+# Request payload for V3n#list.
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]
@@ -224,7 +224,7 @@ V4n = Struct.new(
   keyword_init: true
 )
 
-# Match filter for V4n#list (any subset of V4n fields).
+# Request payload for V4n#list.
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]
@@ -296,7 +296,7 @@ V5n = Struct.new(
   keyword_init: true
 )
 
-# Match filter for V5n#list (any subset of V5n fields).
+# Request payload for V5n#list.
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]
@@ -368,7 +368,7 @@ V6n = Struct.new(
   keyword_init: true
 )
 
-# Match filter for V6n#list (any subset of V6n fields).
+# Request payload for V6n#list.
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]
@@ -440,7 +440,7 @@ V7n = Struct.new(
   keyword_init: true
 )
 
-# Match filter for V7n#list (any subset of V7n fields).
+# Request payload for V7n#list.
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]

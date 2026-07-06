@@ -66,8 +66,12 @@ class V1nEntity:
     
 
     
-    def list(self, reqmatch: V1nListMatch, ctrl=None) -> list[V1n]:
+    def list(self, reqmatch=None, ctrl=None) -> list[V1n]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.V1n().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

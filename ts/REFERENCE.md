@@ -260,10 +260,10 @@ const guid = client.Guid()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -280,7 +280,7 @@ const results = await client.Guid().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Guid().load({ id: 'guid_id' })
+const result = await client.Guid().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -321,10 +321,10 @@ const v1n = client.V1n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -374,10 +374,10 @@ const v1n2 = client.V1n2()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -386,7 +386,7 @@ const v1n2 = client.V1n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V1n2().load({ id: 'v1n2_id' })
+const result = await client.V1n2().load()
 ```
 
 ### Common Methods
@@ -427,10 +427,10 @@ const v3n = client.V3n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -480,10 +480,10 @@ const v3n2 = client.V3n2()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -492,7 +492,7 @@ const v3n2 = client.V3n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V3n2().load({ id: 'v3n2_id' })
+const result = await client.V3n2().load()
 ```
 
 ### Common Methods
@@ -533,10 +533,10 @@ const v4n = client.V4n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -586,10 +586,10 @@ const v4n2 = client.V4n2()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -598,7 +598,7 @@ const v4n2 = client.V4n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V4n2().load({ id: 'v4n2_id' })
+const result = await client.V4n2().load()
 ```
 
 ### Common Methods
@@ -639,10 +639,10 @@ const v5n = client.V5n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -692,10 +692,10 @@ const v5n2 = client.V5n2()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -704,7 +704,7 @@ const v5n2 = client.V5n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V5n2().load({ id: 'v5n2_id' })
+const result = await client.V5n2().load()
 ```
 
 ### Common Methods
@@ -745,10 +745,10 @@ const v6n = client.V6n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -798,10 +798,10 @@ const v6n2 = client.V6n2()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -810,7 +810,7 @@ const v6n2 = client.V6n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V6n2().load({ id: 'v6n2_id' })
+const result = await client.V6n2().load()
 ```
 
 ### Common Methods
@@ -851,10 +851,10 @@ const v7n = client.V7n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -904,10 +904,10 @@ const v7n2 = client.V7n2()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `number` | Yes |  |
+| `max_per_call` | `number` | Yes |  |
+| `uuid` | `any[]` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -916,7 +916,7 @@ const v7n2 = client.V7n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V7n2().load({ id: 'v7n2_id' })
+const result = await client.V7n2().load()
 ```
 
 ### Common Methods

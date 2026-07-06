@@ -21,8 +21,7 @@ type GuidLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// GuidListMatch mirrors the guid fields as an all-optional match
-// filter (Go analog of Partial<Guid>).
+// GuidListMatch is the typed request payload for Guid.ListTyped.
 type GuidListMatch struct {
 	Count *int `json:"count,omitempty"`
 	MaxPerCall *int `json:"max_per_call,omitempty"`
@@ -38,8 +37,7 @@ type V1n struct {
 	Version string `json:"version"`
 }
 
-// V1nListMatch mirrors the v1n fields as an all-optional match
-// filter (Go analog of Partial<V1n>).
+// V1nListMatch is the typed request payload for V1n.ListTyped.
 type V1nListMatch struct {
 	Count *int `json:"count,omitempty"`
 	MaxPerCall *int `json:"max_per_call,omitempty"`
@@ -68,8 +66,7 @@ type V3n struct {
 	Version string `json:"version"`
 }
 
-// V3nListMatch mirrors the v3n fields as an all-optional match
-// filter (Go analog of Partial<V3n>).
+// V3nListMatch is the typed request payload for V3n.ListTyped.
 type V3nListMatch struct {
 	Count *int `json:"count,omitempty"`
 	MaxPerCall *int `json:"max_per_call,omitempty"`
@@ -98,8 +95,7 @@ type V4n struct {
 	Version string `json:"version"`
 }
 
-// V4nListMatch mirrors the v4n fields as an all-optional match
-// filter (Go analog of Partial<V4n>).
+// V4nListMatch is the typed request payload for V4n.ListTyped.
 type V4nListMatch struct {
 	Count *int `json:"count,omitempty"`
 	MaxPerCall *int `json:"max_per_call,omitempty"`
@@ -128,8 +124,7 @@ type V5n struct {
 	Version string `json:"version"`
 }
 
-// V5nListMatch mirrors the v5n fields as an all-optional match
-// filter (Go analog of Partial<V5n>).
+// V5nListMatch is the typed request payload for V5n.ListTyped.
 type V5nListMatch struct {
 	Count *int `json:"count,omitempty"`
 	MaxPerCall *int `json:"max_per_call,omitempty"`
@@ -158,8 +153,7 @@ type V6n struct {
 	Version string `json:"version"`
 }
 
-// V6nListMatch mirrors the v6n fields as an all-optional match
-// filter (Go analog of Partial<V6n>).
+// V6nListMatch is the typed request payload for V6n.ListTyped.
 type V6nListMatch struct {
 	Count *int `json:"count,omitempty"`
 	MaxPerCall *int `json:"max_per_call,omitempty"`
@@ -188,8 +182,7 @@ type V7n struct {
 	Version string `json:"version"`
 }
 
-// V7nListMatch mirrors the v7n fields as an all-optional match
-// filter (Go analog of Partial<V7n>).
+// V7nListMatch is the typed request payload for V7n.ListTyped.
 type V7nListMatch struct {
 	Count *int `json:"count,omitempty"`
 	MaxPerCall *int `json:"max_per_call,omitempty"`

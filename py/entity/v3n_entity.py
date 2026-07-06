@@ -66,8 +66,12 @@ class V3nEntity:
     
 
     
-    def list(self, reqmatch: V3nListMatch, ctrl=None) -> list[V3n]:
+    def list(self, reqmatch=None, ctrl=None) -> list[V3n]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.V3n().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

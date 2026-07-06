@@ -8,7 +8,7 @@ Complete API reference for the UuidGeneratorApi2 PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/uuid-generator-api2_sdk.php';
+require_once __DIR__ . '/uuidgeneratorapi2_sdk.php';
 
 $client = new UuidGeneratorApi2SDK($options);
 ```
@@ -93,11 +93,11 @@ Create a new `V7nEntity` instance. Pass `null` for no initial data.
 
 Create a new `V7n2Entity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): UuidGeneratorApi2Utility`
 
 Return a copy of the SDK utility object.
 
@@ -140,19 +140,19 @@ $guid = $client->Guid();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Guid()->list([]);
+$results = $client->Guid()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -165,19 +165,19 @@ $result = $client->Guid()->load(["id" => "guid_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -186,7 +186,7 @@ Set the entity match criteria.
 Create a new `GuidEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -203,36 +203,36 @@ $v1n = $client->V1n();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->V1n()->list([]);
+$results = $client->V1n()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -241,7 +241,7 @@ Set the entity match criteria.
 Create a new `V1nEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -258,10 +258,10 @@ $v1n2 = $client->V1n2();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -270,24 +270,24 @@ $v1n2 = $client->V1n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V1n2()->load(["id" => "v1n2_id"]);
+$result = $client->V1n2()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -296,7 +296,7 @@ Set the entity match criteria.
 Create a new `V1n2Entity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -313,36 +313,36 @@ $v3n = $client->V3n();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->V3n()->list([]);
+$results = $client->V3n()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -351,7 +351,7 @@ Set the entity match criteria.
 Create a new `V3nEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -368,10 +368,10 @@ $v3n2 = $client->V3n2();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -380,24 +380,24 @@ $v3n2 = $client->V3n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V3n2()->load(["id" => "v3n2_id"]);
+$result = $client->V3n2()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -406,7 +406,7 @@ Set the entity match criteria.
 Create a new `V3n2Entity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -423,36 +423,36 @@ $v4n = $client->V4n();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->V4n()->list([]);
+$results = $client->V4n()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -461,7 +461,7 @@ Set the entity match criteria.
 Create a new `V4nEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -478,10 +478,10 @@ $v4n2 = $client->V4n2();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -490,24 +490,24 @@ $v4n2 = $client->V4n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V4n2()->load(["id" => "v4n2_id"]);
+$result = $client->V4n2()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -516,7 +516,7 @@ Set the entity match criteria.
 Create a new `V4n2Entity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -533,36 +533,36 @@ $v5n = $client->V5n();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->V5n()->list([]);
+$results = $client->V5n()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -571,7 +571,7 @@ Set the entity match criteria.
 Create a new `V5nEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -588,10 +588,10 @@ $v5n2 = $client->V5n2();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -600,24 +600,24 @@ $v5n2 = $client->V5n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V5n2()->load(["id" => "v5n2_id"]);
+$result = $client->V5n2()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -626,7 +626,7 @@ Set the entity match criteria.
 Create a new `V5n2Entity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -643,36 +643,36 @@ $v6n = $client->V6n();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->V6n()->list([]);
+$results = $client->V6n()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -681,7 +681,7 @@ Set the entity match criteria.
 Create a new `V6nEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -698,10 +698,10 @@ $v6n2 = $client->V6n2();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -710,24 +710,24 @@ $v6n2 = $client->V6n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V6n2()->load(["id" => "v6n2_id"]);
+$result = $client->V6n2()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -736,7 +736,7 @@ Set the entity match criteria.
 Create a new `V6n2Entity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -753,36 +753,36 @@ $v7n = $client->V7n();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->V7n()->list([]);
+$results = $client->V7n()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -791,7 +791,7 @@ Set the entity match criteria.
 Create a new `V7nEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -808,10 +808,10 @@ $v7n2 = $client->V7n2();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `array` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -820,24 +820,24 @@ $v7n2 = $client->V7n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V7n2()->load(["id" => "v7n2_id"]);
+$result = $client->V7n2()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -846,7 +846,7 @@ Set the entity match criteria.
 Create a new `V7n2Entity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

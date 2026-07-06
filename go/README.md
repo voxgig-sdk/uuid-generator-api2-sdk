@@ -4,6 +4,8 @@
 
 The Golang SDK for the UuidGeneratorApi2 API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Guid(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single guid — the value is the loaded record.
-    guid, err := client.Guid(nil).Load(map[string]any{"id": "example_id"}, nil)
+    guid, err := client.Guid(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(guid)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+guids, err := client.Guid(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = guids
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-guid, err := client.Guid(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+guid, err := client.Guid(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(guid) // the loaded mock data
+fmt.Println(guid) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -218,9 +249,6 @@ All entities implement the `UuidGeneratorApi2Entity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -233,16 +261,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    guid, err := client.Guid(nil).Load(map[string]any{"id": "example_id"}, nil)
+    guid, err := client.Guid(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // guid is the loaded record
+    // guid is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -438,10 +466,10 @@ Create an instance: `guid := client.Guid(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
@@ -478,10 +506,10 @@ Create an instance: `v1n := client.V1n(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: List
 
@@ -508,15 +536,15 @@ Create an instance: `v1n2 := client.V1n2(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```go
-v1n2, err := client.V1n2(nil).Load(map[string]any{"id": "v1n2_id"}, nil)
+v1n2, err := client.V1n2(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -538,10 +566,10 @@ Create an instance: `v3n := client.V3n(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: List
 
@@ -568,15 +596,15 @@ Create an instance: `v3n2 := client.V3n2(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```go
-v3n2, err := client.V3n2(nil).Load(map[string]any{"id": "v3n2_id"}, nil)
+v3n2, err := client.V3n2(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -598,10 +626,10 @@ Create an instance: `v4n := client.V4n(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: List
 
@@ -628,15 +656,15 @@ Create an instance: `v4n2 := client.V4n2(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```go
-v4n2, err := client.V4n2(nil).Load(map[string]any{"id": "v4n2_id"}, nil)
+v4n2, err := client.V4n2(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -658,10 +686,10 @@ Create an instance: `v5n := client.V5n(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: List
 
@@ -688,15 +716,15 @@ Create an instance: `v5n2 := client.V5n2(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```go
-v5n2, err := client.V5n2(nil).Load(map[string]any{"id": "v5n2_id"}, nil)
+v5n2, err := client.V5n2(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -718,10 +746,10 @@ Create an instance: `v6n := client.V6n(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: List
 
@@ -748,15 +776,15 @@ Create an instance: `v6n2 := client.V6n2(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```go
-v6n2, err := client.V6n2(nil).Load(map[string]any{"id": "v6n2_id"}, nil)
+v6n2, err := client.V6n2(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -778,10 +806,10 @@ Create an instance: `v7n := client.V7n(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: List
 
@@ -808,15 +836,15 @@ Create an instance: `v7n2 := client.V7n2(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `max_per_call` | ``$INTEGER`` |  |
-| `uuid` | ``$ARRAY`` |  |
-| `version` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `max_per_call` | `int` |  |
+| `uuid` | `[]any` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```go
-v7n2, err := client.V7n2(nil).Load(map[string]any{"id": "v7n2_id"}, nil)
+v7n2, err := client.V7n2(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -824,12 +852,16 @@ fmt.Println(v7n2) // the loaded record
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -846,9 +878,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -889,14 +921,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 guid := client.Guid(nil)
-guid.Load(map[string]any{"id": "example_id"}, nil)
+guid.List(nil, nil)
 
-// guid.Data() now returns the loaded guid data
+// guid.Data() now returns the guid data from the last list
 // guid.Match() returns the last match criteria
 ```
 

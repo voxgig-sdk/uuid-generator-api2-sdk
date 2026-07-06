@@ -64,8 +64,13 @@ class V7n2Entity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: V7n2LoadMatch, ctrl=None) -> V7n2:
+    def load(self, reqmatch=None, ctrl=None) -> V7n2:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.V7n2().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,

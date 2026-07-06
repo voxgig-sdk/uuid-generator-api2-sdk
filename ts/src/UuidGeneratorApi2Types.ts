@@ -16,7 +16,12 @@ export interface GuidLoadMatch {
   id: number
 }
 
-export type GuidListMatch = Partial<Guid>
+export interface GuidListMatch {
+  count?: number
+  max_per_call?: number
+  uuid?: any[]
+  version?: string
+}
 
 export interface V1n {
   count: number
@@ -25,7 +30,12 @@ export interface V1n {
   version: string
 }
 
-export type V1nListMatch = Partial<V1n>
+export interface V1nListMatch {
+  count?: number
+  max_per_call?: number
+  uuid?: any[]
+  version?: string
+}
 
 export interface V1n2 {
   count: number
@@ -45,7 +55,12 @@ export interface V3n {
   version: string
 }
 
-export type V3nListMatch = Partial<V3n>
+export interface V3nListMatch {
+  count?: number
+  max_per_call?: number
+  uuid?: any[]
+  version?: string
+}
 
 export interface V3n2 {
   count: number
@@ -65,7 +80,12 @@ export interface V4n {
   version: string
 }
 
-export type V4nListMatch = Partial<V4n>
+export interface V4nListMatch {
+  count?: number
+  max_per_call?: number
+  uuid?: any[]
+  version?: string
+}
 
 export interface V4n2 {
   count: number
@@ -85,7 +105,12 @@ export interface V5n {
   version: string
 }
 
-export type V5nListMatch = Partial<V5n>
+export interface V5nListMatch {
+  count?: number
+  max_per_call?: number
+  uuid?: any[]
+  version?: string
+}
 
 export interface V5n2 {
   count: number
@@ -105,7 +130,12 @@ export interface V6n {
   version: string
 }
 
-export type V6nListMatch = Partial<V6n>
+export interface V6nListMatch {
+  count?: number
+  max_per_call?: number
+  uuid?: any[]
+  version?: string
+}
 
 export interface V6n2 {
   count: number
@@ -125,7 +155,12 @@ export interface V7n {
   version: string
 }
 
-export type V7nListMatch = Partial<V7n>
+export interface V7nListMatch {
+  count?: number
+  max_per_call?: number
+  uuid?: any[]
+  version?: string
+}
 
 export interface V7n2 {
   count: number

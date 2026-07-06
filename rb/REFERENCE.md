@@ -8,7 +8,7 @@ Complete API reference for the UuidGeneratorApi2 Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'uuid-generator-api2_sdk'
+require_relative 'UuidGeneratorApi2_sdk'
 
 client = UuidGeneratorApi2SDK.new(options)
 ```
@@ -141,19 +141,19 @@ guid = client.Guid
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Guid.list(nil)
+results = client.Guid.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -204,19 +204,19 @@ v1n = client.V1n
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.V1n.list(nil)
+results = client.V1n.list
 ```
 
 ### Common Methods
@@ -259,10 +259,10 @@ v1n2 = client.V1n2
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
@@ -271,7 +271,7 @@ v1n2 = client.V1n2
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.V1n2.load({ "id" => "v1n2_id" })
+result = client.V1n2.load()
 ```
 
 ### Common Methods
@@ -314,19 +314,19 @@ v3n = client.V3n
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.V3n.list(nil)
+results = client.V3n.list
 ```
 
 ### Common Methods
@@ -369,10 +369,10 @@ v3n2 = client.V3n2
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
@@ -381,7 +381,7 @@ v3n2 = client.V3n2
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.V3n2.load({ "id" => "v3n2_id" })
+result = client.V3n2.load()
 ```
 
 ### Common Methods
@@ -424,19 +424,19 @@ v4n = client.V4n
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.V4n.list(nil)
+results = client.V4n.list
 ```
 
 ### Common Methods
@@ -479,10 +479,10 @@ v4n2 = client.V4n2
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
@@ -491,7 +491,7 @@ v4n2 = client.V4n2
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.V4n2.load({ "id" => "v4n2_id" })
+result = client.V4n2.load()
 ```
 
 ### Common Methods
@@ -534,19 +534,19 @@ v5n = client.V5n
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.V5n.list(nil)
+results = client.V5n.list
 ```
 
 ### Common Methods
@@ -589,10 +589,10 @@ v5n2 = client.V5n2
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
@@ -601,7 +601,7 @@ v5n2 = client.V5n2
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.V5n2.load({ "id" => "v5n2_id" })
+result = client.V5n2.load()
 ```
 
 ### Common Methods
@@ -644,19 +644,19 @@ v6n = client.V6n
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.V6n.list(nil)
+results = client.V6n.list
 ```
 
 ### Common Methods
@@ -699,10 +699,10 @@ v6n2 = client.V6n2
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
@@ -711,7 +711,7 @@ v6n2 = client.V6n2
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.V6n2.load({ "id" => "v6n2_id" })
+result = client.V6n2.load()
 ```
 
 ### Common Methods
@@ -754,19 +754,19 @@ v7n = client.V7n
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.V7n.list(nil)
+results = client.V7n.list
 ```
 
 ### Common Methods
@@ -809,10 +809,10 @@ v7n2 = client.V7n2
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `max_per_call` | `Integer` | Yes |  |
+| `uuid` | `Array` | Yes |  |
+| `version` | `String` | Yes |  |
 
 ### Operations
 
@@ -821,7 +821,7 @@ v7n2 = client.V7n2
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.V7n2.load({ "id" => "v7n2_id" })
+result = client.V7n2.load()
 ```
 
 ### Common Methods

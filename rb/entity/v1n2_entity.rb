@@ -67,10 +67,12 @@ class V1n2Entity
   
   # Load a single V1n2.
   #
-  # @param reqmatch [V1n2LoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [V1n2LoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.V1n2.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [V1n2, Hash] the loaded V1n2; raises UuidGeneratorApi2Error on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

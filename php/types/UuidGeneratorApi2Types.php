@@ -27,7 +27,7 @@ class GuidLoadMatch
     public int $id;
 }
 
-/** Match filter for Guid#list (any subset of Guid fields). */
+/** Request payload for Guid#list. */
 class GuidListMatch
 {
     public ?int $count = null;
@@ -45,7 +45,7 @@ class V1n
     public string $version;
 }
 
-/** Match filter for V1n#list (any subset of V1n fields). */
+/** Request payload for V1n#list. */
 class V1nListMatch
 {
     public ?int $count = null;
@@ -78,7 +78,7 @@ class V3n
     public string $version;
 }
 
-/** Match filter for V3n#list (any subset of V3n fields). */
+/** Request payload for V3n#list. */
 class V3nListMatch
 {
     public ?int $count = null;
@@ -111,7 +111,7 @@ class V4n
     public string $version;
 }
 
-/** Match filter for V4n#list (any subset of V4n fields). */
+/** Request payload for V4n#list. */
 class V4nListMatch
 {
     public ?int $count = null;
@@ -144,7 +144,7 @@ class V5n
     public string $version;
 }
 
-/** Match filter for V5n#list (any subset of V5n fields). */
+/** Request payload for V5n#list. */
 class V5nListMatch
 {
     public ?int $count = null;
@@ -177,7 +177,7 @@ class V6n
     public string $version;
 }
 
-/** Match filter for V6n#list (any subset of V6n fields). */
+/** Request payload for V6n#list. */
 class V6nListMatch
 {
     public ?int $count = null;
@@ -210,7 +210,7 @@ class V7n
     public string $version;
 }
 
-/** Match filter for V7n#list (any subset of V7n fields). */
+/** Request payload for V7n#list. */
 class V7nListMatch
 {
     public ?int $count = null;

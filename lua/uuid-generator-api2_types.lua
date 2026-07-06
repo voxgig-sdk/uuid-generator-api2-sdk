@@ -16,6 +16,10 @@
 ---@field id number
 
 ---@class GuidListMatch
+---@field count? number
+---@field max_per_call? number
+---@field uuid? table
+---@field version? string
 
 ---@class V1n
 ---@field count number
@@ -24,6 +28,10 @@
 ---@field version string
 
 ---@class V1nListMatch
+---@field count? number
+---@field max_per_call? number
+---@field uuid? table
+---@field version? string
 
 ---@class V1n2
 ---@field count number
@@ -41,6 +49,10 @@
 ---@field version string
 
 ---@class V3nListMatch
+---@field count? number
+---@field max_per_call? number
+---@field uuid? table
+---@field version? string
 
 ---@class V3n2
 ---@field count number
@@ -58,6 +70,10 @@
 ---@field version string
 
 ---@class V4nListMatch
+---@field count? number
+---@field max_per_call? number
+---@field uuid? table
+---@field version? string
 
 ---@class V4n2
 ---@field count number
@@ -75,6 +91,10 @@
 ---@field version string
 
 ---@class V5nListMatch
+---@field count? number
+---@field max_per_call? number
+---@field uuid? table
+---@field version? string
 
 ---@class V5n2
 ---@field count number
@@ -92,6 +112,10 @@
 ---@field version string
 
 ---@class V6nListMatch
+---@field count? number
+---@field max_per_call? number
+---@field uuid? table
+---@field version? string
 
 ---@class V6n2
 ---@field count number
@@ -109,6 +133,10 @@
 ---@field version string
 
 ---@class V7nListMatch
+---@field count? number
+---@field max_per_call? number
+---@field uuid? table
+---@field version? string
 
 ---@class V7n2
 ---@field count number

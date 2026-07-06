@@ -145,10 +145,10 @@ guid := client.Guid(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -202,10 +202,10 @@ v1n := client.V1n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -251,10 +251,10 @@ v1n2 := client.V1n2(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -263,7 +263,7 @@ v1n2 := client.V1n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V1n2(nil).Load(map[string]any{"id": "v1n2_id"}, nil)
+result, err := client.V1n2(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -300,10 +300,10 @@ v3n := client.V3n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -349,10 +349,10 @@ v3n2 := client.V3n2(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -361,7 +361,7 @@ v3n2 := client.V3n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V3n2(nil).Load(map[string]any{"id": "v3n2_id"}, nil)
+result, err := client.V3n2(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -398,10 +398,10 @@ v4n := client.V4n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -447,10 +447,10 @@ v4n2 := client.V4n2(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -459,7 +459,7 @@ v4n2 := client.V4n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V4n2(nil).Load(map[string]any{"id": "v4n2_id"}, nil)
+result, err := client.V4n2(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -496,10 +496,10 @@ v5n := client.V5n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -545,10 +545,10 @@ v5n2 := client.V5n2(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -557,7 +557,7 @@ v5n2 := client.V5n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V5n2(nil).Load(map[string]any{"id": "v5n2_id"}, nil)
+result, err := client.V5n2(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -594,10 +594,10 @@ v6n := client.V6n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -643,10 +643,10 @@ v6n2 := client.V6n2(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -655,7 +655,7 @@ v6n2 := client.V6n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V6n2(nil).Load(map[string]any{"id": "v6n2_id"}, nil)
+result, err := client.V6n2(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -692,10 +692,10 @@ v7n := client.V7n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -741,10 +741,10 @@ v7n2 := client.V7n2(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | Yes |  |
-| `max_per_call` | ``$INTEGER`` | Yes |  |
-| `uuid` | ``$ARRAY`` | Yes |  |
-| `version` | ``$STRING`` | Yes |  |
+| `count` | `int` | Yes |  |
+| `max_per_call` | `int` | Yes |  |
+| `uuid` | `[]any` | Yes |  |
+| `version` | `string` | Yes |  |
 
 ### Operations
 
@@ -753,7 +753,7 @@ v7n2 := client.V7n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V7n2(nil).Load(map[string]any{"id": "v7n2_id"}, nil)
+result, err := client.V7n2(nil).Load(nil, nil)
 ```
 
 ### Common Methods
