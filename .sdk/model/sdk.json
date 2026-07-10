@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1810,14 +1807,17 @@
           "name": "Public API",
           "url": "https://toolkitvault.com/uuid-generator/uuid-api-docs"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://toolkitvault.com"
           }
         ],
+        "summary": "This API provides a fast and free method for generating UUIDs, supporting various versions including v1, v3, v4, v5, v6, and time-ordered v7.",
         "title": "UUID Generator API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://toolkitvault.com"
       },
       "option": {},
       "target": {
@@ -1870,6 +1870,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1920,6 +1923,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

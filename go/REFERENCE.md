@@ -139,6 +139,7 @@ same parameters as `Direct()`.
 
 ```go
 guid := client.Guid(nil)
+fmt.Println(guid.GetName()) // "guid"
 ```
 
 ### Fields
@@ -158,6 +159,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Guid(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -165,7 +170,11 @@ results, err := client.Guid(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Guid(nil).Load(map[string]any{"id": "guid_id"}, nil)
+result, err := client.Guid(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -196,6 +205,7 @@ Return the entity name.
 
 ```go
 v1n := client.V1n(nil)
+fmt.Println(v1n.GetName()) // "v1n"
 ```
 
 ### Fields
@@ -215,6 +225,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.V1n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -245,6 +259,7 @@ Return the entity name.
 
 ```go
 v1n2 := client.V1n2(nil)
+fmt.Println(v1n2.GetName()) // "v1n2"
 ```
 
 ### Fields
@@ -263,7 +278,11 @@ v1n2 := client.V1n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V1n2(nil).Load(nil, nil)
+result, err := client.V1n2(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -294,6 +313,7 @@ Return the entity name.
 
 ```go
 v3n := client.V3n(nil)
+fmt.Println(v3n.GetName()) // "v3n"
 ```
 
 ### Fields
@@ -313,6 +333,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.V3n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -343,6 +367,7 @@ Return the entity name.
 
 ```go
 v3n2 := client.V3n2(nil)
+fmt.Println(v3n2.GetName()) // "v3n2"
 ```
 
 ### Fields
@@ -361,7 +386,11 @@ v3n2 := client.V3n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V3n2(nil).Load(nil, nil)
+result, err := client.V3n2(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -392,6 +421,7 @@ Return the entity name.
 
 ```go
 v4n := client.V4n(nil)
+fmt.Println(v4n.GetName()) // "v4n"
 ```
 
 ### Fields
@@ -411,6 +441,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.V4n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -441,6 +475,7 @@ Return the entity name.
 
 ```go
 v4n2 := client.V4n2(nil)
+fmt.Println(v4n2.GetName()) // "v4n2"
 ```
 
 ### Fields
@@ -459,7 +494,11 @@ v4n2 := client.V4n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V4n2(nil).Load(nil, nil)
+result, err := client.V4n2(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -490,6 +529,7 @@ Return the entity name.
 
 ```go
 v5n := client.V5n(nil)
+fmt.Println(v5n.GetName()) // "v5n"
 ```
 
 ### Fields
@@ -509,6 +549,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.V5n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -539,6 +583,7 @@ Return the entity name.
 
 ```go
 v5n2 := client.V5n2(nil)
+fmt.Println(v5n2.GetName()) // "v5n2"
 ```
 
 ### Fields
@@ -557,7 +602,11 @@ v5n2 := client.V5n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V5n2(nil).Load(nil, nil)
+result, err := client.V5n2(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -588,6 +637,7 @@ Return the entity name.
 
 ```go
 v6n := client.V6n(nil)
+fmt.Println(v6n.GetName()) // "v6n"
 ```
 
 ### Fields
@@ -607,6 +657,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.V6n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -637,6 +691,7 @@ Return the entity name.
 
 ```go
 v6n2 := client.V6n2(nil)
+fmt.Println(v6n2.GetName()) // "v6n2"
 ```
 
 ### Fields
@@ -655,7 +710,11 @@ v6n2 := client.V6n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V6n2(nil).Load(nil, nil)
+result, err := client.V6n2(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -686,6 +745,7 @@ Return the entity name.
 
 ```go
 v7n := client.V7n(nil)
+fmt.Println(v7n.GetName()) // "v7n"
 ```
 
 ### Fields
@@ -705,6 +765,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.V7n(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -735,6 +799,7 @@ Return the entity name.
 
 ```go
 v7n2 := client.V7n2(nil)
+fmt.Println(v7n2.GetName()) // "v7n2"
 ```
 
 ### Fields
@@ -753,7 +818,11 @@ v7n2 := client.V7n2(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.V7n2(nil).Load(nil, nil)
+result, err := client.V7n2(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

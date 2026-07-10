@@ -47,12 +47,14 @@ for _, item in ipairs(guids) do
 end
 ```
 
-### 3. Load a guid
+### 3. Load a v1n2
+
+V1n2 is nested under count, so provide the `count`.
 
 ```lua
-local guid, err = client:Guid():load({ id = "example_id" })
+local v1n2, err = client:V1n2():load({ count = 1 })
 if err then error(err) end
-print(guid)
+print(v1n2)
 ```
 
 
@@ -446,7 +448,7 @@ Create an instance: `local guid = client:Guid(nil)`
 #### Example: Load
 
 ```lua
-local guid, err = client:Guid():load({ id = "guid_id" })
+local guid, err = client:Guid():load({ id = 1 })
 ```
 
 #### Example: List
@@ -504,7 +506,7 @@ Create an instance: `local v1n2 = client:V1n2(nil)`
 #### Example: Load
 
 ```lua
-local v1n2, err = client:V1n2():load()
+local v1n2, err = client:V1n2():load({ count = 1 })
 ```
 
 
@@ -556,7 +558,7 @@ Create an instance: `local v3n2 = client:V3n2(nil)`
 #### Example: Load
 
 ```lua
-local v3n2, err = client:V3n2():load()
+local v3n2, err = client:V3n2():load({ count = 1 })
 ```
 
 
@@ -608,7 +610,7 @@ Create an instance: `local v4n2 = client:V4n2(nil)`
 #### Example: Load
 
 ```lua
-local v4n2, err = client:V4n2():load()
+local v4n2, err = client:V4n2():load({ count = 1 })
 ```
 
 
@@ -660,7 +662,7 @@ Create an instance: `local v5n2 = client:V5n2(nil)`
 #### Example: Load
 
 ```lua
-local v5n2, err = client:V5n2():load()
+local v5n2, err = client:V5n2():load({ count = 1 })
 ```
 
 
@@ -712,7 +714,7 @@ Create an instance: `local v6n2 = client:V6n2(nil)`
 #### Example: Load
 
 ```lua
-local v6n2, err = client:V6n2():load()
+local v6n2, err = client:V6n2():load({ count = 1 })
 ```
 
 
@@ -764,7 +766,7 @@ Create an instance: `local v7n2 = client:V7n2(nil)`
 #### Example: Load
 
 ```lua
-local v7n2, err = client:V7n2():load()
+local v7n2, err = client:V7n2():load({ count = 1 })
 ```
 
 

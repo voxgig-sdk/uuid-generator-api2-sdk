@@ -50,14 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a guid
+### 3. Load a v1n2
 
+V1n2 is nested under count, so provide the `count`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    guid = client.Guid().load({"id": "example_id"})
-    print(guid)
+    v1n2 = client.V1n2().load({"count": 1})
+    print(v1n2)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -460,7 +461,7 @@ Create an instance: `guid = client.Guid()`
 #### Example: Load
 
 ```python
-guid = client.Guid().load({"id": "guid_id"})
+guid = client.Guid().load({"id": 1})
 ```
 
 #### Example: List
@@ -518,7 +519,7 @@ Create an instance: `v1n2 = client.V1n2()`
 #### Example: Load
 
 ```python
-v1n2 = client.V1n2().load()
+v1n2 = client.V1n2().load({"count": 1})
 ```
 
 
@@ -570,7 +571,7 @@ Create an instance: `v3n2 = client.V3n2()`
 #### Example: Load
 
 ```python
-v3n2 = client.V3n2().load()
+v3n2 = client.V3n2().load({"count": 1})
 ```
 
 
@@ -622,7 +623,7 @@ Create an instance: `v4n2 = client.V4n2()`
 #### Example: Load
 
 ```python
-v4n2 = client.V4n2().load()
+v4n2 = client.V4n2().load({"count": 1})
 ```
 
 
@@ -674,7 +675,7 @@ Create an instance: `v5n2 = client.V5n2()`
 #### Example: Load
 
 ```python
-v5n2 = client.V5n2().load()
+v5n2 = client.V5n2().load({"count": 1})
 ```
 
 
@@ -726,7 +727,7 @@ Create an instance: `v6n2 = client.V6n2()`
 #### Example: Load
 
 ```python
-v6n2 = client.V6n2().load()
+v6n2 = client.V6n2().load({"count": 1})
 ```
 
 
@@ -778,7 +779,7 @@ Create an instance: `v7n2 = client.V7n2()`
 #### Example: Load
 
 ```python
-v7n2 = client.V7n2().load()
+v7n2 = client.V7n2().load({"count": 1})
 ```
 
 

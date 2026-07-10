@@ -158,7 +158,7 @@ local results, err = client:Guid():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Guid():load({ id = "guid_id" })
+local result, err = client:Guid():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -268,7 +268,7 @@ local v1n2 = client:V1n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V1n2():load()
+local result, err = client:V1n2():load({ count = 1 })
 ```
 
 ### Common Methods
@@ -378,7 +378,7 @@ local v3n2 = client:V3n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V3n2():load()
+local result, err = client:V3n2():load({ count = 1 })
 ```
 
 ### Common Methods
@@ -488,7 +488,7 @@ local v4n2 = client:V4n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V4n2():load()
+local result, err = client:V4n2():load({ count = 1 })
 ```
 
 ### Common Methods
@@ -598,7 +598,7 @@ local v5n2 = client:V5n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V5n2():load()
+local result, err = client:V5n2():load({ count = 1 })
 ```
 
 ### Common Methods
@@ -708,7 +708,7 @@ local v6n2 = client:V6n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V6n2():load()
+local result, err = client:V6n2():load({ count = 1 })
 ```
 
 ### Common Methods
@@ -818,7 +818,7 @@ local v7n2 = client:V7n2(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:V7n2():load()
+local result, err = client:V7n2():load({ count = 1 })
 ```
 
 ### Common Methods

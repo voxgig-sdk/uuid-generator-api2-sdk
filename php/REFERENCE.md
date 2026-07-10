@@ -160,7 +160,7 @@ $results = $client->Guid()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Guid()->load(["id" => "guid_id"]);
+$result = $client->Guid()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -270,7 +270,7 @@ $v1n2 = $client->V1n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V1n2()->load();
+$result = $client->V1n2()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -380,7 +380,7 @@ $v3n2 = $client->V3n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V3n2()->load();
+$result = $client->V3n2()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -490,7 +490,7 @@ $v4n2 = $client->V4n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V4n2()->load();
+$result = $client->V4n2()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -600,7 +600,7 @@ $v5n2 = $client->V5n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V5n2()->load();
+$result = $client->V5n2()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -710,7 +710,7 @@ $v6n2 = $client->V6n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V6n2()->load();
+$result = $client->V6n2()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -820,7 +820,7 @@ $v7n2 = $client->V7n2();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->V7n2()->load();
+$result = $client->V7n2()->load(["count" => 1]);
 ```
 
 ### Common Methods

@@ -386,7 +386,7 @@ const v1n2 = client.V1n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V1n2().load()
+const result = await client.V1n2().load({ count: 1 })
 ```
 
 ### Common Methods
@@ -492,7 +492,7 @@ const v3n2 = client.V3n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V3n2().load()
+const result = await client.V3n2().load({ count: 1 })
 ```
 
 ### Common Methods
@@ -598,7 +598,7 @@ const v4n2 = client.V4n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V4n2().load()
+const result = await client.V4n2().load({ count: 1 })
 ```
 
 ### Common Methods
@@ -704,7 +704,7 @@ const v5n2 = client.V5n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V5n2().load()
+const result = await client.V5n2().load({ count: 1 })
 ```
 
 ### Common Methods
@@ -810,7 +810,7 @@ const v6n2 = client.V6n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V6n2().load()
+const result = await client.V6n2().load({ count: 1 })
 ```
 
 ### Common Methods
@@ -916,7 +916,7 @@ const v7n2 = client.V7n2()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.V7n2().load()
+const result = await client.V7n2().load({ count: 1 })
 ```
 
 ### Common Methods

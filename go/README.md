@@ -474,7 +474,7 @@ Create an instance: `guid := client.Guid(nil)`
 #### Example: Load
 
 ```go
-guid, err := client.Guid(nil).Load(map[string]any{"id": "guid_id"}, nil)
+guid, err := client.Guid(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -544,7 +544,7 @@ Create an instance: `v1n2 := client.V1n2(nil)`
 #### Example: Load
 
 ```go
-v1n2, err := client.V1n2(nil).Load(nil, nil)
+v1n2, err := client.V1n2(nil).Load(map[string]any{"count": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -604,7 +604,7 @@ Create an instance: `v3n2 := client.V3n2(nil)`
 #### Example: Load
 
 ```go
-v3n2, err := client.V3n2(nil).Load(nil, nil)
+v3n2, err := client.V3n2(nil).Load(map[string]any{"count": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -664,7 +664,7 @@ Create an instance: `v4n2 := client.V4n2(nil)`
 #### Example: Load
 
 ```go
-v4n2, err := client.V4n2(nil).Load(nil, nil)
+v4n2, err := client.V4n2(nil).Load(map[string]any{"count": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -724,7 +724,7 @@ Create an instance: `v5n2 := client.V5n2(nil)`
 #### Example: Load
 
 ```go
-v5n2, err := client.V5n2(nil).Load(nil, nil)
+v5n2, err := client.V5n2(nil).Load(map[string]any{"count": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -784,7 +784,7 @@ Create an instance: `v6n2 := client.V6n2(nil)`
 #### Example: Load
 
 ```go
-v6n2, err := client.V6n2(nil).Load(nil, nil)
+v6n2, err := client.V6n2(nil).Load(map[string]any{"count": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -844,7 +844,7 @@ Create an instance: `v7n2 := client.V7n2(nil)`
 #### Example: Load
 
 ```go
-v7n2, err := client.V7n2(nil).Load(nil, nil)
+v7n2, err := client.V7n2(nil).Load(map[string]any{"count": 1}, nil)
 if err != nil {
     panic(err)
 }

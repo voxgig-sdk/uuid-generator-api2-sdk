@@ -45,14 +45,17 @@ for (const guid of guids) {
 }
 ```
 
-### 3. Load a guid
+### 3. Load a v1n2
 
+V1n2 is nested under count, so provide the `count`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const guid = await client.Guid().load({ id: 1 })
-  console.log(guid)
+  const v1n2 = await client.V1n2().load({
+    count: 1,
+  })
+  console.log(v1n2)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -562,7 +565,7 @@ Create an instance: `const v1n2 = client.V1n2()`
 #### Example: Load
 
 ```ts
-const v1n2 = await client.V1n2().load()
+const v1n2 = await client.V1n2().load({ count: 1 })
 ```
 
 
@@ -614,7 +617,7 @@ Create an instance: `const v3n2 = client.V3n2()`
 #### Example: Load
 
 ```ts
-const v3n2 = await client.V3n2().load()
+const v3n2 = await client.V3n2().load({ count: 1 })
 ```
 
 
@@ -666,7 +669,7 @@ Create an instance: `const v4n2 = client.V4n2()`
 #### Example: Load
 
 ```ts
-const v4n2 = await client.V4n2().load()
+const v4n2 = await client.V4n2().load({ count: 1 })
 ```
 
 
@@ -718,7 +721,7 @@ Create an instance: `const v5n2 = client.V5n2()`
 #### Example: Load
 
 ```ts
-const v5n2 = await client.V5n2().load()
+const v5n2 = await client.V5n2().load({ count: 1 })
 ```
 
 
@@ -770,7 +773,7 @@ Create an instance: `const v6n2 = client.V6n2()`
 #### Example: Load
 
 ```ts
-const v6n2 = await client.V6n2().load()
+const v6n2 = await client.V6n2().load({ count: 1 })
 ```
 
 
@@ -822,7 +825,7 @@ Create an instance: `const v7n2 = client.V7n2()`
 #### Example: Load
 
 ```ts
-const v7n2 = await client.V7n2().load()
+const v7n2 = await client.V7n2().load({ count: 1 })
 ```
 
 

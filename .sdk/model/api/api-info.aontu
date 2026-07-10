@@ -20,9 +20,9 @@ main: {
           url: "https://toolkitvault.com"
         }
       ]
+      summary: "This API provides a fast and free method for generating UUIDs, supporting various versions including v1, v3, v4, v5, v6, and time-ordered v7."
       title: "UUID Generator API"
       version: "1.0.0"
+      website: "https://toolkitvault.com"
     }
   }
-}
-

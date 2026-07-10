@@ -45,13 +45,15 @@ try {
 }
 ```
 
-### 3. Load a guid
+### 3. Load a v1n2
+
+V1n2 is nested under count, so provide the `count`.
 
 ```php
 try {
-    // load() returns the bare Guid record (throws on error).
-    $guid = $client->Guid()->load(["id" => "example_id"]);
-    print_r($guid);
+    // load() returns the bare V1n2 record (throws on error).
+    $v1n2 = $client->V1n2()->load(["count" => 1]);
+    print_r($v1n2);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -468,7 +470,7 @@ Create an instance: `$guid = $client->Guid();`
 
 ```php
 // load() returns the bare Guid record (throws on error).
-$guid = $client->Guid()->load(["id" => "guid_id"]);
+$guid = $client->Guid()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -529,7 +531,7 @@ Create an instance: `$v1n2 = $client->V1n2();`
 
 ```php
 // load() returns the bare V1n2 record (throws on error).
-$v1n2 = $client->V1n2()->load();
+$v1n2 = $client->V1n2()->load(["count" => 1]);
 ```
 
 
@@ -583,7 +585,7 @@ Create an instance: `$v3n2 = $client->V3n2();`
 
 ```php
 // load() returns the bare V3n2 record (throws on error).
-$v3n2 = $client->V3n2()->load();
+$v3n2 = $client->V3n2()->load(["count" => 1]);
 ```
 
 
@@ -637,7 +639,7 @@ Create an instance: `$v4n2 = $client->V4n2();`
 
 ```php
 // load() returns the bare V4n2 record (throws on error).
-$v4n2 = $client->V4n2()->load();
+$v4n2 = $client->V4n2()->load(["count" => 1]);
 ```
 
 
@@ -691,7 +693,7 @@ Create an instance: `$v5n2 = $client->V5n2();`
 
 ```php
 // load() returns the bare V5n2 record (throws on error).
-$v5n2 = $client->V5n2()->load();
+$v5n2 = $client->V5n2()->load(["count" => 1]);
 ```
 
 
@@ -745,7 +747,7 @@ Create an instance: `$v6n2 = $client->V6n2();`
 
 ```php
 // load() returns the bare V6n2 record (throws on error).
-$v6n2 = $client->V6n2()->load();
+$v6n2 = $client->V6n2()->load(["count" => 1]);
 ```
 
 
@@ -799,7 +801,7 @@ Create an instance: `$v7n2 = $client->V7n2();`
 
 ```php
 // load() returns the bare V7n2 record (throws on error).
-$v7n2 = $client->V7n2()->load();
+$v7n2 = $client->V7n2()->load(["count" => 1]);
 ```
 
 
