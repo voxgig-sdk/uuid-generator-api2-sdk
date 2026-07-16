@@ -37,7 +37,20 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address for http transport")
 	flag.Parse()
 
-	client := sdk.NewUuidGeneratorApi2SDK(nil)
+	// Configure from the environment: UUID_GENERATOR_API2_APIKEY carries the API key and
+	// UUID_GENERATOR_API2_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("UUID_GENERATOR_API2_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("UUID_GENERATOR_API2_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewUuidGeneratorApi2SDK(opts)
 	server := mcp.NewServer(
 		&mcp.Implementation{
 			Name:    "uuid-generator-api2",
