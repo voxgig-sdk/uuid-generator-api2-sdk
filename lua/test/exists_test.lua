@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- UuidGeneratorApi2 SDK exists test
 
 local sdk = require("uuid-generator-api2_sdk")
 
