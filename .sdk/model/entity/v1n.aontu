@@ -11,12 +11,12 @@ main: kit: entity: v1n: {
       type: "`$INTEGER`"
     }
     {
-      name: "max_per_call"
+      name: "maxPerCall"
       req: true
       type: "`$INTEGER`"
     }
     {
-      name: "uuid"
+      name: "uuids"
       req: true
       type: "`$ARRAY`"
     }
@@ -68,11 +68,65 @@ main: kit: entity: v1n: {
           }
           transform: {
             req: "`reqdata`"
+            res: "`body.uuids`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "count"
+                orig: "count"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                example: "default"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/uuid-generator/v1/{count}"
+          parts: [
+            "api"
+            "uuid-generator"
+            "v1"
+            "{count}"
+          ]
+          select: {
+            exist: [
+              "count"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
             res: "`body`"
           }
         }
       ]
     }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "v1"
+      ]
+    ]
   }
 
 

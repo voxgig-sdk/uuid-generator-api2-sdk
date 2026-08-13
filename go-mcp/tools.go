@@ -16,7 +16,7 @@ import (
 // reqdata map passed through to the SDK. For load, `query` should be
 // `{"id": <value>}`. For list, omit `query` or pass an empty map.
 type Args struct {
-	Entity string         `json:"entity" jsonschema:"guid | v1n | v1n2 | v3n | v3n2 | v4n | v4n2 | v5n | v5n2 | v6n | v6n2 | v7n | v7n2"`
+	Entity string         `json:"entity" jsonschema:"guid | v1n | v3n | v4n | v5n | v6n | v7n"`
 	Query  map[string]any `json:"query,omitempty" jsonschema:"optional match map e.g. {\"id\":1} for load, omit for list"`
 }
 
@@ -81,28 +81,16 @@ func entityFor(client *sdk.UuidGeneratorApi2SDK, name string) (sdk.UuidGenerator
 		return client.Guid(nil), nil
 	case "v1n":
 		return client.V1n(nil), nil
-	case "v1n2":
-		return client.V1n2(nil), nil
 	case "v3n":
 		return client.V3n(nil), nil
-	case "v3n2":
-		return client.V3n2(nil), nil
 	case "v4n":
 		return client.V4n(nil), nil
-	case "v4n2":
-		return client.V4n2(nil), nil
 	case "v5n":
 		return client.V5n(nil), nil
-	case "v5n2":
-		return client.V5n2(nil), nil
 	case "v6n":
 		return client.V6n(nil), nil
-	case "v6n2":
-		return client.V6n2(nil), nil
 	case "v7n":
 		return client.V7n(nil), nil
-	case "v7n2":
-		return client.V7n2(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

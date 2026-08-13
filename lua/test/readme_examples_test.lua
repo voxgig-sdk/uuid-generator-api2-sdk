@@ -20,7 +20,7 @@ local SDK_MODULE = "uuid-generator-api2_sdk"
 -- A test-mode client seeded with a fixture for every entity. The constructor
 -- of each runnable snippet is rewritten to this form so the offline mock has
 -- data to return.
-local TEST_SEED = '{ entity = { ["guid"] = { ["test01"] = { id = "test01" } }, ["v1n"] = { ["test01"] = { id = "test01" } }, ["v1n2"] = { ["test01"] = { id = "test01" } }, ["v3n"] = { ["test01"] = { id = "test01" } }, ["v3n2"] = { ["test01"] = { id = "test01" } }, ["v4n"] = { ["test01"] = { id = "test01" } }, ["v4n2"] = { ["test01"] = { id = "test01" } }, ["v5n"] = { ["test01"] = { id = "test01" } }, ["v5n2"] = { ["test01"] = { id = "test01" } }, ["v6n"] = { ["test01"] = { id = "test01" } }, ["v6n2"] = { ["test01"] = { id = "test01" } }, ["v7n"] = { ["test01"] = { id = "test01" } }, ["v7n2"] = { ["test01"] = { id = "test01" } } } }'
+local TEST_SEED = '{ entity = { ["guid"] = { ["test01"] = { id = "test01" } }, ["v1n"] = { ["test01"] = { id = "test01" } }, ["v3n"] = { ["test01"] = { id = "test01" } }, ["v4n"] = { ["test01"] = { id = "test01" } }, ["v5n"] = { ["test01"] = { id = "test01" } }, ["v6n"] = { ["test01"] = { id = "test01" } }, ["v7n"] = { ["test01"] = { id = "test01" } } } }'
 local TEST_CTOR = "sdk.test(" .. TEST_SEED .. ")"
 
 local function script_dir()

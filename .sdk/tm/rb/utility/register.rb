@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ UuidGeneratorApi2Utility.registrar = ->(u) {
   u.prepare_params = UuidGeneratorApi2Utilities::PrepareParams
   u.prepare_path = UuidGeneratorApi2Utilities::PreparePath
   u.prepare_query = UuidGeneratorApi2Utilities::PrepareQuery
+  u.graphql_body = UuidGeneratorApi2Utilities::GraphqlBody
+  u.graphql_errors = UuidGeneratorApi2Utilities::GraphqlErrors
   u.result_basic = UuidGeneratorApi2Utilities::ResultBasic
   u.result_body = UuidGeneratorApi2Utilities::ResultBody
   u.result_headers = UuidGeneratorApi2Utilities::ResultHeaders

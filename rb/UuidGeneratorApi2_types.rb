@@ -13,18 +13,18 @@
 # @!attribute [rw] count
 #   @return [Integer]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array]
 #
 # @!attribute [rw] version
 #   @return [String]
 Guid = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
   keyword_init: true
 )
@@ -43,18 +43,18 @@ GuidLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 GuidListMatch = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
   keyword_init: true
 )
@@ -64,19 +64,28 @@ GuidListMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array]
 #
 # @!attribute [rw] version
 #   @return [String]
 V1n = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
+  keyword_init: true
+)
+
+# Request payload for V1n#load.
+#
+# @!attribute [rw] count
+#   @return [Integer]
+V1nLoadMatch = Struct.new(
+  :count,
   keyword_init: true
 )
 
@@ -85,49 +94,19 @@ V1n = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 V1nListMatch = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
-  keyword_init: true
-)
-
-# V1n2 entity data model.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-#
-# @!attribute [rw] max_per_call
-#   @return [Integer]
-#
-# @!attribute [rw] uuid
-#   @return [Array]
-#
-# @!attribute [rw] version
-#   @return [String]
-V1n2 = Struct.new(
-  :count,
-  :max_per_call,
-  :uuid,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for V1n2#load.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-V1n2LoadMatch = Struct.new(
-  :count,
   keyword_init: true
 )
 
@@ -136,19 +115,28 @@ V1n2LoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array]
 #
 # @!attribute [rw] version
 #   @return [String]
 V3n = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
+  keyword_init: true
+)
+
+# Request payload for V3n#load.
+#
+# @!attribute [rw] count
+#   @return [Integer]
+V3nLoadMatch = Struct.new(
+  :count,
   keyword_init: true
 )
 
@@ -157,49 +145,19 @@ V3n = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 V3nListMatch = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
-  keyword_init: true
-)
-
-# V3n2 entity data model.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-#
-# @!attribute [rw] max_per_call
-#   @return [Integer]
-#
-# @!attribute [rw] uuid
-#   @return [Array]
-#
-# @!attribute [rw] version
-#   @return [String]
-V3n2 = Struct.new(
-  :count,
-  :max_per_call,
-  :uuid,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for V3n2#load.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-V3n2LoadMatch = Struct.new(
-  :count,
   keyword_init: true
 )
 
@@ -208,19 +166,28 @@ V3n2LoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array]
 #
 # @!attribute [rw] version
 #   @return [String]
 V4n = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
+  keyword_init: true
+)
+
+# Request payload for V4n#load.
+#
+# @!attribute [rw] count
+#   @return [Integer]
+V4nLoadMatch = Struct.new(
+  :count,
   keyword_init: true
 )
 
@@ -229,49 +196,19 @@ V4n = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 V4nListMatch = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
-  keyword_init: true
-)
-
-# V4n2 entity data model.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-#
-# @!attribute [rw] max_per_call
-#   @return [Integer]
-#
-# @!attribute [rw] uuid
-#   @return [Array]
-#
-# @!attribute [rw] version
-#   @return [String]
-V4n2 = Struct.new(
-  :count,
-  :max_per_call,
-  :uuid,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for V4n2#load.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-V4n2LoadMatch = Struct.new(
-  :count,
   keyword_init: true
 )
 
@@ -280,19 +217,28 @@ V4n2LoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array]
 #
 # @!attribute [rw] version
 #   @return [String]
 V5n = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
+  keyword_init: true
+)
+
+# Request payload for V5n#load.
+#
+# @!attribute [rw] count
+#   @return [Integer]
+V5nLoadMatch = Struct.new(
+  :count,
   keyword_init: true
 )
 
@@ -301,49 +247,19 @@ V5n = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 V5nListMatch = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
-  keyword_init: true
-)
-
-# V5n2 entity data model.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-#
-# @!attribute [rw] max_per_call
-#   @return [Integer]
-#
-# @!attribute [rw] uuid
-#   @return [Array]
-#
-# @!attribute [rw] version
-#   @return [String]
-V5n2 = Struct.new(
-  :count,
-  :max_per_call,
-  :uuid,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for V5n2#load.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-V5n2LoadMatch = Struct.new(
-  :count,
   keyword_init: true
 )
 
@@ -352,19 +268,28 @@ V5n2LoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array]
 #
 # @!attribute [rw] version
 #   @return [String]
 V6n = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
+  keyword_init: true
+)
+
+# Request payload for V6n#load.
+#
+# @!attribute [rw] count
+#   @return [Integer]
+V6nLoadMatch = Struct.new(
+  :count,
   keyword_init: true
 )
 
@@ -373,49 +298,19 @@ V6n = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 V6nListMatch = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
-  keyword_init: true
-)
-
-# V6n2 entity data model.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-#
-# @!attribute [rw] max_per_call
-#   @return [Integer]
-#
-# @!attribute [rw] uuid
-#   @return [Array]
-#
-# @!attribute [rw] version
-#   @return [String]
-V6n2 = Struct.new(
-  :count,
-  :max_per_call,
-  :uuid,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for V6n2#load.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-V6n2LoadMatch = Struct.new(
-  :count,
   keyword_init: true
 )
 
@@ -424,19 +319,28 @@ V6n2LoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array]
 #
 # @!attribute [rw] version
 #   @return [String]
 V7n = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
+  keyword_init: true
+)
+
+# Request payload for V7n#load.
+#
+# @!attribute [rw] count
+#   @return [Integer]
+V7nLoadMatch = Struct.new(
+  :count,
   keyword_init: true
 )
 
@@ -445,49 +349,19 @@ V7n = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_per_call
+# @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
-# @!attribute [rw] uuid
+# @!attribute [rw] uuids
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 V7nListMatch = Struct.new(
   :count,
-  :max_per_call,
-  :uuid,
+  :maxPerCall,
+  :uuids,
   :version,
-  keyword_init: true
-)
-
-# V7n2 entity data model.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-#
-# @!attribute [rw] max_per_call
-#   @return [Integer]
-#
-# @!attribute [rw] uuid
-#   @return [Array]
-#
-# @!attribute [rw] version
-#   @return [String]
-V7n2 = Struct.new(
-  :count,
-  :max_per_call,
-  :uuid,
-  :version,
-  keyword_init: true
-)
-
-# Request payload for V7n2#load.
-#
-# @!attribute [rw] count
-#   @return [Integer]
-V7n2LoadMatch = Struct.new(
-  :count,
   keyword_init: true
 )
 

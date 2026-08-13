@@ -80,7 +80,7 @@ func TestV7nEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{"list", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "v7n." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -92,7 +92,7 @@ func TestV7nEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set UUIDGENERATORAPI__TEST_V_N_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set UUID_GENERATOR_API2_TEST_V7N_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -118,6 +118,16 @@ func TestV7nEntity(t *testing.T) {
 		_, v7nRef01ListOk := v7nRef01ListResult.([]any)
 		if !v7nRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", v7nRef01ListResult)
+		}
+
+		// LOAD
+		v7nRef01MatchDt0 := map[string]any{}
+		v7nRef01DataDt0Loaded, err := v7nRef01Ent.Load(v7nRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		if v7nRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})
@@ -148,7 +158,7 @@ func v7nBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap := vs.Transform(
-		[]any{"v7n01", "v7n02", "v7n03"},
+		[]any{"v7n01", "v7n02", "v7n03", "v701", "v702", "v703"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -160,21 +170,21 @@ func v7nBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("UUIDGENERATORAPI__TEST_V_N_ENTID")
+	entidEnvRaw := os.Getenv("UUID_GENERATOR_API2_TEST_V7N_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"UUIDGENERATORAPI__TEST_V_N_ENTID": idmap,
-		"UUIDGENERATORAPI__TEST_LIVE":      "FALSE",
-		"UUIDGENERATORAPI__TEST_EXPLAIN":   "FALSE",
+		"UUID_GENERATOR_API2_TEST_V7N_ENTID": idmap,
+		"UUID_GENERATOR_API2_TEST_LIVE":      "FALSE",
+		"UUID_GENERATOR_API2_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["UUIDGENERATORAPI__TEST_V_N_ENTID"])
+	idmapResolved := core.ToMapAny(env["UUID_GENERATOR_API2_TEST_V7N_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE" {
+	if env["UUID_GENERATOR_API2_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -183,13 +193,13 @@ func v7nBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewUuidGeneratorApi2SDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE"
+	live := env["UUID_GENERATOR_API2_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["UUIDGENERATORAPI__TEST_EXPLAIN"] == "TRUE",
+		explain:       env["UUID_GENERATOR_API2_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

@@ -8,8 +8,8 @@
 
 ---@class Guid
 ---@field count number
----@field max_per_call number
----@field uuid table
+---@field maxPerCall number
+---@field uuids table
 ---@field version string
 
 ---@class GuidLoadMatch
@@ -17,135 +17,99 @@
 
 ---@class GuidListMatch
 ---@field count? number
----@field max_per_call? number
----@field uuid? table
+---@field maxPerCall? number
+---@field uuids? table
 ---@field version? string
 
 ---@class V1n
 ---@field count number
----@field max_per_call number
----@field uuid table
+---@field maxPerCall number
+---@field uuids table
 ---@field version string
+
+---@class V1nLoadMatch
+---@field count number
 
 ---@class V1nListMatch
 ---@field count? number
----@field max_per_call? number
----@field uuid? table
+---@field maxPerCall? number
+---@field uuids? table
 ---@field version? string
-
----@class V1n2
----@field count number
----@field max_per_call number
----@field uuid table
----@field version string
-
----@class V1n2LoadMatch
----@field count number
 
 ---@class V3n
 ---@field count number
----@field max_per_call number
----@field uuid table
+---@field maxPerCall number
+---@field uuids table
 ---@field version string
+
+---@class V3nLoadMatch
+---@field count number
 
 ---@class V3nListMatch
 ---@field count? number
----@field max_per_call? number
----@field uuid? table
+---@field maxPerCall? number
+---@field uuids? table
 ---@field version? string
-
----@class V3n2
----@field count number
----@field max_per_call number
----@field uuid table
----@field version string
-
----@class V3n2LoadMatch
----@field count number
 
 ---@class V4n
 ---@field count number
----@field max_per_call number
----@field uuid table
+---@field maxPerCall number
+---@field uuids table
 ---@field version string
+
+---@class V4nLoadMatch
+---@field count number
 
 ---@class V4nListMatch
 ---@field count? number
----@field max_per_call? number
----@field uuid? table
+---@field maxPerCall? number
+---@field uuids? table
 ---@field version? string
-
----@class V4n2
----@field count number
----@field max_per_call number
----@field uuid table
----@field version string
-
----@class V4n2LoadMatch
----@field count number
 
 ---@class V5n
 ---@field count number
----@field max_per_call number
----@field uuid table
+---@field maxPerCall number
+---@field uuids table
 ---@field version string
+
+---@class V5nLoadMatch
+---@field count number
 
 ---@class V5nListMatch
 ---@field count? number
----@field max_per_call? number
----@field uuid? table
+---@field maxPerCall? number
+---@field uuids? table
 ---@field version? string
-
----@class V5n2
----@field count number
----@field max_per_call number
----@field uuid table
----@field version string
-
----@class V5n2LoadMatch
----@field count number
 
 ---@class V6n
 ---@field count number
----@field max_per_call number
----@field uuid table
+---@field maxPerCall number
+---@field uuids table
 ---@field version string
+
+---@class V6nLoadMatch
+---@field count number
 
 ---@class V6nListMatch
 ---@field count? number
----@field max_per_call? number
----@field uuid? table
+---@field maxPerCall? number
+---@field uuids? table
 ---@field version? string
-
----@class V6n2
----@field count number
----@field max_per_call number
----@field uuid table
----@field version string
-
----@class V6n2LoadMatch
----@field count number
 
 ---@class V7n
 ---@field count number
----@field max_per_call number
----@field uuid table
+---@field maxPerCall number
+---@field uuids table
 ---@field version string
+
+---@class V7nLoadMatch
+---@field count number
 
 ---@class V7nListMatch
 ---@field count? number
----@field max_per_call? number
----@field uuid? table
+---@field maxPerCall? number
+---@field uuids? table
 ---@field version? string
-
----@class V7n2
----@field count number
----@field max_per_call number
----@field uuid table
----@field version string
-
----@class V7n2LoadMatch
----@field count number
 
 local M = {}
 

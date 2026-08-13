@@ -20,17 +20,11 @@ local function make_config()
       entity = {
         ["guid"] = {},
         ["v1n"] = {},
-        ["v1n2"] = {},
         ["v3n"] = {},
-        ["v3n2"] = {},
         ["v4n"] = {},
-        ["v4n2"] = {},
         ["v5n"] = {},
-        ["v5n2"] = {},
         ["v6n"] = {},
-        ["v6n2"] = {},
         ["v7n"] = {},
-        ["v7n2"] = {},
       },
     },
     entity = {
@@ -45,14 +39,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_per_call",
+            ["name"] = "maxPerCall",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "uuid",
+            ["name"] = "uuids",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -95,6 +89,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/guid",
                 ["parts"] = {
@@ -110,7 +105,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.uuids`",
                 },
                 ["index$"] = 0,
               },
@@ -147,6 +142,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/guid/{count}",
                 ["parts"] = {
@@ -191,14 +187,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_per_call",
+            ["name"] = "maxPerCall",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "uuid",
+            ["name"] = "uuids",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -241,6 +237,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v1",
                 ["parts"] = {
@@ -256,51 +253,13 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.uuids`",
                 },
                 ["index$"] = 0,
               },
             },
             ["key$"] = "list",
           },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["v1n2"] = {
-        ["fields"] = {
-          {
-            ["active"] = true,
-            ["name"] = "count",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "max_per_call",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "uuid",
-            ["req"] = true,
-            ["type"] = "`$ARRAY`",
-            ["index$"] = 2,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "version",
-            ["req"] = true,
-            ["type"] = "`$STRING`",
-            ["index$"] = 3,
-          },
-        },
-        ["name"] = "v1n2",
-        ["op"] = {
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -331,6 +290,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v1/{count}",
                 ["parts"] = {
@@ -374,14 +334,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_per_call",
+            ["name"] = "maxPerCall",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "uuid",
+            ["name"] = "uuids",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -441,6 +401,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v3",
                 ["parts"] = {
@@ -458,51 +419,13 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.uuids`",
                 },
                 ["index$"] = 0,
               },
             },
             ["key$"] = "list",
           },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["v3n2"] = {
-        ["fields"] = {
-          {
-            ["active"] = true,
-            ["name"] = "count",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "max_per_call",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "uuid",
-            ["req"] = true,
-            ["type"] = "`$ARRAY`",
-            ["index$"] = 2,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "version",
-            ["req"] = true,
-            ["type"] = "`$STRING`",
-            ["index$"] = 3,
-          },
-        },
-        ["name"] = "v3n2",
-        ["op"] = {
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -550,6 +473,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v3/{count}",
                 ["parts"] = {
@@ -595,14 +519,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_per_call",
+            ["name"] = "maxPerCall",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "uuid",
+            ["name"] = "uuids",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -645,6 +569,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v4",
                 ["parts"] = {
@@ -660,51 +585,13 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.uuids`",
                 },
                 ["index$"] = 0,
               },
             },
             ["key$"] = "list",
           },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["v4n2"] = {
-        ["fields"] = {
-          {
-            ["active"] = true,
-            ["name"] = "count",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "max_per_call",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "uuid",
-            ["req"] = true,
-            ["type"] = "`$ARRAY`",
-            ["index$"] = 2,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "version",
-            ["req"] = true,
-            ["type"] = "`$STRING`",
-            ["index$"] = 3,
-          },
-        },
-        ["name"] = "v4n2",
-        ["op"] = {
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -735,6 +622,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v4/{count}",
                 ["parts"] = {
@@ -778,14 +666,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_per_call",
+            ["name"] = "maxPerCall",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "uuid",
+            ["name"] = "uuids",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -845,6 +733,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v5",
                 ["parts"] = {
@@ -862,51 +751,13 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.uuids`",
                 },
                 ["index$"] = 0,
               },
             },
             ["key$"] = "list",
           },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["v5n2"] = {
-        ["fields"] = {
-          {
-            ["active"] = true,
-            ["name"] = "count",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "max_per_call",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "uuid",
-            ["req"] = true,
-            ["type"] = "`$ARRAY`",
-            ["index$"] = 2,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "version",
-            ["req"] = true,
-            ["type"] = "`$STRING`",
-            ["index$"] = 3,
-          },
-        },
-        ["name"] = "v5n2",
-        ["op"] = {
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -954,6 +805,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v5/{count}",
                 ["parts"] = {
@@ -999,14 +851,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_per_call",
+            ["name"] = "maxPerCall",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "uuid",
+            ["name"] = "uuids",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -1049,6 +901,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v6",
                 ["parts"] = {
@@ -1064,51 +917,13 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.uuids`",
                 },
                 ["index$"] = 0,
               },
             },
             ["key$"] = "list",
           },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["v6n2"] = {
-        ["fields"] = {
-          {
-            ["active"] = true,
-            ["name"] = "count",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "max_per_call",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "uuid",
-            ["req"] = true,
-            ["type"] = "`$ARRAY`",
-            ["index$"] = 2,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "version",
-            ["req"] = true,
-            ["type"] = "`$STRING`",
-            ["index$"] = 3,
-          },
-        },
-        ["name"] = "v6n2",
-        ["op"] = {
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -1139,6 +954,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v6/{count}",
                 ["parts"] = {
@@ -1182,14 +998,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_per_call",
+            ["name"] = "maxPerCall",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "uuid",
+            ["name"] = "uuids",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -1232,6 +1048,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v7",
                 ["parts"] = {
@@ -1247,51 +1064,13 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.uuids`",
                 },
                 ["index$"] = 0,
               },
             },
             ["key$"] = "list",
           },
-        },
-        ["relations"] = {
-          ["ancestors"] = {},
-        },
-      },
-      ["v7n2"] = {
-        ["fields"] = {
-          {
-            ["active"] = true,
-            ["name"] = "count",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 0,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "max_per_call",
-            ["req"] = true,
-            ["type"] = "`$INTEGER`",
-            ["index$"] = 1,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "uuid",
-            ["req"] = true,
-            ["type"] = "`$ARRAY`",
-            ["index$"] = 2,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "version",
-            ["req"] = true,
-            ["type"] = "`$STRING`",
-            ["index$"] = 3,
-          },
-        },
-        ["name"] = "v7n2",
-        ["op"] = {
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
@@ -1322,6 +1101,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/uuid-generator/v7/{count}",
                 ["parts"] = {

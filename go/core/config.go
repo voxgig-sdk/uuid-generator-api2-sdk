@@ -20,17 +20,11 @@ func MakeConfig() map[string]any {
 			"entity": map[string]any{
 				"guid": map[string]any{},
 				"v1n": map[string]any{},
-				"v1n2": map[string]any{},
 				"v3n": map[string]any{},
-				"v3n2": map[string]any{},
 				"v4n": map[string]any{},
-				"v4n2": map[string]any{},
 				"v5n": map[string]any{},
-				"v5n2": map[string]any{},
 				"v6n": map[string]any{},
-				"v6n2": map[string]any{},
 				"v7n": map[string]any{},
-				"v7n2": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
@@ -45,14 +39,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "max_per_call",
+						"name": "maxPerCall",
 						"req": true,
 						"type": "`$INTEGER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "uuid",
+						"name": "uuids",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -95,6 +89,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/guid",
 								"parts": []any{
@@ -110,12 +105,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.uuids`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -147,6 +141,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/guid/{count}",
 								"parts": []any{
@@ -173,7 +168,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -191,14 +185,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "max_per_call",
+						"name": "maxPerCall",
 						"req": true,
 						"type": "`$INTEGER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "uuid",
+						"name": "uuids",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -241,6 +235,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v1",
 								"parts": []any{
@@ -256,51 +251,12 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.uuids`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"v1n2": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"active": true,
-						"name": "count",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "max_per_call",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 1,
-					},
-					map[string]any{
-						"active": true,
-						"name": "uuid",
-						"req": true,
-						"type": "`$ARRAY`",
-						"index$": 2,
-					},
-					map[string]any{
-						"active": true,
-						"name": "version",
-						"req": true,
-						"type": "`$STRING`",
-						"index$": 3,
-					},
-				},
-				"name": "v1n2",
-				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -331,6 +287,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v1/{count}",
 								"parts": []any{
@@ -352,7 +309,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -374,14 +330,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "max_per_call",
+						"name": "maxPerCall",
 						"req": true,
 						"type": "`$INTEGER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "uuid",
+						"name": "uuids",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -441,6 +397,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v3",
 								"parts": []any{
@@ -458,51 +415,12 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.uuids`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"v3n2": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"active": true,
-						"name": "count",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "max_per_call",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 1,
-					},
-					map[string]any{
-						"active": true,
-						"name": "uuid",
-						"req": true,
-						"type": "`$ARRAY`",
-						"index$": 2,
-					},
-					map[string]any{
-						"active": true,
-						"name": "version",
-						"req": true,
-						"type": "`$STRING`",
-						"index$": 3,
-					},
-				},
-				"name": "v3n2",
-				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -550,6 +468,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v3/{count}",
 								"parts": []any{
@@ -573,7 +492,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -595,14 +513,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "max_per_call",
+						"name": "maxPerCall",
 						"req": true,
 						"type": "`$INTEGER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "uuid",
+						"name": "uuids",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -645,6 +563,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v4",
 								"parts": []any{
@@ -660,51 +579,12 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.uuids`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"v4n2": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"active": true,
-						"name": "count",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "max_per_call",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 1,
-					},
-					map[string]any{
-						"active": true,
-						"name": "uuid",
-						"req": true,
-						"type": "`$ARRAY`",
-						"index$": 2,
-					},
-					map[string]any{
-						"active": true,
-						"name": "version",
-						"req": true,
-						"type": "`$STRING`",
-						"index$": 3,
-					},
-				},
-				"name": "v4n2",
-				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -735,6 +615,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v4/{count}",
 								"parts": []any{
@@ -756,7 +637,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -778,14 +658,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "max_per_call",
+						"name": "maxPerCall",
 						"req": true,
 						"type": "`$INTEGER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "uuid",
+						"name": "uuids",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -845,6 +725,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v5",
 								"parts": []any{
@@ -862,51 +743,12 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.uuids`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"v5n2": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"active": true,
-						"name": "count",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "max_per_call",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 1,
-					},
-					map[string]any{
-						"active": true,
-						"name": "uuid",
-						"req": true,
-						"type": "`$ARRAY`",
-						"index$": 2,
-					},
-					map[string]any{
-						"active": true,
-						"name": "version",
-						"req": true,
-						"type": "`$STRING`",
-						"index$": 3,
-					},
-				},
-				"name": "v5n2",
-				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -954,6 +796,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v5/{count}",
 								"parts": []any{
@@ -977,7 +820,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -999,14 +841,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "max_per_call",
+						"name": "maxPerCall",
 						"req": true,
 						"type": "`$INTEGER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "uuid",
+						"name": "uuids",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -1049,6 +891,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v6",
 								"parts": []any{
@@ -1064,51 +907,12 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.uuids`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"v6n2": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"active": true,
-						"name": "count",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "max_per_call",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 1,
-					},
-					map[string]any{
-						"active": true,
-						"name": "uuid",
-						"req": true,
-						"type": "`$ARRAY`",
-						"index$": 2,
-					},
-					map[string]any{
-						"active": true,
-						"name": "version",
-						"req": true,
-						"type": "`$STRING`",
-						"index$": 3,
-					},
-				},
-				"name": "v6n2",
-				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -1139,6 +943,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v6/{count}",
 								"parts": []any{
@@ -1160,7 +965,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1182,14 +986,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "max_per_call",
+						"name": "maxPerCall",
 						"req": true,
 						"type": "`$INTEGER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "uuid",
+						"name": "uuids",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -1232,6 +1036,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v7",
 								"parts": []any{
@@ -1247,51 +1052,12 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.uuids`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"v7n2": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"active": true,
-						"name": "count",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "max_per_call",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 1,
-					},
-					map[string]any{
-						"active": true,
-						"name": "uuid",
-						"req": true,
-						"type": "`$ARRAY`",
-						"index$": 2,
-					},
-					map[string]any{
-						"active": true,
-						"name": "version",
-						"req": true,
-						"type": "`$STRING`",
-						"index$": 3,
-					},
-				},
-				"name": "v7n2",
-				"op": map[string]any{
 					"load": map[string]any{
 						"input": "data",
 						"name": "load",
@@ -1322,6 +1088,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v7/{count}",
 								"parts": []any{
@@ -1343,7 +1110,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

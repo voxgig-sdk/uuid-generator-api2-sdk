@@ -31,7 +31,7 @@ Each feature is generated into every SDK target — as a directory
 `<lang>/src/feature/<name>/` (ts/js) or a flat file in the `<lang>/feature/`
 package (other languages). Each target's guide documents its features.
 
-**Entities** (13): `Guid`, `V1n`, `V1n2`, `V3n`, `V3n2`, `V4n`, `V4n2`, `V5n`, `V5n2`, `V6n`, `V6n2`, `V7n`, `V7n2`.
+**Entities** (7): `Guid`, `V1n`, `V3n`, `V4n`, `V5n`, `V6n`, `V7n`.
 
 ## Generating and updating the SDK
 

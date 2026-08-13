@@ -149,7 +149,37 @@ class UuidGeneratorApi2SDK
     fetchdef
   end
 
+  # Raw endpoint access is operator-controllable, like every entity op.
+  # Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  # either one reaches the same endpoint.
   def direct(fetchargs = {})
+    return op_denied("direct") unless op_allowed?("direct")
+
+    raw_request(fetchargs)
+  end
+
+  # Is this raw-access op permitted by the SDK's allow.op option?
+  def op_allowed?(op)
+    allow_op = VoxgigStruct.getpath(@options, "allow.op")
+    allow_op.is_a?(String) && allow_op.include?(op)
+  end
+
+  def op_denied(op)
+    allow_op = VoxgigStruct.getpath(@options, "allow.op")
+    {
+      "ok" => false,
+      "err" => UuidGeneratorApi2Error.new(
+        "#{op}_allow",
+        "UuidGeneratorApi2SDK: #{op}: operation not allowed by" \
+        " SDK option allow.op value: \"#{allow_op}\""),
+    }
+  end
+
+  # Ungated request path shared by direct and graphql, each of which checks
+  # its own allow.op token first. Separate, rather than a flag on fetchargs:
+  # a caller-supplied marker would let anyone opt straight back out of the
+  # gate by passing it.
+  def raw_request(fetchargs = {})
     utility = @_utility
 
     # direct() is the raw-HTTP escape hatch: it always returns a result hash
@@ -217,6 +247,47 @@ class UuidGeneratorApi2SDK
     }
   end
 
+  # Raw GraphQL access: the pressure valve that makes the generated surface's
+  # deliberate omissions (per-call selection sets, typed filter builders,
+  # batching, subscriptions) livable — the whole schema stays reachable.
+  #
+  # Thin wrapper over the same prepare/fetch path direct uses, with the one
+  # thing raw direct cannot do for GraphQL: a GraphQL failure rides HTTP 200
+  # as a top-level `errors` array, so status alone would report a failed
+  # query as ok.
+  #
+  # NOTE: like direct, this bypasses the feature pipeline — no retry,
+  # ratelimit or paging features apply.
+  def graphql(query, variables = nil, ctrl = nil)
+    return op_denied("graphql") unless op_allowed?("graphql")
+
+    res = raw_request({
+      "method" => "POST",
+      "headers" => { "content-type" => "application/json" },
+      "body" => { "query" => query, "variables" => variables || {} },
+      "ctrl" => ctrl || {},
+    })
+
+    # Errors are read BEFORE any status check: a GraphQL parse or validation
+    # failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    # body, and the raw path represents a non-2xx as ok:false with no err —
+    # so returning early on status would discard the server's own
+    # diagnostics, which are the only useful part of that response.
+    errors = VoxgigStruct.getpath(res, "data.errors")
+
+    if errors.is_a?(Array) && !errors.empty?
+      first = errors[0].is_a?(Hash) ? errors[0] : {}
+      msg = first["message"]
+      msg = "graphql error" if msg.nil? || msg.to_s.empty?
+      res["ok"] = false
+      res["err"] = UuidGeneratorApi2Error.new(
+        "graphql_error", "UuidGeneratorApi2SDK: graphql: #{msg}")
+      res["graphql"] = errors
+    end
+
+    res
+  end
+
 
   # Canonical facade: client.Guid.list / client.Guid.load({ "id" => ... })
   def Guid(data = nil)
@@ -232,24 +303,10 @@ class UuidGeneratorApi2SDK
   end
 
 
-  # Canonical facade: client.V1n2.list / client.V1n2.load({ "id" => ... })
-  def V1n2(data = nil)
-    require_relative 'entity/v1n2_entity'
-    V1n2Entity.new(self, data)
-  end
-
-
   # Canonical facade: client.V3n.list / client.V3n.load({ "id" => ... })
   def V3n(data = nil)
     require_relative 'entity/v3n_entity'
     V3nEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.V3n2.list / client.V3n2.load({ "id" => ... })
-  def V3n2(data = nil)
-    require_relative 'entity/v3n2_entity'
-    V3n2Entity.new(self, data)
   end
 
 
@@ -260,24 +317,10 @@ class UuidGeneratorApi2SDK
   end
 
 
-  # Canonical facade: client.V4n2.list / client.V4n2.load({ "id" => ... })
-  def V4n2(data = nil)
-    require_relative 'entity/v4n2_entity'
-    V4n2Entity.new(self, data)
-  end
-
-
   # Canonical facade: client.V5n.list / client.V5n.load({ "id" => ... })
   def V5n(data = nil)
     require_relative 'entity/v5n_entity'
     V5nEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.V5n2.list / client.V5n2.load({ "id" => ... })
-  def V5n2(data = nil)
-    require_relative 'entity/v5n2_entity'
-    V5n2Entity.new(self, data)
   end
 
 
@@ -288,24 +331,10 @@ class UuidGeneratorApi2SDK
   end
 
 
-  # Canonical facade: client.V6n2.list / client.V6n2.load({ "id" => ... })
-  def V6n2(data = nil)
-    require_relative 'entity/v6n2_entity'
-    V6n2Entity.new(self, data)
-  end
-
-
   # Canonical facade: client.V7n.list / client.V7n.load({ "id" => ... })
   def V7n(data = nil)
     require_relative 'entity/v7n_entity'
     V7nEntity.new(self, data)
-  end
-
-
-  # Canonical facade: client.V7n2.list / client.V7n2.load({ "id" => ... })
-  def V7n2(data = nil)
-    require_relative 'entity/v7n2_entity'
-    V7n2Entity.new(self, data)
   end
 
 

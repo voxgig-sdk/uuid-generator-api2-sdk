@@ -23,8 +23,8 @@ module UuidGeneratorApi2TestRunner
   end
 
   def self.env_override(m)
-    live = getenv("UUIDGENERATORAPI2_TEST_LIVE")
-    override = getenv("UUIDGENERATORAPI2_TEST_OVERRIDE")
+    live = getenv("UUID_GENERATOR_API2_TEST_LIVE")
+    override = getenv("UUID_GENERATOR_API2_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module UuidGeneratorApi2TestRunner
       end
     end
 
-    explain = getenv("UUIDGENERATORAPI2_TEST_EXPLAIN")
-    m["UUIDGENERATORAPI2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("UUID_GENERATOR_API2_TEST_EXPLAIN")
+    m["UUID_GENERATOR_API2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

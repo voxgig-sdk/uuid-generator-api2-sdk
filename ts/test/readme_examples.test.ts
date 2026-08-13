@@ -37,7 +37,7 @@ const SDK_NAME = 'UuidGeneratorApi2SDK'
 
 // A fixture for every entity, so list()/load() resolve offline with no
 // network. Snippet client construction is rewritten to seed this.
-const TEST_SEED = {"entity":{"guid":{"test01":{"id":"test01"}},"v1n":{"test01":{"id":"test01"}},"v1n2":{"test01":{"id":"test01"}},"v3n":{"test01":{"id":"test01"}},"v3n2":{"test01":{"id":"test01"}},"v4n":{"test01":{"id":"test01"}},"v4n2":{"test01":{"id":"test01"}},"v5n":{"test01":{"id":"test01"}},"v5n2":{"test01":{"id":"test01"}},"v6n":{"test01":{"id":"test01"}},"v6n2":{"test01":{"id":"test01"}},"v7n":{"test01":{"id":"test01"}},"v7n2":{"test01":{"id":"test01"}}}}
+const TEST_SEED = {"entity":{"guid":{"test01":{"id":"test01"}},"v1n":{"test01":{"id":"test01"}},"v3n":{"test01":{"id":"test01"}},"v4n":{"test01":{"id":"test01"}},"v5n":{"test01":{"id":"test01"}},"v6n":{"test01":{"id":"test01"}},"v7n":{"test01":{"id":"test01"}}}}
 const SEED_ARG = JSON.stringify(TEST_SEED)
 const SEEDED_CTOR = SDK_NAME + '.test(' + SEED_ARG + ')'
 

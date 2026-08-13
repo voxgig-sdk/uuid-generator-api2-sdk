@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import UuidGeneratorApi2Control
-from core.error import UuidGeneratorApi2Error
-from core.result import UuidGeneratorApi2Result
-from core.spec import UuidGeneratorApi2Spec
+from uuidgeneratorapi2_sdk.config import make_config
+from uuidgeneratorapi2_sdk.features import _make_feature
+from uuidgeneratorapi2_sdk.core.control import UuidGeneratorApi2Control
+from uuidgeneratorapi2_sdk.core.error import UuidGeneratorApi2Error
+from uuidgeneratorapi2_sdk.core.result import UuidGeneratorApi2Result
+from uuidgeneratorapi2_sdk.core.spec import UuidGeneratorApi2Spec
 
 
 # True when this SDK was generated with the named feature.

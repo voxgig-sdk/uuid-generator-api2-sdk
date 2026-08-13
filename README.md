@@ -16,7 +16,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **13 semantic entities** that you
+This SDK exposes the API as **7 semantic entities** that you
 call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`):
@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = UuidGeneratorApi2SDK.test()
-const guids = await client.Guid().list()
-// guids is an array of bare Guid records populated with mock data
-console.log(guids)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = UuidGeneratorApi2SDK.test({
+  entity: {
+    v1n: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const v1ns = await client.V1n().list()
+// v1ns is an array of V1n entities, populated with mock data
+// — call v1ns[0].data() for the record itself
+console.log(v1ns)
 ```
 
 ### Python
 
 ```python
 client = UuidGeneratorApi2SDK.test()
-guids = client.Guid().list()
-print(guids)
+v1ns = client.V1n().list()
+print(v1ns)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(guids)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = UuidGeneratorApi2SDK::test([
-    "entity" => ["guid" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["v1n" => ["test01" => []]],
 ]);
-$guids = $client->Guid()->list();
+$v1ns = $client->V1n()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Guid(nil).List(
+result, err := client.V1n(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Guid(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = UuidGeneratorApi2SDK.test({
-  "entity" => { "guid" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "v1n" => { "test01" => {} } },
 })
-guids = client.Guid.list()
+v1ns = client.V1n.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Guid():list()
+local results, err = client:V1n():list()
 ```
 
 ## Packages
@@ -110,17 +119,17 @@ import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2'
 
 const client = new UuidGeneratorApi2SDK()
 
-// List all guids (returns Guid[])
+// List all guids (returns GuidEntity[] — .data() for the record)
 const guids = await client.Guid().list()
 for (const guid of guids) {
   console.log(guid)
 }
 
-// Load a specific v1n2 (returns a V1n2)
-const v1n2 = await client.V1n2().load({
+// Load a specific v1n (returns a V1n)
+const v1n = await client.V1n().load({
   count: 1,
 })
-console.log(v1n2)
+console.log(v1n)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -157,23 +166,17 @@ Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
 
 ## Entities
 
-The API exposes 13 entities:
+The API exposes 7 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Guid** | The Guid entity (list, load). | `/api/uuid-generator/guid` |
-| **V1n** | The V1n entity (list). | `/api/uuid-generator/v1` |
-| **V1n2** | The V1n2 entity (load). | `/api/uuid-generator/v1/{count}` |
-| **V3n** | The V3n entity (list). | `/api/uuid-generator/v3` |
-| **V3n2** | The V3n2 entity (load). | `/api/uuid-generator/v3/{count}` |
-| **V4n** | The V4n entity (list). | `/api/uuid-generator/v4` |
-| **V4n2** | The V4n2 entity (load). | `/api/uuid-generator/v4/{count}` |
-| **V5n** | The V5n entity (list). | `/api/uuid-generator/v5` |
-| **V5n2** | The V5n2 entity (load). | `/api/uuid-generator/v5/{count}` |
-| **V6n** | The V6n entity (list). | `/api/uuid-generator/v6` |
-| **V6n2** | The V6n2 entity (load). | `/api/uuid-generator/v6/{count}` |
-| **V7n** | The V7n entity (list). | `/api/uuid-generator/v7` |
-| **V7n2** | The V7n2 entity (load). | `/api/uuid-generator/v7/{count}` |
+| **V1n** | The V1n entity (list, load). | `/api/uuid-generator/v1` |
+| **V3n** | The V3n entity (list, load). | `/api/uuid-generator/v3` |
+| **V4n** | The V4n entity (list, load). | `/api/uuid-generator/v4` |
+| **V5n** | The V5n entity (list, load). | `/api/uuid-generator/v5` |
+| **V6n** | The V6n entity (list, load). | `/api/uuid-generator/v6` |
+| **V7n** | The V7n entity (list, load). | `/api/uuid-generator/v7` |
 
 The operations available across these entities are **load**, **list** — see each entity's
 own list above for exactly which it supports.
@@ -209,7 +212,7 @@ $client = new UuidGeneratorApi2SDK();
 $guids = $client->Guid()->list();
 print_r($guids);
 
-// Load a specific guid (returns the bare record; throws on error)
+// Load a specific guid (returns the ENTITY; call data_get() for the record; throws on error)
 $guid = $client->Guid()->load(["id" => 1]);
 print_r($guid);
 ```
@@ -228,14 +231,14 @@ if err != nil {
 }
 fmt.Println(guids)
 
-// Load a specific v1n2
-v1n2, err := client.V1n2(nil).Load(
+// Load a specific v1n
+v1n, err := client.V1n(nil).Load(
     map[string]any{"count": 1}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(v1n2)
+fmt.Println(v1n)
 ```
 
 ### Ruby
@@ -249,7 +252,7 @@ client = UuidGeneratorApi2SDK.new
 guids = client.Guid.list
 puts guids
 
-# Load a specific guid (returns the bare record; raises on error)
+# Load a specific guid (returns the ENTITY; call data_get for the record)
 guid = client.Guid.load({ "id" => 1 })
 puts guid
 ```
@@ -386,6 +389,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://toolkitvault.com](https://toolkitvault.com)
 

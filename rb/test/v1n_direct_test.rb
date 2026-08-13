@@ -51,6 +51,60 @@ class V1nDirectTest < Minitest::Test
     end
   end
 
+  def test_direct_load_v1n
+    setup = v1n_direct_setup({ "id" => "direct01" })
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-v1n", setup[:live] ? "live" : "unit")
+    if _should_skip
+      skip(_reason || "skipped via sdk-test-control.json")
+      return
+    end
+    if setup[:live]
+      skip "live direct-load needs real ID — set *_ENTID env var with real IDs to run"
+      return
+    end
+    client = setup[:client]
+
+    params = {}
+    query = {}
+    unless setup[:live]
+      params["count"] = "direct01"
+    end
+
+    result = client.direct({
+      "path" => "api/uuid-generator/v1/{count}",
+      "method" => "GET",
+      "params" => params,
+      "query" => query,
+    })
+    if setup[:live]
+      # Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
+      # than fail when the load endpoint isn't reachable with the IDs
+      # we can construct from setup.idmap.
+      if !result["err"].nil?
+        skip("load call failed (likely synthetic IDs against live API): #{result["err"]}")
+        return
+      end
+      unless result["ok"]
+        skip("load call not ok (likely synthetic IDs against live API)")
+        return
+      end
+      status = Helpers.to_int(result["status"])
+      if status < 200 || status >= 300
+        skip("expected 2xx status, got #{status}")
+        return
+      end
+    else
+      assert_nil result["err"]
+      assert result["ok"]
+      assert_equal 200, Helpers.to_int(result["status"])
+      assert !result["data"].nil?
+      if result["data"].is_a?(Hash)
+        assert_equal "direct01", result["data"]["id"]
+      end
+      assert_equal 1, setup[:calls].length
+    end
+  end
+
 end
 
 
@@ -60,11 +114,11 @@ def v1n_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "UUIDGENERATORAPI__TEST_V_N_ENTID" => {},
-    "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
+    "UUID_GENERATOR_API2_TEST_V1N_ENTID" => {},
+    "UUID_GENERATOR_API2_TEST_LIVE" => "FALSE",
   })
 
-  live = env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE"
+  live = env["UUID_GENERATOR_API2_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

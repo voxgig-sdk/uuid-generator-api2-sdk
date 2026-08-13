@@ -62,7 +62,7 @@ class V5nEntityTest extends TestCase
         $setup = v5n_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach (["list", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "v5n." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -72,7 +72,7 @@ class V5nEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set UUIDGENERATORAPI__TEST_V_N_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set UUID_GENERATOR_API2_TEST_V5N_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -92,6 +92,11 @@ class V5nEntityTest extends TestCase
         $v5n_ref01_list_result = $v5n_ref01_ent->list($v5n_ref01_match, null);
         $this->assertIsArray($v5n_ref01_list_result);
 
+        // LOAD
+        $v5n_ref01_match_dt0 = [];
+        $v5n_ref01_data_dt0_loaded = $v5n_ref01_ent->load($v5n_ref01_match_dt0, null);
+        $this->assertNotNull($v5n_ref01_data_dt0_loaded);
+
     }
 }
 
@@ -110,29 +115,29 @@ function v5n_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["v5n01", "v5n02", "v5n03"] as $k) {
+    foreach (["v5n01", "v5n02", "v5n03", "v501", "v502", "v503"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("UUIDGENERATORAPI__TEST_V_N_ENTID");
+    $entid_env_raw = getenv("UUID_GENERATOR_API2_TEST_V5N_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "UUIDGENERATORAPI__TEST_V_N_ENTID" => $idmap,
-        "UUIDGENERATORAPI__TEST_LIVE" => "FALSE",
-        "UUIDGENERATORAPI__TEST_EXPLAIN" => "FALSE",
+        "UUID_GENERATOR_API2_TEST_V5N_ENTID" => $idmap,
+        "UUID_GENERATOR_API2_TEST_LIVE" => "FALSE",
+        "UUID_GENERATOR_API2_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["UUIDGENERATORAPI__TEST_V_N_ENTID"]);
+        $env["UUID_GENERATOR_API2_TEST_V5N_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["UUIDGENERATORAPI__TEST_LIVE"] === "TRUE") {
+    if ($env["UUID_GENERATOR_API2_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -141,13 +146,13 @@ function v5n_basic_setup($extra)
         $client = new UuidGeneratorApi2SDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["UUIDGENERATORAPI__TEST_LIVE"] === "TRUE";
+    $live = $env["UUID_GENERATOR_API2_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["UUIDGENERATORAPI__TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["UUID_GENERATOR_API2_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

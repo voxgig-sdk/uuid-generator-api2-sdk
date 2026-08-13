@@ -47,14 +47,14 @@ for _, item in ipairs(guids) do
 end
 ```
 
-### 3. Load a v1n2
+### 3. Load a v1n
 
-V1n2 is nested under count, so provide the `count`.
+V1n is nested under count, so provide the `count`.
 
 ```lua
-local v1n2, err = client:V1n2():load({ count = 1 })
+local v1n, err = client:V1n():load({ count = 1 })
 if err then error(err) end
-print(v1n2)
+print(v1n)
 ```
 
 
@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local guids, err = client:Guid():list()
+local v1ns, err = client:V1n():list()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Guid():list()
+local result, err = client:V1n():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -203,17 +203,11 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `Guid` | `(data) -> GuidEntity` | Create a Guid entity instance. |
 | `V1n` | `(data) -> V1nEntity` | Create a V1n entity instance. |
-| `V1n2` | `(data) -> V1n2Entity` | Create a V1n2 entity instance. |
 | `V3n` | `(data) -> V3nEntity` | Create a V3n entity instance. |
-| `V3n2` | `(data) -> V3n2Entity` | Create a V3n2 entity instance. |
 | `V4n` | `(data) -> V4nEntity` | Create a V4n entity instance. |
-| `V4n2` | `(data) -> V4n2Entity` | Create a V4n2 entity instance. |
 | `V5n` | `(data) -> V5nEntity` | Create a V5n entity instance. |
-| `V5n2` | `(data) -> V5n2Entity` | Create a V5n2 entity instance. |
 | `V6n` | `(data) -> V6nEntity` | Create a V6n entity instance. |
-| `V6n2` | `(data) -> V6n2Entity` | Create a V6n2 entity instance. |
 | `V7n` | `(data) -> V7nEntity` | Create a V7n entity instance. |
-| `V7n2` | `(data) -> V7n2Entity` | Create a V7n2 entity instance. |
 
 ### Entity interface
 
@@ -256,8 +250,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
 Operations: List, Load.
@@ -269,156 +263,78 @@ API path: `/api/uuid-generator/guid`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v1`
-
-#### V1n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v1/{count}`
 
 #### V3n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v3`
-
-#### V3n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v3/{count}`
 
 #### V4n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v4`
-
-#### V4n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v4/{count}`
 
 #### V5n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v5`
-
-#### V5n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v5/{count}`
 
 #### V6n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v6`
-
-#### V6n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v6/{count}`
 
 #### V7n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v7`
-
-#### V7n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v7/{count}`
 
 
 
@@ -441,8 +357,8 @@ Create an instance: `local guid = client:Guid(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -467,31 +383,6 @@ Create an instance: `local v1n = client:V1n(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```lua
-local v1ns, err = client:V1n():list()
-```
-
-
-### V1n2
-
-Create an instance: `local v1n2 = client:V1n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -499,14 +390,20 @@ Create an instance: `local v1n2 = client:V1n2(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local v1n2, err = client:V1n2():load({ count = 1 })
+local v1n, err = client:V1n():load({ count = 1 })
+```
+
+#### Example: List
+
+```lua
+local v1ns, err = client:V1n():list()
 ```
 
 
@@ -519,31 +416,6 @@ Create an instance: `local v3n = client:V3n(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```lua
-local v3ns, err = client:V3n():list()
-```
-
-
-### V3n2
-
-Create an instance: `local v3n2 = client:V3n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -551,14 +423,20 @@ Create an instance: `local v3n2 = client:V3n2(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local v3n2, err = client:V3n2():load({ count = 1 })
+local v3n, err = client:V3n():load({ count = 1 })
+```
+
+#### Example: List
+
+```lua
+local v3ns, err = client:V3n():list()
 ```
 
 
@@ -571,31 +449,6 @@ Create an instance: `local v4n = client:V4n(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```lua
-local v4ns, err = client:V4n():list()
-```
-
-
-### V4n2
-
-Create an instance: `local v4n2 = client:V4n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -603,14 +456,20 @@ Create an instance: `local v4n2 = client:V4n2(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local v4n2, err = client:V4n2():load({ count = 1 })
+local v4n, err = client:V4n():load({ count = 1 })
+```
+
+#### Example: List
+
+```lua
+local v4ns, err = client:V4n():list()
 ```
 
 
@@ -623,31 +482,6 @@ Create an instance: `local v5n = client:V5n(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```lua
-local v5ns, err = client:V5n():list()
-```
-
-
-### V5n2
-
-Create an instance: `local v5n2 = client:V5n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -655,14 +489,20 @@ Create an instance: `local v5n2 = client:V5n2(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local v5n2, err = client:V5n2():load({ count = 1 })
+local v5n, err = client:V5n():load({ count = 1 })
+```
+
+#### Example: List
+
+```lua
+local v5ns, err = client:V5n():list()
 ```
 
 
@@ -675,31 +515,6 @@ Create an instance: `local v6n = client:V6n(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```lua
-local v6ns, err = client:V6n():list()
-```
-
-
-### V6n2
-
-Create an instance: `local v6n2 = client:V6n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -707,14 +522,20 @@ Create an instance: `local v6n2 = client:V6n2(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local v6n2, err = client:V6n2():load({ count = 1 })
+local v6n, err = client:V6n():load({ count = 1 })
+```
+
+#### Example: List
+
+```lua
+local v6ns, err = client:V6n():list()
 ```
 
 
@@ -727,31 +548,6 @@ Create an instance: `local v7n = client:V7n(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```lua
-local v7ns, err = client:V7n():list()
-```
-
-
-### V7n2
-
-Create an instance: `local v7n2 = client:V7n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -759,14 +555,20 @@ Create an instance: `local v7n2 = client:V7n2(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `table` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local v7n2, err = client:V7n2():load({ count = 1 })
+local v7n, err = client:V7n():load({ count = 1 })
+```
+
+#### Example: List
+
+```lua
+local v7ns, err = client:V7n():list()
 ```
 
 
@@ -846,11 +648,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local guid = client:Guid()
-guid:list()
+local v1n = client:V1n()
+v1n:list()
 
--- guid:data_get() now returns the guid data from the last list
--- guid:match_get() returns the last match criteria
+-- v1n:data_get() now returns the v1n data from the last list
+-- v1n:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

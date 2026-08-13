@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-guids, err := client.Guid(nil).List(nil, nil)
+v1ns, err := client.V1n(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = guids
+_ = v1ns
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-guid, err := client.Guid(nil).List(
+v1n, err := client.V1n(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(guid) // the returned mock data
+fmt.Println(v1n) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -229,17 +229,11 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Guid` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a Guid entity instance. |
 | `V1n` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V1n entity instance. |
-| `V1n2` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V1n2 entity instance. |
 | `V3n` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V3n entity instance. |
-| `V3n2` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V3n2 entity instance. |
 | `V4n` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V4n entity instance. |
-| `V4n2` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V4n2 entity instance. |
 | `V5n` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V5n entity instance. |
-| `V5n2` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V5n2 entity instance. |
 | `V6n` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V6n entity instance. |
-| `V6n2` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V6n2 entity instance. |
 | `V7n` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V7n entity instance. |
-| `V7n2` | `(data map[string]any) UuidGeneratorApi2Entity` | Create a V7n2 entity instance. |
 
 ### Entity interface (UuidGeneratorApi2Entity)
 
@@ -282,8 +276,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
+| `"maxPerCall"` |  |
+| `"uuids"` |  |
 | `"version"` |  |
 
 Operations: List, Load.
@@ -295,156 +289,78 @@ API path: `/api/uuid-generator/guid`
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
+| `"maxPerCall"` |  |
+| `"uuids"` |  |
 | `"version"` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v1`
-
-#### V1n2
-
-| Field | Description |
-| --- | --- |
-| `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
-| `"version"` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v1/{count}`
 
 #### V3n
 
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
+| `"maxPerCall"` |  |
+| `"uuids"` |  |
 | `"version"` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v3`
-
-#### V3n2
-
-| Field | Description |
-| --- | --- |
-| `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
-| `"version"` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v3/{count}`
 
 #### V4n
 
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
+| `"maxPerCall"` |  |
+| `"uuids"` |  |
 | `"version"` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v4`
-
-#### V4n2
-
-| Field | Description |
-| --- | --- |
-| `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
-| `"version"` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v4/{count}`
 
 #### V5n
 
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
+| `"maxPerCall"` |  |
+| `"uuids"` |  |
 | `"version"` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v5`
-
-#### V5n2
-
-| Field | Description |
-| --- | --- |
-| `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
-| `"version"` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v5/{count}`
 
 #### V6n
 
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
+| `"maxPerCall"` |  |
+| `"uuids"` |  |
 | `"version"` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v6`
-
-#### V6n2
-
-| Field | Description |
-| --- | --- |
-| `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
-| `"version"` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v6/{count}`
 
 #### V7n
 
 | Field | Description |
 | --- | --- |
 | `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
+| `"maxPerCall"` |  |
+| `"uuids"` |  |
 | `"version"` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v7`
-
-#### V7n2
-
-| Field | Description |
-| --- | --- |
-| `"count"` |  |
-| `"max_per_call"` |  |
-| `"uuid"` |  |
-| `"version"` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v7/{count}`
 
 
 
@@ -467,8 +383,8 @@ Create an instance: `guid := client.Guid(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `[]any` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -501,15 +417,26 @@ Create an instance: `v1n := client.V1n(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `[]any` |  |
 | `version` | `string` |  |
+
+#### Example: Load
+
+```go
+v1n, err := client.V1n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v1n) // the loaded record
+```
 
 #### Example: List
 
@@ -522,36 +449,6 @@ fmt.Println(v1ns) // the array of records
 ```
 
 
-### V1n2
-
-Create an instance: `v1n2 := client.V1n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
-| `version` | `string` |  |
-
-#### Example: Load
-
-```go
-v1n2, err := client.V1n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(v1n2) // the loaded record
-```
-
-
 ### V3n
 
 Create an instance: `v3n := client.V3n(nil)`
@@ -561,15 +458,26 @@ Create an instance: `v3n := client.V3n(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `[]any` |  |
 | `version` | `string` |  |
+
+#### Example: Load
+
+```go
+v3n, err := client.V3n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v3n) // the loaded record
+```
 
 #### Example: List
 
@@ -582,36 +490,6 @@ fmt.Println(v3ns) // the array of records
 ```
 
 
-### V3n2
-
-Create an instance: `v3n2 := client.V3n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
-| `version` | `string` |  |
-
-#### Example: Load
-
-```go
-v3n2, err := client.V3n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(v3n2) // the loaded record
-```
-
-
 ### V4n
 
 Create an instance: `v4n := client.V4n(nil)`
@@ -621,15 +499,26 @@ Create an instance: `v4n := client.V4n(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `[]any` |  |
 | `version` | `string` |  |
+
+#### Example: Load
+
+```go
+v4n, err := client.V4n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v4n) // the loaded record
+```
 
 #### Example: List
 
@@ -642,36 +531,6 @@ fmt.Println(v4ns) // the array of records
 ```
 
 
-### V4n2
-
-Create an instance: `v4n2 := client.V4n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
-| `version` | `string` |  |
-
-#### Example: Load
-
-```go
-v4n2, err := client.V4n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(v4n2) // the loaded record
-```
-
-
 ### V5n
 
 Create an instance: `v5n := client.V5n(nil)`
@@ -681,15 +540,26 @@ Create an instance: `v5n := client.V5n(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `[]any` |  |
 | `version` | `string` |  |
+
+#### Example: Load
+
+```go
+v5n, err := client.V5n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v5n) // the loaded record
+```
 
 #### Example: List
 
@@ -702,36 +572,6 @@ fmt.Println(v5ns) // the array of records
 ```
 
 
-### V5n2
-
-Create an instance: `v5n2 := client.V5n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
-| `version` | `string` |  |
-
-#### Example: Load
-
-```go
-v5n2, err := client.V5n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(v5n2) // the loaded record
-```
-
-
 ### V6n
 
 Create an instance: `v6n := client.V6n(nil)`
@@ -741,15 +581,26 @@ Create an instance: `v6n := client.V6n(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `[]any` |  |
 | `version` | `string` |  |
+
+#### Example: Load
+
+```go
+v6n, err := client.V6n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v6n) // the loaded record
+```
 
 #### Example: List
 
@@ -762,36 +613,6 @@ fmt.Println(v6ns) // the array of records
 ```
 
 
-### V6n2
-
-Create an instance: `v6n2 := client.V6n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
-| `version` | `string` |  |
-
-#### Example: Load
-
-```go
-v6n2, err := client.V6n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(v6n2) // the loaded record
-```
-
-
 ### V7n
 
 Create an instance: `v7n := client.V7n(nil)`
@@ -801,15 +622,26 @@ Create an instance: `v7n := client.V7n(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `[]any` |  |
 | `version` | `string` |  |
+
+#### Example: Load
+
+```go
+v7n, err := client.V7n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(v7n) // the loaded record
+```
 
 #### Example: List
 
@@ -819,36 +651,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(v7ns) // the array of records
-```
-
-
-### V7n2
-
-Create an instance: `v7n2 := client.V7n2(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `[]any` |  |
-| `version` | `string` |  |
-
-#### Example: Load
-
-```go
-v7n2, err := client.V7n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(v7n2) // the loaded record
 ```
 
 
@@ -925,11 +727,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-guid := client.Guid(nil)
-guid.List(nil, nil)
+v1n := client.V1n(nil)
+v1n.List(nil, nil)
 
-// guid.Data() now returns the guid data from the last list
-// guid.Match() returns the last match criteria
+// v1n.Data() now returns the v1n data from the last list
+// v1n.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

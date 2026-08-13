@@ -49,49 +49,25 @@ Create a new `Guid` entity instance. Pass `nil` for no initial data.
 
 Create a new `V1n` entity instance. Pass `nil` for no initial data.
 
-#### `V1n2(data = nil)`
-
-Create a new `V1n2` entity instance. Pass `nil` for no initial data.
-
 #### `V3n(data = nil)`
 
 Create a new `V3n` entity instance. Pass `nil` for no initial data.
-
-#### `V3n2(data = nil)`
-
-Create a new `V3n2` entity instance. Pass `nil` for no initial data.
 
 #### `V4n(data = nil)`
 
 Create a new `V4n` entity instance. Pass `nil` for no initial data.
 
-#### `V4n2(data = nil)`
-
-Create a new `V4n2` entity instance. Pass `nil` for no initial data.
-
 #### `V5n(data = nil)`
 
 Create a new `V5n` entity instance. Pass `nil` for no initial data.
-
-#### `V5n2(data = nil)`
-
-Create a new `V5n2` entity instance. Pass `nil` for no initial data.
 
 #### `V6n(data = nil)`
 
 Create a new `V6n` entity instance. Pass `nil` for no initial data.
 
-#### `V6n2(data = nil)`
-
-Create a new `V6n2` entity instance. Pass `nil` for no initial data.
-
 #### `V7n(data = nil)`
 
 Create a new `V7n` entity instance. Pass `nil` for no initial data.
-
-#### `V7n2(data = nil)`
-
-Create a new `V7n2` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -142,8 +118,8 @@ guid = client.Guid
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
+| `maxPerCall` | `Integer` | Yes |  |
+| `uuids` | `Array` | Yes |  |
 | `version` | `String` | Yes |  |
 
 ### Operations
@@ -205,8 +181,8 @@ v1n = client.V1n
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
+| `maxPerCall` | `Integer` | Yes |  |
+| `uuids` | `Array` | Yes |  |
 | `version` | `String` | Yes |  |
 
 ### Operations
@@ -217,6 +193,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```ruby
 results = client.V1n.list
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.V1n.load({ "count" => 1 })
 ```
 
 ### Common Methods
@@ -249,61 +233,6 @@ Return the entity name.
 
 ---
 
-## V1n2Entity
-
-```ruby
-v1n2 = client.V1n2
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
-| `version` | `String` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl = nil) -> result`
-
-Load a single entity matching the given criteria. Raises on error.
-
-```ruby
-result = client.V1n2.load({ "count" => 1 })
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `V1n2Entity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## V3nEntity
 
 ```ruby
@@ -315,8 +244,8 @@ v3n = client.V3n
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
+| `maxPerCall` | `Integer` | Yes |  |
+| `uuids` | `Array` | Yes |  |
 | `version` | `String` | Yes |  |
 
 ### Operations
@@ -327,6 +256,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```ruby
 results = client.V3n.list
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.V3n.load({ "count" => 1 })
 ```
 
 ### Common Methods
@@ -359,61 +296,6 @@ Return the entity name.
 
 ---
 
-## V3n2Entity
-
-```ruby
-v3n2 = client.V3n2
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
-| `version` | `String` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl = nil) -> result`
-
-Load a single entity matching the given criteria. Raises on error.
-
-```ruby
-result = client.V3n2.load({ "count" => 1 })
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `V3n2Entity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## V4nEntity
 
 ```ruby
@@ -425,8 +307,8 @@ v4n = client.V4n
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
+| `maxPerCall` | `Integer` | Yes |  |
+| `uuids` | `Array` | Yes |  |
 | `version` | `String` | Yes |  |
 
 ### Operations
@@ -437,6 +319,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```ruby
 results = client.V4n.list
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.V4n.load({ "count" => 1 })
 ```
 
 ### Common Methods
@@ -469,61 +359,6 @@ Return the entity name.
 
 ---
 
-## V4n2Entity
-
-```ruby
-v4n2 = client.V4n2
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
-| `version` | `String` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl = nil) -> result`
-
-Load a single entity matching the given criteria. Raises on error.
-
-```ruby
-result = client.V4n2.load({ "count" => 1 })
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `V4n2Entity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## V5nEntity
 
 ```ruby
@@ -535,8 +370,8 @@ v5n = client.V5n
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
+| `maxPerCall` | `Integer` | Yes |  |
+| `uuids` | `Array` | Yes |  |
 | `version` | `String` | Yes |  |
 
 ### Operations
@@ -547,6 +382,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```ruby
 results = client.V5n.list
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.V5n.load({ "count" => 1 })
 ```
 
 ### Common Methods
@@ -579,61 +422,6 @@ Return the entity name.
 
 ---
 
-## V5n2Entity
-
-```ruby
-v5n2 = client.V5n2
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
-| `version` | `String` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl = nil) -> result`
-
-Load a single entity matching the given criteria. Raises on error.
-
-```ruby
-result = client.V5n2.load({ "count" => 1 })
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `V5n2Entity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## V6nEntity
 
 ```ruby
@@ -645,8 +433,8 @@ v6n = client.V6n
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
+| `maxPerCall` | `Integer` | Yes |  |
+| `uuids` | `Array` | Yes |  |
 | `version` | `String` | Yes |  |
 
 ### Operations
@@ -657,6 +445,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```ruby
 results = client.V6n.list
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.V6n.load({ "count" => 1 })
 ```
 
 ### Common Methods
@@ -689,61 +485,6 @@ Return the entity name.
 
 ---
 
-## V6n2Entity
-
-```ruby
-v6n2 = client.V6n2
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
-| `version` | `String` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl = nil) -> result`
-
-Load a single entity matching the given criteria. Raises on error.
-
-```ruby
-result = client.V6n2.load({ "count" => 1 })
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `V6n2Entity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
 ## V7nEntity
 
 ```ruby
@@ -755,8 +496,8 @@ v7n = client.V7n
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
+| `maxPerCall` | `Integer` | Yes |  |
+| `uuids` | `Array` | Yes |  |
 | `version` | `String` | Yes |  |
 
 ### Operations
@@ -767,6 +508,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```ruby
 results = client.V7n.list
+```
+
+#### `load(reqmatch, ctrl = nil) -> result`
+
+Load a single entity matching the given criteria. Raises on error.
+
+```ruby
+result = client.V7n.load({ "count" => 1 })
 ```
 
 ### Common Methods
@@ -790,61 +539,6 @@ Set the entity match criteria.
 #### `make -> Entity`
 
 Create a new `V7nEntity` instance with the same client and
-options.
-
-#### `get_name -> String`
-
-Return the entity name.
-
-
----
-
-## V7n2Entity
-
-```ruby
-v7n2 = client.V7n2
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `Integer` | Yes |  |
-| `max_per_call` | `Integer` | Yes |  |
-| `uuid` | `Array` | Yes |  |
-| `version` | `String` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl = nil) -> result`
-
-Load a single entity matching the given criteria. Raises on error.
-
-```ruby
-result = client.V7n2.load({ "count" => 1 })
-```
-
-### Common Methods
-
-#### `data_get -> Hash`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get -> Hash`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make -> Entity`
-
-Create a new `V7n2Entity` instance with the same client and
 options.
 
 #### `get_name -> String`

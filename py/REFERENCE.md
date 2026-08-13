@@ -49,49 +49,25 @@ Create a new `GuidEntity` instance. Pass `None` for no initial data.
 
 Create a new `V1nEntity` instance. Pass `None` for no initial data.
 
-#### `V1n2(data=None)`
-
-Create a new `V1n2Entity` instance. Pass `None` for no initial data.
-
 #### `V3n(data=None)`
 
 Create a new `V3nEntity` instance. Pass `None` for no initial data.
-
-#### `V3n2(data=None)`
-
-Create a new `V3n2Entity` instance. Pass `None` for no initial data.
 
 #### `V4n(data=None)`
 
 Create a new `V4nEntity` instance. Pass `None` for no initial data.
 
-#### `V4n2(data=None)`
-
-Create a new `V4n2Entity` instance. Pass `None` for no initial data.
-
 #### `V5n(data=None)`
 
 Create a new `V5nEntity` instance. Pass `None` for no initial data.
-
-#### `V5n2(data=None)`
-
-Create a new `V5n2Entity` instance. Pass `None` for no initial data.
 
 #### `V6n(data=None)`
 
 Create a new `V6nEntity` instance. Pass `None` for no initial data.
 
-#### `V6n2(data=None)`
-
-Create a new `V6n2Entity` instance. Pass `None` for no initial data.
-
 #### `V7n(data=None)`
 
 Create a new `V7nEntity` instance. Pass `None` for no initial data.
-
-#### `V7n2(data=None)`
-
-Create a new `V7n2Entity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -136,8 +112,8 @@ guid = client.Guid()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `list` | Yes |  |
 | `version` | `str` | Yes |  |
 
 ### Operations
@@ -200,8 +176,8 @@ v1n = client.V1n()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `list` | Yes |  |
 | `version` | `str` | Yes |  |
 
 ### Operations
@@ -214,6 +190,14 @@ List entities matching the given criteria. The match is optional — call `list(
 results = client.V1n().list()
 for v1n in results:
     print(v1n)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.V1n().load({"count": 1})
 ```
 
 ### Common Methods
@@ -245,60 +229,6 @@ Return the entity name.
 
 ---
 
-## V1n2Entity
-
-```python
-v1n2 = client.V1n2()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.V1n2().load({"count": 1})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `V1n2Entity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## V3nEntity
 
 ```python
@@ -310,8 +240,8 @@ v3n = client.V3n()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `list` | Yes |  |
 | `version` | `str` | Yes |  |
 
 ### Operations
@@ -324,6 +254,14 @@ List entities matching the given criteria. The match is optional — call `list(
 results = client.V3n().list()
 for v3n in results:
     print(v3n)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.V3n().load({"count": 1})
 ```
 
 ### Common Methods
@@ -355,60 +293,6 @@ Return the entity name.
 
 ---
 
-## V3n2Entity
-
-```python
-v3n2 = client.V3n2()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.V3n2().load({"count": 1})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `V3n2Entity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## V4nEntity
 
 ```python
@@ -420,8 +304,8 @@ v4n = client.V4n()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `list` | Yes |  |
 | `version` | `str` | Yes |  |
 
 ### Operations
@@ -434,6 +318,14 @@ List entities matching the given criteria. The match is optional — call `list(
 results = client.V4n().list()
 for v4n in results:
     print(v4n)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.V4n().load({"count": 1})
 ```
 
 ### Common Methods
@@ -465,60 +357,6 @@ Return the entity name.
 
 ---
 
-## V4n2Entity
-
-```python
-v4n2 = client.V4n2()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.V4n2().load({"count": 1})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `V4n2Entity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## V5nEntity
 
 ```python
@@ -530,8 +368,8 @@ v5n = client.V5n()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `list` | Yes |  |
 | `version` | `str` | Yes |  |
 
 ### Operations
@@ -544,6 +382,14 @@ List entities matching the given criteria. The match is optional — call `list(
 results = client.V5n().list()
 for v5n in results:
     print(v5n)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.V5n().load({"count": 1})
 ```
 
 ### Common Methods
@@ -575,60 +421,6 @@ Return the entity name.
 
 ---
 
-## V5n2Entity
-
-```python
-v5n2 = client.V5n2()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.V5n2().load({"count": 1})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `V5n2Entity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## V6nEntity
 
 ```python
@@ -640,8 +432,8 @@ v6n = client.V6n()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `list` | Yes |  |
 | `version` | `str` | Yes |  |
 
 ### Operations
@@ -654,6 +446,14 @@ List entities matching the given criteria. The match is optional — call `list(
 results = client.V6n().list()
 for v6n in results:
     print(v6n)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.V6n().load({"count": 1})
 ```
 
 ### Common Methods
@@ -685,60 +485,6 @@ Return the entity name.
 
 ---
 
-## V6n2Entity
-
-```python
-v6n2 = client.V6n2()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.V6n2().load({"count": 1})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `V6n2Entity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## V7nEntity
 
 ```python
@@ -750,8 +496,8 @@ v7n = client.V7n()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `list` | Yes |  |
 | `version` | `str` | Yes |  |
 
 ### Operations
@@ -764,6 +510,14 @@ List entities matching the given criteria. The match is optional — call `list(
 results = client.V7n().list()
 for v7n in results:
     print(v7n)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.V7n().load({"count": 1})
 ```
 
 ### Common Methods
@@ -787,60 +541,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `V7nEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## V7n2Entity
-
-```python
-v7n2 = client.V7n2()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
-
-### Operations
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.V7n2().load({"count": 1})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `V7n2Entity` instance with the same options.
 
 #### `get_name() -> str`
 

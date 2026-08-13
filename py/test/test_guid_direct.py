@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from uuidgeneratorapi2_sdk.utility.voxgig_struct import voxgig_struct as vs
 from uuidgeneratorapi2_sdk import UuidGeneratorApi2SDK
-from core import helpers
+from uuidgeneratorapi2_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _guid_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "UUIDGENERATORAPI__TEST_GUID_ENTID": {},
-        "UUIDGENERATORAPI__TEST_LIVE": "FALSE",
+        "UUID_GENERATOR_API2_TEST_GUID_ENTID": {},
+        "UUID_GENERATOR_API2_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("UUIDGENERATORAPI__TEST_LIVE") == "TRUE"
+    live = env.get("UUID_GENERATOR_API2_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

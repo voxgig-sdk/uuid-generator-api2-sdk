@@ -42,17 +42,11 @@ class ReadmeExamplesTest extends TestCase
     private const ENTITIES = [
         "Guid" => "guid",
         "V1n" => "v1n",
-        "V1n2" => "v1n2",
         "V3n" => "v3n",
-        "V3n2" => "v3n2",
         "V4n" => "v4n",
-        "V4n2" => "v4n2",
         "V5n" => "v5n",
-        "V5n2" => "v5n2",
         "V6n" => "v6n",
-        "V6n2" => "v6n2",
         "V7n" => "v7n",
-        "V7n2" => "v7n2",
     ];
 
     // Documented SDK method names — used only to recognise the NARROW

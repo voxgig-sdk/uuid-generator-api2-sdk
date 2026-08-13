@@ -55,49 +55,25 @@ Create a new `Guid` entity instance. Pass `nil` for no initial data.
 
 Create a new `V1n` entity instance. Pass `nil` for no initial data.
 
-#### `V1n2(data map[string]any) UuidGeneratorApi2Entity`
-
-Create a new `V1n2` entity instance. Pass `nil` for no initial data.
-
 #### `V3n(data map[string]any) UuidGeneratorApi2Entity`
 
 Create a new `V3n` entity instance. Pass `nil` for no initial data.
-
-#### `V3n2(data map[string]any) UuidGeneratorApi2Entity`
-
-Create a new `V3n2` entity instance. Pass `nil` for no initial data.
 
 #### `V4n(data map[string]any) UuidGeneratorApi2Entity`
 
 Create a new `V4n` entity instance. Pass `nil` for no initial data.
 
-#### `V4n2(data map[string]any) UuidGeneratorApi2Entity`
-
-Create a new `V4n2` entity instance. Pass `nil` for no initial data.
-
 #### `V5n(data map[string]any) UuidGeneratorApi2Entity`
 
 Create a new `V5n` entity instance. Pass `nil` for no initial data.
-
-#### `V5n2(data map[string]any) UuidGeneratorApi2Entity`
-
-Create a new `V5n2` entity instance. Pass `nil` for no initial data.
 
 #### `V6n(data map[string]any) UuidGeneratorApi2Entity`
 
 Create a new `V6n` entity instance. Pass `nil` for no initial data.
 
-#### `V6n2(data map[string]any) UuidGeneratorApi2Entity`
-
-Create a new `V6n2` entity instance. Pass `nil` for no initial data.
-
 #### `V7n(data map[string]any) UuidGeneratorApi2Entity`
 
 Create a new `V7n` entity instance. Pass `nil` for no initial data.
-
-#### `V7n2(data map[string]any) UuidGeneratorApi2Entity`
-
-Create a new `V7n2` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -147,8 +123,8 @@ fmt.Println(guid.GetName()) // "guid"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `[]any` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -213,8 +189,8 @@ fmt.Println(v1n.GetName()) // "v1n"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `[]any` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -229,6 +205,18 @@ if err != nil {
     panic(err)
 }
 fmt.Println(results)
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.V1n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -255,60 +243,6 @@ Return the entity name.
 
 ---
 
-## V1n2Entity
-
-```go
-v1n2 := client.V1n2(nil)
-fmt.Println(v1n2.GetName()) // "v1n2"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.V1n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `V1n2Entity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## V3nEntity
 
 ```go
@@ -321,8 +255,8 @@ fmt.Println(v3n.GetName()) // "v3n"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `[]any` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -337,6 +271,18 @@ if err != nil {
     panic(err)
 }
 fmt.Println(results)
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.V3n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -363,60 +309,6 @@ Return the entity name.
 
 ---
 
-## V3n2Entity
-
-```go
-v3n2 := client.V3n2(nil)
-fmt.Println(v3n2.GetName()) // "v3n2"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.V3n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `V3n2Entity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## V4nEntity
 
 ```go
@@ -429,8 +321,8 @@ fmt.Println(v4n.GetName()) // "v4n"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `[]any` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -445,6 +337,18 @@ if err != nil {
     panic(err)
 }
 fmt.Println(results)
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.V4n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -471,60 +375,6 @@ Return the entity name.
 
 ---
 
-## V4n2Entity
-
-```go
-v4n2 := client.V4n2(nil)
-fmt.Println(v4n2.GetName()) // "v4n2"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.V4n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `V4n2Entity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## V5nEntity
 
 ```go
@@ -537,8 +387,8 @@ fmt.Println(v5n.GetName()) // "v5n"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `[]any` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -553,6 +403,18 @@ if err != nil {
     panic(err)
 }
 fmt.Println(results)
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.V5n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -579,60 +441,6 @@ Return the entity name.
 
 ---
 
-## V5n2Entity
-
-```go
-v5n2 := client.V5n2(nil)
-fmt.Println(v5n2.GetName()) // "v5n2"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.V5n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `V5n2Entity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## V6nEntity
 
 ```go
@@ -645,8 +453,8 @@ fmt.Println(v6n.GetName()) // "v6n"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `[]any` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -661,6 +469,18 @@ if err != nil {
     panic(err)
 }
 fmt.Println(results)
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.V6n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -687,60 +507,6 @@ Return the entity name.
 
 ---
 
-## V6n2Entity
-
-```go
-v6n2 := client.V6n2(nil)
-fmt.Println(v6n2.GetName()) // "v6n2"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.V6n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `V6n2Entity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## V7nEntity
 
 ```go
@@ -753,8 +519,8 @@ fmt.Println(v7n.GetName()) // "v7n"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `[]any` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -769,6 +535,18 @@ if err != nil {
     panic(err)
 }
 fmt.Println(results)
+```
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.V7n(nil).Load(map[string]any{"count": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -786,60 +564,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `V7nEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## V7n2Entity
-
-```go
-v7n2 := client.V7n2(nil)
-fmt.Println(v7n2.GetName()) // "v7n2"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.V7n2(nil).Load(map[string]any{"count": 1}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `V7n2Entity` instance with the same client and
 options.
 
 #### `GetName() string`

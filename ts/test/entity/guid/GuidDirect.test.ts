@@ -19,11 +19,15 @@ import {
 describe('GuidDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when UUIDGENERATORAPI2_TEST_LIVE=TRUE.
-  afterEach(liveDelay('UUIDGENERATORAPI2_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when UUID_GENERATOR_API2_TEST_LIVE=TRUE.
+  afterEach(liveDelay('UUID_GENERATOR_API2_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new UuidGeneratorApi2SDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -134,17 +138,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'UUIDGENERATORAPI__TEST_GUID_ENTID': {},
-    'UUIDGENERATORAPI__TEST_LIVE': 'FALSE',
+    'UUID_GENERATOR_API2_TEST_GUID_ENTID': {},
+    'UUID_GENERATOR_API2_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.UUIDGENERATORAPI__TEST_LIVE
+  const live = 'TRUE' === env.UUID_GENERATOR_API2_TEST_LIVE
 
   if (live) {
     const client = new UuidGeneratorApi2SDK({
     })
 
-    let idmap: any = env['UUIDGENERATORAPI__TEST_GUID_ENTID']
+    let idmap: any = env['UUID_GENERATOR_API2_TEST_GUID_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

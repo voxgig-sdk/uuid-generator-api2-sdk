@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import UuidGeneratorApi2SDK
-from core.error import UuidGeneratorApi2Error
-from core.result import UuidGeneratorApi2Result
-from core.response import UuidGeneratorApi2Response
-from core.spec import UuidGeneratorApi2Spec
-from feature.base_feature import UuidGeneratorApi2BaseFeature
+from projectname_sdk.core.error import UuidGeneratorApi2Error
+from projectname_sdk.core.result import UuidGeneratorApi2Result
+from projectname_sdk.core.response import UuidGeneratorApi2Response
+from projectname_sdk.core.spec import UuidGeneratorApi2Spec
+from projectname_sdk.feature.base_feature import UuidGeneratorApi2BaseFeature
 
 
 def _client():

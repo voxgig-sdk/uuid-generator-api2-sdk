@@ -26,8 +26,8 @@ import {
 describe('V7nEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when UUIDGENERATORAPI2_TEST_LIVE=TRUE.
-  afterEach(liveDelay('UUIDGENERATORAPI2_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when UUID_GENERATOR_API2_TEST_LIVE=TRUE.
+  afterEach(liveDelay('UUID_GENERATOR_API2_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = UuidGeneratorApi2SDK.test()
@@ -38,8 +38,8 @@ describe('V7nEntity', async () => {
 
   test('basic', async (t) => {
 
-    const live = 'TRUE' === process.env.UUID_GENERATOR_API__TEST_LIVE
-    for (const op of ['list']) {
+    const live = 'TRUE' === process.env.UUID_GENERATOR_API2_TEST_LIVE
+    for (const op of ['list', 'load']) {
       if (maybeSkipControl(t, 'entityOp', 'v7n.' + op, live)) return
     }
 
@@ -48,7 +48,7 @@ describe('V7nEntity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set UUID_GENERATOR_API__TEST_V_N_ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set UUID_GENERATOR_API2_TEST_V7N_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -63,7 +63,8 @@ describe('V7nEntity', async () => {
     const v7n_ref01_ent = client.V7n()
     const v7n_ref01_match: any = {}
 
-    const v7n_ref01_list = await v7n_ref01_ent.list(v7n_ref01_match)
+    const v7n_ref01_list = (await v7n_ref01_ent.list(v7n_ref01_match)).map((e: any) => e.data())
+
 
 
   })
@@ -94,7 +95,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['v7n01','v7n02','v7n03'],
+    ['v7n01','v7n02','v7n03','v701','v702','v703'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',
@@ -106,18 +107,18 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['UUID_GENERATOR_API__TEST_V_N_ENTID']
+  const idmapEnvVal = process.env['UUID_GENERATOR_API2_TEST_V7N_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'UUID_GENERATOR_API__TEST_V_N_ENTID': idmap,
-    'UUID_GENERATOR_API__TEST_LIVE': 'FALSE',
-    'UUID_GENERATOR_API__TEST_EXPLAIN': 'FALSE',
+    'UUID_GENERATOR_API2_TEST_V7N_ENTID': idmap,
+    'UUID_GENERATOR_API2_TEST_LIVE': 'FALSE',
+    'UUID_GENERATOR_API2_TEST_EXPLAIN': 'FALSE',
   })
 
-  idmap = env['UUID_GENERATOR_API__TEST_V_N_ENTID']
+  idmap = env['UUID_GENERATOR_API2_TEST_V7N_ENTID']
 
-  const live = 'TRUE' === env.UUID_GENERATOR_API__TEST_LIVE
+  const live = 'TRUE' === env.UUID_GENERATOR_API2_TEST_LIVE
 
   if (live) {
     client = new UuidGeneratorApi2SDK(merge([
@@ -134,7 +135,7 @@ function basicSetup(extra?: any) {
     client,
     struct,
     data: entityData,
-    explain: 'TRUE' === env.UUID_GENERATOR_API__TEST_EXPLAIN,
+    explain: 'TRUE' === env.UUID_GENERATOR_API2_TEST_EXPLAIN,
     live,
     syntheticOnly: live && !idmapOverridden,
     now: Date.now(),

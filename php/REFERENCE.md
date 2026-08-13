@@ -49,49 +49,25 @@ Create a new `GuidEntity` instance. Pass `null` for no initial data.
 
 Create a new `V1nEntity` instance. Pass `null` for no initial data.
 
-#### `V1n2($data = null)`
-
-Create a new `V1n2Entity` instance. Pass `null` for no initial data.
-
 #### `V3n($data = null)`
 
 Create a new `V3nEntity` instance. Pass `null` for no initial data.
-
-#### `V3n2($data = null)`
-
-Create a new `V3n2Entity` instance. Pass `null` for no initial data.
 
 #### `V4n($data = null)`
 
 Create a new `V4nEntity` instance. Pass `null` for no initial data.
 
-#### `V4n2($data = null)`
-
-Create a new `V4n2Entity` instance. Pass `null` for no initial data.
-
 #### `V5n($data = null)`
 
 Create a new `V5nEntity` instance. Pass `null` for no initial data.
-
-#### `V5n2($data = null)`
-
-Create a new `V5n2Entity` instance. Pass `null` for no initial data.
 
 #### `V6n($data = null)`
 
 Create a new `V6nEntity` instance. Pass `null` for no initial data.
 
-#### `V6n2($data = null)`
-
-Create a new `V6n2Entity` instance. Pass `null` for no initial data.
-
 #### `V7n($data = null)`
 
 Create a new `V7nEntity` instance. Pass `null` for no initial data.
-
-#### `V7n2($data = null)`
-
-Create a new `V7n2Entity` instance. Pass `null` for no initial data.
 
 #### `options_map(): array`
 
@@ -141,8 +117,8 @@ $guid = $client->Guid();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `array` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -204,8 +180,8 @@ $v1n = $client->V1n();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `array` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -216,6 +192,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```php
 $results = $client->V1n()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->V1n()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -248,61 +232,6 @@ Return the entity name.
 
 ---
 
-## V1n2Entity
-
-```php
-$v1n2 = $client->V1n2();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->V1n2()->load(["count" => 1]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): V1n2Entity`
-
-Create a new `V1n2Entity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## V3nEntity
 
 ```php
@@ -314,8 +243,8 @@ $v3n = $client->V3n();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `array` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -326,6 +255,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```php
 $results = $client->V3n()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->V3n()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -358,61 +295,6 @@ Return the entity name.
 
 ---
 
-## V3n2Entity
-
-```php
-$v3n2 = $client->V3n2();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->V3n2()->load(["count" => 1]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): V3n2Entity`
-
-Create a new `V3n2Entity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## V4nEntity
 
 ```php
@@ -424,8 +306,8 @@ $v4n = $client->V4n();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `array` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -436,6 +318,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```php
 $results = $client->V4n()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->V4n()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -468,61 +358,6 @@ Return the entity name.
 
 ---
 
-## V4n2Entity
-
-```php
-$v4n2 = $client->V4n2();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->V4n2()->load(["count" => 1]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): V4n2Entity`
-
-Create a new `V4n2Entity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## V5nEntity
 
 ```php
@@ -534,8 +369,8 @@ $v5n = $client->V5n();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `array` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -546,6 +381,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```php
 $results = $client->V5n()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->V5n()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -578,61 +421,6 @@ Return the entity name.
 
 ---
 
-## V5n2Entity
-
-```php
-$v5n2 = $client->V5n2();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->V5n2()->load(["count" => 1]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): V5n2Entity`
-
-Create a new `V5n2Entity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## V6nEntity
 
 ```php
@@ -644,8 +432,8 @@ $v6n = $client->V6n();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `array` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -656,6 +444,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```php
 $results = $client->V6n()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->V6n()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -688,61 +484,6 @@ Return the entity name.
 
 ---
 
-## V6n2Entity
-
-```php
-$v6n2 = $client->V6n2();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->V6n2()->load(["count" => 1]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): V6n2Entity`
-
-Create a new `V6n2Entity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## V7nEntity
 
 ```php
@@ -754,8 +495,8 @@ $v7n = $client->V7n();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
+| `maxPerCall` | `int` | Yes |  |
+| `uuids` | `array` | Yes |  |
 | `version` | `string` | Yes |  |
 
 ### Operations
@@ -766,6 +507,14 @@ List entities matching the given criteria (call with no argument to list all). R
 
 ```php
 $results = $client->V7n()->list();
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->V7n()->load(["count" => 1]);
 ```
 
 ### Common Methods
@@ -789,61 +538,6 @@ Set the entity match criteria.
 #### `make(): V7nEntity`
 
 Create a new `V7nEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## V7n2Entity
-
-```php
-$v7n2 = $client->V7n2();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `max_per_call` | `int` | Yes |  |
-| `uuid` | `array` | Yes |  |
-| `version` | `string` | Yes |  |
-
-### Operations
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->V7n2()->load(["count" => 1]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): V7n2Entity`
-
-Create a new `V7n2Entity` instance with the same client and
 options.
 
 #### `get_name(): string`

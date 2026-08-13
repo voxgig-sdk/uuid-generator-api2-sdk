@@ -7,8 +7,8 @@
 
 export interface Guid {
   count: number
-  max_per_call: number
-  uuid: any[]
+  maxPerCall: number
+  uuids: any[]
   version: string
 }
 
@@ -18,158 +18,116 @@ export interface GuidLoadMatch {
 
 export interface GuidListMatch {
   count?: number
-  max_per_call?: number
-  uuid?: any[]
+  maxPerCall?: number
+  uuids?: any[]
   version?: string
 }
 
 export interface V1n {
   count: number
-  max_per_call: number
-  uuid: any[]
+  maxPerCall: number
+  uuids: any[]
   version: string
+}
+
+export interface V1nLoadMatch {
+  count: number
 }
 
 export interface V1nListMatch {
   count?: number
-  max_per_call?: number
-  uuid?: any[]
+  maxPerCall?: number
+  uuids?: any[]
   version?: string
-}
-
-export interface V1n2 {
-  count: number
-  max_per_call: number
-  uuid: any[]
-  version: string
-}
-
-export interface V1n2LoadMatch {
-  count: number
 }
 
 export interface V3n {
   count: number
-  max_per_call: number
-  uuid: any[]
+  maxPerCall: number
+  uuids: any[]
   version: string
+}
+
+export interface V3nLoadMatch {
+  count: number
 }
 
 export interface V3nListMatch {
   count?: number
-  max_per_call?: number
-  uuid?: any[]
+  maxPerCall?: number
+  uuids?: any[]
   version?: string
-}
-
-export interface V3n2 {
-  count: number
-  max_per_call: number
-  uuid: any[]
-  version: string
-}
-
-export interface V3n2LoadMatch {
-  count: number
 }
 
 export interface V4n {
   count: number
-  max_per_call: number
-  uuid: any[]
+  maxPerCall: number
+  uuids: any[]
   version: string
+}
+
+export interface V4nLoadMatch {
+  count: number
 }
 
 export interface V4nListMatch {
   count?: number
-  max_per_call?: number
-  uuid?: any[]
+  maxPerCall?: number
+  uuids?: any[]
   version?: string
-}
-
-export interface V4n2 {
-  count: number
-  max_per_call: number
-  uuid: any[]
-  version: string
-}
-
-export interface V4n2LoadMatch {
-  count: number
 }
 
 export interface V5n {
   count: number
-  max_per_call: number
-  uuid: any[]
+  maxPerCall: number
+  uuids: any[]
   version: string
+}
+
+export interface V5nLoadMatch {
+  count: number
 }
 
 export interface V5nListMatch {
   count?: number
-  max_per_call?: number
-  uuid?: any[]
+  maxPerCall?: number
+  uuids?: any[]
   version?: string
-}
-
-export interface V5n2 {
-  count: number
-  max_per_call: number
-  uuid: any[]
-  version: string
-}
-
-export interface V5n2LoadMatch {
-  count: number
 }
 
 export interface V6n {
   count: number
-  max_per_call: number
-  uuid: any[]
+  maxPerCall: number
+  uuids: any[]
   version: string
+}
+
+export interface V6nLoadMatch {
+  count: number
 }
 
 export interface V6nListMatch {
   count?: number
-  max_per_call?: number
-  uuid?: any[]
+  maxPerCall?: number
+  uuids?: any[]
   version?: string
-}
-
-export interface V6n2 {
-  count: number
-  max_per_call: number
-  uuid: any[]
-  version: string
-}
-
-export interface V6n2LoadMatch {
-  count: number
 }
 
 export interface V7n {
   count: number
-  max_per_call: number
-  uuid: any[]
+  maxPerCall: number
+  uuids: any[]
   version: string
+}
+
+export interface V7nLoadMatch {
+  count: number
 }
 
 export interface V7nListMatch {
   count?: number
-  max_per_call?: number
-  uuid?: any[]
+  maxPerCall?: number
+  uuids?: any[]
   version?: string
-}
-
-export interface V7n2 {
-  count: number
-  max_per_call: number
-  uuid: any[]
-  version: string
-}
-
-export interface V7n2LoadMatch {
-  count: number
 }
 

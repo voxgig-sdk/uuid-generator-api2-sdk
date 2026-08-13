@@ -38,38 +38,20 @@ func init() {
 	core.NewV1nEntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
 		return entity.NewV1nEntity(client, entopts)
 	}
-	core.NewV1n2EntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
-		return entity.NewV1n2Entity(client, entopts)
-	}
 	core.NewV3nEntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
 		return entity.NewV3nEntity(client, entopts)
-	}
-	core.NewV3n2EntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
-		return entity.NewV3n2Entity(client, entopts)
 	}
 	core.NewV4nEntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
 		return entity.NewV4nEntity(client, entopts)
 	}
-	core.NewV4n2EntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
-		return entity.NewV4n2Entity(client, entopts)
-	}
 	core.NewV5nEntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
 		return entity.NewV5nEntity(client, entopts)
-	}
-	core.NewV5n2EntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
-		return entity.NewV5n2Entity(client, entopts)
 	}
 	core.NewV6nEntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
 		return entity.NewV6nEntity(client, entopts)
 	}
-	core.NewV6n2EntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
-		return entity.NewV6n2Entity(client, entopts)
-	}
 	core.NewV7nEntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
 		return entity.NewV7nEntity(client, entopts)
-	}
-	core.NewV7n2EntityFunc = func(client *core.UuidGeneratorApi2SDK, entopts map[string]any) core.UuidGeneratorApi2Entity {
-		return entity.NewV7n2Entity(client, entopts)
 	}
 }
 

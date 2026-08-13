@@ -19,17 +19,79 @@ import {
 describe('V1nDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when UUIDGENERATORAPI2_TEST_LIVE=TRUE.
-  afterEach(liveDelay('UUIDGENERATORAPI2_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when UUID_GENERATOR_API2_TEST_LIVE=TRUE.
+  afterEach(liveDelay('UUID_GENERATOR_API2_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new UuidGeneratorApi2SDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
     assert('function' === typeof sdk.prepare)
   })
 
+
+  test('direct-load-v1n', async (t: any) => {
+    const setup = directSetup({ id: 'direct01' })
+    if (maybeSkipControl(t, 'direct', 'direct-load-v1n', setup.live)) return
+    if (skipIfMissingIds(t, setup, ["count01"])) return
+    const { client, calls } = setup
+
+    const params: any = {}
+    const query: any = {}
+    if (setup.live) {
+      const listResult: any = await client.direct({
+        path: 'api/uuid-generator/v1',
+        method: 'GET',
+        params: {
+
+        },
+      })
+      if (!listResult.ok) {
+        return // skip: list call failed (likely synthetic IDs against live API)
+      }
+      const listArr = unwrapListData(listResult.data)
+      if (null == listArr || listArr.length === 0) {
+        return // skip: no entities to load in live mode
+      }
+      const candidateId = listArr[0]?.count ?? listArr[0]?.id
+      if (null == candidateId) {
+        return // skip: list response shape does not expose load identifier
+      }
+      params.count = candidateId
+      params.count = setup.idmap['count01']
+    } else {
+      params.count = 'direct01'
+    }
+
+    const result: any = await client.direct({
+      path: 'api/uuid-generator/v1/{count}',
+      method: 'GET',
+      params,
+      query,
+    })
+
+    if (setup.live) {
+      // Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
+      // than fail when the load endpoint isn't reachable with the IDs we
+      // can construct from setup.idmap.
+      if (!result.ok || result.status < 200 || result.status >= 300) {
+        return
+      }
+    } else {
+      assert(result.ok === true)
+      assert(result.status === 200)
+      assert(null != result.data)
+      assert(result.data.id === 'direct01')
+      assert(calls.length === 1)
+      assert(calls[0].init.method === 'GET')
+      assert(calls[0].url.includes('direct01'))
+    }
+  })
 
   test('direct-list-v1n', async (t: any) => {
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
@@ -77,17 +139,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'UUIDGENERATORAPI__TEST_V_N_ENTID': {},
-    'UUIDGENERATORAPI__TEST_LIVE': 'FALSE',
+    'UUID_GENERATOR_API2_TEST_V1N_ENTID': {},
+    'UUID_GENERATOR_API2_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.UUIDGENERATORAPI__TEST_LIVE
+  const live = 'TRUE' === env.UUID_GENERATOR_API2_TEST_LIVE
 
   if (live) {
     const client = new UuidGeneratorApi2SDK({
     })
 
-    let idmap: any = env['UUIDGENERATORAPI__TEST_V_N_ENTID']
+    let idmap: any = env['UUID_GENERATOR_API2_TEST_V1N_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

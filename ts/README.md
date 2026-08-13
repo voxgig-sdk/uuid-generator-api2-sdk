@@ -35,7 +35,9 @@ const client = new UuidGeneratorApi2SDK()
 
 ### 2. List guid records
 
-`list()` resolves to an array of Guid objects — iterate it directly:
+`list()` resolves to an array of Guid ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const guids = await client.Guid().list()
@@ -45,17 +47,17 @@ for (const guid of guids) {
 }
 ```
 
-### 3. Load a v1n2
+### 3. Load a v1n
 
-V1n2 is nested under count, so provide the `count`.
+V1n is nested under count, so provide the `count`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const v1n2 = await client.V1n2().load({
+  const v1n = await client.V1n().load({
     count: 1,
   })
-  console.log(v1n2)
+  console.log(v1n)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -68,8 +70,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const guids = await client.Guid().list()
-  console.log(guids)
+  const v1ns = await client.V1n().list()
+  console.log(v1ns)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -135,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = UuidGeneratorApi2SDK.test()
 
-const guid = await client.Guid().list()
-// guid is a bare entity populated with mock response data
-console.log(guid)
+const v1n = await client.V1n().list()
+// v1n is the entity, populated with mock response data
+// — call v1n.data() for the record itself
+console.log(v1n)
 ```
 
 You can also use the instance method:
@@ -152,7 +155,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Guid()
+const entity = client.V1n()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -232,17 +235,11 @@ new UuidGeneratorApi2SDK(options?: {
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
 | `Guid(data?)` | `GuidEntity` | Create a Guid entity instance. |
 | `V1n(data?)` | `V1nEntity` | Create a V1n entity instance. |
-| `V1n2(data?)` | `V1n2Entity` | Create a V1n2 entity instance. |
 | `V3n(data?)` | `V3nEntity` | Create a V3n entity instance. |
-| `V3n2(data?)` | `V3n2Entity` | Create a V3n2 entity instance. |
 | `V4n(data?)` | `V4nEntity` | Create a V4n entity instance. |
-| `V4n2(data?)` | `V4n2Entity` | Create a V4n2 entity instance. |
 | `V5n(data?)` | `V5nEntity` | Create a V5n entity instance. |
-| `V5n2(data?)` | `V5n2Entity` | Create a V5n2 entity instance. |
 | `V6n(data?)` | `V6nEntity` | Create a V6n entity instance. |
-| `V6n2(data?)` | `V6n2Entity` | Create a V6n2 entity instance. |
 | `V7n(data?)` | `V7nEntity` | Create a V7n entity instance. |
-| `V7n2(data?)` | `V7n2Entity` | Create a V7n2 entity instance. |
 | `tester(testopts?, sdkopts?)` | `UuidGeneratorApi2SDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -315,8 +312,8 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
 Operations: list, load.
@@ -328,156 +325,78 @@ API path: `/api/uuid-generator/guid`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: list.
+Operations: list, load.
 
 API path: `/api/uuid-generator/v1`
-
-#### V1n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: load.
-
-API path: `/api/uuid-generator/v1/{count}`
 
 #### V3n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: list.
+Operations: list, load.
 
 API path: `/api/uuid-generator/v3`
-
-#### V3n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: load.
-
-API path: `/api/uuid-generator/v3/{count}`
 
 #### V4n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: list.
+Operations: list, load.
 
 API path: `/api/uuid-generator/v4`
-
-#### V4n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: load.
-
-API path: `/api/uuid-generator/v4/{count}`
 
 #### V5n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: list.
+Operations: list, load.
 
 API path: `/api/uuid-generator/v5`
-
-#### V5n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: load.
-
-API path: `/api/uuid-generator/v5/{count}`
 
 #### V6n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: list.
+Operations: list, load.
 
 API path: `/api/uuid-generator/v6`
-
-#### V6n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: load.
-
-API path: `/api/uuid-generator/v6/{count}`
 
 #### V7n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: list.
+Operations: list, load.
 
 API path: `/api/uuid-generator/v7`
-
-#### V7n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: load.
-
-API path: `/api/uuid-generator/v7/{count}`
 
 
 
@@ -500,8 +419,8 @@ Create an instance: `const guid = client.Guid()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -526,31 +445,6 @@ Create an instance: `const v1n = client.V1n()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```ts
-const v1ns = await client.V1n().list()
-```
-
-
-### V1n2
-
-Create an instance: `const v1n2 = client.V1n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -558,14 +452,20 @@ Create an instance: `const v1n2 = client.V1n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const v1n2 = await client.V1n2().load({ count: 1 })
+const v1n = await client.V1n().load({ count: 1 })
+```
+
+#### Example: List
+
+```ts
+const v1ns = await client.V1n().list()
 ```
 
 
@@ -578,31 +478,6 @@ Create an instance: `const v3n = client.V3n()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```ts
-const v3ns = await client.V3n().list()
-```
-
-
-### V3n2
-
-Create an instance: `const v3n2 = client.V3n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -610,14 +485,20 @@ Create an instance: `const v3n2 = client.V3n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const v3n2 = await client.V3n2().load({ count: 1 })
+const v3n = await client.V3n().load({ count: 1 })
+```
+
+#### Example: List
+
+```ts
+const v3ns = await client.V3n().list()
 ```
 
 
@@ -630,31 +511,6 @@ Create an instance: `const v4n = client.V4n()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```ts
-const v4ns = await client.V4n().list()
-```
-
-
-### V4n2
-
-Create an instance: `const v4n2 = client.V4n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -662,14 +518,20 @@ Create an instance: `const v4n2 = client.V4n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const v4n2 = await client.V4n2().load({ count: 1 })
+const v4n = await client.V4n().load({ count: 1 })
+```
+
+#### Example: List
+
+```ts
+const v4ns = await client.V4n().list()
 ```
 
 
@@ -682,31 +544,6 @@ Create an instance: `const v5n = client.V5n()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```ts
-const v5ns = await client.V5n().list()
-```
-
-
-### V5n2
-
-Create an instance: `const v5n2 = client.V5n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -714,14 +551,20 @@ Create an instance: `const v5n2 = client.V5n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const v5n2 = await client.V5n2().load({ count: 1 })
+const v5n = await client.V5n().load({ count: 1 })
+```
+
+#### Example: List
+
+```ts
+const v5ns = await client.V5n().list()
 ```
 
 
@@ -734,31 +577,6 @@ Create an instance: `const v6n = client.V6n()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```ts
-const v6ns = await client.V6n().list()
-```
-
-
-### V6n2
-
-Create an instance: `const v6n2 = client.V6n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -766,14 +584,20 @@ Create an instance: `const v6n2 = client.V6n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const v6n2 = await client.V6n2().load({ count: 1 })
+const v6n = await client.V6n().load({ count: 1 })
+```
+
+#### Example: List
+
+```ts
+const v6ns = await client.V6n().list()
 ```
 
 
@@ -786,31 +610,6 @@ Create an instance: `const v7n = client.V7n()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
-| `version` | `string` |  |
-
-#### Example: List
-
-```ts
-const v7ns = await client.V7n().list()
-```
-
-
-### V7n2
-
-Create an instance: `const v7n2 = client.V7n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -818,14 +617,20 @@ Create an instance: `const v7n2 = client.V7n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` |  |
-| `max_per_call` | `number` |  |
-| `uuid` | `any[]` |  |
+| `maxPerCall` | `number` |  |
+| `uuids` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const v7n2 = await client.V7n2().load({ count: 1 })
+const v7n = await client.V7n().load({ count: 1 })
+```
+
+#### Example: List
+
+```ts
+const v7ns = await client.V7n().list()
 ```
 
 
@@ -898,11 +703,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const guid = client.Guid()
-await guid.list()
+const v1n = client.V1n()
+await v1n.list()
 
-// guid.data() now returns the guid data from the last `list`
-// guid.match() returns the last match criteria
+// v1n.data() now returns the v1n data from the last `list`
+// v1n.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

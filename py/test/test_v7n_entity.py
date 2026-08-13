@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from uuidgeneratorapi2_sdk.utility.voxgig_struct import voxgig_struct as vs
 from uuidgeneratorapi2_sdk import UuidGeneratorApi2SDK
-from core import helpers
+from uuidgeneratorapi2_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,7 +42,7 @@ class TestV7nEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
+        from uuidgeneratorapi2_sdk.config import make_config
         cfg = make_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = UuidGeneratorApi2SDK.test(
@@ -61,7 +61,7 @@ class TestV7nEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in ["list", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "v7n." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -70,7 +70,7 @@ class TestV7nEntity:
         # without an *_ENTID env override, those IDs hit the live API and 4xx.
         if setup.get("synthetic_only"):
             pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set UUIDGENERATORAPI__TEST_V_N_ENTID JSON to run live")
+                        "set UUID_GENERATOR_API2_TEST_V7N_ENTID JSON to run live")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -86,6 +86,11 @@ class TestV7nEntity:
 
         v7n_ref01_list_result = v7n_ref01_ent.list(v7n_ref01_match, None)
         assert isinstance(v7n_ref01_list_result, list)
+
+        # LOAD
+        v7n_ref01_match_dt0 = {}
+        v7n_ref01_data_dt0_loaded = v7n_ref01_ent.load(v7n_ref01_match_dt0, None)
+        assert v7n_ref01_data_dt0_loaded is not None
 
 
 
@@ -105,7 +110,7 @@ def _v7n_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["v7n01", "v7n02", "v7n03"],
+        ["v7n01", "v7n02", "v7n03", "v701", "v702", "v703"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -118,21 +123,21 @@ def _v7n_basic_setup(extra):
     # mode is on without a real override, the basic test runs against synthetic
     # IDs from the fixture and 4xx's. We surface this so the test can skip.
     _entid_env_raw = os.environ.get(
-        "UUIDGENERATORAPI__TEST_V_N_ENTID")
+        "UUID_GENERATOR_API2_TEST_V7N_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
 
     env = runner.env_override({
-        "UUIDGENERATORAPI__TEST_V_N_ENTID": idmap,
-        "UUIDGENERATORAPI__TEST_LIVE": "FALSE",
-        "UUIDGENERATORAPI__TEST_EXPLAIN": "FALSE",
+        "UUID_GENERATOR_API2_TEST_V7N_ENTID": idmap,
+        "UUID_GENERATOR_API2_TEST_LIVE": "FALSE",
+        "UUID_GENERATOR_API2_TEST_EXPLAIN": "FALSE",
     })
 
     idmap_resolved = helpers.to_map(
-        env.get("UUIDGENERATORAPI__TEST_V_N_ENTID"))
+        env.get("UUID_GENERATOR_API2_TEST_V7N_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
 
-    if env.get("UUIDGENERATORAPI__TEST_LIVE") == "TRUE":
+    if env.get("UUID_GENERATOR_API2_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
             },
@@ -140,13 +145,13 @@ def _v7n_basic_setup(extra):
         ])
         client = UuidGeneratorApi2SDK(helpers.to_map(merged_opts))
 
-    _live = env.get("UUIDGENERATORAPI__TEST_LIVE") == "TRUE"
+    _live = env.get("UUID_GENERATOR_API2_TEST_LIVE") == "TRUE"
     return {
         "client": client,
         "data": entity_data,
         "idmap": idmap_resolved,
         "env": env,
-        "explain": env.get("UUIDGENERATORAPI__TEST_EXPLAIN") == "TRUE",
+        "explain": env.get("UUID_GENERATOR_API2_TEST_EXPLAIN") == "TRUE",
         "live": _live,
         "synthetic_only": _live and not _idmap_overridden,
         "now": int(time.time() * 1000),

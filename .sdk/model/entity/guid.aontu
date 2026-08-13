@@ -11,12 +11,12 @@ main: kit: entity: guid: {
       type: "`$INTEGER`"
     }
     {
-      name: "max_per_call"
+      name: "maxPerCall"
       req: true
       type: "`$INTEGER`"
     }
     {
-      name: "uuid"
+      name: "uuids"
       req: true
       type: "`$ARRAY`"
     }
@@ -68,7 +68,7 @@ main: kit: entity: guid: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.uuids`"
           }
         }
       ]

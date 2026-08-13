@@ -44,15 +44,15 @@ rescue => err
 end
 ```
 
-### 3. Load a v1n2
+### 3. Load a v1n
 
-V1n2 is nested under count, so provide the `count`.
+V1n is nested under count, so provide the `count`.
 
 ```ruby
 begin
-  # load returns the bare V1n2 record (raises on error).
-  v1n2 = client.V1n2.load({ "count" => 1 })
-  puts v1n2
+  # load returns the ENTITY — call data_get for the V1n record (raises on error).
+  v1n = client.V1n.load({ "count" => 1 })
+  puts v1n
 rescue => err
   warn "load failed: #{err}"
 end
@@ -65,7 +65,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  guids = client.Guid.list()
+  v1ns = client.V1n.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -128,17 +128,15 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = UuidGeneratorApi2SDK.test({
-  "entity" => { "guid" => { "test01" => { "id" => "test01" } } },
-})
+client = UuidGeneratorApi2SDK.test
 
-# Entity ops return the bare mock record (raises on error).
-guid = client.Guid.list()
-puts guid
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+v1n = client.V1n.list()
+puts v1n
 ```
 
 ### Use a custom fetch function
@@ -216,17 +214,11 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Guid` | `(data) -> GuidEntity` | Create a Guid entity instance. |
 | `V1n` | `(data) -> V1nEntity` | Create a V1n entity instance. |
-| `V1n2` | `(data) -> V1n2Entity` | Create a V1n2 entity instance. |
 | `V3n` | `(data) -> V3nEntity` | Create a V3n entity instance. |
-| `V3n2` | `(data) -> V3n2Entity` | Create a V3n2 entity instance. |
 | `V4n` | `(data) -> V4nEntity` | Create a V4n entity instance. |
-| `V4n2` | `(data) -> V4n2Entity` | Create a V4n2 entity instance. |
 | `V5n` | `(data) -> V5nEntity` | Create a V5n entity instance. |
-| `V5n2` | `(data) -> V5n2Entity` | Create a V5n2 entity instance. |
 | `V6n` | `(data) -> V6nEntity` | Create a V6n entity instance. |
-| `V6n2` | `(data) -> V6n2Entity` | Create a V6n2 entity instance. |
 | `V7n` | `(data) -> V7nEntity` | Create a V7n entity instance. |
-| `V7n2` | `(data) -> V7n2Entity` | Create a V7n2 entity instance. |
 
 ### Entity interface
 
@@ -267,8 +259,8 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
 Operations: List, Load.
@@ -280,156 +272,78 @@ API path: `/api/uuid-generator/guid`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v1`
-
-#### V1n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v1/{count}`
 
 #### V3n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v3`
-
-#### V3n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v3/{count}`
 
 #### V4n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v4`
-
-#### V4n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v4/{count}`
 
 #### V5n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v5`
-
-#### V5n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v5/{count}`
 
 #### V6n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v6`
-
-#### V6n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v6/{count}`
 
 #### V7n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v7`
-
-#### V7n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v7/{count}`
 
 
 
@@ -452,14 +366,14 @@ Create an instance: `guid = client.Guid`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
+| `maxPerCall` | `Integer` |  |
+| `uuids` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Guid record (raises on error).
+# load returns the ENTITY — call data_get for the Guid record (raises on error).
 guid = client.Guid.load({ "id" => 1 })
 ```
 
@@ -480,32 +394,6 @@ Create an instance: `v1n = client.V1n`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
-| `version` | `String` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of V1n records (raises on error).
-v1ns = client.V1n.list
-```
-
-
-### V1n2
-
-Create an instance: `v1n2 = client.V1n2`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -513,15 +401,22 @@ Create an instance: `v1n2 = client.V1n2`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
+| `maxPerCall` | `Integer` |  |
+| `uuids` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare V1n2 record (raises on error).
-v1n2 = client.V1n2.load({ "count" => 1 })
+# load returns the ENTITY — call data_get for the V1n record (raises on error).
+v1n = client.V1n.load({ "count" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of V1n records (raises on error).
+v1ns = client.V1n.list
 ```
 
 
@@ -534,32 +429,6 @@ Create an instance: `v3n = client.V3n`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
-| `version` | `String` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of V3n records (raises on error).
-v3ns = client.V3n.list
-```
-
-
-### V3n2
-
-Create an instance: `v3n2 = client.V3n2`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -567,15 +436,22 @@ Create an instance: `v3n2 = client.V3n2`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
+| `maxPerCall` | `Integer` |  |
+| `uuids` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare V3n2 record (raises on error).
-v3n2 = client.V3n2.load({ "count" => 1 })
+# load returns the ENTITY — call data_get for the V3n record (raises on error).
+v3n = client.V3n.load({ "count" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of V3n records (raises on error).
+v3ns = client.V3n.list
 ```
 
 
@@ -588,32 +464,6 @@ Create an instance: `v4n = client.V4n`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
-| `version` | `String` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of V4n records (raises on error).
-v4ns = client.V4n.list
-```
-
-
-### V4n2
-
-Create an instance: `v4n2 = client.V4n2`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -621,15 +471,22 @@ Create an instance: `v4n2 = client.V4n2`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
+| `maxPerCall` | `Integer` |  |
+| `uuids` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare V4n2 record (raises on error).
-v4n2 = client.V4n2.load({ "count" => 1 })
+# load returns the ENTITY — call data_get for the V4n record (raises on error).
+v4n = client.V4n.load({ "count" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of V4n records (raises on error).
+v4ns = client.V4n.list
 ```
 
 
@@ -642,32 +499,6 @@ Create an instance: `v5n = client.V5n`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
-| `version` | `String` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of V5n records (raises on error).
-v5ns = client.V5n.list
-```
-
-
-### V5n2
-
-Create an instance: `v5n2 = client.V5n2`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -675,15 +506,22 @@ Create an instance: `v5n2 = client.V5n2`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
+| `maxPerCall` | `Integer` |  |
+| `uuids` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare V5n2 record (raises on error).
-v5n2 = client.V5n2.load({ "count" => 1 })
+# load returns the ENTITY — call data_get for the V5n record (raises on error).
+v5n = client.V5n.load({ "count" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of V5n records (raises on error).
+v5ns = client.V5n.list
 ```
 
 
@@ -696,32 +534,6 @@ Create an instance: `v6n = client.V6n`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
-| `version` | `String` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of V6n records (raises on error).
-v6ns = client.V6n.list
-```
-
-
-### V6n2
-
-Create an instance: `v6n2 = client.V6n2`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -729,15 +541,22 @@ Create an instance: `v6n2 = client.V6n2`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
+| `maxPerCall` | `Integer` |  |
+| `uuids` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare V6n2 record (raises on error).
-v6n2 = client.V6n2.load({ "count" => 1 })
+# load returns the ENTITY — call data_get for the V6n record (raises on error).
+v6n = client.V6n.load({ "count" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of V6n records (raises on error).
+v6ns = client.V6n.list
 ```
 
 
@@ -750,32 +569,6 @@ Create an instance: `v7n = client.V7n`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
-| `version` | `String` |  |
-
-#### Example: List
-
-```ruby
-# list returns an Array of V7n records (raises on error).
-v7ns = client.V7n.list
-```
-
-
-### V7n2
-
-Create an instance: `v7n2 = client.V7n2`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -783,15 +576,22 @@ Create an instance: `v7n2 = client.V7n2`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` |  |
-| `max_per_call` | `Integer` |  |
-| `uuid` | `Array` |  |
+| `maxPerCall` | `Integer` |  |
+| `uuids` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare V7n2 record (raises on error).
-v7n2 = client.V7n2.load({ "count" => 1 })
+# load returns the ENTITY — call data_get for the V7n record (raises on error).
+v7n = client.V7n.load({ "count" => 1 })
+```
+
+#### Example: List
+
+```ruby
+# list returns an Array of V7n records (raises on error).
+v7ns = client.V7n.list
 ```
 
 
@@ -871,11 +671,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-guid = client.Guid
-guid.list()
+v1n = client.V1n
+v1n.list()
 
-# guid.data_get now returns the guid data from the last list
-# guid.match_get returns the last match criteria
+# v1n.data_get now returns the v1n data from the last list
+# v1n.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

@@ -16,11 +16,11 @@
 import pytest
 
 from uuidgeneratorapi2_sdk import UuidGeneratorApi2SDK
-from core.error import UuidGeneratorApi2Error
-from core.result import UuidGeneratorApi2Result
-from core.response import UuidGeneratorApi2Response
-from core.spec import UuidGeneratorApi2Spec
-from feature.base_feature import UuidGeneratorApi2BaseFeature
+from uuidgeneratorapi2_sdk.core.error import UuidGeneratorApi2Error
+from uuidgeneratorapi2_sdk.core.result import UuidGeneratorApi2Result
+from uuidgeneratorapi2_sdk.core.response import UuidGeneratorApi2Response
+from uuidgeneratorapi2_sdk.core.spec import UuidGeneratorApi2Spec
+from uuidgeneratorapi2_sdk.feature.base_feature import UuidGeneratorApi2BaseFeature
 
 
 def _client():

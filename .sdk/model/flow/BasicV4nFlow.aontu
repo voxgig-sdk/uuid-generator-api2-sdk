@@ -17,6 +17,28 @@ main: kit: flow: BasicV4nFlow:
         }
       ]
     }
+
+    {
+      input: {
+        ref: "v4n_ref01",
+        srcdatavar: "v4n_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "v4n01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-v4n_ref01"
+          }
+        }
+      ]
+    }
   ],
   "key$": "BasicV4nFlow"
 }

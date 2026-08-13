@@ -16,8 +16,8 @@ declare(strict_types=1);
 class Guid
 {
     public int $count;
-    public int $max_per_call;
-    public array $uuid;
+    public int $maxPerCall;
+    public array $uuids;
     public string $version;
 }
 
@@ -31,8 +31,8 @@ class GuidLoadMatch
 class GuidListMatch
 {
     public ?int $count = null;
-    public ?int $max_per_call = null;
-    public ?array $uuid = null;
+    public ?int $maxPerCall = null;
+    public ?array $uuids = null;
     public ?string $version = null;
 }
 
@@ -40,197 +40,143 @@ class GuidListMatch
 class V1n
 {
     public int $count;
-    public int $max_per_call;
-    public array $uuid;
+    public int $maxPerCall;
+    public array $uuids;
     public string $version;
+}
+
+/** Request payload for V1n#load. */
+class V1nLoadMatch
+{
+    public int $count;
 }
 
 /** Request payload for V1n#list. */
 class V1nListMatch
 {
     public ?int $count = null;
-    public ?int $max_per_call = null;
-    public ?array $uuid = null;
+    public ?int $maxPerCall = null;
+    public ?array $uuids = null;
     public ?string $version = null;
-}
-
-/** V1n2 entity data model. */
-class V1n2
-{
-    public int $count;
-    public int $max_per_call;
-    public array $uuid;
-    public string $version;
-}
-
-/** Request payload for V1n2#load. */
-class V1n2LoadMatch
-{
-    public int $count;
 }
 
 /** V3n entity data model. */
 class V3n
 {
     public int $count;
-    public int $max_per_call;
-    public array $uuid;
+    public int $maxPerCall;
+    public array $uuids;
     public string $version;
+}
+
+/** Request payload for V3n#load. */
+class V3nLoadMatch
+{
+    public int $count;
 }
 
 /** Request payload for V3n#list. */
 class V3nListMatch
 {
     public ?int $count = null;
-    public ?int $max_per_call = null;
-    public ?array $uuid = null;
+    public ?int $maxPerCall = null;
+    public ?array $uuids = null;
     public ?string $version = null;
-}
-
-/** V3n2 entity data model. */
-class V3n2
-{
-    public int $count;
-    public int $max_per_call;
-    public array $uuid;
-    public string $version;
-}
-
-/** Request payload for V3n2#load. */
-class V3n2LoadMatch
-{
-    public int $count;
 }
 
 /** V4n entity data model. */
 class V4n
 {
     public int $count;
-    public int $max_per_call;
-    public array $uuid;
+    public int $maxPerCall;
+    public array $uuids;
     public string $version;
+}
+
+/** Request payload for V4n#load. */
+class V4nLoadMatch
+{
+    public int $count;
 }
 
 /** Request payload for V4n#list. */
 class V4nListMatch
 {
     public ?int $count = null;
-    public ?int $max_per_call = null;
-    public ?array $uuid = null;
+    public ?int $maxPerCall = null;
+    public ?array $uuids = null;
     public ?string $version = null;
-}
-
-/** V4n2 entity data model. */
-class V4n2
-{
-    public int $count;
-    public int $max_per_call;
-    public array $uuid;
-    public string $version;
-}
-
-/** Request payload for V4n2#load. */
-class V4n2LoadMatch
-{
-    public int $count;
 }
 
 /** V5n entity data model. */
 class V5n
 {
     public int $count;
-    public int $max_per_call;
-    public array $uuid;
+    public int $maxPerCall;
+    public array $uuids;
     public string $version;
+}
+
+/** Request payload for V5n#load. */
+class V5nLoadMatch
+{
+    public int $count;
 }
 
 /** Request payload for V5n#list. */
 class V5nListMatch
 {
     public ?int $count = null;
-    public ?int $max_per_call = null;
-    public ?array $uuid = null;
+    public ?int $maxPerCall = null;
+    public ?array $uuids = null;
     public ?string $version = null;
-}
-
-/** V5n2 entity data model. */
-class V5n2
-{
-    public int $count;
-    public int $max_per_call;
-    public array $uuid;
-    public string $version;
-}
-
-/** Request payload for V5n2#load. */
-class V5n2LoadMatch
-{
-    public int $count;
 }
 
 /** V6n entity data model. */
 class V6n
 {
     public int $count;
-    public int $max_per_call;
-    public array $uuid;
+    public int $maxPerCall;
+    public array $uuids;
     public string $version;
+}
+
+/** Request payload for V6n#load. */
+class V6nLoadMatch
+{
+    public int $count;
 }
 
 /** Request payload for V6n#list. */
 class V6nListMatch
 {
     public ?int $count = null;
-    public ?int $max_per_call = null;
-    public ?array $uuid = null;
+    public ?int $maxPerCall = null;
+    public ?array $uuids = null;
     public ?string $version = null;
-}
-
-/** V6n2 entity data model. */
-class V6n2
-{
-    public int $count;
-    public int $max_per_call;
-    public array $uuid;
-    public string $version;
-}
-
-/** Request payload for V6n2#load. */
-class V6n2LoadMatch
-{
-    public int $count;
 }
 
 /** V7n entity data model. */
 class V7n
 {
     public int $count;
-    public int $max_per_call;
-    public array $uuid;
+    public int $maxPerCall;
+    public array $uuids;
     public string $version;
+}
+
+/** Request payload for V7n#load. */
+class V7nLoadMatch
+{
+    public int $count;
 }
 
 /** Request payload for V7n#list. */
 class V7nListMatch
 {
     public ?int $count = null;
-    public ?int $max_per_call = null;
-    public ?array $uuid = null;
+    public ?int $maxPerCall = null;
+    public ?array $uuids = null;
     public ?string $version = null;
-}
-
-/** V7n2 entity data model. */
-class V7n2
-{
-    public int $count;
-    public int $max_per_call;
-    public array $uuid;
-    public string $version;
-}
-
-/** Request payload for V7n2#load. */
-class V7n2LoadMatch
-{
-    public int $count;
 }
 

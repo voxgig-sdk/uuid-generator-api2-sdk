@@ -115,11 +115,11 @@ function guid_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["UUIDGENERATORAPI__TEST_GUID_ENTID"] = {},
-    ["UUIDGENERATORAPI__TEST_LIVE"] = "FALSE",
+    ["UUID_GENERATOR_API2_TEST_GUID_ENTID"] = {},
+    ["UUID_GENERATOR_API2_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["UUIDGENERATORAPI__TEST_LIVE"] == "TRUE"
+  local live = env["UUID_GENERATOR_API2_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

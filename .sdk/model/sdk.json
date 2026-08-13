@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "guid": {
           "active": true,
@@ -33,13 +38,13 @@
             },
             {
               "active": true,
-              "name": "max_per_call",
+              "name": "maxPerCall",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "uuid",
+              "name": "uuids",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -80,6 +85,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/guid",
                   "parts": [
@@ -95,7 +101,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.uuids`"
                   }
                 }
               ]
@@ -129,6 +135,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/guid/{count}",
                   "parts": [
@@ -174,13 +181,13 @@
             },
             {
               "active": true,
-              "name": "max_per_call",
+              "name": "maxPerCall",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "uuid",
+              "name": "uuids",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -221,6 +228,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v1",
                   "parts": [
@@ -236,49 +244,11 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.uuids`"
                   }
                 }
               ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "v1n2": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "count",
-              "req": true,
-              "type": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "max_per_call",
-              "req": true,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "uuid",
-              "req": true,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "version",
-              "req": true,
-              "type": "`$STRING`"
-            }
-          ],
-          "name": "v1n2",
-          "op": {
             "load": {
               "input": "data",
               "name": "load",
@@ -308,6 +278,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v1/{count}",
                   "parts": [
@@ -352,13 +323,13 @@
             },
             {
               "active": true,
-              "name": "max_per_call",
+              "name": "maxPerCall",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "uuid",
+              "name": "uuids",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -416,6 +387,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v3",
                   "parts": [
@@ -433,49 +405,11 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.uuids`"
                   }
                 }
               ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "v3n2": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "count",
-              "req": true,
-              "type": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "max_per_call",
-              "req": true,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "uuid",
-              "req": true,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "version",
-              "req": true,
-              "type": "`$STRING`"
-            }
-          ],
-          "name": "v3n2",
-          "op": {
             "load": {
               "input": "data",
               "name": "load",
@@ -522,6 +456,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v3/{count}",
                   "parts": [
@@ -568,13 +503,13 @@
             },
             {
               "active": true,
-              "name": "max_per_call",
+              "name": "maxPerCall",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "uuid",
+              "name": "uuids",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -615,6 +550,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v4",
                   "parts": [
@@ -630,49 +566,11 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.uuids`"
                   }
                 }
               ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "v4n2": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "count",
-              "req": true,
-              "type": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "max_per_call",
-              "req": true,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "uuid",
-              "req": true,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "version",
-              "req": true,
-              "type": "`$STRING`"
-            }
-          ],
-          "name": "v4n2",
-          "op": {
             "load": {
               "input": "data",
               "name": "load",
@@ -702,6 +600,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v4/{count}",
                   "parts": [
@@ -746,13 +645,13 @@
             },
             {
               "active": true,
-              "name": "max_per_call",
+              "name": "maxPerCall",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "uuid",
+              "name": "uuids",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -810,6 +709,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v5",
                   "parts": [
@@ -827,49 +727,11 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.uuids`"
                   }
                 }
               ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "v5n2": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "count",
-              "req": true,
-              "type": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "max_per_call",
-              "req": true,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "uuid",
-              "req": true,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "version",
-              "req": true,
-              "type": "`$STRING`"
-            }
-          ],
-          "name": "v5n2",
-          "op": {
             "load": {
               "input": "data",
               "name": "load",
@@ -916,6 +778,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v5/{count}",
                   "parts": [
@@ -962,13 +825,13 @@
             },
             {
               "active": true,
-              "name": "max_per_call",
+              "name": "maxPerCall",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "uuid",
+              "name": "uuids",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -1009,6 +872,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v6",
                   "parts": [
@@ -1024,49 +888,11 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.uuids`"
                   }
                 }
               ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "v6n2": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "count",
-              "req": true,
-              "type": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "max_per_call",
-              "req": true,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "uuid",
-              "req": true,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "version",
-              "req": true,
-              "type": "`$STRING`"
-            }
-          ],
-          "name": "v6n2",
-          "op": {
             "load": {
               "input": "data",
               "name": "load",
@@ -1096,6 +922,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v6/{count}",
                   "parts": [
@@ -1140,13 +967,13 @@
             },
             {
               "active": true,
-              "name": "max_per_call",
+              "name": "maxPerCall",
               "req": true,
               "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "uuid",
+              "name": "uuids",
               "req": true,
               "type": "`$ARRAY`"
             },
@@ -1187,6 +1014,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v7",
                   "parts": [
@@ -1202,49 +1030,11 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.uuids`"
                   }
                 }
               ]
-            }
-          },
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "v7n2": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [
-            {
-              "active": true,
-              "name": "count",
-              "req": true,
-              "type": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "max_per_call",
-              "req": true,
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "uuid",
-              "req": true,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "version",
-              "req": true,
-              "type": "`$STRING`"
-            }
-          ],
-          "name": "v7n2",
-          "op": {
             "load": {
               "input": "data",
               "name": "load",
@@ -1274,6 +1064,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v7/{count}",
                   "parts": [
@@ -1447,38 +1238,6 @@
             }
           ]
         },
-        "BasicV1n2Flow": {
-          "active": true,
-          "entity": "v1n2",
-          "key$": "BasicV1n2Flow",
-          "kind": "basic",
-          "name": "BasicV1n2Flow",
-          "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "v1n2_ref01",
-                "srcdatavar": "v1n2_ref01_data",
-                "suffix": "_dt0"
-              },
-              "match": {
-                "id": "v1n201"
-              },
-              "op": "load",
-              "spec": [],
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-v1n2_ref01"
-                  }
-                }
-              ]
-            }
-          ]
-        },
         "BasicV1nFlow": {
           "active": true,
           "entity": "v1n",
@@ -1502,27 +1261,17 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicV3n2Flow": {
-          "active": true,
-          "entity": "v3n2",
-          "key$": "BasicV3n2Flow",
-          "kind": "basic",
-          "name": "BasicV3n2Flow",
-          "param": {},
-          "step": [
+            },
             {
               "active": true,
               "data": {},
               "input": {
-                "ref": "v3n2_ref01",
-                "srcdatavar": "v3n2_ref01_data",
+                "ref": "v1n_ref01",
+                "srcdatavar": "v1n_ref01_data",
                 "suffix": "_dt0"
               },
               "match": {
-                "id": "v3n201"
+                "id": "v1n01"
               },
               "op": "load",
               "spec": [],
@@ -1530,7 +1279,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-v3n2_ref01"
+                    "mark": "Mark01-v1n_ref01"
                   }
                 }
               ]
@@ -1560,27 +1309,17 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicV4n2Flow": {
-          "active": true,
-          "entity": "v4n2",
-          "key$": "BasicV4n2Flow",
-          "kind": "basic",
-          "name": "BasicV4n2Flow",
-          "param": {},
-          "step": [
+            },
             {
               "active": true,
               "data": {},
               "input": {
-                "ref": "v4n2_ref01",
-                "srcdatavar": "v4n2_ref01_data",
+                "ref": "v3n_ref01",
+                "srcdatavar": "v3n_ref01_data",
                 "suffix": "_dt0"
               },
               "match": {
-                "id": "v4n201"
+                "id": "v3n01"
               },
               "op": "load",
               "spec": [],
@@ -1588,7 +1327,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-v4n2_ref01"
+                    "mark": "Mark01-v3n_ref01"
                   }
                 }
               ]
@@ -1618,27 +1357,17 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicV5n2Flow": {
-          "active": true,
-          "entity": "v5n2",
-          "key$": "BasicV5n2Flow",
-          "kind": "basic",
-          "name": "BasicV5n2Flow",
-          "param": {},
-          "step": [
+            },
             {
               "active": true,
               "data": {},
               "input": {
-                "ref": "v5n2_ref01",
-                "srcdatavar": "v5n2_ref01_data",
+                "ref": "v4n_ref01",
+                "srcdatavar": "v4n_ref01_data",
                 "suffix": "_dt0"
               },
               "match": {
-                "id": "v5n201"
+                "id": "v4n01"
               },
               "op": "load",
               "spec": [],
@@ -1646,7 +1375,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-v5n2_ref01"
+                    "mark": "Mark01-v4n_ref01"
                   }
                 }
               ]
@@ -1676,27 +1405,17 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicV6n2Flow": {
-          "active": true,
-          "entity": "v6n2",
-          "key$": "BasicV6n2Flow",
-          "kind": "basic",
-          "name": "BasicV6n2Flow",
-          "param": {},
-          "step": [
+            },
             {
               "active": true,
               "data": {},
               "input": {
-                "ref": "v6n2_ref01",
-                "srcdatavar": "v6n2_ref01_data",
+                "ref": "v5n_ref01",
+                "srcdatavar": "v5n_ref01_data",
                 "suffix": "_dt0"
               },
               "match": {
-                "id": "v6n201"
+                "id": "v5n01"
               },
               "op": "load",
               "spec": [],
@@ -1704,7 +1423,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-v6n2_ref01"
+                    "mark": "Mark01-v5n_ref01"
                   }
                 }
               ]
@@ -1734,27 +1453,17 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        "BasicV7n2Flow": {
-          "active": true,
-          "entity": "v7n2",
-          "key$": "BasicV7n2Flow",
-          "kind": "basic",
-          "name": "BasicV7n2Flow",
-          "param": {},
-          "step": [
+            },
             {
               "active": true,
               "data": {},
               "input": {
-                "ref": "v7n2_ref01",
-                "srcdatavar": "v7n2_ref01_data",
+                "ref": "v6n_ref01",
+                "srcdatavar": "v6n_ref01_data",
                 "suffix": "_dt0"
               },
               "match": {
-                "id": "v7n201"
+                "id": "v6n01"
               },
               "op": "load",
               "spec": [],
@@ -1762,7 +1471,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-v7n2_ref01"
+                    "mark": "Mark01-v6n_ref01"
                   }
                 }
               ]
@@ -1789,6 +1498,28 @@
                   "apply": "ItemExists",
                   "def": {
                     "ref": "v7n_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "v7n_ref01",
+                "srcdatavar": "v7n_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {
+                "id": "v7n01"
+              },
+              "op": "load",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-v7n_ref01"
                   }
                 }
               ]
@@ -1820,18 +1551,41 @@
         "website": "https://toolkitvault.com"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1853,22 +1607,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1907,21 +1679,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1960,12 +1750,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1977,10 +1772,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2002,22 +1810,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2039,13 +1865,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -2057,10 +1888,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2082,13 +1926,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -2105,10 +1954,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2130,13 +1992,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -2159,10 +2026,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "uuid-generator-api2"
+            "goversion": "",
+            "name": "uuid-generator-api2",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2184,9 +2064,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

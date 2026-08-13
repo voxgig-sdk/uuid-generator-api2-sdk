@@ -3,22 +3,22 @@
     "guid": {
       "GUID00": {
         "count": "s28",
-        "max_per_call": "s29",
-        "uuid": [],
+        "maxPerCall": "s29",
+        "uuids": [],
         "version": "s2b",
         "id": "GUID00"
       },
       "GUID01": {
         "count": "s50",
-        "max_per_call": "s51",
-        "uuid": [],
+        "maxPerCall": "s51",
+        "uuids": [],
         "version": "s53",
         "id": "GUID01"
       },
       "GUID02": {
         "count": "s78",
-        "max_per_call": "s79",
-        "uuid": [],
+        "maxPerCall": "s79",
+        "uuids": [],
         "version": "s7b",
         "id": "GUID02"
       }
@@ -28,8 +28,8 @@
     "guid": {
       "guid_ref01": {
         "count": "sa0",
-        "max_per_call": "sa1",
-        "uuid": [],
+        "maxPerCall": "sa1",
+        "uuids": [],
         "version": "sa3"
       }
     }

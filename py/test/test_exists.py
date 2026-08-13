@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# UuidGeneratorApi2 SDK exists test
 
 import pytest
 from uuidgeneratorapi2_sdk import UuidGeneratorApi2SDK

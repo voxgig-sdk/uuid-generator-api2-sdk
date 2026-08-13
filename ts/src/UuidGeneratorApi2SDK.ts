@@ -2,17 +2,11 @@
 
 import { GuidEntity } from './entity/GuidEntity'
 import { V1nEntity } from './entity/V1nEntity'
-import { V1n2Entity } from './entity/V1n2Entity'
 import { V3nEntity } from './entity/V3nEntity'
-import { V3n2Entity } from './entity/V3n2Entity'
 import { V4nEntity } from './entity/V4nEntity'
-import { V4n2Entity } from './entity/V4n2Entity'
 import { V5nEntity } from './entity/V5nEntity'
-import { V5n2Entity } from './entity/V5n2Entity'
 import { V6nEntity } from './entity/V6nEntity'
-import { V6n2Entity } from './entity/V6n2Entity'
 import { V7nEntity } from './entity/V7nEntity'
-import { V7n2Entity } from './entity/V7n2Entity'
 
 export type * from './UuidGeneratorApi2Types'
 
@@ -158,8 +152,29 @@ class UuidGeneratorApi2SDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('UuidGeneratorApi2SDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -220,94 +235,120 @@ class UuidGeneratorApi2SDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('UuidGeneratorApi2SDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('UuidGeneratorApi2SDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Guid().list()` / `client.Guid().load({ id })`.
-  Guid(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Guid(entopts?: Record<string, any>) {
     const self = this
-    return new GuidEntity(self,data)
+    return new GuidEntity(self, entopts)
   }
 
 
   // Entity access: `client.V1n().list()` / `client.V1n().load({ id })`.
-  V1n(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  V1n(entopts?: Record<string, any>) {
     const self = this
-    return new V1nEntity(self,data)
-  }
-
-
-  // Entity access: `client.V1n2().list()` / `client.V1n2().load({ id })`.
-  V1n2(data?: any) {
-    const self = this
-    return new V1n2Entity(self,data)
+    return new V1nEntity(self, entopts)
   }
 
 
   // Entity access: `client.V3n().list()` / `client.V3n().load({ id })`.
-  V3n(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  V3n(entopts?: Record<string, any>) {
     const self = this
-    return new V3nEntity(self,data)
-  }
-
-
-  // Entity access: `client.V3n2().list()` / `client.V3n2().load({ id })`.
-  V3n2(data?: any) {
-    const self = this
-    return new V3n2Entity(self,data)
+    return new V3nEntity(self, entopts)
   }
 
 
   // Entity access: `client.V4n().list()` / `client.V4n().load({ id })`.
-  V4n(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  V4n(entopts?: Record<string, any>) {
     const self = this
-    return new V4nEntity(self,data)
-  }
-
-
-  // Entity access: `client.V4n2().list()` / `client.V4n2().load({ id })`.
-  V4n2(data?: any) {
-    const self = this
-    return new V4n2Entity(self,data)
+    return new V4nEntity(self, entopts)
   }
 
 
   // Entity access: `client.V5n().list()` / `client.V5n().load({ id })`.
-  V5n(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  V5n(entopts?: Record<string, any>) {
     const self = this
-    return new V5nEntity(self,data)
-  }
-
-
-  // Entity access: `client.V5n2().list()` / `client.V5n2().load({ id })`.
-  V5n2(data?: any) {
-    const self = this
-    return new V5n2Entity(self,data)
+    return new V5nEntity(self, entopts)
   }
 
 
   // Entity access: `client.V6n().list()` / `client.V6n().load({ id })`.
-  V6n(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  V6n(entopts?: Record<string, any>) {
     const self = this
-    return new V6nEntity(self,data)
-  }
-
-
-  // Entity access: `client.V6n2().list()` / `client.V6n2().load({ id })`.
-  V6n2(data?: any) {
-    const self = this
-    return new V6n2Entity(self,data)
+    return new V6nEntity(self, entopts)
   }
 
 
   // Entity access: `client.V7n().list()` / `client.V7n().load({ id })`.
-  V7n(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  V7n(entopts?: Record<string, any>) {
     const self = this
-    return new V7nEntity(self,data)
-  }
-
-
-  // Entity access: `client.V7n2().list()` / `client.V7n2().load({ id })`.
-  V7n2(data?: any) {
-    const self = this
-    return new V7n2Entity(self,data)
+    return new V7nEntity(self, entopts)
   }
 
 

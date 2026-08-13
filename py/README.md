@@ -50,15 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a v1n2
+### 3. Load a v1n
 
-V1n2 is nested under count, so provide the `count`.
-`load()` returns the bare record (a `dict`) and raises on error.
+V1n is nested under count, so provide the `count`.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    v1n2 = client.V1n2().load({"count": 1})
-    print(v1n2)
+    v1n = client.V1n().load({"count": 1})
+    print(v1n)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -70,8 +70,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    guids = client.Guid().list()
-    print(guids)
+    v1ns = client.V1n().list()
+    print(v1ns)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -137,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = UuidGeneratorApi2SDK.test()
 
-# Entity ops return the bare record and raise on error.
-guid = client.Guid().list()
-# guid contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+v1n = client.V1n().list()
+# v1n contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -217,17 +218,11 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Guid` | `(data) -> GuidEntity` | Create a Guid entity instance. |
 | `V1n` | `(data) -> V1nEntity` | Create a V1n entity instance. |
-| `V1n2` | `(data) -> V1n2Entity` | Create a V1n2 entity instance. |
 | `V3n` | `(data) -> V3nEntity` | Create a V3n entity instance. |
-| `V3n2` | `(data) -> V3n2Entity` | Create a V3n2 entity instance. |
 | `V4n` | `(data) -> V4nEntity` | Create a V4n entity instance. |
-| `V4n2` | `(data) -> V4n2Entity` | Create a V4n2 entity instance. |
 | `V5n` | `(data) -> V5nEntity` | Create a V5n entity instance. |
-| `V5n2` | `(data) -> V5n2Entity` | Create a V5n2 entity instance. |
 | `V6n` | `(data) -> V6nEntity` | Create a V6n entity instance. |
-| `V6n2` | `(data) -> V6n2Entity` | Create a V6n2 entity instance. |
 | `V7n` | `(data) -> V7nEntity` | Create a V7n entity instance. |
-| `V7n2` | `(data) -> V7n2Entity` | Create a V7n2 entity instance. |
 
 ### Entity interface
 
@@ -246,7 +241,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -269,8 +264,8 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
 Operations: List, Load.
@@ -282,156 +277,78 @@ API path: `/api/uuid-generator/guid`
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v1`
-
-#### V1n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v1/{count}`
 
 #### V3n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v3`
-
-#### V3n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v3/{count}`
 
 #### V4n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v4`
-
-#### V4n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v4/{count}`
 
 #### V5n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v5`
-
-#### V5n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v5/{count}`
 
 #### V6n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v6`
-
-#### V6n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v6/{count}`
 
 #### V7n
 
 | Field | Description |
 | --- | --- |
 | `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
+| `maxPerCall` |  |
+| `uuids` |  |
 | `version` |  |
 
-Operations: List.
+Operations: List, Load.
 
 API path: `/api/uuid-generator/v7`
-
-#### V7n2
-
-| Field | Description |
-| --- | --- |
-| `count` |  |
-| `max_per_call` |  |
-| `uuid` |  |
-| `version` |  |
-
-Operations: Load.
-
-API path: `/api/uuid-generator/v7/{count}`
 
 
 
@@ -454,8 +371,8 @@ Create an instance: `guid = client.Guid()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load
@@ -480,31 +397,6 @@ Create an instance: `v1n = client.V1n()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
-| `version` | `str` |  |
-
-#### Example: List
-
-```python
-v1ns = client.V1n().list()
-```
-
-
-### V1n2
-
-Create an instance: `v1n2 = client.V1n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -512,14 +404,20 @@ Create an instance: `v1n2 = client.V1n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load
 
 ```python
-v1n2 = client.V1n2().load({"count": 1})
+v1n = client.V1n().load({"count": 1})
+```
+
+#### Example: List
+
+```python
+v1ns = client.V1n().list()
 ```
 
 
@@ -532,31 +430,6 @@ Create an instance: `v3n = client.V3n()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
-| `version` | `str` |  |
-
-#### Example: List
-
-```python
-v3ns = client.V3n().list()
-```
-
-
-### V3n2
-
-Create an instance: `v3n2 = client.V3n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -564,14 +437,20 @@ Create an instance: `v3n2 = client.V3n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load
 
 ```python
-v3n2 = client.V3n2().load({"count": 1})
+v3n = client.V3n().load({"count": 1})
+```
+
+#### Example: List
+
+```python
+v3ns = client.V3n().list()
 ```
 
 
@@ -584,31 +463,6 @@ Create an instance: `v4n = client.V4n()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
-| `version` | `str` |  |
-
-#### Example: List
-
-```python
-v4ns = client.V4n().list()
-```
-
-
-### V4n2
-
-Create an instance: `v4n2 = client.V4n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -616,14 +470,20 @@ Create an instance: `v4n2 = client.V4n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load
 
 ```python
-v4n2 = client.V4n2().load({"count": 1})
+v4n = client.V4n().load({"count": 1})
+```
+
+#### Example: List
+
+```python
+v4ns = client.V4n().list()
 ```
 
 
@@ -636,31 +496,6 @@ Create an instance: `v5n = client.V5n()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
-| `version` | `str` |  |
-
-#### Example: List
-
-```python
-v5ns = client.V5n().list()
-```
-
-
-### V5n2
-
-Create an instance: `v5n2 = client.V5n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -668,14 +503,20 @@ Create an instance: `v5n2 = client.V5n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load
 
 ```python
-v5n2 = client.V5n2().load({"count": 1})
+v5n = client.V5n().load({"count": 1})
+```
+
+#### Example: List
+
+```python
+v5ns = client.V5n().list()
 ```
 
 
@@ -688,31 +529,6 @@ Create an instance: `v6n = client.V6n()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
-| `version` | `str` |  |
-
-#### Example: List
-
-```python
-v6ns = client.V6n().list()
-```
-
-
-### V6n2
-
-Create an instance: `v6n2 = client.V6n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -720,14 +536,20 @@ Create an instance: `v6n2 = client.V6n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load
 
 ```python
-v6n2 = client.V6n2().load({"count": 1})
+v6n = client.V6n().load({"count": 1})
+```
+
+#### Example: List
+
+```python
+v6ns = client.V6n().list()
 ```
 
 
@@ -740,31 +562,6 @@ Create an instance: `v7n = client.V7n()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
-| `version` | `str` |  |
-
-#### Example: List
-
-```python
-v7ns = client.V7n().list()
-```
-
-
-### V7n2
-
-Create an instance: `v7n2 = client.V7n2()`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -772,14 +569,20 @@ Create an instance: `v7n2 = client.V7n2()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` |  |
-| `max_per_call` | `int` |  |
-| `uuid` | `list` |  |
+| `maxPerCall` | `int` |  |
+| `uuids` | `list` |  |
 | `version` | `str` |  |
 
 #### Example: Load
 
 ```python
-v7n2 = client.V7n2().load({"count": 1})
+v7n = client.V7n().load({"count": 1})
+```
+
+#### Example: List
+
+```python
+v7ns = client.V7n().list()
 ```
 
 
@@ -858,11 +661,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-guid = client.Guid()
-guid.list()
+v1n = client.V1n()
+v1n.list()
 
-# guid.data_get() now returns the guid data from the last list
-# guid.match_get() returns the last match criteria
+# v1n.data_get() now returns the v1n data from the last list
+# v1n.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

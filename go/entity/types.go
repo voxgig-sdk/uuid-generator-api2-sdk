@@ -6,13 +6,17 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/uuid-generator-api2-sdk/go/core"
+)
 
 // Guid is the typed data model for the guid entity.
 type Guid struct {
 	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
+	MaxPerCall int `json:"maxPerCall"`
+	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
 }
 
@@ -24,183 +28,135 @@ type GuidLoadMatch struct {
 // GuidListMatch is the typed request payload for Guid.ListTyped.
 type GuidListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"max_per_call,omitempty"`
-	Uuid *[]any `json:"uuid,omitempty"`
+	MaxPerCall *int `json:"maxPerCall,omitempty"`
+	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`
 }
 
 // V1n is the typed data model for the v1n entity.
 type V1n struct {
 	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
+	MaxPerCall int `json:"maxPerCall"`
+	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
+}
+
+// V1nLoadMatch is the typed request payload for V1n.LoadTyped.
+type V1nLoadMatch struct {
+	Count int `json:"count"`
 }
 
 // V1nListMatch is the typed request payload for V1n.ListTyped.
 type V1nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"max_per_call,omitempty"`
-	Uuid *[]any `json:"uuid,omitempty"`
+	MaxPerCall *int `json:"maxPerCall,omitempty"`
+	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`
-}
-
-// V1n2 is the typed data model for the v1n2 entity.
-type V1n2 struct {
-	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
-	Version string `json:"version"`
-}
-
-// V1n2LoadMatch is the typed request payload for V1n2.LoadTyped.
-type V1n2LoadMatch struct {
-	Count int `json:"count"`
 }
 
 // V3n is the typed data model for the v3n entity.
 type V3n struct {
 	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
+	MaxPerCall int `json:"maxPerCall"`
+	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
+}
+
+// V3nLoadMatch is the typed request payload for V3n.LoadTyped.
+type V3nLoadMatch struct {
+	Count int `json:"count"`
 }
 
 // V3nListMatch is the typed request payload for V3n.ListTyped.
 type V3nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"max_per_call,omitempty"`
-	Uuid *[]any `json:"uuid,omitempty"`
+	MaxPerCall *int `json:"maxPerCall,omitempty"`
+	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`
-}
-
-// V3n2 is the typed data model for the v3n2 entity.
-type V3n2 struct {
-	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
-	Version string `json:"version"`
-}
-
-// V3n2LoadMatch is the typed request payload for V3n2.LoadTyped.
-type V3n2LoadMatch struct {
-	Count int `json:"count"`
 }
 
 // V4n is the typed data model for the v4n entity.
 type V4n struct {
 	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
+	MaxPerCall int `json:"maxPerCall"`
+	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
+}
+
+// V4nLoadMatch is the typed request payload for V4n.LoadTyped.
+type V4nLoadMatch struct {
+	Count int `json:"count"`
 }
 
 // V4nListMatch is the typed request payload for V4n.ListTyped.
 type V4nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"max_per_call,omitempty"`
-	Uuid *[]any `json:"uuid,omitempty"`
+	MaxPerCall *int `json:"maxPerCall,omitempty"`
+	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`
-}
-
-// V4n2 is the typed data model for the v4n2 entity.
-type V4n2 struct {
-	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
-	Version string `json:"version"`
-}
-
-// V4n2LoadMatch is the typed request payload for V4n2.LoadTyped.
-type V4n2LoadMatch struct {
-	Count int `json:"count"`
 }
 
 // V5n is the typed data model for the v5n entity.
 type V5n struct {
 	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
+	MaxPerCall int `json:"maxPerCall"`
+	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
+}
+
+// V5nLoadMatch is the typed request payload for V5n.LoadTyped.
+type V5nLoadMatch struct {
+	Count int `json:"count"`
 }
 
 // V5nListMatch is the typed request payload for V5n.ListTyped.
 type V5nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"max_per_call,omitempty"`
-	Uuid *[]any `json:"uuid,omitempty"`
+	MaxPerCall *int `json:"maxPerCall,omitempty"`
+	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`
-}
-
-// V5n2 is the typed data model for the v5n2 entity.
-type V5n2 struct {
-	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
-	Version string `json:"version"`
-}
-
-// V5n2LoadMatch is the typed request payload for V5n2.LoadTyped.
-type V5n2LoadMatch struct {
-	Count int `json:"count"`
 }
 
 // V6n is the typed data model for the v6n entity.
 type V6n struct {
 	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
+	MaxPerCall int `json:"maxPerCall"`
+	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
+}
+
+// V6nLoadMatch is the typed request payload for V6n.LoadTyped.
+type V6nLoadMatch struct {
+	Count int `json:"count"`
 }
 
 // V6nListMatch is the typed request payload for V6n.ListTyped.
 type V6nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"max_per_call,omitempty"`
-	Uuid *[]any `json:"uuid,omitempty"`
+	MaxPerCall *int `json:"maxPerCall,omitempty"`
+	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`
-}
-
-// V6n2 is the typed data model for the v6n2 entity.
-type V6n2 struct {
-	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
-	Version string `json:"version"`
-}
-
-// V6n2LoadMatch is the typed request payload for V6n2.LoadTyped.
-type V6n2LoadMatch struct {
-	Count int `json:"count"`
 }
 
 // V7n is the typed data model for the v7n entity.
 type V7n struct {
 	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
+	MaxPerCall int `json:"maxPerCall"`
+	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
+}
+
+// V7nLoadMatch is the typed request payload for V7n.LoadTyped.
+type V7nLoadMatch struct {
+	Count int `json:"count"`
 }
 
 // V7nListMatch is the typed request payload for V7n.ListTyped.
 type V7nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"max_per_call,omitempty"`
-	Uuid *[]any `json:"uuid,omitempty"`
+	MaxPerCall *int `json:"maxPerCall,omitempty"`
+	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`
-}
-
-// V7n2 is the typed data model for the v7n2 entity.
-type V7n2 struct {
-	Count int `json:"count"`
-	MaxPerCall int `json:"max_per_call"`
-	Uuid []any `json:"uuid"`
-	Version string `json:"version"`
-}
-
-// V7n2LoadMatch is the typed request payload for V7n2.LoadTyped.
-type V7n2LoadMatch struct {
-	Count int `json:"count"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
@@ -215,12 +171,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -232,12 +202,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {
