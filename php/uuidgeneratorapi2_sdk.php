@@ -40,7 +40,7 @@ class UuidGeneratorApi2SDK
         $utility = new UuidGeneratorApi2Utility();
         $this->_utility = $utility;
 
-        $config = UuidGeneratorApi2Config::make_config();
+        $config = UuidGeneratorApi2Config::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

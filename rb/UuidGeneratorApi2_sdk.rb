@@ -28,7 +28,7 @@ class UuidGeneratorApi2SDK
     utility = UuidGeneratorApi2Utility.new
     @_utility = utility
 
-    config = UuidGeneratorApi2Config.make_config
+    config = UuidGeneratorApi2Config.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
