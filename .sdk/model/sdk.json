@@ -36,24 +36,28 @@
               "active": true,
               "name": "count",
               "req": true,
+              "short": "Number of UUIDs generated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxPerCall",
               "req": true,
+              "short": "Maximum number of UUIDs allowed per API call",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "uuids",
               "req": true,
+              "short": "Array of generated UUIDs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": true,
+              "short": "UUID version used for generation",
               "type": "`$STRING`"
             }
           ],
@@ -179,24 +183,28 @@
               "active": true,
               "name": "count",
               "req": true,
+              "short": "Number of UUIDs generated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxPerCall",
               "req": true,
+              "short": "Maximum number of UUIDs allowed per API call",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "uuids",
               "req": true,
+              "short": "Array of generated UUIDs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": true,
+              "short": "UUID version used for generation",
               "type": "`$STRING`"
             }
           ],
@@ -321,24 +329,28 @@
               "active": true,
               "name": "count",
               "req": true,
+              "short": "Number of UUIDs generated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxPerCall",
               "req": true,
+              "short": "Maximum number of UUIDs allowed per API call",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "uuids",
               "req": true,
+              "short": "Array of generated UUIDs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": true,
+              "short": "UUID version used for generation",
               "type": "`$STRING`"
             }
           ],
@@ -501,24 +513,28 @@
               "active": true,
               "name": "count",
               "req": true,
+              "short": "Number of UUIDs generated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxPerCall",
               "req": true,
+              "short": "Maximum number of UUIDs allowed per API call",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "uuids",
               "req": true,
+              "short": "Array of generated UUIDs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": true,
+              "short": "UUID version used for generation",
               "type": "`$STRING`"
             }
           ],
@@ -643,24 +659,28 @@
               "active": true,
               "name": "count",
               "req": true,
+              "short": "Number of UUIDs generated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxPerCall",
               "req": true,
+              "short": "Maximum number of UUIDs allowed per API call",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "uuids",
               "req": true,
+              "short": "Array of generated UUIDs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": true,
+              "short": "UUID version used for generation",
               "type": "`$STRING`"
             }
           ],
@@ -823,24 +843,28 @@
               "active": true,
               "name": "count",
               "req": true,
+              "short": "Number of UUIDs generated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxPerCall",
               "req": true,
+              "short": "Maximum number of UUIDs allowed per API call",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "uuids",
               "req": true,
+              "short": "Array of generated UUIDs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": true,
+              "short": "UUID version used for generation",
               "type": "`$STRING`"
             }
           ],
@@ -965,24 +989,28 @@
               "active": true,
               "name": "count",
               "req": true,
+              "short": "Number of UUIDs generated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxPerCall",
               "req": true,
+              "short": "Maximum number of UUIDs allowed per API call",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "uuids",
               "req": true,
+              "short": "Array of generated UUIDs",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "version",
               "req": true,
+              "short": "UUID version used for generation",
               "type": "`$STRING`"
             }
           ],

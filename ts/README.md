@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -311,10 +311,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: list, load.
 
@@ -324,10 +324,10 @@ API path: `/api/uuid-generator/guid`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: list, load.
 
@@ -337,10 +337,10 @@ API path: `/api/uuid-generator/v1`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: list, load.
 
@@ -350,10 +350,10 @@ API path: `/api/uuid-generator/v3`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: list, load.
 
@@ -363,10 +363,10 @@ API path: `/api/uuid-generator/v4`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: list, load.
 
@@ -376,10 +376,10 @@ API path: `/api/uuid-generator/v5`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: list, load.
 
@@ -389,10 +389,10 @@ API path: `/api/uuid-generator/v6`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: list, load.
 
@@ -418,10 +418,10 @@ Create an instance: `const guid = client.Guid()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `maxPerCall` | `number` |  |
-| `uuids` | `any[]` |  |
-| `version` | `string` |  |
+| `count` | `number` | Number of UUIDs generated |
+| `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `any[]` | Array of generated UUIDs |
+| `version` | `string` | UUID version used for generation |
 
 #### Example: Load
 
@@ -451,10 +451,10 @@ Create an instance: `const v1n = client.V1n()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `maxPerCall` | `number` |  |
-| `uuids` | `any[]` |  |
-| `version` | `string` |  |
+| `count` | `number` | Number of UUIDs generated |
+| `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `any[]` | Array of generated UUIDs |
+| `version` | `string` | UUID version used for generation |
 
 #### Example: Load
 
@@ -484,10 +484,10 @@ Create an instance: `const v3n = client.V3n()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `maxPerCall` | `number` |  |
-| `uuids` | `any[]` |  |
-| `version` | `string` |  |
+| `count` | `number` | Number of UUIDs generated |
+| `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `any[]` | Array of generated UUIDs |
+| `version` | `string` | UUID version used for generation |
 
 #### Example: Load
 
@@ -517,10 +517,10 @@ Create an instance: `const v4n = client.V4n()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `maxPerCall` | `number` |  |
-| `uuids` | `any[]` |  |
-| `version` | `string` |  |
+| `count` | `number` | Number of UUIDs generated |
+| `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `any[]` | Array of generated UUIDs |
+| `version` | `string` | UUID version used for generation |
 
 #### Example: Load
 
@@ -550,10 +550,10 @@ Create an instance: `const v5n = client.V5n()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `maxPerCall` | `number` |  |
-| `uuids` | `any[]` |  |
-| `version` | `string` |  |
+| `count` | `number` | Number of UUIDs generated |
+| `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `any[]` | Array of generated UUIDs |
+| `version` | `string` | UUID version used for generation |
 
 #### Example: Load
 
@@ -583,10 +583,10 @@ Create an instance: `const v6n = client.V6n()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `maxPerCall` | `number` |  |
-| `uuids` | `any[]` |  |
-| `version` | `string` |  |
+| `count` | `number` | Number of UUIDs generated |
+| `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `any[]` | Array of generated UUIDs |
+| `version` | `string` | UUID version used for generation |
 
 #### Example: Load
 
@@ -616,10 +616,10 @@ Create an instance: `const v7n = client.V7n()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `maxPerCall` | `number` |  |
-| `uuids` | `any[]` |  |
-| `version` | `string` |  |
+| `count` | `number` | Number of UUIDs generated |
+| `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `any[]` | Array of generated UUIDs |
+| `version` | `string` | UUID version used for generation |
 
 #### Example: Load
 

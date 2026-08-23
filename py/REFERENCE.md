@@ -111,10 +111,10 @@ guid = client.Guid()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `list` | Yes | Array of generated UUIDs |
+| `version` | `str` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -175,10 +175,10 @@ v1n = client.V1n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `list` | Yes | Array of generated UUIDs |
+| `version` | `str` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -239,10 +239,10 @@ v3n = client.V3n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `list` | Yes | Array of generated UUIDs |
+| `version` | `str` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -303,10 +303,10 @@ v4n = client.V4n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `list` | Yes | Array of generated UUIDs |
+| `version` | `str` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -367,10 +367,10 @@ v5n = client.V5n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `list` | Yes | Array of generated UUIDs |
+| `version` | `str` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -431,10 +431,10 @@ v6n = client.V6n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `list` | Yes | Array of generated UUIDs |
+| `version` | `str` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -495,10 +495,10 @@ v7n = client.V7n()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `list` | Yes |  |
-| `version` | `str` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `list` | Yes | Array of generated UUIDs |
+| `version` | `str` | Yes | UUID version used for generation |
 
 ### Operations
 

@@ -114,10 +114,10 @@ local guid = client:Guid(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | Yes |  |
-| `maxPerCall` | `number` | Yes |  |
-| `uuids` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `number` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `number` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `table` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -177,10 +177,10 @@ local v1n = client:V1n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | Yes |  |
-| `maxPerCall` | `number` | Yes |  |
-| `uuids` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `number` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `number` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `table` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -240,10 +240,10 @@ local v3n = client:V3n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | Yes |  |
-| `maxPerCall` | `number` | Yes |  |
-| `uuids` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `number` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `number` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `table` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -303,10 +303,10 @@ local v4n = client:V4n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | Yes |  |
-| `maxPerCall` | `number` | Yes |  |
-| `uuids` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `number` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `number` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `table` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -366,10 +366,10 @@ local v5n = client:V5n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | Yes |  |
-| `maxPerCall` | `number` | Yes |  |
-| `uuids` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `number` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `number` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `table` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -429,10 +429,10 @@ local v6n = client:V6n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | Yes |  |
-| `maxPerCall` | `number` | Yes |  |
-| `uuids` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `number` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `number` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `table` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -492,10 +492,10 @@ local v7n = client:V7n(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | Yes |  |
-| `maxPerCall` | `number` | Yes |  |
-| `uuids` | `table` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `number` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `number` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `table` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 

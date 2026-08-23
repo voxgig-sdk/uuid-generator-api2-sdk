@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "UuidGeneratorApi2",
+			"slug": "uuid-generator-api2",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -40,21 +43,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "count",
 						"req": true,
+						"short": "Number of UUIDs generated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxPerCall",
 						"req": true,
+						"short": "Maximum number of UUIDs allowed per API call",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "uuids",
 						"req": true,
+						"short": "Array of generated UUIDs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
 						"req": true,
+						"short": "UUID version used for generation",
 						"type": "`$STRING`",
 					},
 				},
@@ -166,21 +173,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "count",
 						"req": true,
+						"short": "Number of UUIDs generated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxPerCall",
 						"req": true,
+						"short": "Maximum number of UUIDs allowed per API call",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "uuids",
 						"req": true,
+						"short": "Array of generated UUIDs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
 						"req": true,
+						"short": "UUID version used for generation",
 						"type": "`$STRING`",
 					},
 				},
@@ -291,21 +302,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "count",
 						"req": true,
+						"short": "Number of UUIDs generated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxPerCall",
 						"req": true,
+						"short": "Maximum number of UUIDs allowed per API call",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "uuids",
 						"req": true,
+						"short": "Array of generated UUIDs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
 						"req": true,
+						"short": "UUID version used for generation",
 						"type": "`$STRING`",
 					},
 				},
@@ -446,21 +461,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "count",
 						"req": true,
+						"short": "Number of UUIDs generated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxPerCall",
 						"req": true,
+						"short": "Maximum number of UUIDs allowed per API call",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "uuids",
 						"req": true,
+						"short": "Array of generated UUIDs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
 						"req": true,
+						"short": "UUID version used for generation",
 						"type": "`$STRING`",
 					},
 				},
@@ -571,21 +590,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "count",
 						"req": true,
+						"short": "Number of UUIDs generated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxPerCall",
 						"req": true,
+						"short": "Maximum number of UUIDs allowed per API call",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "uuids",
 						"req": true,
+						"short": "Array of generated UUIDs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
 						"req": true,
+						"short": "UUID version used for generation",
 						"type": "`$STRING`",
 					},
 				},
@@ -726,21 +749,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "count",
 						"req": true,
+						"short": "Number of UUIDs generated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxPerCall",
 						"req": true,
+						"short": "Maximum number of UUIDs allowed per API call",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "uuids",
 						"req": true,
+						"short": "Array of generated UUIDs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
 						"req": true,
+						"short": "UUID version used for generation",
 						"type": "`$STRING`",
 					},
 				},
@@ -851,21 +878,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "count",
 						"req": true,
+						"short": "Number of UUIDs generated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxPerCall",
 						"req": true,
+						"short": "Maximum number of UUIDs allowed per API call",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "uuids",
 						"req": true,
+						"short": "Array of generated UUIDs",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "version",
 						"req": true,
+						"short": "UUID version used for generation",
 						"type": "`$STRING`",
 					},
 				},

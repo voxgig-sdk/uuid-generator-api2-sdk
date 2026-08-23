@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "UuidGeneratorApi2",
+            "slug": "uuid-generator-api2",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -57,21 +60,25 @@ def make_config():
           {
             "name": "count",
             "req": True,
+            "short": "Number of UUIDs generated",
             "type": "`$INTEGER`",
           },
           {
             "name": "maxPerCall",
             "req": True,
+            "short": "Maximum number of UUIDs allowed per API call",
             "type": "`$INTEGER`",
           },
           {
             "name": "uuids",
             "req": True,
+            "short": "Array of generated UUIDs",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
             "req": True,
+            "short": "UUID version used for generation",
             "type": "`$STRING`",
           },
         ],
@@ -183,21 +190,25 @@ def make_config():
           {
             "name": "count",
             "req": True,
+            "short": "Number of UUIDs generated",
             "type": "`$INTEGER`",
           },
           {
             "name": "maxPerCall",
             "req": True,
+            "short": "Maximum number of UUIDs allowed per API call",
             "type": "`$INTEGER`",
           },
           {
             "name": "uuids",
             "req": True,
+            "short": "Array of generated UUIDs",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
             "req": True,
+            "short": "UUID version used for generation",
             "type": "`$STRING`",
           },
         ],
@@ -308,21 +319,25 @@ def make_config():
           {
             "name": "count",
             "req": True,
+            "short": "Number of UUIDs generated",
             "type": "`$INTEGER`",
           },
           {
             "name": "maxPerCall",
             "req": True,
+            "short": "Maximum number of UUIDs allowed per API call",
             "type": "`$INTEGER`",
           },
           {
             "name": "uuids",
             "req": True,
+            "short": "Array of generated UUIDs",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
             "req": True,
+            "short": "UUID version used for generation",
             "type": "`$STRING`",
           },
         ],
@@ -463,21 +478,25 @@ def make_config():
           {
             "name": "count",
             "req": True,
+            "short": "Number of UUIDs generated",
             "type": "`$INTEGER`",
           },
           {
             "name": "maxPerCall",
             "req": True,
+            "short": "Maximum number of UUIDs allowed per API call",
             "type": "`$INTEGER`",
           },
           {
             "name": "uuids",
             "req": True,
+            "short": "Array of generated UUIDs",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
             "req": True,
+            "short": "UUID version used for generation",
             "type": "`$STRING`",
           },
         ],
@@ -588,21 +607,25 @@ def make_config():
           {
             "name": "count",
             "req": True,
+            "short": "Number of UUIDs generated",
             "type": "`$INTEGER`",
           },
           {
             "name": "maxPerCall",
             "req": True,
+            "short": "Maximum number of UUIDs allowed per API call",
             "type": "`$INTEGER`",
           },
           {
             "name": "uuids",
             "req": True,
+            "short": "Array of generated UUIDs",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
             "req": True,
+            "short": "UUID version used for generation",
             "type": "`$STRING`",
           },
         ],
@@ -743,21 +766,25 @@ def make_config():
           {
             "name": "count",
             "req": True,
+            "short": "Number of UUIDs generated",
             "type": "`$INTEGER`",
           },
           {
             "name": "maxPerCall",
             "req": True,
+            "short": "Maximum number of UUIDs allowed per API call",
             "type": "`$INTEGER`",
           },
           {
             "name": "uuids",
             "req": True,
+            "short": "Array of generated UUIDs",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
             "req": True,
+            "short": "UUID version used for generation",
             "type": "`$STRING`",
           },
         ],
@@ -868,21 +895,25 @@ def make_config():
           {
             "name": "count",
             "req": True,
+            "short": "Number of UUIDs generated",
             "type": "`$INTEGER`",
           },
           {
             "name": "maxPerCall",
             "req": True,
+            "short": "Maximum number of UUIDs allowed per API call",
             "type": "`$INTEGER`",
           },
           {
             "name": "uuids",
             "req": True,
+            "short": "Array of generated UUIDs",
             "type": "`$ARRAY`",
           },
           {
             "name": "version",
             "req": True,
+            "short": "UUID version used for generation",
             "type": "`$STRING`",
           },
         ],

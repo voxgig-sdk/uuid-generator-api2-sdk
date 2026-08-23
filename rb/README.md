@@ -258,10 +258,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: List, Load.
 
@@ -271,10 +271,10 @@ API path: `/api/uuid-generator/guid`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: List, Load.
 
@@ -284,10 +284,10 @@ API path: `/api/uuid-generator/v1`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: List, Load.
 
@@ -297,10 +297,10 @@ API path: `/api/uuid-generator/v3`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: List, Load.
 
@@ -310,10 +310,10 @@ API path: `/api/uuid-generator/v4`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: List, Load.
 
@@ -323,10 +323,10 @@ API path: `/api/uuid-generator/v5`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: List, Load.
 
@@ -336,10 +336,10 @@ API path: `/api/uuid-generator/v6`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `maxPerCall` |  |
-| `uuids` |  |
-| `version` |  |
+| `count` | Number of UUIDs generated |
+| `maxPerCall` | Maximum number of UUIDs allowed per API call |
+| `uuids` | Array of generated UUIDs |
+| `version` | UUID version used for generation |
 
 Operations: List, Load.
 
@@ -365,10 +365,10 @@ Create an instance: `guid = client.Guid`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `maxPerCall` | `Integer` |  |
-| `uuids` | `Array` |  |
-| `version` | `String` |  |
+| `count` | `Integer` | Number of UUIDs generated |
+| `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `Array` | Array of generated UUIDs |
+| `version` | `String` | UUID version used for generation |
 
 #### Example: Load
 
@@ -400,10 +400,10 @@ Create an instance: `v1n = client.V1n`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `maxPerCall` | `Integer` |  |
-| `uuids` | `Array` |  |
-| `version` | `String` |  |
+| `count` | `Integer` | Number of UUIDs generated |
+| `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `Array` | Array of generated UUIDs |
+| `version` | `String` | UUID version used for generation |
 
 #### Example: Load
 
@@ -435,10 +435,10 @@ Create an instance: `v3n = client.V3n`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `maxPerCall` | `Integer` |  |
-| `uuids` | `Array` |  |
-| `version` | `String` |  |
+| `count` | `Integer` | Number of UUIDs generated |
+| `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `Array` | Array of generated UUIDs |
+| `version` | `String` | UUID version used for generation |
 
 #### Example: Load
 
@@ -470,10 +470,10 @@ Create an instance: `v4n = client.V4n`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `maxPerCall` | `Integer` |  |
-| `uuids` | `Array` |  |
-| `version` | `String` |  |
+| `count` | `Integer` | Number of UUIDs generated |
+| `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `Array` | Array of generated UUIDs |
+| `version` | `String` | UUID version used for generation |
 
 #### Example: Load
 
@@ -505,10 +505,10 @@ Create an instance: `v5n = client.V5n`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `maxPerCall` | `Integer` |  |
-| `uuids` | `Array` |  |
-| `version` | `String` |  |
+| `count` | `Integer` | Number of UUIDs generated |
+| `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `Array` | Array of generated UUIDs |
+| `version` | `String` | UUID version used for generation |
 
 #### Example: Load
 
@@ -540,10 +540,10 @@ Create an instance: `v6n = client.V6n`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `maxPerCall` | `Integer` |  |
-| `uuids` | `Array` |  |
-| `version` | `String` |  |
+| `count` | `Integer` | Number of UUIDs generated |
+| `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `Array` | Array of generated UUIDs |
+| `version` | `String` | UUID version used for generation |
 
 #### Example: Load
 
@@ -575,10 +575,10 @@ Create an instance: `v7n = client.V7n`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `maxPerCall` | `Integer` |  |
-| `uuids` | `Array` |  |
-| `version` | `String` |  |
+| `count` | `Integer` | Number of UUIDs generated |
+| `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
+| `uuids` | `Array` | Array of generated UUIDs |
+| `version` | `String` | UUID version used for generation |
 
 #### Example: Load
 

@@ -33,6 +33,9 @@ class UuidGeneratorApi2Config
         return [
             "main" => [
                 "name" => "UuidGeneratorApi2",
+                "slug" => "uuid-generator-api2",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -62,21 +65,25 @@ class UuidGeneratorApi2Config
             [
               'name' => 'count',
               'req' => true,
+              'short' => 'Number of UUIDs generated',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'maxPerCall',
               'req' => true,
+              'short' => 'Maximum number of UUIDs allowed per API call',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'uuids',
               'req' => true,
+              'short' => 'Array of generated UUIDs',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'version',
               'req' => true,
+              'short' => 'UUID version used for generation',
               'type' => '`$STRING`',
             ],
           ],
@@ -188,21 +195,25 @@ class UuidGeneratorApi2Config
             [
               'name' => 'count',
               'req' => true,
+              'short' => 'Number of UUIDs generated',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'maxPerCall',
               'req' => true,
+              'short' => 'Maximum number of UUIDs allowed per API call',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'uuids',
               'req' => true,
+              'short' => 'Array of generated UUIDs',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'version',
               'req' => true,
+              'short' => 'UUID version used for generation',
               'type' => '`$STRING`',
             ],
           ],
@@ -313,21 +324,25 @@ class UuidGeneratorApi2Config
             [
               'name' => 'count',
               'req' => true,
+              'short' => 'Number of UUIDs generated',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'maxPerCall',
               'req' => true,
+              'short' => 'Maximum number of UUIDs allowed per API call',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'uuids',
               'req' => true,
+              'short' => 'Array of generated UUIDs',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'version',
               'req' => true,
+              'short' => 'UUID version used for generation',
               'type' => '`$STRING`',
             ],
           ],
@@ -468,21 +483,25 @@ class UuidGeneratorApi2Config
             [
               'name' => 'count',
               'req' => true,
+              'short' => 'Number of UUIDs generated',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'maxPerCall',
               'req' => true,
+              'short' => 'Maximum number of UUIDs allowed per API call',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'uuids',
               'req' => true,
+              'short' => 'Array of generated UUIDs',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'version',
               'req' => true,
+              'short' => 'UUID version used for generation',
               'type' => '`$STRING`',
             ],
           ],
@@ -593,21 +612,25 @@ class UuidGeneratorApi2Config
             [
               'name' => 'count',
               'req' => true,
+              'short' => 'Number of UUIDs generated',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'maxPerCall',
               'req' => true,
+              'short' => 'Maximum number of UUIDs allowed per API call',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'uuids',
               'req' => true,
+              'short' => 'Array of generated UUIDs',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'version',
               'req' => true,
+              'short' => 'UUID version used for generation',
               'type' => '`$STRING`',
             ],
           ],
@@ -748,21 +771,25 @@ class UuidGeneratorApi2Config
             [
               'name' => 'count',
               'req' => true,
+              'short' => 'Number of UUIDs generated',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'maxPerCall',
               'req' => true,
+              'short' => 'Maximum number of UUIDs allowed per API call',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'uuids',
               'req' => true,
+              'short' => 'Array of generated UUIDs',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'version',
               'req' => true,
+              'short' => 'UUID version used for generation',
               'type' => '`$STRING`',
             ],
           ],
@@ -873,21 +900,25 @@ class UuidGeneratorApi2Config
             [
               'name' => 'count',
               'req' => true,
+              'short' => 'Number of UUIDs generated',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'maxPerCall',
               'req' => true,
+              'short' => 'Maximum number of UUIDs allowed per API call',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'uuids',
               'req' => true,
+              'short' => 'Array of generated UUIDs',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'version',
               'req' => true,
+              'short' => 'UUID version used for generation',
               'type' => '`$STRING`',
             ],
           ],

@@ -122,10 +122,10 @@ fmt.Println(guid.GetName()) // "guid"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `[]any` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -188,10 +188,10 @@ fmt.Println(v1n.GetName()) // "v1n"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `[]any` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -254,10 +254,10 @@ fmt.Println(v3n.GetName()) // "v3n"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `[]any` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -320,10 +320,10 @@ fmt.Println(v4n.GetName()) // "v4n"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `[]any` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -386,10 +386,10 @@ fmt.Println(v5n.GetName()) // "v5n"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `[]any` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -452,10 +452,10 @@ fmt.Println(v6n.GetName()) // "v6n"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `[]any` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
@@ -518,10 +518,10 @@ fmt.Println(v7n.GetName()) // "v7n"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | Yes |  |
-| `maxPerCall` | `int` | Yes |  |
-| `uuids` | `[]any` | Yes |  |
-| `version` | `string` | Yes |  |
+| `count` | `int` | Yes | Number of UUIDs generated |
+| `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
+| `uuids` | `[]any` | Yes | Array of generated UUIDs |
+| `version` | `string` | Yes | UUID version used for generation |
 
 ### Operations
 
