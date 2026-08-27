@@ -312,6 +312,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `count` | Number of UUIDs generated |
+| `id` |  |
 | `maxPerCall` | Maximum number of UUIDs allowed per API call |
 | `uuids` | Array of generated UUIDs |
 | `version` | UUID version used for generation |
@@ -419,6 +420,7 @@ Create an instance: `const guid = client.Guid()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` | Number of UUIDs generated |
+| `id` | `string` |  |
 | `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
 | `uuids` | `any[]` | Array of generated UUIDs |
 | `version` | `string` | UUID version used for generation |

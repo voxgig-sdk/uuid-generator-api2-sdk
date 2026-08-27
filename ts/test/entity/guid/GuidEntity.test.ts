@@ -66,6 +66,12 @@ describe('GuidEntity', async () => {
     const guid_ref01_list = (await guid_ref01_ent.list(guid_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const guid_ref01_match_dt0: any = {}
+    guid_ref01_match_dt0.id = guid_ref01_data.id
+    const guid_ref01_data_dt0 = (await guid_ref01_ent.load(guid_ref01_match_dt0)).data()
+    assert(guid_ref01_data_dt0.id === guid_ref01_data.id)
+
 
   })
 })

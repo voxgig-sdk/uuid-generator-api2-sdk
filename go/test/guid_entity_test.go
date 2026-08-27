@@ -121,13 +121,19 @@ func TestGuidEntity(t *testing.T) {
 		}
 
 		// LOAD
-		guidRef01MatchDt0 := map[string]any{}
+		guidRef01MatchDt0 := map[string]any{
+			"id": guidRef01Data["id"],
+		}
 		guidRef01DataDt0Loaded, err := guidRef01Ent.Load(guidRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if guidRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		guidRef01DataDt0LoadResult := core.ToMapAny(entityData(guidRef01DataDt0Loaded))
+		if guidRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if guidRef01DataDt0LoadResult["id"] != guidRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

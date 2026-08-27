@@ -92,10 +92,14 @@ describe("GuidEntity", function()
     assert.is_table(guid_ref01_list_result)
 
     -- LOAD
-    local guid_ref01_match_dt0 = {}
+    local guid_ref01_match_dt0 = {
+      id = guid_ref01_data["id"],
+    }
     local guid_ref01_data_dt0_loaded, err = guid_ref01_ent:load(guid_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(guid_ref01_data_dt0_loaded)
+    local guid_ref01_data_dt0_load_result = helpers.to_map(type(guid_ref01_data_dt0_loaded) == 'table' and guid_ref01_data_dt0_loaded.data_get and guid_ref01_data_dt0_loaded:data_get() or guid_ref01_data_dt0_loaded)
+    assert.is_not_nil(guid_ref01_data_dt0_load_result)
+    assert.are.equal(guid_ref01_data_dt0_load_result["id"], guid_ref01_data["id"])
 
   end)
 end)

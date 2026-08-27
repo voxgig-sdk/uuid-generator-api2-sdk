@@ -12,6 +12,11 @@ main: kit: entity: guid: {
       type: "`$INTEGER`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "maxPerCall"
       req: true
       short: "Maximum number of UUIDs allowed per API call"
@@ -30,6 +35,11 @@ main: kit: entity: guid: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "guid"
   op: {

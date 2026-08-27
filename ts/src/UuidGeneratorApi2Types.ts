@@ -7,6 +7,7 @@
 
 export interface Guid {
   count: number
+  id?: string
   maxPerCall: number
   uuids: any[]
   version: string
@@ -18,6 +19,7 @@ export interface GuidLoadMatch {
 
 export interface GuidListMatch {
   count?: number
+  id?: string
   maxPerCall?: number
   uuids?: any[]
   version?: string

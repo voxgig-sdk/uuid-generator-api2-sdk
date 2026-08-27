@@ -15,6 +15,7 @@ import (
 // Guid is the typed data model for the guid entity.
 type Guid struct {
 	Count int `json:"count"`
+	Id *string `json:"id,omitempty"`
 	MaxPerCall int `json:"maxPerCall"`
 	Uuids []any `json:"uuids"`
 	Version string `json:"version"`
@@ -28,6 +29,7 @@ type GuidLoadMatch struct {
 // GuidListMatch is the typed request payload for Guid.ListTyped.
 type GuidListMatch struct {
 	Count *int `json:"count,omitempty"`
+	Id *string `json:"id,omitempty"`
 	MaxPerCall *int `json:"maxPerCall,omitempty"`
 	Uuids *[]any `json:"uuids,omitempty"`
 	Version *string `json:"version,omitempty"`

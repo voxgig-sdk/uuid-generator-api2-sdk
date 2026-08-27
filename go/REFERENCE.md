@@ -123,6 +123,7 @@ fmt.Println(guid.GetName()) // "guid"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes | Number of UUIDs generated |
+| `id` | `string` | No |  |
 | `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
 | `uuids` | `[]any` | Yes | Array of generated UUIDs |
 | `version` | `string` | Yes | UUID version used for generation |

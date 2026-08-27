@@ -83,9 +83,13 @@ class GuidEntityTest < Minitest::Test
     assert guid_ref01_list_result.is_a?(Array)
 
     # LOAD
-    guid_ref01_match_dt0 = {}
+    guid_ref01_match_dt0 = {
+      "id" => guid_ref01_data["id"],
+    }
     guid_ref01_data_dt0_loaded = guid_ref01_ent.load(guid_ref01_match_dt0, nil)
-    assert !guid_ref01_data_dt0_loaded.nil?
+    guid_ref01_data_dt0_load_result = Helpers.to_map(guid_ref01_data_dt0_loaded.respond_to?(:data_get) ? guid_ref01_data_dt0_loaded.data_get : guid_ref01_data_dt0_loaded)
+    assert !guid_ref01_data_dt0_load_result.nil?
+    assert_equal guid_ref01_data_dt0_load_result["id"], guid_ref01_data["id"]
 
   end
 end

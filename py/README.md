@@ -264,6 +264,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `count` | Number of UUIDs generated |
+| `id` |  |
 | `maxPerCall` | Maximum number of UUIDs allowed per API call |
 | `uuids` | Array of generated UUIDs |
 | `version` | UUID version used for generation |
@@ -371,6 +372,7 @@ Create an instance: `guid = client.Guid()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` | Number of UUIDs generated |
+| `id` | `str` |  |
 | `maxPerCall` | `int` | Maximum number of UUIDs allowed per API call |
 | `uuids` | `list` | Array of generated UUIDs |
 | `version` | `str` | UUID version used for generation |

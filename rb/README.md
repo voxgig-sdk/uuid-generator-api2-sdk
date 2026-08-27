@@ -37,7 +37,7 @@ begin
   # list returns an Array of Guid records — iterate directly.
   guids = client.Guid.list
   guids.each do |item|
-    puts "#{item["count"]}"
+    puts "#{item["id"]} #{item["count"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -259,6 +259,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `count` | Number of UUIDs generated |
+| `id` |  |
 | `maxPerCall` | Maximum number of UUIDs allowed per API call |
 | `uuids` | Array of generated UUIDs |
 | `version` | UUID version used for generation |
@@ -366,6 +367,7 @@ Create an instance: `guid = client.Guid`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `Integer` | Number of UUIDs generated |
+| `id` | `String` |  |
 | `maxPerCall` | `Integer` | Maximum number of UUIDs allowed per API call |
 | `uuids` | `Array` | Array of generated UUIDs |
 | `version` | `String` | UUID version used for generation |

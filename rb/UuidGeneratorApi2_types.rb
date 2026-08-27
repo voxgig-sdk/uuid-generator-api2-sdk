@@ -13,6 +13,9 @@
 # @!attribute [rw] count
 #   @return [Integer]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] maxPerCall
 #   @return [Integer]
 #
@@ -23,6 +26,7 @@
 #   @return [String]
 Guid = Struct.new(
   :count,
+  :id,
   :maxPerCall,
   :uuids,
   :version,
@@ -43,6 +47,9 @@ GuidLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] maxPerCall
 #   @return [Integer, nil]
 #
@@ -53,6 +60,7 @@ GuidLoadMatch = Struct.new(
 #   @return [String, nil]
 GuidListMatch = Struct.new(
   :count,
+  :id,
   :maxPerCall,
   :uuids,
   :version,

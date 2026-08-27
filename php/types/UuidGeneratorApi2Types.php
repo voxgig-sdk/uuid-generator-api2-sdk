@@ -16,6 +16,7 @@ declare(strict_types=1);
 class Guid
 {
     public int $count;
+    public ?string $id = null;
     public int $maxPerCall;
     public array $uuids;
     public string $version;
@@ -31,6 +32,7 @@ class GuidLoadMatch
 class GuidListMatch
 {
     public ?int $count = null;
+    public ?string $id = null;
     public ?int $maxPerCall = null;
     public ?array $uuids = null;
     public ?string $version = null;

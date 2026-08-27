@@ -16,11 +16,15 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Guid(TypedDict):
+class GuidRequired(TypedDict):
     count: int
     maxPerCall: int
     uuids: list
     version: str
+
+
+class Guid(GuidRequired, total=False):
+    id: str
 
 
 class GuidLoadMatch(TypedDict):
@@ -29,6 +33,7 @@ class GuidLoadMatch(TypedDict):
 
 class GuidListMatch(TypedDict, total=False):
     count: int
+    id: str
     maxPerCall: int
     uuids: list
     version: str

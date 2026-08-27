@@ -38,7 +38,7 @@ try {
     // list() returns an array of Guid records — iterate directly.
     $guids = $client->Guid()->list();
     foreach ($guids as $item) {
-        echo $item["count"] . "\n";
+        echo $item["id"] . " " . $item["count"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -269,6 +269,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `count` | Number of UUIDs generated |
+| `id` |  |
 | `maxPerCall` | Maximum number of UUIDs allowed per API call |
 | `uuids` | Array of generated UUIDs |
 | `version` | UUID version used for generation |
@@ -376,6 +377,7 @@ Create an instance: `$guid = $client->Guid();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` | Number of UUIDs generated |
+| `id` | `string` |  |
 | `maxPerCall` | `int` | Maximum number of UUIDs allowed per API call |
 | `uuids` | `array` | Array of generated UUIDs |
 | `version` | `string` | UUID version used for generation |

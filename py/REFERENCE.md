@@ -112,6 +112,7 @@ guid = client.Guid()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `int` | Yes | Number of UUIDs generated |
+| `id` | `str` | No |  |
 | `maxPerCall` | `int` | Yes | Maximum number of UUIDs allowed per API call |
 | `uuids` | `list` | Yes | Array of generated UUIDs |
 | `version` | `str` | Yes | UUID version used for generation |

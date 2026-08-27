@@ -43,7 +43,7 @@ local guids, err = client:Guid():list()
 if err then error(err) end
 
 for _, item in ipairs(guids) do
-  print(item["version"])
+  print(item["id"], item["version"])
 end
 ```
 
@@ -250,6 +250,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `count` | Number of UUIDs generated |
+| `id` |  |
 | `maxPerCall` | Maximum number of UUIDs allowed per API call |
 | `uuids` | Array of generated UUIDs |
 | `version` | UUID version used for generation |
@@ -357,6 +358,7 @@ Create an instance: `local guid = client:Guid(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `number` | Number of UUIDs generated |
+| `id` | `string` |  |
 | `maxPerCall` | `number` | Maximum number of UUIDs allowed per API call |
 | `uuids` | `table` | Array of generated UUIDs |
 | `version` | `string` | UUID version used for generation |

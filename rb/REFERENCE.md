@@ -118,6 +118,7 @@ guid = client.Guid
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `count` | `Integer` | Yes | Number of UUIDs generated |
+| `id` | `String` | No |  |
 | `maxPerCall` | `Integer` | Yes | Maximum number of UUIDs allowed per API call |
 | `uuids` | `Array` | Yes | Array of generated UUIDs |
 | `version` | `String` | Yes | UUID version used for generation |

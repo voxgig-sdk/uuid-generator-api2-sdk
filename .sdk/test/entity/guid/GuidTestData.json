@@ -2,35 +2,35 @@
   "existing": {
     "guid": {
       "GUID00": {
-        "count": "s28",
-        "maxPerCall": "s29",
+        "count": "s32",
+        "id": "GUID00",
+        "maxPerCall": "s34",
         "uuids": [],
-        "version": "s2b",
-        "id": "GUID00"
+        "version": "s36"
       },
       "GUID01": {
-        "count": "s50",
-        "maxPerCall": "s51",
+        "count": "s64",
+        "id": "GUID01",
+        "maxPerCall": "s66",
         "uuids": [],
-        "version": "s53",
-        "id": "GUID01"
+        "version": "s68"
       },
       "GUID02": {
-        "count": "s78",
-        "maxPerCall": "s79",
+        "count": "s96",
+        "id": "GUID02",
+        "maxPerCall": "s98",
         "uuids": [],
-        "version": "s7b",
-        "id": "GUID02"
+        "version": "s9a"
       }
     }
   },
   "new": {
     "guid": {
       "guid_ref01": {
-        "count": "sa0",
-        "maxPerCall": "sa1",
+        "count": "sc8",
+        "maxPerCall": "sca",
         "uuids": [],
-        "version": "sa3"
+        "version": "scc"
       }
     }
   }

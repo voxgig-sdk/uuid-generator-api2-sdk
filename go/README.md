@@ -276,6 +276,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"count"` | Number of UUIDs generated |
+| `"id"` |  |
 | `"maxPerCall"` | Maximum number of UUIDs allowed per API call |
 | `"uuids"` | Array of generated UUIDs |
 | `"version"` | UUID version used for generation |
@@ -383,6 +384,7 @@ Create an instance: `guid := client.Guid(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `count` | `int` | Number of UUIDs generated |
+| `id` | `string` |  |
 | `maxPerCall` | `int` | Maximum number of UUIDs allowed per API call |
 | `uuids` | `[]any` | Array of generated UUIDs |
 | `version` | `string` | UUID version used for generation |

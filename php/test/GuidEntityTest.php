@@ -93,9 +93,13 @@ class GuidEntityTest extends TestCase
         $this->assertIsArray($guid_ref01_list_result);
 
         // LOAD
-        $guid_ref01_match_dt0 = [];
+        $guid_ref01_match_dt0 = [
+            "id" => $guid_ref01_data["id"],
+        ];
         $guid_ref01_data_dt0_loaded = $guid_ref01_ent->load($guid_ref01_match_dt0, null);
-        $this->assertNotNull($guid_ref01_data_dt0_loaded);
+        $guid_ref01_data_dt0_load_result = Helpers::to_map(is_object($guid_ref01_data_dt0_loaded) && method_exists($guid_ref01_data_dt0_loaded, 'data_get') ? $guid_ref01_data_dt0_loaded->data_get() : $guid_ref01_data_dt0_loaded);
+        $this->assertNotNull($guid_ref01_data_dt0_load_result);
+        $this->assertEquals($guid_ref01_data_dt0_load_result["id"], $guid_ref01_data["id"]);
 
     }
 }

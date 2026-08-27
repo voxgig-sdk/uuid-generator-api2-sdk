@@ -8,6 +8,7 @@
 
 ---@class Guid
 ---@field count number
+---@field id? string
 ---@field maxPerCall number
 ---@field uuids table
 ---@field version string
@@ -17,6 +18,7 @@
 
 ---@class GuidListMatch
 ---@field count? number
+---@field id? string
 ---@field maxPerCall? number
 ---@field uuids? table
 ---@field version? string
