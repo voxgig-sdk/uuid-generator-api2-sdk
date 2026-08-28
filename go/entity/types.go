@@ -24,15 +24,13 @@ type Guid struct {
 // GuidLoadMatch is the typed request payload for Guid.LoadTyped.
 type GuidLoadMatch struct {
 	Id int `json:"id"`
+	Format *string `json:"format,omitempty"`
 }
 
 // GuidListMatch is the typed request payload for Guid.ListTyped.
 type GuidListMatch struct {
 	Count *int `json:"count,omitempty"`
-	Id *string `json:"id,omitempty"`
-	MaxPerCall *int `json:"maxPerCall,omitempty"`
-	Uuids *[]any `json:"uuids,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V1n is the typed data model for the v1n entity.
@@ -46,14 +44,13 @@ type V1n struct {
 // V1nLoadMatch is the typed request payload for V1n.LoadTyped.
 type V1nLoadMatch struct {
 	Count int `json:"count"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V1nListMatch is the typed request payload for V1n.ListTyped.
 type V1nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"maxPerCall,omitempty"`
-	Uuids *[]any `json:"uuids,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V3n is the typed data model for the v3n entity.
@@ -67,14 +64,17 @@ type V3n struct {
 // V3nLoadMatch is the typed request payload for V3n.LoadTyped.
 type V3nLoadMatch struct {
 	Count int `json:"count"`
+	Format *string `json:"format,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 }
 
 // V3nListMatch is the typed request payload for V3n.ListTyped.
 type V3nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"maxPerCall,omitempty"`
-	Uuids *[]any `json:"uuids,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 }
 
 // V4n is the typed data model for the v4n entity.
@@ -88,14 +88,13 @@ type V4n struct {
 // V4nLoadMatch is the typed request payload for V4n.LoadTyped.
 type V4nLoadMatch struct {
 	Count int `json:"count"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V4nListMatch is the typed request payload for V4n.ListTyped.
 type V4nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"maxPerCall,omitempty"`
-	Uuids *[]any `json:"uuids,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V5n is the typed data model for the v5n entity.
@@ -109,14 +108,17 @@ type V5n struct {
 // V5nLoadMatch is the typed request payload for V5n.LoadTyped.
 type V5nLoadMatch struct {
 	Count int `json:"count"`
+	Format *string `json:"format,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 }
 
 // V5nListMatch is the typed request payload for V5n.ListTyped.
 type V5nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"maxPerCall,omitempty"`
-	Uuids *[]any `json:"uuids,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 }
 
 // V6n is the typed data model for the v6n entity.
@@ -130,14 +132,13 @@ type V6n struct {
 // V6nLoadMatch is the typed request payload for V6n.LoadTyped.
 type V6nLoadMatch struct {
 	Count int `json:"count"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V6nListMatch is the typed request payload for V6n.ListTyped.
 type V6nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"maxPerCall,omitempty"`
-	Uuids *[]any `json:"uuids,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V7n is the typed data model for the v7n entity.
@@ -151,14 +152,13 @@ type V7n struct {
 // V7nLoadMatch is the typed request payload for V7n.LoadTyped.
 type V7nLoadMatch struct {
 	Count int `json:"count"`
+	Format *string `json:"format,omitempty"`
 }
 
 // V7nListMatch is the typed request payload for V7n.ListTyped.
 type V7nListMatch struct {
 	Count *int `json:"count,omitempty"`
-	MaxPerCall *int `json:"maxPerCall,omitempty"`
-	Uuids *[]any `json:"uuids,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Format *string `json:"format,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

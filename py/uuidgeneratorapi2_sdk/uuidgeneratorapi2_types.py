@@ -27,16 +27,17 @@ class Guid(GuidRequired, total=False):
     id: str
 
 
-class GuidLoadMatch(TypedDict):
+class GuidLoadMatchRequired(TypedDict):
     id: int
+
+
+class GuidLoadMatch(GuidLoadMatchRequired, total=False):
+    format: str
 
 
 class GuidListMatch(TypedDict, total=False):
     count: int
-    id: str
-    maxPerCall: int
-    uuids: list
-    version: str
+    format: str
 
 
 class V1n(TypedDict):
@@ -46,15 +47,17 @@ class V1n(TypedDict):
     version: str
 
 
-class V1nLoadMatch(TypedDict):
+class V1nLoadMatchRequired(TypedDict):
     count: int
+
+
+class V1nLoadMatch(V1nLoadMatchRequired, total=False):
+    format: str
 
 
 class V1nListMatch(TypedDict, total=False):
     count: int
-    maxPerCall: int
-    uuids: list
-    version: str
+    format: str
 
 
 class V3n(TypedDict):
@@ -64,15 +67,21 @@ class V3n(TypedDict):
     version: str
 
 
-class V3nLoadMatch(TypedDict):
+class V3nLoadMatchRequired(TypedDict):
     count: int
+
+
+class V3nLoadMatch(V3nLoadMatchRequired, total=False):
+    format: str
+    name: str
+    namespace: str
 
 
 class V3nListMatch(TypedDict, total=False):
     count: int
-    maxPerCall: int
-    uuids: list
-    version: str
+    format: str
+    name: str
+    namespace: str
 
 
 class V4n(TypedDict):
@@ -82,15 +91,17 @@ class V4n(TypedDict):
     version: str
 
 
-class V4nLoadMatch(TypedDict):
+class V4nLoadMatchRequired(TypedDict):
     count: int
+
+
+class V4nLoadMatch(V4nLoadMatchRequired, total=False):
+    format: str
 
 
 class V4nListMatch(TypedDict, total=False):
     count: int
-    maxPerCall: int
-    uuids: list
-    version: str
+    format: str
 
 
 class V5n(TypedDict):
@@ -100,15 +111,21 @@ class V5n(TypedDict):
     version: str
 
 
-class V5nLoadMatch(TypedDict):
+class V5nLoadMatchRequired(TypedDict):
     count: int
+
+
+class V5nLoadMatch(V5nLoadMatchRequired, total=False):
+    format: str
+    name: str
+    namespace: str
 
 
 class V5nListMatch(TypedDict, total=False):
     count: int
-    maxPerCall: int
-    uuids: list
-    version: str
+    format: str
+    name: str
+    namespace: str
 
 
 class V6n(TypedDict):
@@ -118,15 +135,17 @@ class V6n(TypedDict):
     version: str
 
 
-class V6nLoadMatch(TypedDict):
+class V6nLoadMatchRequired(TypedDict):
     count: int
+
+
+class V6nLoadMatch(V6nLoadMatchRequired, total=False):
+    format: str
 
 
 class V6nListMatch(TypedDict, total=False):
     count: int
-    maxPerCall: int
-    uuids: list
-    version: str
+    format: str
 
 
 class V7n(TypedDict):
@@ -136,12 +155,14 @@ class V7n(TypedDict):
     version: str
 
 
-class V7nLoadMatch(TypedDict):
+class V7nLoadMatchRequired(TypedDict):
     count: int
+
+
+class V7nLoadMatch(V7nLoadMatchRequired, total=False):
+    format: str
 
 
 class V7nListMatch(TypedDict, total=False):
     count: int
-    maxPerCall: int
-    uuids: list
-    version: str
+    format: str

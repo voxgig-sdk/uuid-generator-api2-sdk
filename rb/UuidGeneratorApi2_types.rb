@@ -37,8 +37,12 @@ Guid = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [Integer]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
 GuidLoadMatch = Struct.new(
   :id,
+  :format,
   keyword_init: true
 )
 
@@ -47,23 +51,11 @@ GuidLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] maxPerCall
-#   @return [Integer, nil]
-#
-# @!attribute [rw] uuids
-#   @return [Array, nil]
-#
-# @!attribute [rw] version
+# @!attribute [rw] format
 #   @return [String, nil]
 GuidListMatch = Struct.new(
   :count,
-  :id,
-  :maxPerCall,
-  :uuids,
-  :version,
+  :format,
   keyword_init: true
 )
 
@@ -92,8 +84,12 @@ V1n = Struct.new(
 #
 # @!attribute [rw] count
 #   @return [Integer]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
 V1nLoadMatch = Struct.new(
   :count,
+  :format,
   keyword_init: true
 )
 
@@ -102,19 +98,11 @@ V1nLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] maxPerCall
-#   @return [Integer, nil]
-#
-# @!attribute [rw] uuids
-#   @return [Array, nil]
-#
-# @!attribute [rw] version
+# @!attribute [rw] format
 #   @return [String, nil]
 V1nListMatch = Struct.new(
   :count,
-  :maxPerCall,
-  :uuids,
-  :version,
+  :format,
   keyword_init: true
 )
 
@@ -143,8 +131,20 @@ V3n = Struct.new(
 #
 # @!attribute [rw] count
 #   @return [Integer]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace
+#   @return [String, nil]
 V3nLoadMatch = Struct.new(
   :count,
+  :format,
+  :name,
+  :namespace,
   keyword_init: true
 )
 
@@ -153,19 +153,19 @@ V3nLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] maxPerCall
-#   @return [Integer, nil]
+# @!attribute [rw] format
+#   @return [String, nil]
 #
-# @!attribute [rw] uuids
-#   @return [Array, nil]
+# @!attribute [rw] name
+#   @return [String, nil]
 #
-# @!attribute [rw] version
+# @!attribute [rw] namespace
 #   @return [String, nil]
 V3nListMatch = Struct.new(
   :count,
-  :maxPerCall,
-  :uuids,
-  :version,
+  :format,
+  :name,
+  :namespace,
   keyword_init: true
 )
 
@@ -194,8 +194,12 @@ V4n = Struct.new(
 #
 # @!attribute [rw] count
 #   @return [Integer]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
 V4nLoadMatch = Struct.new(
   :count,
+  :format,
   keyword_init: true
 )
 
@@ -204,19 +208,11 @@ V4nLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] maxPerCall
-#   @return [Integer, nil]
-#
-# @!attribute [rw] uuids
-#   @return [Array, nil]
-#
-# @!attribute [rw] version
+# @!attribute [rw] format
 #   @return [String, nil]
 V4nListMatch = Struct.new(
   :count,
-  :maxPerCall,
-  :uuids,
-  :version,
+  :format,
   keyword_init: true
 )
 
@@ -245,8 +241,20 @@ V5n = Struct.new(
 #
 # @!attribute [rw] count
 #   @return [Integer]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace
+#   @return [String, nil]
 V5nLoadMatch = Struct.new(
   :count,
+  :format,
+  :name,
+  :namespace,
   keyword_init: true
 )
 
@@ -255,19 +263,19 @@ V5nLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] maxPerCall
-#   @return [Integer, nil]
+# @!attribute [rw] format
+#   @return [String, nil]
 #
-# @!attribute [rw] uuids
-#   @return [Array, nil]
+# @!attribute [rw] name
+#   @return [String, nil]
 #
-# @!attribute [rw] version
+# @!attribute [rw] namespace
 #   @return [String, nil]
 V5nListMatch = Struct.new(
   :count,
-  :maxPerCall,
-  :uuids,
-  :version,
+  :format,
+  :name,
+  :namespace,
   keyword_init: true
 )
 
@@ -296,8 +304,12 @@ V6n = Struct.new(
 #
 # @!attribute [rw] count
 #   @return [Integer]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
 V6nLoadMatch = Struct.new(
   :count,
+  :format,
   keyword_init: true
 )
 
@@ -306,19 +318,11 @@ V6nLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] maxPerCall
-#   @return [Integer, nil]
-#
-# @!attribute [rw] uuids
-#   @return [Array, nil]
-#
-# @!attribute [rw] version
+# @!attribute [rw] format
 #   @return [String, nil]
 V6nListMatch = Struct.new(
   :count,
-  :maxPerCall,
-  :uuids,
-  :version,
+  :format,
   keyword_init: true
 )
 
@@ -347,8 +351,12 @@ V7n = Struct.new(
 #
 # @!attribute [rw] count
 #   @return [Integer]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
 V7nLoadMatch = Struct.new(
   :count,
+  :format,
   keyword_init: true
 )
 
@@ -357,19 +365,11 @@ V7nLoadMatch = Struct.new(
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] maxPerCall
-#   @return [Integer, nil]
-#
-# @!attribute [rw] uuids
-#   @return [Array, nil]
-#
-# @!attribute [rw] version
+# @!attribute [rw] format
 #   @return [String, nil]
 V7nListMatch = Struct.new(
   :count,
-  :maxPerCall,
-  :uuids,
-  :version,
+  :format,
   keyword_init: true
 )
 

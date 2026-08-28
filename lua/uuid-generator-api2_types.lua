@@ -15,13 +15,11 @@
 
 ---@class GuidLoadMatch
 ---@field id number
+---@field format? string
 
 ---@class GuidListMatch
 ---@field count? number
----@field id? string
----@field maxPerCall? number
----@field uuids? table
----@field version? string
+---@field format? string
 
 ---@class V1n
 ---@field count number
@@ -31,12 +29,11 @@
 
 ---@class V1nLoadMatch
 ---@field count number
+---@field format? string
 
 ---@class V1nListMatch
 ---@field count? number
----@field maxPerCall? number
----@field uuids? table
----@field version? string
+---@field format? string
 
 ---@class V3n
 ---@field count number
@@ -46,12 +43,15 @@
 
 ---@class V3nLoadMatch
 ---@field count number
+---@field format? string
+---@field name? string
+---@field namespace? string
 
 ---@class V3nListMatch
 ---@field count? number
----@field maxPerCall? number
----@field uuids? table
----@field version? string
+---@field format? string
+---@field name? string
+---@field namespace? string
 
 ---@class V4n
 ---@field count number
@@ -61,12 +61,11 @@
 
 ---@class V4nLoadMatch
 ---@field count number
+---@field format? string
 
 ---@class V4nListMatch
 ---@field count? number
----@field maxPerCall? number
----@field uuids? table
----@field version? string
+---@field format? string
 
 ---@class V5n
 ---@field count number
@@ -76,12 +75,15 @@
 
 ---@class V5nLoadMatch
 ---@field count number
+---@field format? string
+---@field name? string
+---@field namespace? string
 
 ---@class V5nListMatch
 ---@field count? number
----@field maxPerCall? number
----@field uuids? table
----@field version? string
+---@field format? string
+---@field name? string
+---@field namespace? string
 
 ---@class V6n
 ---@field count number
@@ -91,12 +93,11 @@
 
 ---@class V6nLoadMatch
 ---@field count number
+---@field format? string
 
 ---@class V6nListMatch
 ---@field count? number
----@field maxPerCall? number
----@field uuids? table
----@field version? string
+---@field format? string
 
 ---@class V7n
 ---@field count number
@@ -106,12 +107,11 @@
 
 ---@class V7nLoadMatch
 ---@field count number
+---@field format? string
 
 ---@class V7nListMatch
 ---@field count? number
----@field maxPerCall? number
----@field uuids? table
----@field version? string
+---@field format? string
 
 local M = {}
 

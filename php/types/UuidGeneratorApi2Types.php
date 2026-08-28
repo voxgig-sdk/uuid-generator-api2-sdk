@@ -26,16 +26,14 @@ class Guid
 class GuidLoadMatch
 {
     public int $id;
+    public ?string $format = null;
 }
 
 /** Request payload for Guid#list. */
 class GuidListMatch
 {
     public ?int $count = null;
-    public ?string $id = null;
-    public ?int $maxPerCall = null;
-    public ?array $uuids = null;
-    public ?string $version = null;
+    public ?string $format = null;
 }
 
 /** V1n entity data model. */
@@ -51,15 +49,14 @@ class V1n
 class V1nLoadMatch
 {
     public int $count;
+    public ?string $format = null;
 }
 
 /** Request payload for V1n#list. */
 class V1nListMatch
 {
     public ?int $count = null;
-    public ?int $maxPerCall = null;
-    public ?array $uuids = null;
-    public ?string $version = null;
+    public ?string $format = null;
 }
 
 /** V3n entity data model. */
@@ -75,15 +72,18 @@ class V3n
 class V3nLoadMatch
 {
     public int $count;
+    public ?string $format = null;
+    public ?string $name = null;
+    public ?string $namespace = null;
 }
 
 /** Request payload for V3n#list. */
 class V3nListMatch
 {
     public ?int $count = null;
-    public ?int $maxPerCall = null;
-    public ?array $uuids = null;
-    public ?string $version = null;
+    public ?string $format = null;
+    public ?string $name = null;
+    public ?string $namespace = null;
 }
 
 /** V4n entity data model. */
@@ -99,15 +99,14 @@ class V4n
 class V4nLoadMatch
 {
     public int $count;
+    public ?string $format = null;
 }
 
 /** Request payload for V4n#list. */
 class V4nListMatch
 {
     public ?int $count = null;
-    public ?int $maxPerCall = null;
-    public ?array $uuids = null;
-    public ?string $version = null;
+    public ?string $format = null;
 }
 
 /** V5n entity data model. */
@@ -123,15 +122,18 @@ class V5n
 class V5nLoadMatch
 {
     public int $count;
+    public ?string $format = null;
+    public ?string $name = null;
+    public ?string $namespace = null;
 }
 
 /** Request payload for V5n#list. */
 class V5nListMatch
 {
     public ?int $count = null;
-    public ?int $maxPerCall = null;
-    public ?array $uuids = null;
-    public ?string $version = null;
+    public ?string $format = null;
+    public ?string $name = null;
+    public ?string $namespace = null;
 }
 
 /** V6n entity data model. */
@@ -147,15 +149,14 @@ class V6n
 class V6nLoadMatch
 {
     public int $count;
+    public ?string $format = null;
 }
 
 /** Request payload for V6n#list. */
 class V6nListMatch
 {
     public ?int $count = null;
-    public ?int $maxPerCall = null;
-    public ?array $uuids = null;
-    public ?string $version = null;
+    public ?string $format = null;
 }
 
 /** V7n entity data model. */
@@ -171,14 +172,13 @@ class V7n
 class V7nLoadMatch
 {
     public int $count;
+    public ?string $format = null;
 }
 
 /** Request payload for V7n#list. */
 class V7nListMatch
 {
     public ?int $count = null;
-    public ?int $maxPerCall = null;
-    public ?array $uuids = null;
-    public ?string $version = null;
+    public ?string $format = null;
 }
 
