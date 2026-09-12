@@ -69,10 +69,16 @@ main: kit: entity: guid: {
           }
           method: "GET"
           orig: "/api/uuid-generator/guid"
-          parts: [
-            "api"
-            "uuid-generator"
-            "guid"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "uuid-generator"
+            }
+            {
+              lit: "guid"
+            }
           ]
           select: {
             exist: [
@@ -114,17 +120,25 @@ main: kit: entity: guid: {
           }
           method: "GET"
           orig: "/api/uuid-generator/guid/{count}"
-          parts: [
-            "api"
-            "uuid-generator"
-            "guid"
-            "{id}"
-          ]
           rename: {
             param: {
               count: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "uuid-generator"
+            }
+            {
+              lit: "guid"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "format"

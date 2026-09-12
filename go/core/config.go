@@ -70,6 +70,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "guid",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -98,10 +102,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/guid",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"guid",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "guid",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -112,6 +122,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.uuids`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"guid",
 								},
 							},
 						},
@@ -144,15 +159,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/guid/{count}",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"guid",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"count": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "guid",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -164,6 +187,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"guid",
+									"{id}",
 								},
 							},
 						},
@@ -228,10 +257,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v1",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v1",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -242,6 +277,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.uuids`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v1",
 								},
 							},
 						},
@@ -274,11 +314,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v1/{count}",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v1",
-									"{count}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"var": "count",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -289,6 +337,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v1",
+									"{count}",
 								},
 							},
 						},
@@ -370,10 +424,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v3",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v3",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v3",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -386,6 +446,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.uuids`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v3",
 								},
 							},
 						},
@@ -431,11 +496,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v3/{count}",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v3",
-									"{count}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v3",
+									},
+									map[string]any{
+										"var": "count",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -448,6 +521,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v3",
+									"{count}",
 								},
 							},
 						},
@@ -516,10 +595,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v4",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v4",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v4",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -530,6 +615,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.uuids`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v4",
 								},
 							},
 						},
@@ -562,11 +652,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v4/{count}",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v4",
-									"{count}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v4",
+									},
+									map[string]any{
+										"var": "count",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -577,6 +675,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v4",
+									"{count}",
 								},
 							},
 						},
@@ -658,10 +762,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v5",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v5",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v5",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -674,6 +784,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.uuids`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v5",
 								},
 							},
 						},
@@ -719,11 +834,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v5/{count}",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v5",
-									"{count}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v5",
+									},
+									map[string]any{
+										"var": "count",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -736,6 +859,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v5",
+									"{count}",
 								},
 							},
 						},
@@ -804,10 +933,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v6",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v6",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v6",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -818,6 +953,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.uuids`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v6",
 								},
 							},
 						},
@@ -850,11 +990,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v6/{count}",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v6",
-									"{count}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v6",
+									},
+									map[string]any{
+										"var": "count",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -865,6 +1013,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v6",
+									"{count}",
 								},
 							},
 						},
@@ -933,10 +1087,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v7",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v7",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v7",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -947,6 +1107,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.uuids`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v7",
 								},
 							},
 						},
@@ -979,11 +1144,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/uuid-generator/v7/{count}",
-								"parts": []any{
-									"api",
-									"uuid-generator",
-									"v7",
-									"{count}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "uuid-generator",
+									},
+									map[string]any{
+										"lit": "v7",
+									},
+									map[string]any{
+										"var": "count",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -994,6 +1167,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"uuid-generator",
+									"v7",
+									"{count}",
 								},
 							},
 						},
@@ -1009,6 +1188,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

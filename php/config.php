@@ -92,6 +92,10 @@ class UuidGeneratorApi2Config
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'guid',
           'op' => [
             'list' => [
@@ -120,10 +124,16 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/guid',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'guid',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'guid',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -134,6 +144,11 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.uuids`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'guid',
                   ],
                 ],
               ],
@@ -166,15 +181,23 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/guid/{count}',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'guid',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'count' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'guid',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -186,6 +209,12 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'guid',
+                    '{id}',
                   ],
                 ],
               ],
@@ -250,10 +279,16 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v1',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v1',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v1',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -264,6 +299,11 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.uuids`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v1',
                   ],
                 ],
               ],
@@ -296,11 +336,19 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v1/{count}',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v1',
-                    '{count}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'var' => 'count',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -311,6 +359,12 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v1',
+                    '{count}',
                   ],
                 ],
               ],
@@ -392,10 +446,16 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v3',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v3',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v3',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -408,6 +468,11 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.uuids`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v3',
                   ],
                 ],
               ],
@@ -453,11 +518,19 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v3/{count}',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v3',
-                    '{count}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v3',
+                    ],
+                    [
+                      'var' => 'count',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -470,6 +543,12 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v3',
+                    '{count}',
                   ],
                 ],
               ],
@@ -538,10 +617,16 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v4',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v4',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v4',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -552,6 +637,11 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.uuids`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v4',
                   ],
                 ],
               ],
@@ -584,11 +674,19 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v4/{count}',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v4',
-                    '{count}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v4',
+                    ],
+                    [
+                      'var' => 'count',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -599,6 +697,12 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v4',
+                    '{count}',
                   ],
                 ],
               ],
@@ -680,10 +784,16 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v5',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v5',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v5',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -696,6 +806,11 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.uuids`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v5',
                   ],
                 ],
               ],
@@ -741,11 +856,19 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v5/{count}',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v5',
-                    '{count}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v5',
+                    ],
+                    [
+                      'var' => 'count',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -758,6 +881,12 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v5',
+                    '{count}',
                   ],
                 ],
               ],
@@ -826,10 +955,16 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v6',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v6',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v6',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -840,6 +975,11 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.uuids`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v6',
                   ],
                 ],
               ],
@@ -872,11 +1012,19 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v6/{count}',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v6',
-                    '{count}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v6',
+                    ],
+                    [
+                      'var' => 'count',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -887,6 +1035,12 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v6',
+                    '{count}',
                   ],
                 ],
               ],
@@ -955,10 +1109,16 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v7',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v7',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v7',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -969,6 +1129,11 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.uuids`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v7',
                   ],
                 ],
               ],
@@ -1001,11 +1166,19 @@ class UuidGeneratorApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/uuid-generator/v7/{count}',
-                  'parts' => [
-                    'api',
-                    'uuid-generator',
-                    'v7',
-                    '{count}',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'uuid-generator',
+                    ],
+                    [
+                      'lit' => 'v7',
+                    ],
+                    [
+                      'var' => 'count',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1016,6 +1189,12 @@ class UuidGeneratorApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'uuid-generator',
+                    'v7',
+                    '{count}',
                   ],
                 ],
               ],

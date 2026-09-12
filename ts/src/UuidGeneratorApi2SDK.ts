@@ -23,6 +23,7 @@ import { Utility } from './utility/Utility'
 import { BaseFeature } from './feature/base/BaseFeature'
 
 
+
 const stdutil = new Utility()
 
 
@@ -32,6 +33,7 @@ class UuidGeneratorApi2SDK {
   _utility = new Utility()
   _features: Feature[]
   _rootctx: Context
+  
 
   constructor(options?: any) {
 
@@ -104,6 +106,8 @@ class UuidGeneratorApi2SDK {
     return this._utility.struct.clone(this._utility)
   }
 
+  
+
 
   async prepare(fetchargs?: any) {
     const utility = this._utility
@@ -149,6 +153,8 @@ class UuidGeneratorApi2SDK {
         spec.headers[key] = uheaders[key]
       }
     }
+
+    
 
     // Apply SDK auth (apikey, auth prefix, etc.)
     const authResult = prepareAuth(ctx)
@@ -409,6 +415,7 @@ const SDK = UuidGeneratorApi2SDK
 export {
   stdutil,
   config,
+  
 
   BaseFeature,
   UuidGeneratorApi2EntityBase,

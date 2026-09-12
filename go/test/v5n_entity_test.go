@@ -98,7 +98,7 @@ func TestV5nEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		v5nRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.v5n", setup.data)))
+		v5nRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.v5n")))
 		var v5nRef01Data map[string]any
 		if len(v5nRef01DataRaw) > 0 {
 			v5nRef01Data = core.ToMapAny(v5nRef01DataRaw[0][1])
@@ -157,7 +157,7 @@ func v5nBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"v5n01", "v5n02", "v5n03", "v501", "v502", "v503"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -185,10 +185,22 @@ func v5nBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["UUID_GENERATOR_API2_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewUuidGeneratorApi2SDK(core.ToMapAny(mergedOpts))
 	}

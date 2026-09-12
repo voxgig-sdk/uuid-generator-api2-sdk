@@ -74,10 +74,16 @@ main: kit: entity: v3n: {
           }
           method: "GET"
           orig: "/api/uuid-generator/v3"
-          parts: [
-            "api"
-            "uuid-generator"
-            "v3"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "uuid-generator"
+            }
+            {
+              lit: "v3"
+            }
           ]
           select: {
             exist: [
@@ -136,11 +142,19 @@ main: kit: entity: v3n: {
           }
           method: "GET"
           orig: "/api/uuid-generator/v3/{count}"
-          parts: [
-            "api"
-            "uuid-generator"
-            "v3"
-            "{count}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "uuid-generator"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              var: "count"
+            }
           ]
           select: {
             exist: [

@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -113,6 +124,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "guid",
       "op": {
         "list": {
@@ -141,10 +156,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/guid",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "guid"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "guid"
+                }
               ],
               "select": {
                 "exist": [
@@ -155,7 +176,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.uuids`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "guid"
+              ]
             }
           ]
         },
@@ -187,17 +213,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/guid/{count}",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "guid",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "count": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "guid"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "format",
@@ -207,7 +241,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "guid",
+                "{id}"
+              ]
             }
           ]
         }
@@ -271,10 +311,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v1",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v1"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v1"
+                }
               ],
               "select": {
                 "exist": [
@@ -285,7 +331,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.uuids`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v1"
+              ]
             }
           ]
         },
@@ -317,11 +368,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v1/{count}",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v1",
-                "{count}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "var": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -332,7 +391,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v1",
+                "{count}"
+              ]
             }
           ]
         }
@@ -413,10 +478,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v3",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v3"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v3"
+                }
               ],
               "select": {
                 "exist": [
@@ -429,7 +500,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.uuids`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v3"
+              ]
             }
           ]
         },
@@ -474,11 +550,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v3/{count}",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v3",
-                "{count}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v3"
+                },
+                {
+                  "var": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -491,7 +575,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v3",
+                "{count}"
+              ]
             }
           ]
         }
@@ -559,10 +649,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v4",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v4"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v4"
+                }
               ],
               "select": {
                 "exist": [
@@ -573,7 +669,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.uuids`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v4"
+              ]
             }
           ]
         },
@@ -605,11 +706,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v4/{count}",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v4",
-                "{count}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v4"
+                },
+                {
+                  "var": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -620,7 +729,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v4",
+                "{count}"
+              ]
             }
           ]
         }
@@ -701,10 +816,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v5",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v5"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v5"
+                }
               ],
               "select": {
                 "exist": [
@@ -717,7 +838,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.uuids`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v5"
+              ]
             }
           ]
         },
@@ -762,11 +888,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v5/{count}",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v5",
-                "{count}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v5"
+                },
+                {
+                  "var": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -779,7 +913,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v5",
+                "{count}"
+              ]
             }
           ]
         }
@@ -847,10 +987,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v6",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v6"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v6"
+                }
               ],
               "select": {
                 "exist": [
@@ -861,7 +1007,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.uuids`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v6"
+              ]
             }
           ]
         },
@@ -893,11 +1044,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v6/{count}",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v6",
-                "{count}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v6"
+                },
+                {
+                  "var": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -908,7 +1067,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v6",
+                "{count}"
+              ]
             }
           ]
         }
@@ -976,10 +1141,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v7",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v7"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v7"
+                }
               ],
               "select": {
                 "exist": [
@@ -990,7 +1161,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.uuids`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v7"
+              ]
             }
           ]
         },
@@ -1022,11 +1198,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/uuid-generator/v7/{count}",
-              "parts": [
-                "api",
-                "uuid-generator",
-                "v7",
-                "{count}"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "uuid-generator"
+                },
+                {
+                  "lit": "v7"
+                },
+                {
+                  "var": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -1037,7 +1221,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "uuid-generator",
+                "v7",
+                "{count}"
+              ]
             }
           ]
         }
@@ -1057,6 +1247,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 
