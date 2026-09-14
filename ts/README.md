@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2'
+import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2-sdk'
 
 const client = new UuidGeneratorApi2SDK()
 ```
@@ -718,7 +718,7 @@ uuid-generator-api2/
 Import the SDK from the package root:
 
 ```ts
-import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2'
+import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2-sdk'
 ```
 
 ### Entity state

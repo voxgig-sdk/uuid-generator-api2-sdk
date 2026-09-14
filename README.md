@@ -105,7 +105,7 @@ local results, err = client:V1n():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/uuid-generator-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/uuid-generator-api2-sdk/releases) |
+| TypeScript | `@voxgig-sdk/uuid-generator-api2-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/uuid-generator-api2-sdk/releases) |
 | Python | `voxgig-sdk-uuid-generator-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/uuid-generator-api2-sdk/releases) |
 | PHP | `voxgig-sdk/uuid-generator-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/uuid-generator-api2-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/uuid-generator-api2-sdk/go` | `go get github.com/voxgig-sdk/uuid-generator-api2-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:V1n():list()
 ### TypeScript
 
 ```ts
-import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2'
+import { UuidGeneratorApi2SDK } from '@voxgig-sdk/uuid-generator-api2-sdk'
 
 const client = new UuidGeneratorApi2SDK()
 
