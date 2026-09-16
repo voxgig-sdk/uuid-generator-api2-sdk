@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "guid": {
           "active": true,
@@ -101,6 +165,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/guid",
+                    "json": "{\"operationId\":\"generateGuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/guid",
@@ -156,6 +226,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/guid/{count}",
+                    "json": "{\"operationId\":\"generateGuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -262,6 +338,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v1",
+                    "json": "{\"operationId\":\"generateV1UuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v1",
@@ -317,6 +399,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v1/{count}",
+                    "json": "{\"operationId\":\"generateV1UuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -439,6 +527,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v3",
+                    "json": "{\"operationId\":\"generateV3UuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Namespace for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"namespace\",\"required\":false,\"schema\":{\"default\":\"dns\",\"enum\":[\"dns\",\"url\"],\"type\":\"string\"}},{\"description\":\"Name input for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v3",
@@ -513,6 +607,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v3/{count}",
+                    "json": "{\"operationId\":\"generateV3UuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Namespace for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"namespace\",\"required\":false,\"schema\":{\"default\":\"dns\",\"enum\":[\"dns\",\"url\"],\"type\":\"string\"}},{\"description\":\"Name input for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -620,6 +720,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v4",
+                    "json": "{\"operationId\":\"generateV4UuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v4",
@@ -675,6 +781,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v4/{count}",
+                    "json": "{\"operationId\":\"generateV4UuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -797,6 +909,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v5",
+                    "json": "{\"operationId\":\"generateV5UuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Namespace for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"namespace\",\"required\":false,\"schema\":{\"default\":\"dns\",\"enum\":[\"dns\",\"url\"],\"type\":\"string\"}},{\"description\":\"Name input for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v5",
@@ -871,6 +989,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v5/{count}",
+                    "json": "{\"operationId\":\"generateV5UuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Namespace for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"namespace\",\"required\":false,\"schema\":{\"default\":\"dns\",\"enum\":[\"dns\",\"url\"],\"type\":\"string\"}},{\"description\":\"Name input for UUID v3/v5 generation\",\"in\":\"query\",\"name\":\"name\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -978,6 +1102,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v6",
+                    "json": "{\"operationId\":\"generateV6UuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v6",
@@ -1033,6 +1163,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v6/{count}",
+                    "json": "{\"operationId\":\"generateV6UuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1138,6 +1274,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v7",
+                    "json": "{\"operationId\":\"generateV7UuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v7",
@@ -1194,6 +1336,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/uuid-generator/v7/{count}",
+                    "json": "{\"operationId\":\"generateV7UuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/uuid-generator/v7/{count}",
@@ -1235,13 +1383,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1331,6 +1689,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1696,6 +2150,48 @@
         "website": "https://toolkitvault.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -2250,6 +2746,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2291,7 +2788,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

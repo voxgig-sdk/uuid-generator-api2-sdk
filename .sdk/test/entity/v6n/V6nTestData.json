@@ -2,22 +2,22 @@
   "existing": {
     "v6n": {
       "V6N00": {
-        "count": "s28",
-        "maxPerCall": "s29",
+        "count": 40,
+        "maxPerCall": 41,
         "uuids": [],
         "version": "s2b",
         "id": "V6N00"
       },
       "V6N01": {
-        "count": "s50",
-        "maxPerCall": "s51",
+        "count": 80,
+        "maxPerCall": 81,
         "uuids": [],
         "version": "s53",
         "id": "V6N01"
       },
       "V6N02": {
-        "count": "s78",
-        "maxPerCall": "s79",
+        "count": 120,
+        "maxPerCall": 121,
         "uuids": [],
         "version": "s7b",
         "id": "V6N02"
@@ -27,10 +27,459 @@
   "new": {
     "v6n": {
       "v6n_ref01": {
-        "count": "sa0",
-        "maxPerCall": "sa1",
+        "count": 160,
+        "maxPerCall": 161,
         "uuids": [],
         "version": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/uuid-generator/v6": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "generateV6UuidQuery",
+        "parameters": [
+          {
+            "description": "Number of UUIDs to generate (alternative query parameter: 'n')",
+            "in": "query",
+            "name": "count",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 200,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Output format for UUIDs",
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "schema": {
+              "default": "default",
+              "enum": [
+                "default",
+                "uppercase",
+                "braced",
+                "braced-uppercase"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "multipleUuids": {
+                    "summary": "Multiple UUID v4",
+                    "value": {
+                      "count": 10,
+                      "maxPerCall": 200,
+                      "uuids": [
+                        "6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01",
+                        "7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12",
+                        "8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23",
+                        "9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34",
+                        "0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45",
+                        "1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56",
+                        "2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67",
+                        "3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78",
+                        "4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89",
+                        "5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90"
+                      ],
+                      "version": "v4"
+                    }
+                  },
+                  "singleUuid": {
+                    "summary": "Single UUID v7",
+                    "value": {
+                      "count": 1,
+                      "maxPerCall": 200,
+                      "uuids": [
+                        "018d5e8a-7b9c-7890-abcd-ef1234567890"
+                      ],
+                      "version": "v7"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "description": "Number of UUIDs generated",
+                      "example": 10,
+                      "type": "integer"
+                    },
+                    "maxPerCall": {
+                      "description": "Maximum number of UUIDs allowed per API call",
+                      "example": 200,
+                      "type": "integer"
+                    },
+                    "uuids": {
+                      "description": "Array of generated UUIDs",
+                      "example": [
+                        "6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01"
+                      ],
+                      "items": {
+                        "format": "uuid",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "version": {
+                      "description": "UUID version used for generation",
+                      "example": "v4",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "version",
+                    "count",
+                    "maxPerCall",
+                    "uuids"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful UUID generation"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalidVersion": {
+                    "summary": "Invalid version",
+                    "value": {
+                      "error": true,
+                      "message": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "statusCode": 400,
+                      "statusMessage": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "url": "https://toolkitvault.com/api/uuid-generator/v0"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Indicates an error occurred",
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "statusMessage": {
+                      "description": "HTTP status message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The requested URL that caused the error",
+                      "example": "https://toolkitvault.com/api/uuid-generator/v0",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "url",
+                    "statusCode",
+                    "statusMessage",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid parameters"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "message": "Too Many Requests",
+                  "statusCode": 429,
+                  "statusMessage": "Too Many Requests",
+                  "url": "https://toolkitvault.com/api/uuid-generator/v4"
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Indicates an error occurred",
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "statusMessage": {
+                      "description": "HTTP status message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The requested URL that caused the error",
+                      "example": "https://toolkitvault.com/api/uuid-generator/v0",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "url",
+                    "statusCode",
+                    "statusMessage",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/uuid-generator/v6/{count}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "generateV6UuidPath",
+        "parameters": [
+          {
+            "description": "Number of UUIDs to generate",
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "schema": {
+              "maximum": 200,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Output format for UUIDs",
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "schema": {
+              "default": "default",
+              "enum": [
+                "default",
+                "uppercase",
+                "braced",
+                "braced-uppercase"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "multipleUuids": {
+                    "summary": "Multiple UUID v4",
+                    "value": {
+                      "count": 10,
+                      "maxPerCall": 200,
+                      "uuids": [
+                        "6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01",
+                        "7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12",
+                        "8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23",
+                        "9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34",
+                        "0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45",
+                        "1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56",
+                        "2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67",
+                        "3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78",
+                        "4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89",
+                        "5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90"
+                      ],
+                      "version": "v4"
+                    }
+                  },
+                  "singleUuid": {
+                    "summary": "Single UUID v7",
+                    "value": {
+                      "count": 1,
+                      "maxPerCall": 200,
+                      "uuids": [
+                        "018d5e8a-7b9c-7890-abcd-ef1234567890"
+                      ],
+                      "version": "v7"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "description": "Number of UUIDs generated",
+                      "example": 10,
+                      "type": "integer"
+                    },
+                    "maxPerCall": {
+                      "description": "Maximum number of UUIDs allowed per API call",
+                      "example": 200,
+                      "type": "integer"
+                    },
+                    "uuids": {
+                      "description": "Array of generated UUIDs",
+                      "example": [
+                        "6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01"
+                      ],
+                      "items": {
+                        "format": "uuid",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "version": {
+                      "description": "UUID version used for generation",
+                      "example": "v4",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "version",
+                    "count",
+                    "maxPerCall",
+                    "uuids"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful UUID generation"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalidVersion": {
+                    "summary": "Invalid version",
+                    "value": {
+                      "error": true,
+                      "message": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "statusCode": 400,
+                      "statusMessage": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "url": "https://toolkitvault.com/api/uuid-generator/v0"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Indicates an error occurred",
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "statusMessage": {
+                      "description": "HTTP status message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The requested URL that caused the error",
+                      "example": "https://toolkitvault.com/api/uuid-generator/v0",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "url",
+                    "statusCode",
+                    "statusMessage",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid parameters"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": true,
+                  "message": "Too Many Requests",
+                  "statusCode": 429,
+                  "statusMessage": "Too Many Requests",
+                  "url": "https://toolkitvault.com/api/uuid-generator/v4"
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Indicates an error occurred",
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "example": 400,
+                      "type": "integer"
+                    },
+                    "statusMessage": {
+                      "description": "HTTP status message",
+                      "example": "Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The requested URL that caused the error",
+                      "example": "https://toolkitvault.com/api/uuid-generator/v0",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "url",
+                    "statusCode",
+                    "statusMessage",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

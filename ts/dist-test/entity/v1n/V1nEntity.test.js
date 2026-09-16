@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.UUID_GENERATOR_API2_TEST_LIVE;
         for (const op of ['list', 'load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'v1n.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'v1n.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set UUID_GENERATOR_API2_TEST_V1N_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "count", "req": true, "short": "Number of UUIDs generated", "type": "`$INTEGER`", "index$": 0 }, { "active": true, "name": "maxPerCall", "req": true, "short": "Maximum number of UUIDs allowed per API call", "type": "`$INTEGER`", "index$": 1 }, { "active": true, "name": "uuids", "req": true, "short": "Array of generated UUIDs", "type": "`$ARRAY`", "index$": 2 }, { "active": true, "name": "version", "req": true, "short": "UUID version used for generation", "type": "`$STRING`", "index$": 3 }], "name": "v1n", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "example": 1, "kind": "query", "name": "count", "orig": "count", "reqd": false, "type": "`$INTEGER`", "index$": 0 }, { "active": true, "example": "default", "kind": "query", "name": "format", "orig": "format", "reqd": false, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "GET /api/uuid-generator/v1", "json": "{\"operationId\":\"generateV1UuidQuery\",\"parameters\":[{\"description\":\"Number of UUIDs to generate (alternative query parameter: 'n')\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/uuid-generator/v1", "segments": [{ "lit": "api" }, { "lit": "uuid-generator" }, { "lit": "v1" }], "select": { "exist": ["count", "format"] }, "transform": { "req": "`reqdata`", "res": "`body.uuids`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "count", "orig": "count", "reqd": true, "type": "`$INTEGER`", "index$": 0 }], "query": [{ "active": true, "example": "default", "kind": "query", "name": "format", "orig": "format", "reqd": false, "type": "`$STRING`", "index$": 0 }] }, "contract": { "id": "GET /api/uuid-generator/v1/{count}", "json": "{\"operationId\":\"generateV1UuidPath\",\"parameters\":[{\"description\":\"Number of UUIDs to generate\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":200,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Output format for UUIDs\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"default\",\"enum\":[\"default\",\"uppercase\",\"braced\",\"braced-uppercase\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"multipleUuids\":{\"summary\":\"Multiple UUID v4\",\"value\":{\"count\":10,\"maxPerCall\":200,\"uuids\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\",\"7c9e9c9d-8e2b-5f5f-ae3f-2b4e0e9e3d12\",\"8d0f0d0e-9f3c-6e6e-bf4e-3c5f1f0f4e23\",\"9e1e1e1f-0e4d-7f7f-ce5f-4d6e2e1e5f34\",\"0f2f2f2e-1f5e-8e8e-df6e-5e7f3f2f6e45\",\"1e3e3e3d-2e6f-9f9f-ee7f-6f8e4e3e7f56\",\"2f4f4f4c-3f7e-0e0e-ff8e-7f9f5f4f8e67\",\"3e5e5e5b-4e8d-1f1f-ee9f-8e0e6e5e9f78\",\"4f6f6f6a-5f9c-2e2e-dfae-9f1f7f6f0e89\",\"5e7e7e79-6e0b-3f3f-cebf-0e2e8e7e1f90\"],\"version\":\"v4\"}},\"singleUuid\":{\"summary\":\"Single UUID v7\",\"value\":{\"count\":1,\"maxPerCall\":200,\"uuids\":[\"018d5e8a-7b9c-7890-abcd-ef1234567890\"],\"version\":\"v7\"}}},\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of UUIDs generated\",\"example\":10,\"type\":\"integer\"},\"maxPerCall\":{\"description\":\"Maximum number of UUIDs allowed per API call\",\"example\":200,\"type\":\"integer\"},\"uuids\":{\"description\":\"Array of generated UUIDs\",\"example\":[\"6b8f8b8c-7f1a-4f4e-9d2e-1a3d9f8d2c01\"],\"items\":{\"format\":\"uuid\",\"type\":\"string\"},\"type\":\"array\"},\"version\":{\"description\":\"UUID version used for generation\",\"example\":\"v4\",\"type\":\"string\"}},\"required\":[\"version\",\"count\",\"maxPerCall\",\"uuids\"],\"type\":\"object\"}}},\"description\":\"Successful UUID generation\"},\"400\":{\"content\":{\"application/json\":{\"examples\":{\"invalidVersion\":{\"summary\":\"Invalid version\",\"value\":{\"error\":true,\"message\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"statusCode\":400,\"statusMessage\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v0\"}}},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"429\":{\"content\":{\"application/json\":{\"example\":{\"error\":true,\"message\":\"Too Many Requests\",\"statusCode\":429,\"statusMessage\":\"Too Many Requests\",\"url\":\"https://toolkitvault.com/api/uuid-generator/v4\"},\"schema\":{\"properties\":{\"error\":{\"description\":\"Indicates an error occurred\",\"example\":true,\"type\":\"boolean\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"example\":400,\"type\":\"integer\"},\"statusMessage\":{\"description\":\"HTTP status message\",\"example\":\"Invalid version. Use v1|v2|v3|v4|v5|v6|v7|guid\",\"type\":\"string\"},\"url\":{\"description\":\"The requested URL that caused the error\",\"example\":\"https://toolkitvault.com/api/uuid-generator/v0\",\"type\":\"string\"}},\"required\":[\"error\",\"url\",\"statusCode\",\"statusMessage\",\"message\"],\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/uuid-generator/v1/{count}", "segments": [{ "lit": "api" }, { "lit": "uuid-generator" }, { "lit": "v1" }, { "var": "count" }], "select": { "exist": ["count", "format"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [["v1"]] }, "key$": "v1n", "name__orig": "v1n", "Name": "V1n", "name_": "v1n", "name-": "v1n", "NAME": "V1N", "index$": 1 }, { "active": true, "entity": "v1n", "key$": "BasicV1nFlow", "kind": "basic", "name": "BasicV1nFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "v1n_ref01" } }], "index$": 0 }, { "active": true, "data": {}, "input": { "ref": "v1n_ref01", "srcdatavar": "v1n_ref01_data", "suffix": "_dt0" }, "match": { "id": "v1n01" }, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-v1n_ref01" } }], "index$": 1 }] }, 'V1n');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['UUID_GENERATOR_API2_TEST_V1N_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'UUID_GENERATOR_API2_TEST_V1N_ENTID': idmap,
         'UUID_GENERATOR_API2_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['UUID_GENERATOR_API2_TEST_V1N_ENTID'];
     const live = 'TRUE' === env.UUID_GENERATOR_API2_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['UUID_GENERATOR_API2_TEST_V1N_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.UuidGeneratorApi2SDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -125,7 +123,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -137,7 +136,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.UUID_GENERATOR_API2_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;
