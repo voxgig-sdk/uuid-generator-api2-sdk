@@ -1,9 +1,9 @@
 # Entity Models
 
-@"guid.aon"
-@"v1n.aon"
-@"v3n.aon"
-@"v4n.aon"
-@"v5n.aon"
-@"v6n.aon"
-@"v7n.aon"
+@"./guid.aon"
+@"./v1n.aon"
+@"./v3n.aon"
+@"./v4n.aon"
+@"./v5n.aon"
+@"./v6n.aon"
+@"./v7n.aon"
